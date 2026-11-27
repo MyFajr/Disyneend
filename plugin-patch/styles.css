@@ -4565,3 +4565,81 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
   min-width: 22px;
   min-height: 22px;
 }
+
+
+/* ESDS premium palette: keep semantic text inside Callouts at the full body size. */
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content {
+  font-size: var(--esds-block-body-size, 16.2px) !important;
+  font-weight: var(--esds-block-body-weight, 500) !important;
+}
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content > p,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content > p,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content li,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content li,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content blockquote,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content blockquote {
+  font-size: inherit !important;
+}
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-le,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-le,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-mi,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-mi,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-ac,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-ac,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-so,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-so,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-te,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-te,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-fo,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-fo,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-lt,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-lt,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-tr,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-tr,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-pr,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-pr,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-de,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-de,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-ex,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-ex,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-im,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-im,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-wa,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-wa,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-qu,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-qu,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-su,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-su,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-co,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-co,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-sc,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-sc,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-no,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-no,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-nu,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-nu,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-qt,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-qt,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-fa,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-fa,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-ar,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-ar,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-ct,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-ct,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-ca,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-ca,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-rs,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-rs,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-da,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-da,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-pe,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-pe,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-ev,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-ev,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-td,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-td,
+.markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-ri,
+.markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content .st-ri {
+  font-size: inherit !important;
+}
