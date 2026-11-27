@@ -4265,10 +4265,14 @@ class DesignStudioModal extends Modal {
         const renamed = [];
         candidates.forEach(item => {
           const oldName = String(item.palette.name || 'Импортированная палитра').trim();
-          const finalName = esdsUniqueName(oldName, names, 100);
-          if (finalName !== oldName) renamed.push(finalName);
+          const existingPalette = (this.plugin.userData.palettes || []).find(existing =>
+            existing.id === item.palette.id ||
+            String(existing.name || '').toLocaleLowerCase() === oldName.toLocaleLowerCase()
+          );
+          const finalName = existingPalette ? existingPalette.name : esdsUniqueName(oldName, names, 100);
+          if (!existingPalette && finalName !== oldName) renamed.push(finalName);
           item.palette.name = finalName;
-          names.push(finalName);
+          if (!existingPalette) names.push(finalName);
         });
         if (!confirm('Добавить ' + candidates.length + ' палитр в категорию «' + choice.name + '»? Совпадения будут автоматически переименованы.')) return;
         const before = clone(this.plugin.userData);
@@ -4482,7 +4486,7 @@ class DesignStudioModal extends Modal {
               if (!palette || typeof palette !== 'object' || Array.isArray(palette) || !palette.name) throw new Error('в JSON отсутствует название палитры');
               if (!palette.roles || !ROLE_KEYS.every(key => isHexColor(palette.roles[key]))) throw new Error('неполные или неверные цветовые роли палитры ESDS');
               const schema = Number(data.schemaVersion || 1);
-              if (!Number.isInteger(schema) || schema < 1 || schema > 4) throw new Error('версия формата палитры не поддерживается');
+              if (!Number.isInteger(schema) || schema < 1 || schema > 5) throw new Error('версия формата палитры не поддерживается');
               parsedItems.push({ data, palette, fileName: file.name });
             } catch (error) { errors.push(file.name + ': ' + (error.message || 'ошибка JSON')); }
           }
@@ -4502,12 +4506,16 @@ class DesignStudioModal extends Modal {
           const renamed = [];
           parsedItems.forEach(item => {
             const oldName = String(item.palette.name || 'Импортированная палитра').trim();
-            const finalName = esdsUniqueName(oldName, existingNames, 100);
-            if (finalName !== oldName) renamed.push(finalName);
+            const existingPalette = (this.plugin.userData.palettes || []).find(existing =>
+              existing.id === item.palette.id ||
+              String(existing.name || '').toLocaleLowerCase() === oldName.toLocaleLowerCase()
+            );
+            const finalName = existingPalette ? existingPalette.name : esdsUniqueName(oldName, existingNames, 100);
+            if (!existingPalette && finalName !== oldName) renamed.push(finalName);
             item.palette.name = finalName;
-            existingNames.push(finalName);
+            if (!existingPalette) existingNames.push(finalName);
           });
-          if (!confirm('Добавить ' + parsedItems.length + ' палитр в категорию «' + choice.name + '»? Совпадающие названия будут автоматически переименованы.')) return;
+          if (!confirm('Добавить или обновить ' + parsedItems.length + ' палитр в категории «' + choice.name + '»? Новые совпадающие названия будут автоматически переименованы.')) return;
           const before = clone(this.plugin.userData);
           try {
             const destination = await this.ensurePaletteCategory(choice.name);
