@@ -346,8 +346,8 @@
     "name": "Ruby Velvet — фон",
     "label": "Ruby Velvet — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #E0ACBC 0%, #FFC8CF 100%)",
-    "dark": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #E0ACBC 0%, #FFC8CF 100%)",
+    "light": "radial-gradient(ellipse at 16% 86%, #FFFFFF3A 0%, transparent 56%), radial-gradient(circle at 24% 48%, #A9154228 0%, transparent 64%), linear-gradient(135deg, #E0ACBC 0%, #FFC8CF 100%)",
+    "dark": "radial-gradient(ellipse at 16% 86%, #FFFFFF3A 0%, transparent 56%), radial-gradient(circle at 24% 48%, #A9154228 0%, transparent 64%), linear-gradient(135deg, #E0ACBC 0%, #FFC8CF 100%)",
     "textColor": "#211A27",
     "darkTextColor": "#211A27"
   },

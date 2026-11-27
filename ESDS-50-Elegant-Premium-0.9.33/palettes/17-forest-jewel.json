@@ -346,8 +346,8 @@
     "name": "Forest Jewel — фон",
     "label": "Forest Jewel — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #AACABB 0%, #DBF47C 100%)",
-    "dark": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #AACABB 0%, #DBF47C 100%)",
+    "light": "radial-gradient(ellipse at 84% 72%, #FFFFFF48 0%, transparent 60%), linear-gradient(20deg, transparent 12%, #126B4224 50%, transparent 88%), linear-gradient(135deg, #AACABB 0%, #DBF47C 100%)",
+    "dark": "radial-gradient(ellipse at 84% 72%, #FFFFFF48 0%, transparent 60%), linear-gradient(20deg, transparent 12%, #126B4224 50%, transparent 88%), linear-gradient(135deg, #AACABB 0%, #DBF47C 100%)",
     "textColor": "#211A27",
     "darkTextColor": "#211A27"
   },

@@ -346,8 +346,8 @@
     "name": "Dragon Fruit — фон",
     "label": "Dragon Fruit — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #F0ADD0 0%, #C1F460 100%)",
-    "dark": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #F0ADD0 0%, #C1F460 100%)",
+    "light": "radial-gradient(ellipse at 72% 86%, #FFFFFF36 0%, transparent 64%), radial-gradient(ellipse at 84% 72%, #FFFFFF30 0%, transparent 66%), linear-gradient(135deg, #F0ADD0 0%, #C1F460 100%)",
+    "dark": "radial-gradient(ellipse at 72% 86%, #FFFFFF36 0%, transparent 64%), radial-gradient(ellipse at 84% 72%, #FFFFFF30 0%, transparent 66%), linear-gradient(135deg, #F0ADD0 0%, #C1F460 100%)",
     "textColor": "#211A27",
     "darkTextColor": "#211A27"
   },

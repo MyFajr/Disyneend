@@ -346,8 +346,8 @@
     "name": "Papaya Punch — фон",
     "label": "Papaya Punch — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #FF9C53 0%, #F49AB0 100%)",
-    "dark": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #FF9C53 0%, #F49AB0 100%)",
+    "light": "radial-gradient(ellipse at 90% 22%, #FFFFFF3A 0%, transparent 56%), radial-gradient(circle at 62% 12%, #FF8A3528 0%, transparent 64%), linear-gradient(135deg, #FF9C53 0%, #F49AB0 100%)",
+    "dark": "radial-gradient(ellipse at 90% 22%, #FFFFFF3A 0%, transparent 56%), radial-gradient(circle at 62% 12%, #FF8A3528 0%, transparent 64%), linear-gradient(135deg, #FF9C53 0%, #F49AB0 100%)",
     "textColor": "#211A27",
     "darkTextColor": "#211A27"
   },

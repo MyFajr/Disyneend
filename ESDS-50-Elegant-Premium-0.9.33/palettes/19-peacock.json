@@ -346,8 +346,8 @@
     "name": "Peacock — фон",
     "label": "Peacock — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #91C6C8 0%, #FFD87F 100%)",
-    "dark": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #91C6C8 0%, #FFD87F 100%)",
+    "light": "radial-gradient(ellipse at 62% 12%, #FFFFFF44 0%, transparent 52%), linear-gradient(85deg, transparent 16%, #FFFFFF22 50%, transparent 84%), linear-gradient(135deg, #91C6C8 0%, #FFD87F 100%)",
+    "dark": "radial-gradient(ellipse at 62% 12%, #FFFFFF44 0%, transparent 52%), linear-gradient(85deg, transparent 16%, #FFFFFF22 50%, transparent 84%), linear-gradient(135deg, #91C6C8 0%, #FFD87F 100%)",
     "textColor": "#211A27",
     "darkTextColor": "#211A27"
   },

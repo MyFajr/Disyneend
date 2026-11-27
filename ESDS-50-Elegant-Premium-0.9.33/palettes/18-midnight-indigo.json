@@ -346,8 +346,8 @@
     "name": "Midnight Indigo — фон",
     "label": "Midnight Indigo — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #AFADC3 0%, #B3A7FF 100%)",
-    "dark": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #AFADC3 0%, #B3A7FF 100%)",
+    "light": "radial-gradient(ellipse at 50% 50%, #FFFFFF36 0%, transparent 64%), radial-gradient(ellipse at 10% 20%, #FFFFFF30 0%, transparent 66%), linear-gradient(135deg, #AFADC3 0%, #B3A7FF 100%)",
+    "dark": "radial-gradient(ellipse at 50% 50%, #FFFFFF36 0%, transparent 64%), radial-gradient(ellipse at 10% 20%, #FFFFFF30 0%, transparent 66%), linear-gradient(135deg, #AFADC3 0%, #B3A7FF 100%)",
     "textColor": "#211A27",
     "darkTextColor": "#211A27"
   },
