@@ -366,7 +366,7 @@
     },
     "style": {
       "light": {
-        "backgroundOpacity": 0.38,
+        "backgroundOpacity": 0.7,
         "borderWidth": 1.6,
         "borderOpacity": 0.92,
         "borderRadius": 14,
@@ -395,7 +395,7 @@
     "calloutOverrides": {
       "rule": {
         "light": {
-          "backgroundOpacity": 0.36,
+          "backgroundOpacity": 0.68,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         },
@@ -407,7 +407,7 @@
       },
       "example": {
         "light": {
-          "backgroundOpacity": 0.385,
+          "backgroundOpacity": 0.7000000000000001,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         },
@@ -419,7 +419,7 @@
       },
       "important": {
         "light": {
-          "backgroundOpacity": 0.41,
+          "backgroundOpacity": 0.7200000000000001,
           "borderOpacity": 0.92,
           "borderWidth": 2
         },
@@ -431,7 +431,7 @@
       },
       "tip": {
         "light": {
-          "backgroundOpacity": 0.36,
+          "backgroundOpacity": 0.68,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         },
@@ -443,7 +443,7 @@
       },
       "warning": {
         "light": {
-          "backgroundOpacity": 0.385,
+          "backgroundOpacity": 0.7000000000000001,
           "borderOpacity": 0.92,
           "borderWidth": 2
         },
@@ -455,7 +455,7 @@
       },
       "question": {
         "light": {
-          "backgroundOpacity": 0.41,
+          "backgroundOpacity": 0.7200000000000001,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         },
@@ -467,7 +467,7 @@
       },
       "practice": {
         "light": {
-          "backgroundOpacity": 0.36,
+          "backgroundOpacity": 0.68,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         },
@@ -479,7 +479,7 @@
       },
       "success": {
         "light": {
-          "backgroundOpacity": 0.385,
+          "backgroundOpacity": 0.7000000000000001,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         },
@@ -491,7 +491,7 @@
       },
       "info": {
         "light": {
-          "backgroundOpacity": 0.41,
+          "backgroundOpacity": 0.7200000000000001,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         },
@@ -503,7 +503,7 @@
       },
       "note": {
         "light": {
-          "backgroundOpacity": 0.36,
+          "backgroundOpacity": 0.68,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         },
@@ -515,7 +515,7 @@
       },
       "quote": {
         "light": {
-          "backgroundOpacity": 0.385,
+          "backgroundOpacity": 0.7000000000000001,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         },
@@ -527,7 +527,7 @@
       },
       "abstract": {
         "light": {
-          "backgroundOpacity": 0.41,
+          "backgroundOpacity": 0.7200000000000001,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         },
