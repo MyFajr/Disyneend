@@ -379,7 +379,7 @@
         "shadow": "none"
       },
       "dark": {
-        "backgroundOpacity": 0.7,
+        "backgroundOpacity": 0.38,
         "borderWidth": 1.6,
         "borderOpacity": 0.92,
         "borderRadius": 14,
@@ -400,7 +400,7 @@
           "borderWidth": 1.6
         },
         "dark": {
-          "backgroundOpacity": 0.68,
+          "backgroundOpacity": 0.36,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         }
@@ -412,7 +412,7 @@
           "borderWidth": 1.6
         },
         "dark": {
-          "backgroundOpacity": 0.7000000000000001,
+          "backgroundOpacity": 0.385,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         }
@@ -424,7 +424,7 @@
           "borderWidth": 2
         },
         "dark": {
-          "backgroundOpacity": 0.7200000000000001,
+          "backgroundOpacity": 0.41,
           "borderOpacity": 0.92,
           "borderWidth": 2
         }
@@ -436,7 +436,7 @@
           "borderWidth": 1.6
         },
         "dark": {
-          "backgroundOpacity": 0.68,
+          "backgroundOpacity": 0.36,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         }
@@ -448,7 +448,7 @@
           "borderWidth": 2
         },
         "dark": {
-          "backgroundOpacity": 0.7000000000000001,
+          "backgroundOpacity": 0.385,
           "borderOpacity": 0.92,
           "borderWidth": 2
         }
@@ -460,7 +460,7 @@
           "borderWidth": 1.6
         },
         "dark": {
-          "backgroundOpacity": 0.7200000000000001,
+          "backgroundOpacity": 0.41,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         }
@@ -472,7 +472,7 @@
           "borderWidth": 1.6
         },
         "dark": {
-          "backgroundOpacity": 0.68,
+          "backgroundOpacity": 0.36,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         }
@@ -484,7 +484,7 @@
           "borderWidth": 1.6
         },
         "dark": {
-          "backgroundOpacity": 0.7000000000000001,
+          "backgroundOpacity": 0.385,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         }
@@ -496,7 +496,7 @@
           "borderWidth": 1.6
         },
         "dark": {
-          "backgroundOpacity": 0.7200000000000001,
+          "backgroundOpacity": 0.41,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         }
@@ -508,7 +508,7 @@
           "borderWidth": 1.6
         },
         "dark": {
-          "backgroundOpacity": 0.68,
+          "backgroundOpacity": 0.36,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         }
@@ -520,7 +520,7 @@
           "borderWidth": 1.6
         },
         "dark": {
-          "backgroundOpacity": 0.7000000000000001,
+          "backgroundOpacity": 0.385,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         }
@@ -532,7 +532,7 @@
           "borderWidth": 1.6
         },
         "dark": {
-          "backgroundOpacity": 0.7200000000000001,
+          "backgroundOpacity": 0.41,
           "borderOpacity": 0.92,
           "borderWidth": 1.6
         }
