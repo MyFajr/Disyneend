@@ -346,8 +346,8 @@
     "name": "Lime Shock — фон",
     "label": "Lime Shock — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #C1F441 0%, #B6DBC4 100%)",
-    "dark": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #C1F441 0%, #B6DBC4 100%)",
+    "light": "radial-gradient(ellipse at 76% 76%, #FFFFFF36 0%, transparent 64%), radial-gradient(ellipse at 88% 42%, #FFFFFF30 0%, transparent 66%), linear-gradient(135deg, #C1F441 0%, #B6DBC4 100%)",
+    "dark": "radial-gradient(ellipse at 76% 76%, #FFFFFF36 0%, transparent 64%), radial-gradient(ellipse at 88% 42%, #FFFFFF30 0%, transparent 66%), linear-gradient(135deg, #C1F441 0%, #B6DBC4 100%)",
     "textColor": "#211A27",
     "darkTextColor": "#211A27"
   },

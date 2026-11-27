@@ -346,8 +346,8 @@
     "name": "Emerald Rush — фон",
     "label": "Emerald Rush — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #85D5B0 0%, #CEFF5B 100%)",
-    "dark": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #85D5B0 0%, #CEFF5B 100%)",
+    "light": "radial-gradient(ellipse at 50% 0%, #FFFFFF36 0%, transparent 64%), radial-gradient(ellipse at 18% 12%, #FFFFFF30 0%, transparent 66%), linear-gradient(135deg, #85D5B0 0%, #CEFF5B 100%)",
+    "dark": "radial-gradient(ellipse at 50% 0%, #FFFFFF36 0%, transparent 64%), radial-gradient(ellipse at 18% 12%, #FFFFFF30 0%, transparent 66%), linear-gradient(135deg, #85D5B0 0%, #CEFF5B 100%)",
     "textColor": "#211A27",
     "darkTextColor": "#211A27"
   },

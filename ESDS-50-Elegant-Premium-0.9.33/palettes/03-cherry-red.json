@@ -346,8 +346,8 @@
     "name": "Cherry Red — фон",
     "label": "Cherry Red — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #FA99A7 0%, #FFBCB2 100%)",
-    "dark": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #FA99A7 0%, #FFBCB2 100%)",
+    "light": "radial-gradient(ellipse at 24% 78%, #FFFFFF48 0%, transparent 60%), linear-gradient(35deg, transparent 12%, #F5234224 50%, transparent 88%), linear-gradient(135deg, #FA99A7 0%, #FFBCB2 100%)",
+    "dark": "radial-gradient(ellipse at 24% 78%, #FFFFFF48 0%, transparent 60%), linear-gradient(35deg, transparent 12%, #F5234224 50%, transparent 88%), linear-gradient(135deg, #FA99A7 0%, #FFBCB2 100%)",
     "textColor": "#211A27",
     "darkTextColor": "#211A27"
   },

@@ -346,8 +346,8 @@
     "name": "Turquoise Wave — фон",
     "label": "Turquoise Wave — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #62D4C9 0%, #FFE970 100%)",
-    "dark": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #62D4C9 0%, #FFE970 100%)",
+    "light": "radial-gradient(ellipse at 70% 58%, #FFFFFF3A 0%, transparent 56%), radial-gradient(circle at 88% 42%, #00B9A828 0%, transparent 64%), linear-gradient(135deg, #62D4C9 0%, #FFE970 100%)",
+    "dark": "radial-gradient(ellipse at 70% 58%, #FFFFFF3A 0%, transparent 56%), radial-gradient(circle at 88% 42%, #00B9A828 0%, transparent 64%), linear-gradient(135deg, #62D4C9 0%, #FFE970 100%)",
     "textColor": "#211A27",
     "darkTextColor": "#211A27"
   },

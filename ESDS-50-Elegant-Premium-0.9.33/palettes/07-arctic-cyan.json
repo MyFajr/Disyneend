@@ -346,8 +346,8 @@
     "name": "Arctic Cyan — фон",
     "label": "Arctic Cyan — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #22C8D7 0%, #A5B8C6 100%)",
-    "dark": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #22C8D7 0%, #A5B8C6 100%)",
+    "light": "radial-gradient(ellipse at 88% 42%, #FFFFFF48 0%, transparent 60%), linear-gradient(135deg, transparent 12%, #00BFD124 50%, transparent 88%), linear-gradient(135deg, #22C8D7 0%, #A5B8C6 100%)",
+    "dark": "radial-gradient(ellipse at 88% 42%, #FFFFFF48 0%, transparent 60%), linear-gradient(135deg, transparent 12%, #00BFD124 50%, transparent 88%), linear-gradient(135deg, #22C8D7 0%, #A5B8C6 100%)",
     "textColor": "#211A27",
     "darkTextColor": "#211A27"
   },
