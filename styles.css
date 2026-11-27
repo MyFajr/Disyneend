@@ -4385,3 +4385,27 @@ body.theme-dark .esds-preview.bg-28-saffron-cream, .esds-preview.esds-preview-da
   .esds-zip-export-modal { width:94vw; }
   .esds-zip-export-actions > button { flex:1 1 100%; }
 }
+
+
+/* ESDS 0.9.23 — responsive library manager (single + bulk operations). */
+.esds-library-manager-modal { width:min(760px,96vw); max-width:96vw; }
+.esds-library-manager-body { display:flex; flex-direction:column; gap:10px; min-height:0; }
+.esds-library-manager-toolbar { display:flex; flex-wrap:wrap; gap:7px; }
+.esds-library-manager-toolbar .esds-button { min-height:38px; flex:1 1 auto; }
+.esds-library-manager-count { color:var(--text-muted); font-size:.78rem; padding:2px 1px; }
+.esds-library-manager-list { display:flex; flex-direction:column; gap:6px; max-height:58vh; overflow-y:auto; overscroll-behavior:contain; padding:2px; }
+.esds-library-manager-row { display:flex; align-items:center; gap:9px; min-width:0; padding:8px 9px; border:1px solid var(--background-modifier-border); border-radius:10px; background:var(--background-primary); }
+.esds-library-manager-row > input { flex:0 0 19px; width:19px; height:19px; margin:0; accent-color:var(--interactive-accent); }
+.esds-library-manager-info { display:flex; flex:1 1 auto; flex-direction:column; gap:3px; min-width:0; }
+.esds-library-manager-info strong { overflow-wrap:anywhere; font-size:.84rem; }
+.esds-library-manager-info small { color:var(--text-muted); font-size:.72rem; }
+.esds-library-manager-item-actions { display:flex; flex:0 0 auto; align-items:center; gap:3px; }
+.esds-library-manager-item-actions .esds-icon-btn { min-width:32px; min-height:34px; }
+@media (max-width:520px) {
+  .esds-library-manager-modal { width:96vw; }
+  .esds-library-manager-list { max-height:55vh; }
+  .esds-library-manager-row { flex-wrap:wrap; }
+  .esds-library-manager-info { flex-basis:calc(100% - 34px); }
+  .esds-library-manager-item-actions { margin-left:28px; }
+  .esds-library-manager-toolbar .esds-button { flex:1 1 calc(50% - 7px); padding-inline:7px; font-size:.76rem; }
+}
