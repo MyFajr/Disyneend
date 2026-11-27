@@ -1,9 +1,9 @@
 {
   "id": "english-study-design-studio",
   "name": "English Study Design Studio",
-  "version": "0.9.24",
+  "version": "0.9.25",
   "minAppVersion": "1.5.0",
-  "description": "Semantic study-note design studio with accessible UI, palette category import/export, ZIP collections and live previews. v0.9.24: adds a dedicated foreign-letter color role and improves Tropical Voltage light-mode text contrast.",
+  "description": "Semantic study-note design studio with a single shared palette and background color system, accessible UI, category import/export and live previews. v0.9.25: removes separate Light/Dark palette and background variants.",
   "author": "Custom personal plugin",
   "isDesktopOnly": false
 }
