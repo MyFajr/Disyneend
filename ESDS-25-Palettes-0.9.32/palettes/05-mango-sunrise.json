@@ -346,8 +346,8 @@
     "name": "Mango Sunrise — фон",
     "label": "Mango Sunrise — фон",
     "group": "Rainbow Multicolor",
-    "light": "linear-gradient(135deg, #FFEBC7 0%, #FDDBD3 100%)",
-    "dark": "linear-gradient(135deg, #FFEBC7 0%, #FDDBD3 100%)",
+    "light": "linear-gradient(135deg, #FFBE47 0%, #FAB19E 100%)",
+    "dark": "linear-gradient(135deg, #FFBE47 0%, #FAB19E 100%)",
     "textColor": "#201B2A",
     "darkTextColor": "#201B2A"
   },
