@@ -3819,6 +3819,7 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
 
 /* Palette-driven Markdown components: tables, quotations and separators. */
 .markdown-preview-view.esds-note table,
+.markdown-source-view.esds-note table,
 .esds-preview table {
   border-collapse:separate;
   border-spacing:0;
@@ -3826,6 +3827,7 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
   border-color:rgba(var(--esds-callout-info),.28);
 }
 .markdown-preview-view.esds-note table thead th,
+.markdown-source-view.esds-note table thead th,
 .esds-preview table thead th {
   background:rgba(var(--esds-callout-info),.13);
   color:var(--esds-heading,var(--text-normal));
@@ -3833,12 +3835,15 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
 }
 .markdown-preview-view.esds-note table td,
 .markdown-preview-view.esds-note table th,
+.markdown-source-view.esds-note table td,
+.markdown-source-view.esds-note table th,
 .esds-preview table td,
 .esds-preview table th {
   padding:.42em .62em;
   border-color:rgba(var(--esds-callout-info),.25);
 }
 .markdown-preview-view.esds-note table tbody tr:nth-child(even) td,
+.markdown-source-view.esds-note table tbody tr:nth-child(even) td,
 .esds-preview table tbody tr:nth-child(even) td {
   background:rgba(var(--esds-callout-info),.045);
 }

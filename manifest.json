@@ -1,9 +1,9 @@
 {
   "id": "english-study-design-studio",
   "name": "English Study Design Studio",
-  "version": "0.9.31",
+  "version": "0.9.32",
   "minAppVersion": "1.5.0",
-  "description": "Full management of all palette and background categories, bulk selection, move and delete, Android-friendly UI.",
+  "description": "Single-mode semantic palette system with 30 semantic classes, 11 colour roles, Android-friendly note styling, and palette library import/export.",
   "author": "Custom personal plugin",
   "isDesktopOnly": false
 }
