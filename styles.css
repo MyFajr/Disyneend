@@ -4293,3 +4293,32 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
 .esds-catalog-folder-menu { position:absolute; top:6px; right:6px; flex:0 0 32px; min-width:32px; width:32px; height:32px; margin:0; z-index:3; }
 .esds-catalog-folder-info { padding-right:30px; }
 .esds-catalog-folder-menu:focus-visible { outline:2px solid var(--interactive-accent); outline-offset:2px; }
+
+
+/* 0.9.27 — модальный ввод текста (замена window.prompt, который не работает в Electron). */
+.esds-prompt-modal { width: min(92vw, 440px); }
+.esds-prompt-content { display: flex; flex-direction: column; gap: 12px; }
+.esds-prompt-content h2 { margin: 0; font-size: 1.12rem; }
+.esds-prompt-description { margin: 0; color: var(--text-muted); font-size: var(--font-sm); line-height: 1.45; }
+.esds-prompt-field { display: flex; flex-direction: column; gap: 6px; }
+.esds-prompt-field input { width: 100%; }
+.esds-prompt-actions { display: flex; justify-content: flex-end; gap: 8px; padding-top: 2px; }
+
+/* 0.9.27 — панель массовых операций каталога. */
+.esds-bulk-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 9px 11px; border: 1px solid var(--interactive-accent); border-radius: 12px; background: var(--background-secondary); }
+.esds-bulk-bar-info { flex: 1 1 140px; min-width: 120px; }
+.esds-bulk-count { color: var(--text-normal); font-size: var(--font-sm); font-weight: 600; }
+.esds-bulk-bar-actions { display: flex; flex-wrap: wrap; gap: 7px; }
+.esds-bulk-bar-actions .esds-button { min-height: 36px; }
+.esds-library-catalog-controls .esds-button.is-active { border-color: var(--interactive-accent); background: var(--background-modifier-hover); color: var(--text-normal); }
+
+/* 0.9.27 — флажок выделения на карточке. */
+.esds-bulk-check-wrap { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 2px 8px; border: 1px solid var(--background-modifier-border); border-radius: 9px; background: var(--background-primary); cursor: pointer; }
+.esds-bulk-check-wrap input { width: 16px; height: 16px; margin: 0; accent-color: var(--interactive-accent); }
+.esds-bulk-check-label { font-size: var(--font-sm); color: var(--text-muted); }
+.esds-library-catalog-card.is-bulk-selected { border-color: var(--interactive-accent); box-shadow: 0 0 0 1px var(--interactive-accent); }
+
+/* 0.9.27 — меню категории в заголовке группы стилей блоков. */
+.esds-block-style-divider { position: relative; }
+.esds-block-category-menu { position: absolute; top: 50%; right: 4px; transform: translateY(-50%); margin: 0; }
+.esds-block-style-divider .esds-block-style-name { padding-right: 34px; }
