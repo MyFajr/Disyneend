@@ -1537,6 +1537,7 @@ class BackgroundBuilderModal extends Modal {
         value: `linear-gradient(135deg, ${this.colors[0]} 0%, ${this.colors[1]} 100%)`,
         textColor: (this.existing && this.existing.textColor) || '#302d31', source: 'user'
       };
+      delete background.light; delete background.dark; delete background.darkTextColor;
       const list = this.studio.plugin.userData.backgrounds;
       if (this.existing) {
         const index = list.findIndex(item => item.id === this.existing.id);
