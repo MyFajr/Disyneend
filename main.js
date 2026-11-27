@@ -1748,18 +1748,20 @@ class DesignStudioModal extends Modal {
       item && typeof item === 'object' && !Array.isArray(item) &&
       typeof item.name === 'string' && item.name.trim().length > 0
     );
-    // Legacy/imported palette categories are surfaced as real folders instead of disappearing.
-    if (kind === 'palettes') {
-      const hidden = new Set((this.plugin.userData.deletedBuiltinPaletteIds || []).map(String));
+    // Legacy/imported categories are surfaced as real folders instead of disappearing.
+    if (kind === 'palettes' || kind === 'backgrounds') {
+      const isPalette = kind === 'palettes';
+      const hidden = new Set((this.plugin.userData[isPalette ? 'deletedBuiltinPaletteIds' : 'deletedBuiltinBackgroundIds'] || []).map(String));
       const names = new Set(list.map(item => item.name.toLocaleLowerCase()));
-      const items = [...PALETTES.filter(item => !hidden.has(item.id)), ...(this.plugin.userData.palettes || [])];
-      items.forEach(item => {
-        const name = String(item.category || 'Мои палитры').trim();
+      const builtins = isPalette ? PALETTES : BACKGROUNDS;
+      const customs = this.plugin.userData[isPalette ? 'palettes' : 'backgrounds'] || [];
+      [...builtins.filter(item => !hidden.has(item.id)), ...customs].forEach(item => {
+        const name = String(isPalette ? (item.category || 'Мои палитры') : (item.group || item.category || 'Мои фоны')).trim();
         if (!name || names.has(name.toLocaleLowerCase())) return;
         const base = 'imported-' + (slugify(name) || 'category');
         let id = base, suffix = 2;
         while (list.some(category => category.id === id)) id = base + '-' + suffix++;
-        list.push({ id, name, order: list.length + 10, protected: false, parentId: null, description: 'Категория, найденная в импортированной палитре.' });
+        list.push({ id, name, order: list.length + 10, protected: false, parentId: null, description: 'Категория, найденная в библиотеке.' });
         names.add(name.toLocaleLowerCase());
       });
     }
@@ -2872,7 +2874,7 @@ class DesignStudioModal extends Modal {
           ['var(--background-secondary)','var(--background-primary-alt)','var(--interactive-accent)','var(--background-modifier-border)'].forEach(color=>{const swatch=visual.createSpan({cls:'esds-catalog-folder-swatch'});swatch.style.backgroundColor=color;});
           const info=folder.createDiv({cls:'esds-catalog-folder-info'});info.createEl('strong',{text:cat.name});info.createEl('small',{text:cat.description||'Варианты фона для заметок со светлой и тёмной адаптацией.'});
           const footer=folder.createDiv({cls:'esds-catalog-folder-footer'});footer.createSpan({text:`${items.length} фонов · ${childCount} вложенных`});footer.createSpan({text:this.backgroundCategorySelectionMode?(this.backgroundCategoryMultiSelection.has(cat.id)?'Выбрана ✓':'Выбрать'):'Открыть ›'});
-          const open=()=>{if(this.backgroundCategorySelectionMode){this.backgroundCategoryMultiSelection.has(cat.id)?this.backgroundCategoryMultiSelection.delete(cat.id):this.backgroundCategoryMultiSelection.add(cat.id);}else{this.backgroundParentCategoryId=cat.id;this.backgroundCategory=cat.name;}render();};
+          const open=()=>{if(this.backgroundCategorySelectionMode){this.backgroundCategoryMultiSelection.has(cat.id)?this.backgroundCategoryMultiSelection.delete(cat.id):this.backgroundCategoryMultiSelection.add(cat.id);}else{this.backgroundParentCategoryId=cat.id;this.backgroundCategory=null;}render();};
           folder.addEventListener('click',e=>{if(e.target.closest('input'))return;open();});folder.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
         });
         if(parentCategory){const show=directory.createEl('button',{cls:'esds-button esds-btn-quiet',text:`Показать фоны этой категории · ${all.filter(bg=>(bg.group||bg.category||'Мои фоны')===parentCategory.name).length}`});show.addEventListener('click',()=>{this.backgroundCategory=parentCategory.name;render();});}
@@ -2880,7 +2882,7 @@ class DesignStudioModal extends Modal {
       }
       const filtered=all.filter(bg=>{const name=String(bg.label||bg.name||'').toLocaleLowerCase(),group=bg.group||bg.category||'Мои фоны';return(!selected||!!query||group===selected)&&(!query||`${name} ${group}`.toLocaleLowerCase().includes(query));});
       const header=results.createDiv({cls:'esds-catalog-results-heading'});
-      if(selected&&!query){const back=header.createEl('button',{cls:'esds-button esds-btn-quiet',text:'‹ Все категории',attr:{type:'button'}});back.addEventListener('click',()=>{this.backgroundCategory=null;this.backgroundMultiSelection.clear();this.backgroundMultiSelectionMode=false;render();});header.createEl('strong',{text:selected});}
+      if(selected&&!query){const back=header.createEl('button',{cls:'esds-button esds-btn-quiet',text:'‹ К категориям',attr:{type:'button'}});back.addEventListener('click',()=>{this.backgroundCategory=null;this.backgroundMultiSelection.clear();this.backgroundMultiSelectionMode=false;render();});header.createEl('strong',{text:selected});}
       else header.createEl('strong',{text:'Результаты поиска по всем фонам'});
       header.createEl('small',{text:`${filtered.length} элементов`});
       const itemControls=results.createDiv({cls:'esds-category-selection-toolbar'});
@@ -2929,7 +2931,7 @@ class DesignStudioModal extends Modal {
   async deleteSelectedBackgroundCategories(){const cats=this.getCategories('backgrounds'),ids=new Set(this.backgroundCategoryMultiSelection);if(!ids.size)return;const remove=new Set(ids);let changed=true;while(changed){changed=false;cats.forEach(c=>{if(c.parentId&&remove.has(c.parentId)&&!remove.has(c.id)){remove.add(c.id);changed=true;}});}const names=new Set(cats.filter(c=>remove.has(c.id)).map(c=>c.name)),user=this.plugin.userData.backgrounds||[],removedUser=user.filter(bg=>names.has(bg.group||bg.category||'Мои фоны')),removedBuilt=BACKGROUNDS.filter(bg=>names.has(bg.group||bg.category||'Мои фоны')),total=removedUser.length+removedBuilt.length;if(!confirm(`Удалить ${remove.size} категорий фонов и все ${total} фонов внутри них?`))return;const before=clone(this.plugin.userData);this.plugin.userData.categories.backgrounds=cats.filter(c=>!remove.has(c.id));this.plugin.userData.backgrounds=user.filter(bg=>!names.has(bg.group||bg.category||'Мои фоны'));this.plugin.userData.deletedBuiltinBackgroundIds=[...new Set([...(this.plugin.userData.deletedBuiltinBackgroundIds||[]),...removedBuilt.map(bg=>bg.id)])];if(await this.plugin.saveUserLibrary()===false){this.plugin.userData=before;return;}this.backgroundCategory=null;this.backgroundParentCategoryId=null;this.backgroundCategoryMultiSelection.clear();this.backgroundCategorySelectionMode=false;this.plugin.refreshGeneratedStyles();new Notice(`Удалено категорий: ${remove.size}; фонов: ${total}`);this.render();}
   async chooseBackgroundDestination(){const cats=this.getCategories('backgrounds');return await new Promise(resolve=>{let done=false;const modal=new class extends Modal{constructor(app){super(app);}finish(v){if(done)return;done=true;this.result=v;this.close();}onOpen(){this.modalEl.addClass('esds-category-picker-modal');this.contentEl.addClass('esds-category-picker');this.contentEl.createEl('h2',{text:'Переместить фоны'});const list=this.contentEl.createDiv({cls:'esds-category-picker-list'});cats.forEach(c=>{const row=list.createEl('button',{cls:'esds-category-picker-row',attr:{type:'button'}});row.createSpan({cls:'esds-category-picker-icon',text:'▰'});row.createEl('strong',{text:c.name});row.addEventListener('click',()=>this.finish(c.name));});const cancel=this.contentEl.createEl('button',{cls:'esds-button esds-btn-quiet',text:'Отмена'});cancel.addEventListener('click',()=>this.finish(undefined));}onClose(){this.contentEl.empty();resolve(this.result);}}(this.app);modal.open();});}
   async moveSelectedBackgrounds(){const ids=new Set(this.backgroundMultiSelection),user=this.plugin.userData.backgrounds||[],moving=user.filter(bg=>ids.has(bg.id));if(!moving.length){new Notice('Перемещать можно пользовательские фоны.');return;}const destination=await this.chooseBackgroundDestination();if(destination===undefined)return;const before=clone(this.plugin.userData);this.plugin.userData.backgrounds=user.map(bg=>ids.has(bg.id)?{...bg,group:destination,category:destination}:bg);if(await this.plugin.saveUserLibrary()===false){this.plugin.userData=before;return;}this.backgroundMultiSelection.clear();this.backgroundMultiSelectionMode=false;new Notice('Перемещено фонов: '+moving.length);this.render();}
-  async deleteSelectedBackgrounds(){const ids=new Set(this.backgroundMultiSelection),user=this.plugin.userData.backgrounds||[],removed=user.filter(bg=>ids.has(bg.id));if(!removed.length){new Notice('Выбери пользовательские фоны для удаления.');return;}if(!confirm(`Удалить выбранные фоны: ${removed.length} шт.?`))return;const before=clone(this.plugin.userData);this.plugin.userData.backgrounds=user.filter(bg=>!ids.has(bg.id));this.plugin.userData.favoriteItems=(this.plugin.userData.favoriteItems||[]).filter(item=>!(item.kind==='background'&&ids.has(item.id)));if(await this.plugin.saveUserLibrary()===false){this.plugin.userData=before;return;}if(ids.has(this.selectedBackground.id))this.selectBackground(BACKGROUNDS.find(bg=>!(this.plugin.userData.deletedBuiltinBackgroundIds||[]).includes(bg.id))||BACKGROUNDS[0]);this.backgroundMultiSelection.clear();this.backgroundMultiSelectionMode=false;this.plugin.refreshGeneratedStyles();new Notice('Удалено фонов: '+removed.length);this.render();}
+  async deleteSelectedBackgrounds(){const ids=new Set(this.backgroundMultiSelection),user=this.plugin.userData.backgrounds||[],removedUser=user.filter(bg=>ids.has(bg.id)),removedBuilt=BACKGROUNDS.filter(bg=>ids.has(bg.id)),total=removedUser.length+removedBuilt.length;if(!total){new Notice('Не выбраны фоны для удаления.');return;}if(!confirm(`Удалить выбранные фоны: ${total} шт.?`))return;const before=clone(this.plugin.userData);this.plugin.userData.backgrounds=user.filter(bg=>!ids.has(bg.id));this.plugin.userData.deletedBuiltinBackgroundIds=[...new Set([...(this.plugin.userData.deletedBuiltinBackgroundIds||[]),...removedBuilt.map(bg=>bg.id)])];this.plugin.userData.favoriteItems=(this.plugin.userData.favoriteItems||[]).filter(item=>!(item.kind==='background'&&ids.has(item.id)));if(await this.plugin.saveUserLibrary()===false){this.plugin.userData=before;return;}if(ids.has(this.selectedBackground.id))this.selectBackground(this.allBackgrounds()[0]||BACKGROUNDS[0]);this.backgroundMultiSelection.clear();this.backgroundMultiSelectionMode=false;this.plugin.refreshGeneratedStyles();new Notice('Удалено фонов: '+total);this.render();}
   openBackgroundMenu(background, anchorEl) {
     this.openItemMenu(anchorEl, [
       ['✎ Редактировать', '', () => new BackgroundBuilderModal(this.app, this, background).open()],
