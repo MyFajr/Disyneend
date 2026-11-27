@@ -1555,7 +1555,7 @@ class BackgroundBuilderModal extends Modal {
 
 
 class LibraryManagerModal extends Modal {
-  constructor(app, studio, kind) { super(app); this.studio = studio; this.kind = kind; this.selected = new Set(); this.query = ''; }
+  constructor(app, studio, kind) { super(app); this.studio = studio; this.kind = kind; this.selected = new Set(); this.query = ''; this.categoryFilter = ''; this.sortMode = 'custom'; }
   get config() {
     return {
       palette: { key: 'palettes', label: 'палитры', name: x => x.name || 'Без названия', category: x => x.category || 'Мои палитры' },
@@ -1665,10 +1665,24 @@ class LibraryManagerModal extends Modal {
     const body = root.createDiv({ cls: 'esds-library-manager-body' });
     const search = body.createEl('input', { cls: 'esds-text-input', attr: { type: 'search', placeholder: 'Поиск по названию и категории…' } });
     search.value = this.query;
+    const filters = body.createDiv({ cls: 'esds-library-manager-filters' });
+    const categorySelect = filters.createEl('select', { cls: 'esds-select' });
+    categorySelect.createEl('option', { text: 'Все категории', attr: { value: '' } });
+    [...new Set(this.items.map(x => this.config.category(x)))].sort((a,b) => a.localeCompare(b,'ru')).forEach(name => categorySelect.createEl('option', { text: name, attr: { value: name } }));
+    categorySelect.value = this.categoryFilter;
+    const sortSelect = filters.createEl('select', { cls: 'esds-select' });
+    [['custom','По порядку'],['name','По названию: А—Я'],['category','По категории'],['newest','Сначала новые']].forEach(([value,label]) => sortSelect.createEl('option', { text: label, attr: { value } }));
+    sortSelect.value = this.sortMode;
     const toolbar = body.createDiv({ cls: 'esds-library-manager-toolbar' });
     const button = (label, fn, cls) => { const b = toolbar.createEl('button', { cls: 'esds-button esds-btn-quiet ' + (cls || ''), text: label, attr: { type: 'button' } }); b.addEventListener('click', fn); };
     const count = body.createDiv({ cls: 'esds-library-manager-count' }), list = body.createDiv({ cls: 'esds-library-manager-list' });
-    const visible = () => this.items.filter(x => !this.query || (this.config.name(x) + ' ' + this.config.category(x)).toLowerCase().includes(this.query.toLowerCase()));
+    const visible = () => {
+      const rows = this.items.filter(x => (!this.query || (this.config.name(x) + ' ' + this.config.category(x)).toLowerCase().includes(this.query.toLowerCase())) && (!this.categoryFilter || this.config.category(x) === this.categoryFilter));
+      if (this.sortMode === 'name') rows.sort((a,b) => this.config.name(a).localeCompare(this.config.name(b),'ru'));
+      else if (this.sortMode === 'category') rows.sort((a,b) => this.config.category(a).localeCompare(this.config.category(b),'ru') || this.config.name(a).localeCompare(this.config.name(b),'ru'));
+      else if (this.sortMode === 'newest') rows.sort((a,b) => Date.parse(b.updatedAt || b.createdAt || 0) - Date.parse(a.updatedAt || a.createdAt || 0));
+      return rows;
+    };
     const draw = () => {
       list.empty(); const rows = visible();
       if (!rows.length) list.createEl('p', { cls: 'esds-empty', text: 'Ничего не найдено.' });
@@ -1696,6 +1710,8 @@ class LibraryManagerModal extends Modal {
     button('Удалить', () => this.deleteSelected(), 'esds-menu-danger');
     button('Категории', () => this.studio.openCategoryManager(this.config.key));
     search.addEventListener('input', () => { this.query = search.value; draw(); });
+    categorySelect.addEventListener('change', () => { this.categoryFilter = categorySelect.value; draw(); });
+    sortSelect.addEventListener('change', () => { this.sortMode = sortSelect.value; draw(); });
     draw();
   }
 }
