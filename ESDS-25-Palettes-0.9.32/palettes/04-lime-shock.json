@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 4,
+  "type": "esds-palette",
+  "palette": {
+    "id": "user-lime-shock",
+    "name": "Lime Shock",
+    "mood": "Lime Shock — яркая авторская цветовая система",
+    "description": "Полноценная учебная палитра Lime Shock: выразительный цветной фон, иерархия текста, отдельные роли иностранных слов и букв, IPA, переводов, терминов и определений; согласованные Callout и таблицы.",
+    "category": "Rainbow Multicolor",
+    "source": "user",
+    "swatches": [
+      "#B9F227",
+      "#168C45",
+      "#664193",
+      "#156A4E",
+      "#8D346A"
+    ],
+    "defaultBackground": "bg-custom-lime-shock",
+    "defaultBlocks": "user-blocks-lime-shock",
+    "roles": {
+      "en": "#80A524",
+      "letter": "#145835",
+      "ipa": "#664193",
+      "translation": "#156A4E",
+      "term": "#8D346A",
+      "definition": "#4D5A74",
+      "focus": "#87AE24",
+      "secondary": "#155F37",
+      "soft": "#705091",
+      "heading": "#627C22",
+      "ink": "#292536"
+    },
+    "callouts": {
+      "rule": [
+        40,
+        104,
+        216
+      ],
+      "example": [
+        146,
+        81,
+        189
+      ],
+      "important": [
+        224,
+        71,
+        98
+      ],
+      "tip": [
+        22,
+        132,
+        94
+      ],
+      "warning": [
+        194,
+        122,
+        24
+      ],
+      "question": [
+        18,
+        139,
+        166
+      ],
+      "practice": [
+        212,
+        91,
+        36
+      ],
+      "success": [
+        35,
+        148,
+        93
+      ],
+      "info": [
+        66,
+        109,
+        184
+      ],
+      "note": [
+        102,
+        112,
+        133
+      ],
+      "quote": [
+        186,
+        77,
+        145
+      ],
+      "abstract": [
+        128,
+        82,
+        181
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        227,
+        235,
+        250
+      ],
+      "example": [
+        241,
+        232,
+        246
+      ],
+      "important": [
+        251,
+        231,
+        235
+      ],
+      "tip": [
+        225,
+        239,
+        234
+      ],
+      "warning": [
+        247,
+        238,
+        225
+      ],
+      "question": [
+        224,
+        240,
+        243
+      ],
+      "practice": [
+        249,
+        234,
+        227
+      ],
+      "success": [
+        226,
+        241,
+        234
+      ],
+      "info": [
+        230,
+        236,
+        246
+      ],
+      "note": [
+        235,
+        236,
+        239
+      ],
+      "quote": [
+        246,
+        232,
+        241
+      ],
+      "abstract": [
+        238,
+        233,
+        245
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        31,
+        66,
+        136
+      ],
+      "example": [
+        91,
+        53,
+        121
+      ],
+      "important": [
+        135,
+        47,
+        69
+      ],
+      "tip": [
+        20,
+        82,
+        66
+      ],
+      "warning": [
+        118,
+        76,
+        27
+      ],
+      "question": [
+        18,
+        86,
+        108
+      ],
+      "practice": [
+        129,
+        59,
+        33
+      ],
+      "success": [
+        28,
+        91,
+        66
+      ],
+      "info": [
+        45,
+        69,
+        118
+      ],
+      "note": [
+        66,
+        71,
+        89
+      ],
+      "quote": [
+        114,
+        51,
+        96
+      ],
+      "abstract": [
+        81,
+        54,
+        116
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        36,
+        86,
+        179
+      ],
+      "example": [
+        120,
+        68,
+        157
+      ],
+      "important": [
+        183,
+        60,
+        84
+      ],
+      "tip": [
+        21,
+        109,
+        81
+      ],
+      "warning": [
+        159,
+        101,
+        25
+      ],
+      "question": [
+        18,
+        114,
+        139
+      ],
+      "practice": [
+        173,
+        76,
+        35
+      ],
+      "success": [
+        32,
+        122,
+        80
+      ],
+      "info": [
+        56,
+        90,
+        153
+      ],
+      "note": [
+        85,
+        93,
+        112
+      ],
+      "quote": [
+        152,
+        65,
+        122
+      ],
+      "abstract": [
+        106,
+        69,
+        151
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 14
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 8
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.5,
+        "radius": 10
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 12
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.5,
+        "radius": 14
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.5,
+        "radius": 8
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 10
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 12
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 14
+      },
+      "note": {
+        "preset": "left",
+        "width": 1.5,
+        "radius": 8
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 10
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 1.5,
+        "radius": 12
+      }
+    }
+  }
+}
