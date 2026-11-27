@@ -480,7 +480,7 @@ function ensureLibraryShape(data) {
   lib.contentProfiles = [...profileMap.values()];
   // Migrate legacy dual-mode palette/background entries to one design set.
   lib.palettes = lib.palettes.map(item => { const p = { ...item, roles: { ...(item.roles || {}) } }; p.roles.letter = p.roles.letter || p.roles.ipa; delete p.dark; delete p.darkCallouts; delete p.darkCalloutFills; delete p.darkCalloutTexts; delete p.darkCalloutBorders; return p; });
-  lib.backgrounds = lib.backgrounds.map(item => { const bg = { ...item, value: item.value || item.light || item.dark, textColor: item.textColor || '#302d31' }; delete bg.light; delete bg.dark; delete bg.darkTextColor; return bg; });
+  lib.backgrounds = lib.backgrounds.map(item => { const bg = { ...item, value: item.value || item.light || item.dark, textColor: item.textColor || (item.light ? '#302d31' : item.darkTextColor) || '#302d31' }; delete bg.light; delete bg.dark; delete bg.darkTextColor; return bg; });
   if (!lib.categories || typeof lib.categories !== 'object') {
     lib.categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
   }
@@ -3786,7 +3786,7 @@ class DesignStudioModal extends Modal {
       label: backgroundName,
       group: String(rawBackground.group || rawBackground.category || 'Мои фоны').slice(0, 80),
       value: bgLight || bgDark,
-      textColor: isHexColor(rawBackground.textColor) ? colorToHex(rawBackground.textColor) : '#302d31',
+      textColor: isHexColor(rawBackground.textColor) ? colorToHex(rawBackground.textColor) : (bgLight ? '#302d31' : (isHexColor(rawBackground.darkTextColor) ? colorToHex(rawBackground.darkTextColor) : '#e9eaf0')),
       source: 'user', createdAt: now, updatedAt: now
     };
     const blockStyle = normalizeBlockStyle({ ...rawBlockStyle, id: blockStyleId, name: blockName, category: String(rawBlockStyle.category || 'Мои стили').slice(0, 80), source: 'user', createdAt: now, updatedAt: now });
@@ -3870,7 +3870,7 @@ class DesignStudioModal extends Modal {
       });
       restored.backgrounds = unique(restored.backgrounds, 'bg-custom').filter(bg => (bg.name || bg.label) && safeCssBackground(bg.value || bg.light || bg.dark)).map(bg => {
         if (!/^bg-custom-[a-z0-9-]+$/.test(bg.id)) bg.id = `bg-custom-${slugify(bg.name || bg.label)}-${Date.now().toString(36).slice(-4)}`;
-        bg.value = bg.value || bg.light || bg.dark; bg.textColor = bg.textColor || '#302d31';
+        bg.value = bg.value || bg.light || bg.dark; bg.textColor = bg.textColor || (bg.light ? '#302d31' : bg.darkTextColor) || '#302d31';
         delete bg.light; delete bg.dark; delete bg.darkTextColor;
         bg.source = 'user'; return bg;
       });
@@ -3934,7 +3934,7 @@ class DesignStudioModal extends Modal {
       const label = b.name || b.label;
       const group = b.group || b.category || 'Мои фоны';
       const importedAt = new Date().toISOString();
-      const bg = { ...b, id: `bg-custom-${slugify(label)}-${Date.now().toString(36).slice(-4)}`, name: label, label, group, createdAt: importedAt, updatedAt: importedAt, source: 'user', value: b.value || b.light || b.dark, textColor: isHexColor(b.textColor) ? b.textColor : '#302d31' }; delete bg.light; delete bg.dark; delete bg.darkTextColor;
+      const bg = { ...b, id: `bg-custom-${slugify(label)}-${Date.now().toString(36).slice(-4)}`, name: label, label, group, createdAt: importedAt, updatedAt: importedAt, source: 'user', value: b.value || b.light || b.dark, textColor: isHexColor(b.textColor) ? b.textColor : (b.light ? '#302d31' : (isHexColor(b.darkTextColor) ? b.darkTextColor : '#e9eaf0')) }; delete bg.light; delete bg.dark; delete bg.darkTextColor;
       this.plugin.userData.backgrounds.push(bg); this.plugin.refreshGeneratedStyles(); this.selectedBackground = bg; this.backgroundOverridden = true;
     } else if (kind === 'blockStyle' || kind === 'blocks') {
       if (!data || typeof data !== 'object' || Array.isArray(data)) {
