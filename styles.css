@@ -2150,6 +2150,13 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
 .esds-block-builder-preview > strong { display: block; margin-bottom: 8px; font-size: .8rem; }
 .esds-category-manage-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--background-modifier-border); }
 .esds-category-manage-row strong { flex: 1 1 120px; }
+.esds-category-manage-tree-row { flex-wrap: nowrap; padding: 6px 8px; border-radius: 8px; }
+.esds-category-manage-tree-row:hover { background: var(--background-modifier-hover); }
+.esds-category-manage-label { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.esds-category-manage-label strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.esds-category-manage-meta { color: var(--text-muted); font-size: 11px; }
+.esds-category-manage-actions { display: flex; flex-wrap: nowrap; gap: 4px; flex: 0 0 auto; }
+.esds-category-manage-actions .esds-button { min-height: 28px; padding: 4px 7px; font-size: 11px; }
 .esds-block-style-builder .esds-builder-body label { display: block; margin-top: 10px; margin-bottom: 4px; font-size: .8rem; font-weight: 600; }
 
 /* === 0.6.1 polish: menu, reorder, sticky, color grid === */
@@ -3689,6 +3696,9 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
   border-radius:14px;
   background:var(--background-secondary);
   padding:9px;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
 }
 .esds-main-modal .esds-library-catalog-heading {
   display:flex;
@@ -3703,6 +3713,13 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
   color:var(--text-normal);
   font-size:13px;
   line-height:1.25;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  line-clamp:2;
+  overflow:hidden;
+  max-width:100%;
+  overflow-wrap:anywhere;
 }
 .esds-main-modal .esds-library-catalog-heading small {
   color:var(--text-muted);
@@ -3716,6 +3733,7 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
   border-radius:10px;
   padding:7px;
   pointer-events:none;
+  contain:layout paint;
 }
 .esds-main-modal .esds-library-catalog-thumb .esds-rich-sample,
 .esds-main-modal .esds-library-catalog-thumb .esds-sample-note,
@@ -3728,7 +3746,8 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
   display:flex;
   flex-wrap:wrap;
   gap:6px;
-  margin-top:8px;
+  margin-top:auto;
+  padding-top:8px;
 }
 .esds-main-modal .esds-library-catalog-actions .esds-button {
   flex:1 1 0;
@@ -3737,6 +3756,12 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
   min-height:36px;
   padding:6px 7px;
   font-size:11px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:inline-block;
+  max-width:100%;
+  text-align:center;
 }
 .esds-main-modal .esds-library-catalog-actions .esds-button:first-child {
   flex:1 1 100%;
@@ -3858,7 +3883,6 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
 .esds-universal-ai-card p { margin:0; color:var(--text-muted); font-size:.75rem; line-height:1.45; }
 .esds-reference-legacy-note { margin:8px 0; color:var(--text-muted); font-size:.7rem; line-height:1.4; }
 .esds-library-catalog-card { cursor:pointer; }
-.esds-library-catalog-actions .esds-button { width:100%; }
 
 /* Short st-xx classes are the preferred public semantic classes. Legacy esds-* and study-* remain supported. */
 .markdown-preview-view.esds-note .st-le,.markdown-source-view.esds-note .st-le,.esds-preview .st-le { color:var(--esds-definition,var(--text-muted)); font-size:1.04em; line-height:1.6; }

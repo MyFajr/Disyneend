@@ -105,5 +105,6 @@
   "0.9.28": {
     "minAppVersion": "1.5.0",
     "description": "Collision-safe library management for palettes, backgrounds and block styles; automatic duplicate renaming; complete category actions; reliable bulk import and selection handling."
-  }
+  },
+  "0.9.29": "1.5.0"
 }
