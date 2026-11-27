@@ -1438,7 +1438,7 @@ class PaletteBuilderModal extends Modal {
     save.addEventListener('click', async () => {
       const name = this.nameInput.value.trim();
       if (!name) { new Notice('Введи название палитры.'); return; }
-      const palette = clone(this.base);
+      const palette = normalizeSingleModePalette(this.base);
       palette.name = name; palette.mood = palette.mood || 'Пользовательская палитра'; palette.description = palette.description || 'Создана в English Study Design Studio.';
       if (!this.existing) {
         palette.id = `user-${slugify(name)}-${Date.now().toString(36).slice(-4)}`;
@@ -1450,7 +1450,6 @@ class PaletteBuilderModal extends Modal {
       ROLE_KEYS.forEach(key => {
         if (this.inputs[key]) palette.roles[key] = this.inputs[key].value;
       });
-      palette = normalizeSingleModePalette(palette);
       palette.swatches = [palette.roles.en, palette.roles.ipa, palette.roles.translation, palette.roles.term, palette.roles.focus];
       const now = new Date().toISOString();
       palette.createdAt = palette.createdAt || now;
