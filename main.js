@@ -1519,10 +1519,10 @@ class PaletteBuilderModal extends Modal {
       const name = this.nameInput.value.trim();
       if (!name) { new Notice('Введи название палитры.'); return; }
       const palette = normalizeSingleModePalette(this.base);
-      palette.name = name; palette.mood = palette.mood || 'Пользовательская палитра'; palette.description = palette.description || 'Создана в English Study Design Studio.';
-      if (!this.existing) {
-        palette.id = `user-${slugify(name)}-${Date.now().toString(36).slice(-4)}`;
-      }
+      const paletteItems = this.studio.plugin.userData.palettes || [];
+      const finalName = esdsUniqueName(name, paletteItems.filter(item => !this.existing || item.id !== this.existing.id).map(item => item.name), 100);
+      palette.name = finalName; palette.mood = palette.mood || 'Пользовательская палитра'; palette.description = palette.description || 'Создана в English Study Design Studio.';
+      if (!this.existing) palette.id = esdsUniqueId(`user-${slugify(finalName)}`, paletteItems.map(item => item.id));
       palette.defaultBackground = this.defaultBackgroundSelect.value || palette.defaultBackground || this.studio.selectedBackground.id;
       // The palette stores its recommended base block preset; it is selected automatically.
       palette.defaultBlocks = palette.defaultBlocks || this.studio.selectedBlocks.id;
@@ -1552,7 +1552,7 @@ class PaletteBuilderModal extends Modal {
       this.studio.activeSection = 'palette';
       this.studio.render();
       this.close();
-      new Notice(this.existing ? `Палитра «${name}» обновлена.` : `Палитра «${name}» добавлена в «Мои палитры».`);
+      new Notice(finalName !== name ? `Название занято. Палитра сохранена как «${finalName}».` : (this.existing ? `Палитра «${finalName}» обновлена.` : `Палитра «${finalName}» добавлена в «${palette.category}».`));
     });
   }
 }
@@ -2954,13 +2954,15 @@ class DesignStudioModal extends Modal {
         const value = await promptText(this.app, { title: 'Переименование категории', description: 'Категория: ' + category.name, value: category.name, placeholder: 'Новое название категории', submitLabel: 'Переименовать' });
         if (value === null || !value.trim()) return;
         const name = value.trim();
-        if (categories.some(item => item.id !== category.id && item.name.toLocaleLowerCase() === name.toLocaleLowerCase())) { new Notice('Категория с таким названием уже существует.'); return; }
-        const old = category.name; category.name = name;
+        const old = category.name;
+        const finalName = esdsUniqueName(name, categories.filter(item => item.id !== category.id).map(item => item.name), 100);
+        category.name = finalName;
+        if (finalName !== name) new Notice(`Категория переименована в «${finalName}».`);
         (this.plugin.userData[categoryKind] || []).forEach(item => {
           const current = categoryKind === 'backgrounds' ? (item.group || item.category) : item.category;
-          if (current === old) { if (categoryKind === 'backgrounds') { item.group = name; item.category = name; } else item.category = name; }
+          if (current === old) { if (categoryKind === 'backgrounds') { item.group = finalName; item.category = finalName; } else item.category = finalName; }
         });
-        syncActiveCategory(old, name);
+        syncActiveCategory(old, finalName);
         await this.savePaletteLibraryAction('Категория переименована.');
       }]);
       actions.push(['✕ Удалить категорию', 'esds-menu-danger', async () => {
@@ -2995,8 +2997,9 @@ class DesignStudioModal extends Modal {
       items.push(['✎ Переименовать', '', async () => {
         const value = await promptText(this.app, { title: 'Переименование палитры', value: palette.name, placeholder: 'Новое название палитры', submitLabel: 'Переименовать' });
         if (value === null || !value.trim()) return;
-        palette.name = value.trim(); palette.updatedAt = new Date().toISOString();
-        await this.savePaletteLibraryAction('Палитра переименована.');
+        const finalName = esdsUniqueName(value.trim(), (this.plugin.userData.palettes || []).filter(item => item.id !== palette.id).map(item => item.name), 100);
+        palette.name = finalName; palette.updatedAt = new Date().toISOString();
+        await this.savePaletteLibraryAction(finalName === value.trim() ? 'Палитра переименована.' : `Название занято. Палитра переименована в «${finalName}».`);
       }]);
       items.push(['↗ Переместить в категорию', '', async () => {
         const choice = await this.chooseCategory('palettes', {
@@ -3787,26 +3790,25 @@ class DesignStudioModal extends Modal {
           categories: this.getCategories('palettes')
         });
         if (!choice) return;
-        const existing = this.allPalettes();
-        const ids = new Set(existing.map(item => String(item.id || '').toLowerCase()));
-        const names = new Set(existing.map(item => String(item.name || '').trim().toLowerCase()));
-        const unique = []; let skipped = 0;
+        const names = this.allPalettes().map(item => item.name || '');
+        const renamed = [];
         candidates.forEach(item => {
-          const id = String(item.palette.id || '').toLowerCase(), name = String(item.palette.name || '').trim().toLowerCase();
-          if ((id && ids.has(id)) || (name && names.has(name))) { skipped++; return; }
-          if (id) ids.add(id); if (name) names.add(name); unique.push(item);
+          const oldName = String(item.palette.name || 'Импортированная палитра').trim();
+          const finalName = esdsUniqueName(oldName, names, 100);
+          if (finalName !== oldName) renamed.push(finalName);
+          item.palette.name = finalName;
+          names.push(finalName);
         });
-        if (!unique.length) { new Notice('Все ' + skipped + ' палитр уже есть в библиотеке.'); return; }
-        if (!confirm('Добавить ' + unique.length + ' палитр в категорию «' + choice.name + '»? Дубликаты будут пропущены (' + skipped + ').')) return;
+        if (!confirm('Добавить ' + candidates.length + ' палитр в категорию «' + choice.name + '»? Совпадения будут автоматически переименованы.')) return;
         const before = clone(this.plugin.userData);
         try {
           const destination = await this.ensurePaletteCategory(choice.name);
-          for (const item of unique) {
+          for (const item of candidates) {
             const payload = clone(item.data), palette = payload.palette || payload;
             palette.category = destination; payload.palette = palette;
             await this.importJson('palette', payload);
           }
-          new Notice('ZIP импортирован: добавлено ' + unique.length + ', дубликатов пропущено ' + skipped + ', ошибок JSON ' + errors.length + '.');
+          new Notice('ZIP импортирован: добавлено ' + candidates.length + ', автоматически переименовано ' + renamed.length + ', ошибок JSON ' + errors.length + '.');
           if (errors.length) console.warn('ESDS ZIP import: invalid JSON entries', errors);
           this.paletteCategory = destination; this.activeView = 'studio'; this.activeSection = 'palette'; this.render();
         } catch (error) {
