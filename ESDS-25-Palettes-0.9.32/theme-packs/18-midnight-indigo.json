@@ -3,7 +3,7 @@
   "type": "esds-theme-pack",
   "plugin": "english-study-design-studio",
   "name": "Midnight Indigo — полный дизайнерский набор",
-  "description": "Полный дизайн Midnight Indigo: палитра, индивидуальный цветной фон и единое оформление блоков.",
+  "description": "Полный дизайн Midnight Indigo: индивидуальный насыщенный фон, палитра и стиль блоков.",
   "frameSource": "blockStyle",
   "items": {
     "palette": {
@@ -351,8 +351,8 @@
       "name": "Midnight Indigo — фон",
       "label": "Midnight Indigo — фон",
       "group": "Rainbow Multicolor",
-      "light": "linear-gradient(135deg, #C5C4D4 0%, #ECE9FF 100%)",
-      "dark": "linear-gradient(135deg, #C5C4D4 0%, #ECE9FF 100%)",
+      "light": "linear-gradient(135deg, #AFADC3 0%, #B3A7FF 100%)",
+      "dark": "linear-gradient(135deg, #AFADC3 0%, #B3A7FF 100%)",
       "textColor": "#201B2A",
       "darkTextColor": "#201B2A"
     },
