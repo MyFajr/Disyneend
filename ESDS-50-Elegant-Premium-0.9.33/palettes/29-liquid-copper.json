@@ -1,0 +1,439 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "elegant-premium-29-liquid-copper",
+    "name": "Liquid Copper — Жидкая медь",
+    "mood": "Глубокая медь с бронзовым свечением и направленным металлическим бликом.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный линейный градиент с эффектом металлического блика; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "category": "Элегантные и премиальные",
+    "source": "user",
+    "swatches": [
+      "#32170F",
+      "#552516",
+      "#77351D",
+      "#482013",
+      "#F8F9D8"
+    ],
+    "defaultBackground": "bg-custom-elegant-premium-29-liquid-copper",
+    "defaultBlocks": "user-blocks-elegant-premium-29-liquid-copper",
+    "roles": {
+      "en": "#F9F0D8",
+      "letter": "#F9E5D8",
+      "ipa": "#F9F5D8",
+      "translation": "#F9ECD8",
+      "term": "#F8F9D8",
+      "definition": "#F9F1D8",
+      "focus": "#F9E6D8",
+      "secondary": "#F9EFD8",
+      "soft": "#F9F6D8",
+      "heading": "#F9E4D8",
+      "ink": "#FFFFFF"
+    },
+    "callouts": {
+      "rule": [
+        110,
+        168,
+        237
+      ],
+      "example": [
+        178,
+        110,
+        237
+      ],
+      "important": [
+        237,
+        110,
+        136
+      ],
+      "tip": [
+        110,
+        237,
+        189
+      ],
+      "warning": [
+        237,
+        195,
+        110
+      ],
+      "question": [
+        110,
+        211,
+        237
+      ],
+      "practice": [
+        237,
+        153,
+        110
+      ],
+      "success": [
+        110,
+        237,
+        147
+      ],
+      "info": [
+        110,
+        136,
+        237
+      ],
+      "note": [
+        237,
+        110,
+        190
+      ],
+      "quote": [
+        110,
+        237,
+        232
+      ],
+      "abstract": [
+        221,
+        110,
+        237
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        17,
+        44,
+        74
+      ],
+      "example": [
+        48,
+        17,
+        74
+      ],
+      "important": [
+        74,
+        17,
+        29
+      ],
+      "tip": [
+        17,
+        74,
+        53
+      ],
+      "warning": [
+        74,
+        56,
+        17
+      ],
+      "question": [
+        17,
+        63,
+        74
+      ],
+      "practice": [
+        74,
+        37,
+        17
+      ],
+      "success": [
+        17,
+        74,
+        34
+      ],
+      "info": [
+        17,
+        29,
+        74
+      ],
+      "note": [
+        74,
+        17,
+        53
+      ],
+      "quote": [
+        17,
+        74,
+        72
+      ],
+      "abstract": [
+        67,
+        17,
+        74
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        221,
+        231,
+        243
+      ],
+      "example": [
+        233,
+        221,
+        243
+      ],
+      "important": [
+        243,
+        221,
+        226
+      ],
+      "tip": [
+        221,
+        243,
+        235
+      ],
+      "warning": [
+        243,
+        236,
+        221
+      ],
+      "question": [
+        221,
+        239,
+        243
+      ],
+      "practice": [
+        243,
+        229,
+        221
+      ],
+      "success": [
+        221,
+        243,
+        227
+      ],
+      "info": [
+        221,
+        226,
+        243
+      ],
+      "note": [
+        243,
+        221,
+        235
+      ],
+      "quote": [
+        221,
+        243,
+        242
+      ],
+      "abstract": [
+        240,
+        221,
+        243
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        110,
+        168,
+        237
+      ],
+      "example": [
+        178,
+        110,
+        237
+      ],
+      "important": [
+        237,
+        110,
+        136
+      ],
+      "tip": [
+        110,
+        237,
+        189
+      ],
+      "warning": [
+        237,
+        195,
+        110
+      ],
+      "question": [
+        110,
+        211,
+        237
+      ],
+      "practice": [
+        237,
+        153,
+        110
+      ],
+      "success": [
+        110,
+        237,
+        147
+      ],
+      "info": [
+        110,
+        136,
+        237
+      ],
+      "note": [
+        237,
+        110,
+        190
+      ],
+      "quote": [
+        110,
+        237,
+        232
+      ],
+      "abstract": [
+        221,
+        110,
+        237
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 12
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.2,
+        "radius": 10
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.2,
+        "radius": 10
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "success": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 14
+      },
+      "info": {
+        "preset": "left",
+        "width": 1.6,
+        "radius": 12
+      },
+      "note": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 12
+      },
+      "quote": {
+        "preset": "double",
+        "width": 1.8,
+        "radius": 14
+      },
+      "abstract": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 12
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-elegant-premium-29-liquid-copper",
+    "name": "Liquid Copper — Жидкая медь — фон",
+    "label": "Liquid Copper — Жидкая медь — фон",
+    "group": "Элегантные и премиальные",
+    "light": "linear-gradient(116deg, transparent 28%, #32170F55 46%, #32170FCC 50%, #32170F55 54%, transparent 72%), linear-gradient(118deg, #32170F 0%, #552516 34%, #77351D 70%, #482013 100%)",
+    "dark": "linear-gradient(116deg, transparent 28%, #32170F55 46%, #32170FCC 50%, #32170F55 54%, transparent 72%), linear-gradient(118deg, #32170F 0%, #552516 34%, #77351D 70%, #482013 100%)",
+    "textColor": "#FFFFFF",
+    "darkTextColor": "#FFFFFF",
+    "source": "user"
+  },
+  "blockStyle": {
+    "id": "user-blocks-elegant-premium-29-liquid-copper",
+    "name": "Liquid Copper — Жидкая медь — учебные блоки",
+    "description": "12 цветовых карточек, согласованных с фоном Liquid Copper — Жидкая медь; увеличенный текст Medium и заголовки Semibold.",
+    "category": "Элегантные и премиальные",
+    "base": "rich",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.74,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "bodyWeight": 500,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.74,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "bodyWeight": 500,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.79,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.79,
+          "borderWidth": 2.2
+        }
+      },
+      "warning": {
+        "light": {
+          "backgroundOpacity": 0.77,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.77,
+          "borderWidth": 2.2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success",
+      "info",
+      "note",
+      "quote",
+      "abstract"
+    ]
+  }
+}

@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "elegant-premium-21-ruby-dynasty",
+    "name": "Ruby Dynasty — Рубиновая династия",
+    "mood": "Рубиновый бархат, гранатовый ореол и драгоценное красное свечение.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный радиальный градиент с эффектом светового ореола; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "category": "Элегантные и премиальные",
+    "source": "user",
+    "swatches": [
+      "#A82C50",
+      "#78172F",
+      "#4B1020",
+      "#F9E6D8"
+    ],
+    "defaultBackground": "bg-custom-elegant-premium-21-ruby-dynasty",
+    "defaultBlocks": "user-blocks-elegant-premium-21-ruby-dynasty",
+    "roles": {
+      "en": "#F9DED9",
+      "letter": "#F9DDE2",
+      "ipa": "#F9E2D8",
+      "translation": "#F9DDDB",
+      "term": "#F9E6D8",
+      "definition": "#F9DED8",
+      "focus": "#F9DDE1",
+      "secondary": "#F9DFDB",
+      "soft": "#F9E3D8",
+      "heading": "#F9DDE3",
+      "ink": "#FFFFFF"
+    },
+    "callouts": {
+      "rule": [
+        134,
+        110,
+        237
+      ],
+      "example": [
+        237,
+        110,
+        213
+      ],
+      "important": [
+        237,
+        166,
+        110
+      ],
+      "tip": [
+        110,
+        202,
+        237
+      ],
+      "warning": [
+        196,
+        237,
+        110
+      ],
+      "question": [
+        110,
+        128,
+        237
+      ],
+      "practice": [
+        237,
+        236,
+        110
+      ],
+      "success": [
+        110,
+        237,
+        229
+      ],
+      "info": [
+        166,
+        110,
+        237
+      ],
+      "note": [
+        237,
+        113,
+        110
+      ],
+      "quote": [
+        110,
+        160,
+        237
+      ],
+      "abstract": [
+        237,
+        110,
+        170
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        28,
+        17,
+        74
+      ],
+      "example": [
+        74,
+        17,
+        64
+      ],
+      "important": [
+        74,
+        42,
+        17
+      ],
+      "tip": [
+        17,
+        59,
+        74
+      ],
+      "warning": [
+        56,
+        74,
+        17
+      ],
+      "question": [
+        17,
+        26,
+        74
+      ],
+      "practice": [
+        74,
+        74,
+        17
+      ],
+      "success": [
+        17,
+        74,
+        71
+      ],
+      "info": [
+        42,
+        17,
+        74
+      ],
+      "note": [
+        74,
+        19,
+        17
+      ],
+      "quote": [
+        17,
+        40,
+        74
+      ],
+      "abstract": [
+        74,
+        17,
+        45
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        225,
+        221,
+        243
+      ],
+      "example": [
+        243,
+        221,
+        239
+      ],
+      "important": [
+        243,
+        231,
+        221
+      ],
+      "tip": [
+        221,
+        237,
+        243
+      ],
+      "warning": [
+        236,
+        243,
+        221
+      ],
+      "question": [
+        221,
+        224,
+        243
+      ],
+      "practice": [
+        243,
+        243,
+        221
+      ],
+      "success": [
+        221,
+        243,
+        242
+      ],
+      "info": [
+        231,
+        221,
+        243
+      ],
+      "note": [
+        243,
+        222,
+        221
+      ],
+      "quote": [
+        221,
+        230,
+        243
+      ],
+      "abstract": [
+        243,
+        221,
+        232
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        134,
+        110,
+        237
+      ],
+      "example": [
+        237,
+        110,
+        213
+      ],
+      "important": [
+        237,
+        166,
+        110
+      ],
+      "tip": [
+        110,
+        202,
+        237
+      ],
+      "warning": [
+        196,
+        237,
+        110
+      ],
+      "question": [
+        110,
+        128,
+        237
+      ],
+      "practice": [
+        237,
+        236,
+        110
+      ],
+      "success": [
+        110,
+        237,
+        229
+      ],
+      "info": [
+        166,
+        110,
+        237
+      ],
+      "note": [
+        237,
+        113,
+        110
+      ],
+      "quote": [
+        110,
+        160,
+        237
+      ],
+      "abstract": [
+        237,
+        110,
+        170
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 12
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.2,
+        "radius": 10
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.2,
+        "radius": 10
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "success": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 14
+      },
+      "info": {
+        "preset": "left",
+        "width": 1.6,
+        "radius": 12
+      },
+      "note": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 12
+      },
+      "quote": {
+        "preset": "double",
+        "width": 1.8,
+        "radius": 14
+      },
+      "abstract": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 12
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-elegant-premium-21-ruby-dynasty",
+    "name": "Ruby Dynasty — Рубиновая династия — фон",
+    "label": "Ruby Dynasty — Рубиновая династия — фон",
+    "group": "Элегантные и премиальные",
+    "light": "radial-gradient(ellipse at 22% 18%, #A82C50 0%, #A82C50 16%, transparent 60%), radial-gradient(ellipse at 22% 18%, #A82C50 0%, #78172F 42%, #4B1020 100%)",
+    "dark": "radial-gradient(ellipse at 22% 18%, #A82C50 0%, #A82C50 16%, transparent 60%), radial-gradient(ellipse at 22% 18%, #A82C50 0%, #78172F 42%, #4B1020 100%)",
+    "textColor": "#FFFFFF",
+    "darkTextColor": "#FFFFFF",
+    "source": "user"
+  },
+  "blockStyle": {
+    "id": "user-blocks-elegant-premium-21-ruby-dynasty",
+    "name": "Ruby Dynasty — Рубиновая династия — учебные блоки",
+    "description": "12 цветовых карточек, согласованных с фоном Ruby Dynasty — Рубиновая династия; увеличенный текст Medium и заголовки Semibold.",
+    "category": "Элегантные и премиальные",
+    "base": "rich",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.74,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "bodyWeight": 500,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.74,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "bodyWeight": 500,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.79,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.79,
+          "borderWidth": 2.2
+        }
+      },
+      "warning": {
+        "light": {
+          "backgroundOpacity": 0.77,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.77,
+          "borderWidth": 2.2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success",
+      "info",
+      "note",
+      "quote",
+      "abstract"
+    ]
+  }
+}

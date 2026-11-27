@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "elegant-premium-23-lapis-lazuli",
+    "name": "Lapis Lazuli — Лазурит",
+    "mood": "Сапфирово-ультрамариновая глубина с эффектом огранённого синего минерала.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный радиальный градиент с эффектом светового ореола; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "category": "Элегантные и премиальные",
+    "source": "user",
+    "swatches": [
+      "#24599F",
+      "#173B7C",
+      "#0A1649",
+      "#EBE2FA"
+    ],
+    "defaultBackground": "bg-custom-elegant-premium-23-lapis-lazuli",
+    "defaultBlocks": "user-blocks-elegant-premium-23-lapis-lazuli",
+    "roles": {
+      "en": "#E6E4FB",
+      "letter": "#DFE5FA",
+      "ipa": "#E8E2FA",
+      "translation": "#E4E4FB",
+      "term": "#EBE2FA",
+      "definition": "#E7E4FB",
+      "focus": "#E0E6FA",
+      "secondary": "#E6E4FB",
+      "soft": "#E9E2FA",
+      "heading": "#DFE5FA",
+      "ink": "#FFFFFF"
+    },
+    "callouts": {
+      "rule": [
+        110,
+        117,
+        237
+      ],
+      "example": [
+        230,
+        110,
+        237
+      ],
+      "important": [
+        237,
+        134,
+        110
+      ],
+      "tip": [
+        110,
+        234,
+        237
+      ],
+      "warning": [
+        227,
+        237,
+        110
+      ],
+      "question": [
+        110,
+        159,
+        237
+      ],
+      "practice": [
+        237,
+        204,
+        110
+      ],
+      "success": [
+        110,
+        237,
+        198
+      ],
+      "info": [
+        134,
+        110,
+        237
+      ],
+      "note": [
+        237,
+        110,
+        138
+      ],
+      "quote": [
+        110,
+        191,
+        237
+      ],
+      "abstract": [
+        237,
+        110,
+        202
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        17,
+        21,
+        74
+      ],
+      "example": [
+        71,
+        17,
+        74
+      ],
+      "important": [
+        74,
+        28,
+        17
+      ],
+      "tip": [
+        17,
+        73,
+        74
+      ],
+      "warning": [
+        70,
+        74,
+        17
+      ],
+      "question": [
+        17,
+        40,
+        74
+      ],
+      "practice": [
+        74,
+        60,
+        17
+      ],
+      "success": [
+        17,
+        74,
+        57
+      ],
+      "info": [
+        28,
+        17,
+        74
+      ],
+      "note": [
+        74,
+        17,
+        30
+      ],
+      "quote": [
+        17,
+        54,
+        74
+      ],
+      "abstract": [
+        74,
+        17,
+        59
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        221,
+        222,
+        243
+      ],
+      "example": [
+        242,
+        221,
+        243
+      ],
+      "important": [
+        243,
+        225,
+        221
+      ],
+      "tip": [
+        221,
+        242,
+        243
+      ],
+      "warning": [
+        241,
+        243,
+        221
+      ],
+      "question": [
+        221,
+        230,
+        243
+      ],
+      "practice": [
+        243,
+        237,
+        221
+      ],
+      "success": [
+        221,
+        243,
+        236
+      ],
+      "info": [
+        225,
+        221,
+        243
+      ],
+      "note": [
+        243,
+        221,
+        226
+      ],
+      "quote": [
+        221,
+        235,
+        243
+      ],
+      "abstract": [
+        243,
+        221,
+        237
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        110,
+        117,
+        237
+      ],
+      "example": [
+        230,
+        110,
+        237
+      ],
+      "important": [
+        237,
+        134,
+        110
+      ],
+      "tip": [
+        110,
+        234,
+        237
+      ],
+      "warning": [
+        227,
+        237,
+        110
+      ],
+      "question": [
+        110,
+        159,
+        237
+      ],
+      "practice": [
+        237,
+        204,
+        110
+      ],
+      "success": [
+        110,
+        237,
+        198
+      ],
+      "info": [
+        134,
+        110,
+        237
+      ],
+      "note": [
+        237,
+        110,
+        138
+      ],
+      "quote": [
+        110,
+        191,
+        237
+      ],
+      "abstract": [
+        237,
+        110,
+        202
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 12
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.2,
+        "radius": 10
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.2,
+        "radius": 10
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "success": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 14
+      },
+      "info": {
+        "preset": "left",
+        "width": 1.6,
+        "radius": 12
+      },
+      "note": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 12
+      },
+      "quote": {
+        "preset": "double",
+        "width": 1.8,
+        "radius": 14
+      },
+      "abstract": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 12
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-elegant-premium-23-lapis-lazuli",
+    "name": "Lapis Lazuli — Лазурит — фон",
+    "label": "Lapis Lazuli — Лазурит — фон",
+    "group": "Элегантные и премиальные",
+    "light": "radial-gradient(ellipse at 74% 22%, #24599F 0%, #24599F 16%, transparent 60%), radial-gradient(circle at 72% 24%, #24599F 0%, #173B7C 42%, #0A1649 100%)",
+    "dark": "radial-gradient(ellipse at 74% 22%, #24599F 0%, #24599F 16%, transparent 60%), radial-gradient(circle at 72% 24%, #24599F 0%, #173B7C 42%, #0A1649 100%)",
+    "textColor": "#FFFFFF",
+    "darkTextColor": "#FFFFFF",
+    "source": "user"
+  },
+  "blockStyle": {
+    "id": "user-blocks-elegant-premium-23-lapis-lazuli",
+    "name": "Lapis Lazuli — Лазурит — учебные блоки",
+    "description": "12 цветовых карточек, согласованных с фоном Lapis Lazuli — Лазурит; увеличенный текст Medium и заголовки Semibold.",
+    "category": "Элегантные и премиальные",
+    "base": "rich",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.74,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "bodyWeight": 500,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.74,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "bodyWeight": 500,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.79,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.79,
+          "borderWidth": 2.2
+        }
+      },
+      "warning": {
+        "light": {
+          "backgroundOpacity": 0.77,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.77,
+          "borderWidth": 2.2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success",
+      "info",
+      "note",
+      "quote",
+      "abstract"
+    ]
+  }
+}

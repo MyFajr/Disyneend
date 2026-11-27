@@ -1,0 +1,15 @@
+{
+  "type": "esds-palette-collection",
+  "kind": "palette",
+  "name": "Элегантные и премиальные — 50 палитр",
+  "category": "Элегантные и премиальные",
+  "paletteCount": 50,
+  "itemCount": 50,
+  "pluginVersion": "0.9.33",
+  "schemaVersion": 5,
+  "numbering": "01–50",
+  "approvedConcepts": {
+    "previous": 20,
+    "newElegantPremium": 30
+  }
+}
