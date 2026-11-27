@@ -1,0 +1,600 @@
+{
+  "schemaVersion": 3,
+  "type": "esds-palette",
+  "palette": {
+    "name": "Strawberry Cream",
+    "mood": "Клубничный крем: Клубника, коралл и сливочная мягкость.",
+    "description": "Клубника, коралл и сливочная мягкость. Палитра Strawberry Cream — самостоятельная выразительная система для длительного чтения учебных заметок. Роли иностранного текста, произношения, перевода, терминов и акцентов различаются. Light и Dark спроектированы отдельно, а не получены простым затемнением.",
+    "swatches": [
+      "#E63E67",
+      "#FF9EAA",
+      "#F5C6A5",
+      "#7C3150",
+      "#F8E8DC"
+    ],
+    "defaultBackground": "bg-08-reading-rose-cloud",
+    "defaultBlocks": "soft",
+    "roles": {
+      "en": "#9E1436",
+      "ipa": "#9E1021",
+      "translation": "#934610",
+      "term": "#86274E",
+      "definition": "#A25820",
+      "focus": "#8C1230",
+      "secondary": "#914E1D",
+      "soft": "#BA1227",
+      "heading": "#7A102A",
+      "ink": "#302125"
+    },
+    "dark": {
+      "en": "#F29CB1",
+      "ipa": "#F39BA6",
+      "translation": "#F2B992",
+      "term": "#E6A2BE",
+      "definition": "#ECC4A7",
+      "focus": "#F08AA3",
+      "secondary": "#EBBF9D",
+      "soft": "#F1A7B0",
+      "heading": "#F3BAC8",
+      "ink": "#F2EDEE"
+    },
+    "callouts": {
+      "rule": [
+        30,
+        41,
+        169
+      ],
+      "example": [
+        169,
+        54,
+        30
+      ],
+      "important": [
+        169,
+        30,
+        87
+      ],
+      "tip": [
+        30,
+        169,
+        31
+      ],
+      "warning": [
+        169,
+        89,
+        30
+      ],
+      "question": [
+        30,
+        169,
+        158
+      ],
+      "practice": [
+        169,
+        31,
+        30
+      ],
+      "success": [
+        30,
+        169,
+        54
+      ],
+      "info": [
+        30,
+        122,
+        169
+      ],
+      "note": [
+        65,
+        30,
+        169
+      ],
+      "quote": [
+        169,
+        30,
+        168
+      ],
+      "abstract": [
+        100,
+        30,
+        169
+      ]
+    },
+    "darkCallouts": {
+      "rule": [
+        150,
+        157,
+        232
+      ],
+      "example": [
+        232,
+        165,
+        150
+      ],
+      "important": [
+        232,
+        150,
+        184
+      ],
+      "tip": [
+        150,
+        232,
+        151
+      ],
+      "warning": [
+        232,
+        185,
+        150
+      ],
+      "question": [
+        150,
+        232,
+        226
+      ],
+      "practice": [
+        232,
+        151,
+        150
+      ],
+      "success": [
+        150,
+        232,
+        165
+      ],
+      "info": [
+        150,
+        204,
+        232
+      ],
+      "note": [
+        171,
+        150,
+        232
+      ],
+      "quote": [
+        232,
+        150,
+        232
+      ],
+      "abstract": [
+        192,
+        150,
+        232
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        236,
+        237,
+        248
+      ],
+      "example": [
+        248,
+        238,
+        236
+      ],
+      "important": [
+        248,
+        236,
+        241
+      ],
+      "tip": [
+        236,
+        248,
+        236
+      ],
+      "warning": [
+        248,
+        241,
+        236
+      ],
+      "question": [
+        236,
+        248,
+        247
+      ],
+      "practice": [
+        248,
+        236,
+        236
+      ],
+      "success": [
+        236,
+        248,
+        238
+      ],
+      "info": [
+        236,
+        244,
+        248
+      ],
+      "note": [
+        239,
+        236,
+        248
+      ],
+      "quote": [
+        248,
+        236,
+        248
+      ],
+      "abstract": [
+        242,
+        236,
+        248
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        21,
+        28,
+        117
+      ],
+      "example": [
+        117,
+        37,
+        21
+      ],
+      "important": [
+        117,
+        21,
+        60
+      ],
+      "tip": [
+        21,
+        117,
+        21
+      ],
+      "warning": [
+        117,
+        61,
+        21
+      ],
+      "question": [
+        21,
+        117,
+        110
+      ],
+      "practice": [
+        117,
+        21,
+        21
+      ],
+      "success": [
+        21,
+        117,
+        37
+      ],
+      "info": [
+        21,
+        84,
+        117
+      ],
+      "note": [
+        45,
+        21,
+        117
+      ],
+      "quote": [
+        117,
+        21,
+        116
+      ],
+      "abstract": [
+        69,
+        21,
+        117
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        102,
+        111,
+        219
+      ],
+      "example": [
+        219,
+        122,
+        102
+      ],
+      "important": [
+        219,
+        102,
+        150
+      ],
+      "tip": [
+        102,
+        219,
+        103
+      ],
+      "warning": [
+        219,
+        152,
+        102
+      ],
+      "question": [
+        102,
+        219,
+        210
+      ],
+      "practice": [
+        219,
+        103,
+        102
+      ],
+      "success": [
+        102,
+        219,
+        122
+      ],
+      "info": [
+        102,
+        179,
+        219
+      ],
+      "note": [
+        132,
+        102,
+        219
+      ],
+      "quote": [
+        219,
+        102,
+        218
+      ],
+      "abstract": [
+        161,
+        102,
+        219
+      ]
+    },
+    "darkCalloutFills": {
+      "rule": [
+        28,
+        30,
+        64
+      ],
+      "example": [
+        64,
+        34,
+        28
+      ],
+      "important": [
+        64,
+        28,
+        43
+      ],
+      "tip": [
+        28,
+        64,
+        28
+      ],
+      "warning": [
+        64,
+        43,
+        28
+      ],
+      "question": [
+        28,
+        64,
+        61
+      ],
+      "practice": [
+        64,
+        28,
+        28
+      ],
+      "success": [
+        28,
+        64,
+        34
+      ],
+      "info": [
+        28,
+        52,
+        64
+      ],
+      "note": [
+        37,
+        28,
+        64
+      ],
+      "quote": [
+        64,
+        28,
+        64
+      ],
+      "abstract": [
+        46,
+        28,
+        64
+      ]
+    },
+    "darkCalloutTexts": {
+      "rule": [
+        182,
+        186,
+        237
+      ],
+      "example": [
+        237,
+        191,
+        182
+      ],
+      "important": [
+        237,
+        182,
+        204
+      ],
+      "tip": [
+        182,
+        237,
+        182
+      ],
+      "warning": [
+        237,
+        205,
+        182
+      ],
+      "question": [
+        182,
+        237,
+        232
+      ],
+      "practice": [
+        237,
+        182,
+        182
+      ],
+      "success": [
+        182,
+        237,
+        191
+      ],
+      "info": [
+        182,
+        218,
+        237
+      ],
+      "note": [
+        196,
+        182,
+        237
+      ],
+      "quote": [
+        237,
+        182,
+        236
+      ],
+      "abstract": [
+        209,
+        182,
+        237
+      ]
+    },
+    "darkCalloutBorders": {
+      "rule": [
+        57,
+        68,
+        208
+      ],
+      "example": [
+        208,
+        83,
+        57
+      ],
+      "important": [
+        208,
+        57,
+        119
+      ],
+      "tip": [
+        57,
+        208,
+        58
+      ],
+      "warning": [
+        208,
+        121,
+        57
+      ],
+      "question": [
+        57,
+        208,
+        197
+      ],
+      "practice": [
+        208,
+        58,
+        57
+      ],
+      "success": [
+        57,
+        208,
+        83
+      ],
+      "info": [
+        57,
+        157,
+        208
+      ],
+      "note": [
+        96,
+        57,
+        208
+      ],
+      "quote": [
+        208,
+        57,
+        208
+      ],
+      "abstract": [
+        134,
+        57,
+        208
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 10
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 2,
+        "radius": 10
+      },
+      "important": {
+        "preset": "double",
+        "width": 3,
+        "radius": 8
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 2,
+        "radius": 12
+      },
+      "warning": {
+        "preset": "left",
+        "width": 3,
+        "radius": 8
+      },
+      "question": {
+        "preset": "top",
+        "width": 2,
+        "radius": 8
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 10
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 12
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 10
+      },
+      "note": {
+        "preset": "left",
+        "width": 2,
+        "radius": 8
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 2,
+        "radius": 10
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 2,
+        "radius": 10
+      }
+    }
+  }
+}
