@@ -1603,11 +1603,14 @@ class BackgroundBuilderModal extends Modal {
     save.addEventListener('click', async () => {
       const label = name.value.trim(); if (!label) { new Notice('Введи название фона.'); return; }
       const now = new Date().toISOString();
+      const bgItems = this.studio.plugin.userData.backgrounds || [];
+      const finalLabel = esdsUniqueName(label, bgItems.filter(item => !this.existing || item.id !== this.existing.id).map(item => item.name || item.label), 120);
+      const finalId = this.existing ? this.existing.id : esdsUniqueId(`bg-custom-${slugify(finalLabel)}`, bgItems.map(item => item.id));
       const background = {
         ...(this.existing || {}),
-        id: this.existing ? this.existing.id : `bg-custom-${slugify(label)}-${Date.now().toString(36).slice(-4)}`,
+        id: finalId,
         createdAt: (this.existing && this.existing.createdAt) || now, updatedAt: now,
-        name: label, label, group: this.category || 'Мои фоны', category: this.category || 'Мои фоны',
+        name: finalLabel, label: finalLabel, group: this.category || 'Мои фоны', category: this.category || 'Мои фоны',
         light: `linear-gradient(135deg, ${this.colors.light[0]} 0%, ${this.colors.light[1]} 100%)`,
         dark: `linear-gradient(135deg, ${this.colors.dark[0]} 0%, ${this.colors.dark[1]} 100%)`,
         textColor: (this.existing && this.existing.textColor) || '#302d31',
@@ -1622,7 +1625,7 @@ class BackgroundBuilderModal extends Modal {
       this.studio.selectedBackground = background; this.studio.backgroundOverridden = true;
       this.studio.activeView = 'studio'; this.studio.activeSection = 'background';
       this.studio.render(); this.close();
-      new Notice(this.existing ? `Фон «${label}» обновлён.` : `Фон «${label}» добавлен в «Мои фоны».`);
+      new Notice(finalLabel !== label ? `Название занято. Фон сохранён как «${finalLabel}».` : (this.existing ? `Фон «${finalLabel}» обновлён.` : `Фон «${finalLabel}» добавлен в «${background.group}».`));
     });
   }
 }
@@ -4017,28 +4020,27 @@ class DesignStudioModal extends Modal {
             categories: this.getCategories('palettes')
           });
           if (!choice) return;
-          const existing = this.allPalettes();
-          const ids = new Set(existing.map(item => String(item.id || '').toLowerCase()));
-          const names = new Set(existing.map(item => String(item.name || '').trim().toLowerCase()));
-          const unique = []; let skipped = 0;
+          const existingNames = this.allPalettes().map(item => item.name || '');
+          const renamed = [];
           parsedItems.forEach(item => {
-            const id = String(item.palette.id || '').toLowerCase(), name = String(item.palette.name || '').trim().toLowerCase();
-            if ((id && ids.has(id)) || (name && names.has(name))) { skipped++; return; }
-            if (id) ids.add(id); if (name) names.add(name); unique.push(item);
+            const oldName = String(item.palette.name || 'Импортированная палитра').trim();
+            const finalName = esdsUniqueName(oldName, existingNames, 100);
+            if (finalName !== oldName) renamed.push(finalName);
+            item.palette.name = finalName;
+            existingNames.push(finalName);
           });
-          if (!unique.length) { new Notice('Все выбранные палитры уже есть в библиотеке.'); return; }
-          if (!confirm('Добавить ' + unique.length + ' палитр в категорию «' + choice.name + '»? Дубликаты будут пропущены (' + skipped + ').')) return;
+          if (!confirm('Добавить ' + parsedItems.length + ' палитр в категорию «' + choice.name + '»? Совпадающие названия будут автоматически переименованы.')) return;
           const before = clone(this.plugin.userData);
           try {
             const destination = await this.ensurePaletteCategory(choice.name);
-            for (const item of unique) {
+            for (const item of parsedItems) {
               const payload = clone(item.data), palette = payload.palette || payload;
               palette.category = destination;
               if (payload.palette) payload.palette = palette;
               else payload.category = destination;
               await this.importJson('palette', payload);
             }
-            new Notice('Импорт завершён: добавлено ' + unique.length + ', дубликатов пропущено ' + skipped + ', ошибок файлов ' + errors.length + '.');
+            new Notice('Импорт завершён: добавлено ' + parsedItems.length + ', автоматически переименовано ' + renamed.length + ', ошибок файлов ' + errors.length + '.');
             if (errors.length) console.warn('ESDS multi-file import: skipped files', errors);
             this.paletteCategory = destination; this.activeView = 'studio'; this.activeSection = 'palette'; this.render();
           } catch (error) {
