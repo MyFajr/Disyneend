@@ -2637,7 +2637,7 @@ class DesignStudioModal extends Modal {
           footer.createSpan({ text: `${items.length} элементов` }); footer.createSpan({ text: 'Открыть ›' });
           const categoryMenu = folder.createEl('button', { cls: 'esds-icon-btn esds-catalog-folder-menu', text: '⋯', attr: { type: 'button', title: 'Управление категорией' } });
           categoryMenu.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); this.openCategoryMenu(categoryKind, name, categoryMenu); });
-          const open = () => { this.libraryCategory = name; render(); };
+          const open = () => { this.bulkSelection.clear(); this.libraryCategory = name; render(); };
           folder.addEventListener('click', open);
           folder.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
         });
