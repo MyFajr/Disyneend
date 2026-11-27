@@ -1671,7 +1671,7 @@ class CategoryManagerModal extends Modal {
     const list = this.studio.plugin.userData.categories[this.kind] || [];
     list.sort((a, b) => (a.order || 0) - (b.order || 0));
     this.selectedCategoryIds = this.selectedCategoryIds || new Set();
-    this.selectedCategoryIds = new Set([...this.selectedCategoryIds].filter(id => list.some(cat => cat.id === id && !cat.protected)));
+    this.selectedCategoryIds = new Set([...this.selectedCategoryIds].filter(id => list.some(cat => cat.id === id)));
     const studio = this.studio;
     const itemKind = this.kind === 'palettes' ? 'palette' : this.kind === 'backgrounds' ? 'background' : 'blockStyle';
     const byId = new Map(list.map(cat => [cat.id, cat]));
@@ -1685,11 +1685,11 @@ class CategoryManagerModal extends Modal {
     const bulkInfo = bulk.createSpan({ cls: 'esds-category-bulk-count', text: `Выбрано категорий: ${this.selectedCategoryIds.size}` });
     const refreshBulk = () => { bulkInfo.textContent = `Выбрано категорий: ${this.selectedCategoryIds.size}`; };
     const selectAll = bulk.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Выбрать все', attr: { type: 'button' } });
-    selectAll.addEventListener('click', () => { list.filter(cat => !cat.protected).forEach(cat => this.selectedCategoryIds.add(cat.id)); this.render(); });
+    selectAll.addEventListener('click', () => { list.forEach(cat => this.selectedCategoryIds.add(cat.id)); this.render(); });
     const clearSelection = bulk.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Снять выбор', attr: { type: 'button' } });
     clearSelection.addEventListener('click', () => { this.selectedCategoryIds.clear(); this.render(); });
     const bulkDelete = async (withItems) => {
-      const ids = [...this.selectedCategoryIds].filter(id => list.some(cat => cat.id === id && !cat.protected));
+      const ids = [...this.selectedCategoryIds].filter(id => list.some(cat => cat.id === id));
       if (!ids.length) { new Notice('Сначала выберите категории.'); return; }
       const selected = new Set(ids);
       const candidates = withItems
@@ -1720,7 +1720,7 @@ class CategoryManagerModal extends Modal {
       const meta = label.createDiv({ cls: 'esds-category-manage-meta' });
       meta.createEl('small', { text: `${totalOf(cat)} эл.` });
       if (cat.protected) meta.createEl('span', { cls: 'esds-badge-protected', text: 'системная' });
-      if (!cat.protected) {
+      {
         const selectLabel = row.createEl('label', { cls: 'esds-category-bulk-check' });
         const selectBox = selectLabel.createEl('input', { attr: { type: 'checkbox', 'aria-label': 'Выбрать категорию ' + cat.name } });
         selectBox.checked = this.selectedCategoryIds.has(cat.id);
@@ -1740,7 +1740,7 @@ class CategoryManagerModal extends Modal {
         const created = await studio.createCategoryIn(this.kind, name, cat.id);
         if (created) this.render();
       });
-      if (!cat.protected) {
+      {
         const rename = buttons.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Переименовать', attr: { type: 'button' } });
         rename.addEventListener('click', async () => {
           const name = await promptText(this.app, { title: 'Переименование категории', description: 'Категория: ' + cat.name, value: cat.name, placeholder: 'Новое название категории', submitLabel: 'Переименовать' });
@@ -1886,7 +1886,7 @@ class DesignStudioModal extends Modal {
     const stored = this.plugin.userData && this.plugin.userData.categories
       ? this.plugin.userData.categories[kind]
       : null;
-    const source = Array.isArray(stored) && stored.length ? stored : fallback;
+    const source = Array.isArray(stored) ? stored : fallback;
     const list = source.filter(item =>
       item && typeof item === 'object' && !Array.isArray(item) &&
       typeof item.name === 'string' && item.name.trim().length > 0
@@ -1980,7 +1980,7 @@ class DesignStudioModal extends Modal {
   }
   async renameCategoryById(categoryKind, categoryId, requestedName) {
     const category = this.getCategoryById(categoryKind, categoryId);
-    if (!category || category.protected) return false;
+    if (!category) return false;
     const name = String(requestedName || '').trim();
     if (!name) return false;
     const categories = this.getCategories(categoryKind);
@@ -2006,7 +2006,7 @@ class DesignStudioModal extends Modal {
   }
   async deleteCategoryById(categoryKind, categoryId, { withItems = false } = {}) {
     const category = this.getCategoryById(categoryKind, categoryId);
-    if (!category || category.protected) return false;
+    if (!category) return false;
     const itemKind = categoryKind === 'palettes' ? 'palette' : categoryKind === 'backgrounds' ? 'background' : 'blockStyle';
     const fallback = this.getCategories(categoryKind).find(item => item.id !== categoryId && !this.categoryDescendantIds(categoryKind, categoryId).has(item.id));
     const fallbackName = fallback ? fallback.name
@@ -3303,7 +3303,7 @@ class DesignStudioModal extends Modal {
     const syncActiveCategory = (oldName, newName) => {
       ['paletteCategory', 'backgroundCategory', 'libraryCategory'].forEach(key => { if (this[key] === oldName) this[key] = newName; });
     };
-    if (!category.protected) {
+    {
       actions.push(['✎ Переименовать категорию', '', async () => {
         const value = await promptText(this.app, { title: 'Переименование категории', description: 'Категория: ' + category.name, value: category.name, placeholder: 'Новое название категории', submitLabel: 'Переименовать' });
         if (value === null || !value.trim()) return;
@@ -3317,7 +3317,7 @@ class DesignStudioModal extends Modal {
       if (created) { new Notice(`Создана подкатегория «${created.name}».`); this.render(); }
     }]);
     actions.push(['↳ Переместить в категорию…', '', () => this.openMoveCategoryMenu(categoryKind, category.id, anchorEl)]);
-    if (!category.protected) {
+    {
       const itemKind = categoryKind === 'palettes' ? 'palette' : categoryKind === 'backgrounds' ? 'background' : 'blockStyle';
       const total = this.categoryTotalItems(categoryKind, itemKind, category.id);
       actions.push(['✕ Удалить категорию', 'esds-menu-danger', async () => {
