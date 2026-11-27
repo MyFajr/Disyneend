@@ -3,7 +3,7 @@
   "type": "esds-theme-pack",
   "plugin": "english-study-design-studio",
   "name": "Royal Sapphire — полный дизайнерский набор",
-  "description": "Полный дизайн Royal Sapphire: палитра, индивидуальный цветной фон и единое оформление блоков.",
+  "description": "Полный дизайн Royal Sapphire: индивидуальный насыщенный фон, палитра и стиль блоков.",
   "frameSource": "blockStyle",
   "items": {
     "palette": {
@@ -351,8 +351,8 @@
       "name": "Royal Sapphire — фон",
       "label": "Royal Sapphire — фон",
       "group": "Rainbow Multicolor",
-      "light": "linear-gradient(135deg, #C4C8EC 0%, #E5F2FF 100%)",
-      "dark": "linear-gradient(135deg, #C4C8EC 0%, #E5F2FF 100%)",
+      "light": "linear-gradient(135deg, #A8AFE3 0%, #99CCFF 100%)",
+      "dark": "linear-gradient(135deg, #A8AFE3 0%, #99CCFF 100%)",
       "textColor": "#201B2A",
       "darkTextColor": "#201B2A"
     },
