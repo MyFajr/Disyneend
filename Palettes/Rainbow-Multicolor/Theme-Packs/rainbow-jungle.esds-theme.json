@@ -1,0 +1,411 @@
+{
+  "schemaVersion": 1,
+  "type": "esds-theme-pack",
+  "plugin": "english-study-design-studio",
+  "name": "Rainbow Jungle — полный дизайнерский набор",
+  "description": "Палитра, яркий цветной фон и согласованное оформление учебных блоков для ESDS 0.9.32.",
+  "frameSource": "palette",
+  "items": {
+    "palette": {
+      "id": "rainbow-rainbow-jungle",
+      "name": "Rainbow Jungle",
+      "mood": "Радужные джунгли: Листовая зелень, экзотическая бирюза, манго и орхидея.",
+      "description": "Листовая зелень, экзотическая бирюза, манго и орхидея. Полноценная многоцветная учебная палитра для ESDS 0.9.32: отдельные контрастные роли для английского текста, иностранных букв, IPA, перевода, терминов и смысловых акцентов; согласованные цвета 12 учебных Callout. Единая система цветов без отдельных пользовательских вариантов Light/Dark.",
+      "category": "Радужные и многоцветные",
+      "swatches": [
+        "#27ECA7",
+        "#2E4BEA",
+        "#E60FDC",
+        "#E5582A",
+        "#9DF038"
+      ],
+      "defaultBackground": "bg-08-reading-rose-cloud",
+      "defaultBlocks": "soft",
+      "roles": {
+        "en": "#158E64",
+        "letter": "#126591",
+        "ipa": "#6C8E15",
+        "translation": "#8E1584",
+        "term": "#158E17",
+        "definition": "#971726",
+        "focus": "#158E88",
+        "secondary": "#15448E",
+        "soft": "#43A018",
+        "heading": "#158E2F",
+        "ink": "#28202E"
+      },
+      "callouts": {
+        "rule": [
+          171,
+          23,
+          161
+        ],
+        "example": [
+          43,
+          171,
+          23
+        ],
+        "important": [
+          148,
+          171,
+          23
+        ],
+        "tip": [
+          23,
+          50,
+          171
+        ],
+        "warning": [
+          23,
+          171,
+          28
+        ],
+        "question": [
+          107,
+          23,
+          171
+        ],
+        "practice": [
+          82,
+          171,
+          23
+        ],
+        "success": [
+          23,
+          26,
+          171
+        ],
+        "info": [
+          144,
+          23,
+          171
+        ],
+        "note": [
+          171,
+          23,
+          50
+        ],
+        "quote": [
+          171,
+          131,
+          23
+        ],
+        "abstract": [
+          171,
+          23,
+          99
+        ]
+      },
+      "calloutFills": {
+        "rule": [
+          252,
+          228,
+          251
+        ],
+        "example": [
+          231,
+          252,
+          228
+        ],
+        "important": [
+          249,
+          252,
+          228
+        ],
+        "tip": [
+          228,
+          232,
+          252
+        ],
+        "warning": [
+          228,
+          252,
+          229
+        ],
+        "question": [
+          242,
+          228,
+          252
+        ],
+        "practice": [
+          238,
+          252,
+          228
+        ],
+        "success": [
+          228,
+          228,
+          252
+        ],
+        "info": [
+          248,
+          228,
+          252
+        ],
+        "note": [
+          252,
+          228,
+          232
+        ],
+        "quote": [
+          252,
+          246,
+          228
+        ],
+        "abstract": [
+          252,
+          228,
+          240
+        ]
+      },
+      "calloutTexts": {
+        "rule": [
+          127,
+          21,
+          120
+        ],
+        "example": [
+          35,
+          127,
+          21
+        ],
+        "important": [
+          111,
+          127,
+          21
+        ],
+        "tip": [
+          21,
+          40,
+          127
+        ],
+        "warning": [
+          21,
+          127,
+          24
+        ],
+        "question": [
+          81,
+          21,
+          127
+        ],
+        "practice": [
+          63,
+          127,
+          21
+        ],
+        "success": [
+          21,
+          22,
+          127
+        ],
+        "info": [
+          108,
+          21,
+          127
+        ],
+        "note": [
+          127,
+          21,
+          40
+        ],
+        "quote": [
+          127,
+          99,
+          21
+        ],
+        "abstract": [
+          127,
+          21,
+          76
+        ]
+      },
+      "calloutBorders": {
+        "rule": [
+          195,
+          24,
+          184
+        ],
+        "example": [
+          47,
+          195,
+          24
+        ],
+        "important": [
+          170,
+          195,
+          24
+        ],
+        "tip": [
+          24,
+          55,
+          195
+        ],
+        "warning": [
+          24,
+          195,
+          30
+        ],
+        "question": [
+          121,
+          24,
+          195
+        ],
+        "practice": [
+          93,
+          195,
+          24
+        ],
+        "success": [
+          24,
+          27,
+          195
+        ],
+        "info": [
+          164,
+          24,
+          195
+        ],
+        "note": [
+          195,
+          24,
+          55
+        ],
+        "quote": [
+          195,
+          150,
+          24
+        ],
+        "abstract": [
+          195,
+          24,
+          113
+        ]
+      },
+      "calloutFrames": {
+        "rule": {
+          "preset": "classic",
+          "width": 1.5,
+          "radius": 10
+        },
+        "example": {
+          "preset": "dashed",
+          "width": 2,
+          "radius": 10
+        },
+        "important": {
+          "preset": "double",
+          "width": 3,
+          "radius": 8
+        },
+        "tip": {
+          "preset": "dotted",
+          "width": 2,
+          "radius": 12
+        },
+        "warning": {
+          "preset": "left",
+          "width": 3,
+          "radius": 8
+        },
+        "question": {
+          "preset": "top",
+          "width": 2,
+          "radius": 8
+        },
+        "practice": {
+          "preset": "classic",
+          "width": 1.5,
+          "radius": 10
+        },
+        "success": {
+          "preset": "dashed",
+          "width": 1.5,
+          "radius": 12
+        },
+        "info": {
+          "preset": "classic",
+          "width": 1.5,
+          "radius": 10
+        },
+        "note": {
+          "preset": "left",
+          "width": 2,
+          "radius": 8
+        },
+        "quote": {
+          "preset": "dotted",
+          "width": 2,
+          "radius": 10
+        },
+        "abstract": {
+          "preset": "double",
+          "width": 2,
+          "radius": 10
+        }
+      }
+    },
+    "background": {
+      "id": "bg-rainbow-rainbow-jungle",
+      "name": "Rainbow Jungle — цветной фон",
+      "label": "Rainbow Jungle — цветной фон",
+      "group": "Радужные и многоцветные",
+      "light": "linear-gradient(135deg, #A2F7D9 0%, #F7ADF3 54%, #E4FBC7 100%)",
+      "dark": "linear-gradient(135deg, #A2F7D9 0%, #F7ADF3 54%, #E4FBC7 100%)",
+      "textColor": "#28202E",
+      "darkTextColor": "#28202E"
+    },
+    "blockStyle": {
+      "id": "rainbow-blocks-rainbow-jungle",
+      "name": "Rainbow Jungle — учебные блоки",
+      "description": "Согласованные рамки и поверхности учебных Callout для палитры Rainbow Jungle.",
+      "category": "Радужные и многоцветные",
+      "base": "soft",
+      "framePreset": "classic",
+      "frameOverrides": {
+        "important": "double",
+        "warning": "left",
+        "question": "top"
+      },
+      "style": {
+        "light": {
+          "backgroundOpacity": 0.18,
+          "borderOpacity": 0.78,
+          "borderWidth": 1.6,
+          "borderRadius": 13,
+          "paddingY": 10,
+          "paddingX": 12,
+          "gap": 8,
+          "titleWeight": 700,
+          "titleSize": 13,
+          "bodySize": 12
+        },
+        "dark": {
+          "backgroundOpacity": 0.18,
+          "borderOpacity": 0.78,
+          "borderWidth": 1.6,
+          "borderRadius": 13,
+          "paddingY": 10,
+          "paddingX": 12,
+          "gap": 8,
+          "titleWeight": 700,
+          "titleSize": 13,
+          "bodySize": 12
+        }
+      },
+      "calloutOverrides": {},
+      "colors": {
+        "light": {},
+        "dark": {}
+      },
+      "previewCallouts": [
+        "rule",
+        "example",
+        "important",
+        "tip",
+        "warning",
+        "question"
+      ]
+    }
+  }
+}
