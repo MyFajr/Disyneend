@@ -3,7 +3,7 @@
   "type": "esds-theme-pack",
   "plugin": "english-study-design-studio",
   "name": "Emerald Rush — полный дизайнерский набор",
-  "description": "Полный дизайн Emerald Rush: палитра, индивидуальный цветной фон и единое оформление блоков.",
+  "description": "Полный дизайн Emerald Rush: индивидуальный насыщенный фон, палитра и стиль блоков.",
   "frameSource": "blockStyle",
   "items": {
     "palette": {
@@ -351,8 +351,8 @@
       "name": "Emerald Rush — фон",
       "label": "Emerald Rush — фон",
       "group": "Rainbow Multicolor",
-      "light": "linear-gradient(135deg, #BAE8D2 0%, #F3FFD6 100%)",
-      "dark": "linear-gradient(135deg, #BAE8D2 0%, #F3FFD6 100%)",
+      "light": "linear-gradient(135deg, #85D5B0 0%, #CEFF5B 100%)",
+      "dark": "linear-gradient(135deg, #85D5B0 0%, #CEFF5B 100%)",
       "textColor": "#201B2A",
       "darkTextColor": "#201B2A"
     },
