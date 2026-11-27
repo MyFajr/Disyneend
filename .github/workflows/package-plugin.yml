@@ -16,14 +16,14 @@ jobs:
         run: node tests/palette-contract.test.js
       - name: Check JavaScript syntax
         run: node --check main.js
-      - name: Package Obsidian plugin
+      - name: Prepare install folder
         run: |
-          mkdir -p dist
-          zip -j dist/ESDS-0.9.32.zip main.js styles.css manifest.json
-      - name: Upload installable ZIP
+          mkdir -p dist/plugin
+          cp main.js styles.css manifest.json dist/plugin/
+      - name: Upload installable plugin ZIP
         uses: actions/upload-artifact@v4
         with:
           name: ESDS-0.9.32-Android
-          path: dist/ESDS-0.9.32.zip
+          path: dist/plugin/*
           if-no-files-found: error
           retention-days: 90
