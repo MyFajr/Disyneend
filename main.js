@@ -468,6 +468,7 @@ function ensureLibraryShape(data) {
   ['palettes', 'backgrounds', 'blockStyles'].forEach(key => {
     lib[key] = lib[key].filter(item => item && typeof item === 'object' && !Array.isArray(item));
   });
+  lib.palettes = lib.palettes.map(normalizeSingleModePalette);
   if (!Array.isArray(lib.contentProfiles)) lib.contentProfiles = clone(CONTENT_PROFILES);
   // Built-in profiles are always available; retain user-defined profiles with unique IDs.
   const profileMap = new Map(CONTENT_PROFILES.map(profile => [profile.id, clone(profile)]));
@@ -753,12 +754,18 @@ function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
 
+// Schema 4 stores one canonical color set; legacy alternate dark fields are discarded.
+function normalizeSingleModePalette(raw) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return raw;
+  const palette = clone(raw);
+  ['dark', 'darkCallouts', 'darkCalloutFills', 'darkCalloutTexts', 'darkCalloutBorders'].forEach(key => delete palette[key]);
+  return palette;
+}
+
 function makePaletteCss(palette) {
   const cls = `esds-palette-${palette.id}`;
   const roles = palette.roles || {};
   const callouts = palette.callouts || {};
-  const darkRoles = palette.dark || roles;
-  const darkCallouts = palette.darkCallouts || callouts;
   const selectors = [
     `.markdown-preview-view.esds-note.${cls}`,
     `.markdown-source-view.esds-note.${cls}`,
@@ -766,8 +773,6 @@ function makePaletteCss(palette) {
   ].join(',');
   const roleVars = ROLE_KEYS.map(key => `--esds-${key}: ${isHexColor(roles[key]) ? roles[key] : '#777777'};`).join(' ');
   const calloutVars = CALLOUT_KEYS.map(key => `--esds-callout-${key}: ${rgbValue(callouts[key])};`).join(' ');
-  const darkRoleVars = ROLE_KEYS.map(key => `--esds-${key}: ${isHexColor(darkRoles[key]) ? darkRoles[key] : (isHexColor(roles[key]) ? roles[key] : '#dddddd')};`).join(' ');
-  const darkCalloutVars = CALLOUT_KEYS.map(key => `--esds-callout-${key}: ${rgbValue(darkCallouts[key])};`).join(' ');
   const mapVars = (fill, text, border) => CALLOUT_KEYS.map(key => {
     const vars = [];
     if (fill && fill[key] && isValidPaletteColor(fill[key])) vars.push(`--esds-callout-fill-${key}:${rgbValue(fill[key])};`);
@@ -775,22 +780,19 @@ function makePaletteCss(palette) {
     if (border && border[key] && isValidPaletteColor(border[key])) vars.push(`--esds-callout-border-${key}:${rgbValue(border[key])};`);
     return vars.join(' ');
   }).join(' ');
-  const lightExtra = mapVars(palette.calloutFills, palette.calloutTexts, palette.calloutBorders);
-  const darkExtra = mapVars(palette.darkCalloutFills, palette.darkCalloutTexts, palette.darkCalloutBorders);
-  const darkSelectors = selectors.split(',').map(selector => `body.theme-dark ${selector}`).join(',');
-  const frameCss = (mode) => CALLOUT_KEYS.map(type => {
+  const extraVars = mapVars(palette.calloutFills, palette.calloutTexts, palette.calloutBorders);
+  const frameCss = CALLOUT_KEYS.map(type => {
     const frame = (palette.calloutFrames && palette.calloutFrames[type]) || { preset: 'classic', width: 1.5, radius: 10 };
     if (!BLOCK_FRAME_PRESET_KEYS.includes(frame.preset)) return '';
     const preset = NOTE_STYLE_FRAME_PRESETS[frame.preset] || NOTE_STYLE_FRAME_PRESETS.classic;
     const width = Math.max(0, Math.min(8, Number.isFinite(Number(frame.width)) ? Number(frame.width) : 1.5));
     const radius = Math.max(0, Math.min(32, Number.isFinite(Number(frame.radius)) ? Number(frame.radius) : 10));
     const widths = ['top','right','bottom','left'].map(side => preset.style !== 'none' && preset.sides[side] ? `${width}px` : '0px').join(' ');
-    const modePrefix = mode === 'dark' ? 'body.theme-dark ' : '';
-    const noteSelector = `${modePrefix}.markdown-preview-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).esds-frames-from-palette.${cls} .callout[data-callout="${type}"],${modePrefix}.markdown-source-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).esds-frames-from-palette.${cls} .callout[data-callout="${type}"]`;
-    const previewSelector = `${modePrefix}.esds-preview.esds-frames-from-palette.${cls} .esds-demo-callout.esds-callout-${type}`;
+    const noteSelector = `.markdown-preview-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).esds-frames-from-palette.${cls} .callout[data-callout="${type}"],.markdown-source-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).esds-frames-from-palette.${cls} .callout[data-callout="${type}"]`;
+    const previewSelector = `.esds-preview.esds-frames-from-palette.${cls} .esds-demo-callout.esds-callout-${type}`;
     return `${noteSelector},${previewSelector}{border-style:${preset.style} !important;border-width:${widths} !important;border-radius:${radius}px !important;}`;
   }).join('\n');
-  return `${selectors}{${roleVars} ${calloutVars} ${lightExtra}} ${darkSelectors}{${darkRoleVars} ${darkCalloutVars} ${darkExtra}}\n${frameCss('light')}\n${frameCss('dark')}`;
+  return `${selectors}{${roleVars} ${calloutVars} ${extraVars}}\n${frameCss}`;
 }
 
 function mergeStyleProps(base, override) {
@@ -1269,7 +1271,7 @@ class LibraryItemPreviewModal extends Modal {
 }
 
 class PaletteBuilderModal extends Modal {
-  constructor(app, studio, existing = null) { super(app); this.studio = studio; this.existing = existing; this.base = clone(existing || studio.selectedPalette); this.inputs = { light: {}, dark: {} }; this.category = (existing && existing.category) || 'Мои палитры'; this.themeMode = 'light'; this.calloutType = 'important'; }
+  constructor(app, studio, existing = null) { super(app); this.studio = studio; this.existing = existing; this.base = normalizeSingleModePalette(existing || studio.selectedPalette); this.inputs = {}; this.category = (existing && existing.category) || 'Мои палитры'; this.calloutType = 'important'; }
   onOpen() { this.modalEl.addClass('esds-builder-modal'); this.contentEl.addClass('esds-builder-content'); this.render(); }
   onClose() { this.contentEl.empty(); }
   render() {
@@ -1304,24 +1306,20 @@ class PaletteBuilderModal extends Modal {
     let refreshLinkedPreview = () => {};
     this.defaultBackgroundSelect.addEventListener('change', () => { this.base.defaultBackground = this.defaultBackgroundSelect.value; refreshLinkedPreview(); });
 
-    const themeToggle = body.createDiv({ cls: 'esds-theme-toggle' });
-    const lightBtn = themeToggle.createEl('button', { cls: `esds-button ${this.themeMode === 'light' ? 'esds-primary' : 'esds-btn-quiet'}`, text: 'Light', attr: { type: 'button' } });
-    const darkBtn = themeToggle.createEl('button', { cls: `esds-button ${this.themeMode === 'dark' ? 'esds-primary' : 'esds-btn-quiet'}`, text: 'Dark', attr: { type: 'button' } });
-    lightBtn.addEventListener('click', () => { this.themeMode = 'light'; this.render(); });
-    darkBtn.addEventListener('click', () => { this.themeMode = 'dark'; this.render(); });
+    const singleModeNote = body.createDiv({ cls: 'esds-palette-frame-mode esds-palette-frame-mode-info' });
+    singleModeNote.createEl('strong', { text: 'Единая цветовая схема палитры' });
+    singleModeNote.createEl('small', { text: 'Цвета палитры не меняются при переключении светлой и тёмной темы Obsidian.' });
     const swatches = body.createDiv({ cls: 'esds-color-grid' });
     const labels = { en:'Иностранные слова', ipa:'Произношение / транскрипция', translation:'Перевод', term:'Термины', definition:'Определения', focus:'Главный акцент', secondary:'Второй акцент', soft:'Мягкий акцент', heading:'Заголовки', ink:'Основной текст' };
-    const currentRoles = this.themeMode === 'dark' ? (this.base.dark || this.base.roles) : this.base.roles;
+    const currentRoles = this.base.roles || {};
     ROLE_KEYS.forEach(key => {
       const field = swatches.createDiv({ cls: 'esds-color-field' });
       field.createEl('label', { text: labels[key] });
-      const value = isHexColor(currentRoles[key]) ? currentRoles[key] : (this.base.roles[key] || '#777777');
+      const value = isHexColor(currentRoles[key]) ? currentRoles[key] : '#777777';
       const input = field.createEl('input', { attr: { type: 'color', value } });
-      input.value = value; this.inputs[this.themeMode][key] = input;
-      const editingMode = this.themeMode;
+      input.value = value; this.inputs[key] = input;
       input.addEventListener('input', () => {
-        if (editingMode === 'dark') this.base.dark = { ...(this.base.dark || this.base.roles), [key]: input.value };
-        else this.base.roles = { ...(this.base.roles || {}), [key]: input.value };
+        this.base.roles = { ...(this.base.roles || {}), [key]: input.value };
         if (this.palettePreview) this.palettePreview.style.setProperty(`--esds-${key}`, input.value);
       });
     });
@@ -1335,9 +1333,7 @@ class PaletteBuilderModal extends Modal {
     });
     calloutTypeSelect.addEventListener('change', () => { this.calloutType = calloutTypeSelect.value; this.render(); });
     const calloutColorGrid = calloutColorsSection.createDiv({ cls: 'esds-palette-callout-color-grid' });
-    const calloutColorMaps = this.themeMode === 'dark'
-      ? { fill: 'darkCalloutFills', text: 'darkCalloutTexts', border: 'darkCalloutBorders', base: this.base.darkCallouts || this.base.callouts }
-      : { fill: 'calloutFills', text: 'calloutTexts', border: 'calloutBorders', base: this.base.callouts };
+    const calloutColorMaps = { fill: 'calloutFills', text: 'calloutTexts', border: 'calloutBorders', base: this.base.callouts };
     [['fill', 'Заливка'], ['text', 'Цвет текста блока'], ['border', 'Обводка']].forEach(([kind, label]) => {
       const mapName = calloutColorMaps[kind];
       const map = this.base[mapName] && typeof this.base[mapName] === 'object' ? this.base[mapName] : {};
@@ -1399,7 +1395,7 @@ class PaletteBuilderModal extends Modal {
       const bg = this.studio.findBackground(this.defaultBackgroundSelect.value) || this.studio.selectedBackground;
       const blocks = this.studio.findBlockStyle(this.base.defaultBlocks) || this.studio.getPreferredBlockStyle(this.base);
       this.palettePreview.className = `esds-preview esds-inline-theme ${this.base.id} esds-palette-${this.base.id} ${bg.id} esds-frames-from-palette`;
-      this.studio.setPreviewTheme(this.palettePreview, this.base, bg, blocks, this.themeMode);
+      this.studio.setPreviewTheme(this.palettePreview, this.base, bg, blocks);
     };
     this.palettePreview.style.setProperty('--esds-en', currentRoles.en || '#187b75');
     this.palettePreview.style.setProperty('--esds-ipa', currentRoles.ipa || '#7450a8');
@@ -1451,11 +1447,10 @@ class PaletteBuilderModal extends Modal {
       // The palette stores its recommended base block preset; it is selected automatically.
       palette.defaultBlocks = palette.defaultBlocks || this.studio.selectedBlocks.id;
       palette.roles = { ...(palette.roles || {}) };
-      palette.dark = { ...(palette.dark || palette.roles) };
       ROLE_KEYS.forEach(key => {
-        if (this.inputs.light[key]) palette.roles[key] = this.inputs.light[key].value;
-        if (this.inputs.dark[key]) palette.dark[key] = this.inputs.dark[key].value;
+        if (this.inputs[key]) palette.roles[key] = this.inputs[key].value;
       });
+      palette = normalizeSingleModePalette(palette);
       palette.swatches = [palette.roles.en, palette.roles.ipa, palette.roles.translation, palette.roles.term, palette.roles.focus];
       const now = new Date().toISOString();
       palette.createdAt = palette.createdAt || now;
@@ -2502,14 +2497,13 @@ class DesignStudioModal extends Modal {
     }
   }
   paletteSwatches(palette) {
-    const darkMode = document.body.classList.contains('theme-dark');
     const roleKeys = [
       ['en', 'Иностранные слова'], ['ipa', 'Произношение / транскрипция'], ['translation', 'Перевод'],
       ['term', 'Термин'], ['focus', 'Акцент'], ['secondary', 'Второй акцент']
     ];
     return roleKeys.map(([key, label]) => ({
       label,
-      color: colorToHex((darkMode && palette.dark && palette.dark[key]) || (palette.roles && palette.roles[key]))
+      color: colorToHex(palette.roles && palette.roles[key])
     }));
   }
   renderPaletteSection(parent) {
@@ -3059,21 +3053,19 @@ class DesignStudioModal extends Modal {
       if (modeOverride === 'light') container.addClass('esds-preview-light-mode');
       else container.removeClass('esds-preview-light-mode');
     }
-    const roles = darkMode && palette.dark ? palette.dark : palette.roles;
+    const roles = palette.roles;
     if (roles) {
       ROLE_KEYS.forEach(key => {
         if (roles[key]) container.style.setProperty(`--esds-${key}`, roles[key]);
       });
     }
-    const callouts = darkMode && palette.darkCallouts ? palette.darkCallouts : palette.callouts;
+    const callouts = palette.callouts;
     if (callouts) {
       CALLOUT_KEYS.forEach(key => {
         if (callouts[key]) container.style.setProperty(`--esds-callout-${key}`, rgbValue(callouts[key]));
       });
     }
-    const mapPairs = darkMode
-      ? [['darkCalloutFills', null, 'fill'], ['darkCalloutTexts', null, 'text'], ['darkCalloutBorders', null, 'border']]
-      : [['calloutFills', null, 'fill'], ['calloutTexts', null, 'text'], ['calloutBorders', null, 'border']];
+    const mapPairs = [['calloutFills', null, 'fill'], ['calloutTexts', null, 'text'], ['calloutBorders', null, 'border']];
     mapPairs.forEach(([primary, fallback, kind]) => {
       const values = palette[primary] || (fallback ? palette[fallback] : null) || {};
       CALLOUT_KEYS.forEach(key => {
@@ -3533,7 +3525,7 @@ class DesignStudioModal extends Modal {
     const encoder = new TextEncoder();
     const files = items.map((item, index) => ({
       name: `${String(index + 1).padStart(3, '0')}-${slugify(item.category || 'palette')}-${slugify(item.name || 'palette')}.json`,
-      data: encoder.encode(JSON.stringify({ schemaVersion: 4, type: 'esds-palette', palette: item }, null, 2))
+      data: encoder.encode(JSON.stringify({ schemaVersion: 4, type: 'esds-palette', palette: normalizeSingleModePalette(item) }, null, 2))
     }));
     files.push({ name: 'collection-manifest.json', data: encoder.encode(JSON.stringify({
       type: 'esds-palette-collection', name: categories.length === 1 ? categories[0] : 'Выбранные палитры',
@@ -3637,7 +3629,7 @@ class DesignStudioModal extends Modal {
   }
   async exportThemePack() {
     try {
-      const palette = clone(this.selectedPalette);
+      const palette = normalizeSingleModePalette(this.selectedPalette);
       const background = clone(this.selectedBackground);
       const blockStyle = clone(normalizeBlockStyle(this.selectedBlocks));
       // Store the currently selected pairing, not merely the palette's old defaults.
@@ -3675,7 +3667,7 @@ class DesignStudioModal extends Modal {
       throw new Error('Версия дизайнерского набора не поддерживается.');
     }
     const items = pack.items && typeof pack.items === 'object' ? pack.items : pack;
-    const rawPalette = items.palette;
+    const rawPalette = normalizeSingleModePalette(items.palette);
     const rawBackground = items.background;
     const rawBlockStyle = items.blockStyle;
     if (!rawPalette || !rawBackground || !rawBlockStyle) {
@@ -3750,11 +3742,9 @@ class DesignStudioModal extends Modal {
       defaultBackground: backgroundId,
       defaultBlocks: blockStyleId,
       roles: Object.fromEntries(ROLE_KEYS.map(key => [key, colorToHex(roles[key])])),
-      dark: Object.fromEntries(ROLE_KEYS.map(key => [key, colorToHex(isHexColor(rawPalette.dark && rawPalette.dark[key]) ? rawPalette.dark[key] : roles[key])])),
       callouts: cleanColorMap(rawPalette.callouts, PALETTES[0].callouts),
-      darkCallouts: cleanColorMap(rawPalette.darkCallouts, rawPalette.callouts || PALETTES[0].callouts),
       calloutFrames: rawPalette.calloutFrames && typeof rawPalette.calloutFrames === 'object' ? Object.fromEntries(CALLOUT_KEYS.map(key => { const frame = rawPalette.calloutFrames[key]; return frame && BLOCK_FRAME_PRESET_KEYS.includes(frame.preset) ? [key, { preset: frame.preset, width: Math.max(0, Math.min(8, Number.isFinite(Number(frame.width)) ? Number(frame.width) : 1.5)), radius: Math.max(0, Math.min(32, Number.isFinite(Number(frame.radius)) ? Number(frame.radius) : 10)) }] : null; }).filter(Boolean)) : undefined,
-      ...Object.fromEntries(['calloutFills','calloutTexts','calloutBorders','darkCalloutFills','darkCalloutTexts','darkCalloutBorders'].map(mapName => {
+      ...Object.fromEntries(['calloutFills','calloutTexts','calloutBorders'].map(mapName => {
         const source = rawPalette[mapName];
         if (!source || typeof source !== 'object' || Array.isArray(source)) return [mapName, undefined];
         return [mapName, cleanColorMap(source, null)];
@@ -3808,7 +3798,7 @@ class DesignStudioModal extends Modal {
           used.add(id); copy.id = id; copy.source = 'user'; return copy;
         });
       };
-      restored.palettes = unique(restored.palettes, 'user-palette').filter(p => p.name && p.roles && ROLE_KEYS.every(key => isHexColor(p.roles[key]))).map(p => {
+      restored.palettes = unique(restored.palettes, 'user-palette').map(normalizeSingleModePalette).filter(p => p.name && p.roles && ROLE_KEYS.every(key => isHexColor(p.roles[key]))).map(p => {
         if (!/^user-[a-z0-9-]+$/.test(p.id)) p.id = `user-${slugify(p.name)}-${Date.now().toString(36).slice(-4)}`;
         p.source = 'user'; return p;
       });
@@ -3844,13 +3834,11 @@ class DesignStudioModal extends Modal {
       let p = data.palette || data;
       const roles = p.roles || {};
       if (!p.name || !ROLE_KEYS.every(key => isHexColor(roles[key]))) throw new Error('Palette roles are missing or invalid');
-      const palette = clone(p); palette.id = `user-${slugify(p.name)}-${Date.now().toString(36).slice(-4)}`; palette.createdAt = new Date().toISOString(); palette.updatedAt = palette.createdAt; palette.source = 'user';
+      const palette = normalizeSingleModePalette(p); palette.id = `user-${slugify(p.name)}-${Date.now().toString(36).slice(-4)}`; palette.createdAt = new Date().toISOString(); palette.updatedAt = palette.createdAt; palette.source = 'user';
       palette.defaultBackground = this.findBackground(p.defaultBackground)?.id || this.selectedBackground.id;
       palette.defaultBlocks = this.findBlockStyle(p.defaultBlocks) ? p.defaultBlocks : this.selectedBlocks.id;
-      palette.dark = Object.fromEntries(ROLE_KEYS.map(key => [key, isHexColor(palette.dark && palette.dark[key]) ? palette.dark[key] : palette.roles[key]]));
       palette.callouts = palette.callouts || clone(PALETTES[0].callouts);
-      palette.darkCallouts = palette.darkCallouts || clone(palette.callouts);
-      ['calloutFills','calloutTexts','calloutBorders','darkCalloutFills','darkCalloutTexts','darkCalloutBorders'].forEach(mapName => {
+      ['calloutFills','calloutTexts','calloutBorders'].forEach(mapName => {
         const source = palette[mapName];
         if (!source || typeof source !== 'object' || Array.isArray(source)) { delete palette[mapName]; return; }
         const clean = Object.fromEntries(CALLOUT_KEYS.map(key => [key, source[key]]).filter(([, value]) => isValidPaletteColor(value)));
@@ -3940,7 +3928,8 @@ class DesignStudioModal extends Modal {
     let item, payload;
     if (kind === 'palette') {
       item = this.selectedPalette;
-      payload = { schemaVersion: 3, type: 'esds-palette', palette: item };
+      item = normalizeSingleModePalette(item);
+      payload = { schemaVersion: 4, type: 'esds-palette', palette: item };
     } else if (kind === 'background') {
       item = this.selectedBackground;
       payload = { schemaVersion: 2, type: 'esds-background', background: item };
