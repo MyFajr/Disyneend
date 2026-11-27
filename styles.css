@@ -4482,3 +4482,56 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
     font-size: 12px;
   }
 }
+
+
+/* ESDS 0.9.30 — bulk category controls in the Android category manager. */
+.esds-builder-modal .esds-category-bulk-toolbar {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:7px;
+  margin:4px 0 12px;
+  padding:9px;
+  border:1px solid var(--background-modifier-border);
+  border-radius:11px;
+  background:var(--background-secondary);
+}
+.esds-builder-modal .esds-category-bulk-count {
+  flex:1 1 100%;
+  min-width:0;
+  color:var(--text-normal);
+  font-size:var(--font-sm);
+  font-weight:650;
+}
+.esds-builder-modal .esds-category-bulk-toolbar > .esds-button {
+  flex:1 1 auto;
+  min-width:0;
+  min-height:38px;
+  white-space:normal;
+  line-height:1.2;
+}
+.esds-builder-modal .esds-category-bulk-check {
+  display:inline-flex;
+  flex:0 0 28px;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  margin:0;
+}
+.esds-builder-modal .esds-category-bulk-check input {
+  width:19px;
+  height:19px;
+  margin:0;
+  accent-color:var(--interactive-accent);
+}
+.esds-builder-modal .esds-category-manage-tree-row:has(.esds-category-bulk-check input:checked) {
+  background:var(--background-modifier-hover);
+  outline:1px solid var(--interactive-accent);
+  outline-offset:-1px;
+}
+@media (max-width:420px) {
+  .esds-builder-modal .esds-category-bulk-toolbar > .esds-button {
+    flex:1 1 calc(50% - 7px);
+    font-size:11px;
+  }
+}
