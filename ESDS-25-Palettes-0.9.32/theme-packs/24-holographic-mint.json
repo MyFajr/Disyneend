@@ -3,7 +3,7 @@
   "type": "esds-theme-pack",
   "plugin": "english-study-design-studio",
   "name": "Holographic Mint — полный дизайнерский набор",
-  "description": "Полный дизайн Holographic Mint: палитра, индивидуальный цветной фон и единое оформление блоков.",
+  "description": "Полный дизайн Holographic Mint: индивидуальный насыщенный фон, палитра и стиль блоков.",
   "frameSource": "blockStyle",
   "items": {
     "palette": {
@@ -351,8 +351,8 @@
       "name": "Holographic Mint — фон",
       "label": "Holographic Mint — фон",
       "group": "Rainbow Multicolor",
-      "light": "linear-gradient(135deg, #D0F4EB 0%, #F2D7F8 100%)",
-      "dark": "linear-gradient(135deg, #D0F4EB 0%, #F2D7F8 100%)",
+      "light": "linear-gradient(135deg, #67DDBE 0%, #E6AFF1 100%)",
+      "dark": "linear-gradient(135deg, #67DDBE 0%, #E6AFF1 100%)",
       "textColor": "#201B2A",
       "darkTextColor": "#201B2A"
     },
