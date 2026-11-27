@@ -3,7 +3,7 @@
   "type": "esds-theme-pack",
   "plugin": "english-study-design-studio",
   "name": "Technicolor — полный дизайнерский набор",
-  "description": "Полный дизайн Technicolor: палитра, индивидуальный цветной фон и единое оформление блоков.",
+  "description": "Полный дизайн Technicolor: индивидуальный насыщенный фон, палитра и стиль блоков.",
   "frameSource": "blockStyle",
   "items": {
     "palette": {
@@ -351,8 +351,8 @@
       "name": "Technicolor — фон",
       "label": "Technicolor — фон",
       "group": "Rainbow Multicolor",
-      "light": "linear-gradient(135deg, #F8C9EC 0%, #D3F6FC 100%)",
-      "dark": "linear-gradient(135deg, #F8C9EC 0%, #D3F6FC 100%)",
+      "light": "linear-gradient(135deg, #F294D9 0%, #4DDDF2 100%)",
+      "dark": "linear-gradient(135deg, #F294D9 0%, #4DDDF2 100%)",
       "textColor": "#201B2A",
       "darkTextColor": "#201B2A"
     },
