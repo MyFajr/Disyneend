@@ -477,6 +477,9 @@ function ensureLibraryShape(data) {
     }
   });
   lib.contentProfiles = [...profileMap.values()];
+  // Migrate legacy dual-mode palette/background entries to one design set.
+  lib.palettes = lib.palettes.map(item => { const p = { ...item, roles: { ...(item.roles || {}) } }; p.roles.letter = p.roles.letter || p.roles.ipa; delete p.dark; delete p.darkCallouts; delete p.darkCalloutFills; delete p.darkCalloutTexts; delete p.darkCalloutBorders; return p; });
+  lib.backgrounds = lib.backgrounds.map(item => { const bg = { ...item, value: item.value || item.light || item.dark, textColor: item.textColor || '#302d31' }; delete bg.light; delete bg.dark; delete bg.darkTextColor; return bg; });
   if (!lib.categories || typeof lib.categories !== 'object') {
     lib.categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
   }
@@ -3913,14 +3916,12 @@ class DesignStudioModal extends Modal {
       const roles = p.roles || {};
       if (!p.name || !ROLE_KEYS.every(key => isHexColor(roles[key]))) throw new Error('Palette roles are missing or invalid');
       const palette = clone(p);
-      palette.roles.letter = isHexColor(palette.roles.letter) ? palette.roles.letter : palette.roles.ipa; palette.id = `user-${slugify(p.name)}-${Date.now().toString(36).slice(-4)}`; palette.createdAt = new Date().toISOString(); palette.updatedAt = palette.createdAt; palette.source = 'user';
+      palette.roles = { ...(palette.roles || {}) }; palette.roles.letter = isHexColor(palette.roles.letter) ? palette.roles.letter : palette.roles.ipa;
+      delete palette.dark; delete palette.darkCallouts; delete palette.darkCalloutFills; delete palette.darkCalloutTexts; delete palette.darkCalloutBorders; palette.id = `user-${slugify(p.name)}-${Date.now().toString(36).slice(-4)}`; palette.createdAt = new Date().toISOString(); palette.updatedAt = palette.createdAt; palette.source = 'user';
       palette.defaultBackground = this.findBackground(p.defaultBackground)?.id || this.selectedBackground.id;
       palette.defaultBlocks = this.findBlockStyle(p.defaultBlocks) ? p.defaultBlocks : this.selectedBlocks.id;
-      palette.dark = Object.fromEntries(ROLE_KEYS.map(key => [key, isHexColor(palette.dark && palette.dark[key]) ? palette.dark[key] : palette.roles[key]]));
-      palette.dark.letter = isHexColor(palette.dark?.letter) ? palette.dark.letter : (isHexColor(palette.roles.letter) ? palette.roles.letter : palette.dark.ipa);
       palette.callouts = palette.callouts || clone(PALETTES[0].callouts);
-      palette.darkCallouts = palette.darkCallouts || clone(palette.callouts);
-      ['calloutFills','calloutTexts','calloutBorders','darkCalloutFills','darkCalloutTexts','darkCalloutBorders'].forEach(mapName => {
+      ['calloutFills','calloutTexts','calloutBorders'].forEach(mapName => {
         const source = palette[mapName];
         if (!source || typeof source !== 'object' || Array.isArray(source)) { delete palette[mapName]; return; }
         const clean = Object.fromEntries(CALLOUT_KEYS.map(key => [key, source[key]]).filter(([, value]) => isValidPaletteColor(value)));
