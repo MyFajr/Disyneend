@@ -3,7 +3,7 @@
   "type": "esds-theme-pack",
   "plugin": "english-study-design-studio",
   "name": "Flamingo — полный дизайнерский набор",
-  "description": "Полный дизайн Flamingo: палитра, индивидуальный цветной фон и единое оформление блоков.",
+  "description": "Полный дизайн Flamingo: индивидуальный насыщенный фон, палитра и стиль блоков.",
   "frameSource": "blockStyle",
   "items": {
     "palette": {
@@ -351,8 +351,8 @@
       "name": "Flamingo — фон",
       "label": "Flamingo — фон",
       "group": "Rainbow Multicolor",
-      "light": "linear-gradient(135deg, #FCCFE4 0%, #FFF6FA 100%)",
-      "dark": "linear-gradient(135deg, #FCCFE4 0%, #FFF6FA 100%)",
+      "light": "linear-gradient(135deg, #F9AACF 0%, #FFDAEA 100%)",
+      "dark": "linear-gradient(135deg, #F9AACF 0%, #FFDAEA 100%)",
       "textColor": "#201B2A",
       "darkTextColor": "#201B2A"
     },
