@@ -15,3 +15,5 @@ The source archive contains repository documentation and tests in addition to th
 
 ## Validation boundary
 The workflow runs the semantic-class/role contract test and JavaScript syntax check before packaging. The ZIP is not considered Android-runtime verified until installed and checked in Obsidian on a device.
+
+Build workflow is triggered by pushes to this branch; the downloadable install ZIP appears under Actions > Package ESDS Android plugin > Artifacts after a successful run.
