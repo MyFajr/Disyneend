@@ -3,7 +3,7 @@
   "type": "esds-theme-pack",
   "plugin": "english-study-design-studio",
   "name": "Papaya Punch — полный дизайнерский набор",
-  "description": "Полный дизайн Papaya Punch: палитра, индивидуальный цветной фон и единое оформление блоков.",
+  "description": "Полный дизайн Papaya Punch: индивидуальный насыщенный фон, палитра и стиль блоков.",
   "frameSource": "blockStyle",
   "items": {
     "palette": {
@@ -351,8 +351,8 @@
       "name": "Papaya Punch — фон",
       "label": "Papaya Punch — фон",
       "group": "Rainbow Multicolor",
-      "light": "linear-gradient(135deg, #FFDFC8 0%, #FAD4DE 100%)",
-      "dark": "linear-gradient(135deg, #FFDFC8 0%, #FAD4DE 100%)",
+      "light": "linear-gradient(135deg, #FF9C53 0%, #F49AB0 100%)",
+      "dark": "linear-gradient(135deg, #FF9C53 0%, #F49AB0 100%)",
       "textColor": "#201B2A",
       "darkTextColor": "#201B2A"
     },
