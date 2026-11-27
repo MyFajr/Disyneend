@@ -2053,9 +2053,23 @@ class DesignStudioModal extends Modal {
         else item.category = fallbackName;
       });
     }
-    this.plugin.userData.categories[categoryKind] = this.getCategories(categoryKind)
+    const remainingCategories = this.getCategories(categoryKind)
       .filter(item => !descendantIds.has(item.id))
       .map(item => { if (item.parentId === categoryId) item.parentId = category.parentId || ''; return item; });
+    // When the last category is removed but its items are kept, preserve those
+    // items in a real, manageable fallback category instead of creating an
+    // orphan virtual folder that has no category ID and cannot be deleted.
+    if (!withItems && !remainingCategories.length) {
+      const safeName = fallbackName;
+      remainingCategories.push({
+        id: esdsUniqueId(slugify(safeName), []),
+        name: safeName,
+        order: 0,
+        protected: false,
+        parentId: ''
+      });
+    }
+    this.plugin.userData.categories[categoryKind] = remainingCategories;
     ['paletteCategory', 'backgroundCategory', 'libraryCategory'].forEach(key => { if (this[key] && descendantNames.has(this[key])) this[key] = null; });
     if (await this.plugin.saveUserLibrary()) {
       this.plugin.refreshGeneratedStyles();
