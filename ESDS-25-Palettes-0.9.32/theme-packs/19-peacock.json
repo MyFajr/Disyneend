@@ -3,7 +3,7 @@
   "type": "esds-theme-pack",
   "plugin": "english-study-design-studio",
   "name": "Peacock — полный дизайнерский набор",
-  "description": "Полный дизайн Peacock: палитра, индивидуальный цветной фон и единое оформление блоков.",
+  "description": "Полный дизайн Peacock: индивидуальный насыщенный фон, палитра и стиль блоков.",
   "frameSource": "blockStyle",
   "items": {
     "palette": {
@@ -351,8 +351,8 @@
       "name": "Peacock — фон",
       "label": "Peacock — фон",
       "group": "Rainbow Multicolor",
-      "light": "linear-gradient(135deg, #BCDCDE 0%, #FFF5DF 100%)",
-      "dark": "linear-gradient(135deg, #BCDCDE 0%, #FFF5DF 100%)",
+      "light": "linear-gradient(135deg, #91C6C8 0%, #FFD87F 100%)",
+      "dark": "linear-gradient(135deg, #91C6C8 0%, #FFD87F 100%)",
       "textColor": "#201B2A",
       "darkTextColor": "#201B2A"
     },
