@@ -300,6 +300,9 @@ PALETTES.push(
   })
 );
 
+// Built-in palettes also use one shared color system; discard legacy dark-mode variants.
+PALETTES.forEach(palette => { delete palette.dark; delete palette.darkCallouts; delete palette.darkCalloutFills; delete palette.darkCalloutTexts; delete palette.darkCalloutBorders; });
+
 const BACKGROUNDS = [
   { id: 'bg-01-reading-ivory', label: '01 · Слоновая кость', group: 'Для чтения' },
   { id: 'bg-02-reading-parchment', label: '02 · Пергамент', group: 'Для чтения' },
@@ -760,8 +763,6 @@ function makePaletteCss(palette) {
   const cls = `esds-palette-${palette.id}`;
   const roles = palette.roles || {};
   const callouts = palette.callouts || {};
-  const darkRoles = roles;
-  const darkCallouts = callouts;
   const selectors = [
     `.markdown-preview-view.esds-note.${cls}`,
     `.markdown-source-view.esds-note.${cls}`,
@@ -769,8 +770,6 @@ function makePaletteCss(palette) {
   ].join(',');
   const roleVars = ROLE_KEYS.map(key => `--esds-${key}: ${isHexColor(roles[key]) ? roles[key] : '#777777'};`).join(' ') + ` --esds-letter: ${isHexColor(roles.letter) ? roles.letter : (isHexColor(roles.ipa) ? roles.ipa : '#777777')};`;
   const calloutVars = CALLOUT_KEYS.map(key => `--esds-callout-${key}: ${rgbValue(callouts[key])};`).join(' ');
-  const darkRoleVars = ROLE_KEYS.map(key => `--esds-${key}: ${isHexColor(darkRoles[key]) ? darkRoles[key] : (isHexColor(roles[key]) ? roles[key] : '#dddddd')};`).join(' ') + ` --esds-letter: ${isHexColor(darkRoles.letter) ? darkRoles.letter : (isHexColor(darkRoles.ipa) ? darkRoles.ipa : '#dddddd')};`;
-  const darkCalloutVars = CALLOUT_KEYS.map(key => `--esds-callout-${key}: ${rgbValue(darkCallouts[key])};`).join(' ');
   const mapVars = (fill, text, border) => CALLOUT_KEYS.map(key => {
     const vars = [];
     if (fill && fill[key] && isValidPaletteColor(fill[key])) vars.push(`--esds-callout-fill-${key}:${rgbValue(fill[key])};`);
@@ -778,22 +777,19 @@ function makePaletteCss(palette) {
     if (border && border[key] && isValidPaletteColor(border[key])) vars.push(`--esds-callout-border-${key}:${rgbValue(border[key])};`);
     return vars.join(' ');
   }).join(' ');
-  const lightExtra = mapVars(palette.calloutFills, palette.calloutTexts, palette.calloutBorders);
-  const darkExtra = lightExtra;
-  const darkSelectors = selectors.split(',').map(selector => `body.theme-dark ${selector}`).join(',');
-  const frameCss = (mode) => CALLOUT_KEYS.map(type => {
+  const extra = mapVars(palette.calloutFills, palette.calloutTexts, palette.calloutBorders);
+  const frameCss = CALLOUT_KEYS.map(type => {
     const frame = (palette.calloutFrames && palette.calloutFrames[type]) || { preset: 'classic', width: 1.5, radius: 10 };
     if (!BLOCK_FRAME_PRESET_KEYS.includes(frame.preset)) return '';
     const preset = NOTE_STYLE_FRAME_PRESETS[frame.preset] || NOTE_STYLE_FRAME_PRESETS.classic;
     const width = Math.max(0, Math.min(8, Number.isFinite(Number(frame.width)) ? Number(frame.width) : 1.5));
     const radius = Math.max(0, Math.min(32, Number.isFinite(Number(frame.radius)) ? Number(frame.radius) : 10));
     const widths = ['top','right','bottom','left'].map(side => preset.style !== 'none' && preset.sides[side] ? `${width}px` : '0px').join(' ');
-    const modePrefix = mode === 'dark' ? 'body.theme-dark ' : '';
-    const noteSelector = `${modePrefix}.markdown-preview-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).esds-frames-from-palette.${cls} .callout[data-callout="${type}"],${modePrefix}.markdown-source-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).esds-frames-from-palette.${cls} .callout[data-callout="${type}"]`;
-    const previewSelector = `${modePrefix}.esds-preview.esds-frames-from-palette.${cls} .esds-demo-callout.esds-callout-${type}`;
+    const noteSelector = `.markdown-preview-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).esds-frames-from-palette.${cls} .callout[data-callout="${type}"],.markdown-source-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).esds-frames-from-palette.${cls} .callout[data-callout="${type}"]`;
+    const previewSelector = `.esds-preview.esds-frames-from-palette.${cls} .esds-demo-callout.esds-callout-${type}`;
     return `${noteSelector},${previewSelector}{border-style:${preset.style} !important;border-width:${widths} !important;border-radius:${radius}px !important;}`;
-  }).join('\n');
-  return `${selectors}{${roleVars} ${calloutVars} ${lightExtra}}\n${frameCss('light')}`;
+  }).join('\\n');
+  return `${selectors}{${roleVars} ${calloutVars} ${extra}}\\n${frameCss}`;
 }
 
 function mergeStyleProps(base, override) {
