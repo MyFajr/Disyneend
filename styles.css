@@ -4406,3 +4406,12 @@ body.theme-dark .esds-preview.bg-28-saffron-cream, .esds-preview.esds-preview-da
 .esds-import-conflict-row select,.esds-import-conflict-global select{min-height:40px;width:100%}
 .esds-import-conflict-global{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
 .esds-import-conflict-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+
+/* ESDS 0.9.24 — category file-manager selection */
+.esds-category-selection-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:8px 0 12px;padding:9px;border:1px solid var(--background-modifier-border);border-radius:12px;background:var(--background-secondary)}
+.esds-category-selection-toolbar .esds-button{min-height:40px;flex:1 1 auto;font-size:.76rem}
+.esds-category-select-checkbox{position:absolute;top:9px;left:9px;z-index:2;width:20px;height:20px;accent-color:var(--interactive-accent)}
+.esds-catalog-folder{position:relative}
+.esds-catalog-folder.is-category-selected{outline:2px solid var(--interactive-accent);outline-offset:1px;background:var(--background-modifier-hover)}
+.esds-catalog-folder.is-category-selected .esds-catalog-folder-footer{color:var(--interactive-accent);font-weight:700}
+@media(max-width:520px){.esds-category-selection-toolbar{gap:5px;padding:8px}.esds-category-selection-toolbar .esds-button{min-height:42px;flex:1 1 44%}}
