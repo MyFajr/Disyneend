@@ -1,9 +1,9 @@
 {
   "id": "english-study-design-studio",
   "name": "English Study Design Studio",
-  "version": "0.9.25",
+  "version": "0.9.26",
   "minAppVersion": "1.5.0",
-  "description": "Fixed single-view palette previews and working category/item management controls.",
+  "description": "Single fixed palette appearance across Obsidian themes; corrected palette preview and category/item management.",
   "author": "Custom personal plugin",
   "isDesktopOnly": false
 }

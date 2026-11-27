@@ -300,6 +300,12 @@ PALETTES.push(
   })
 );
 
+// Built-in palettes also use one canonical role/callout set. Legacy dark
+// variants are intentionally discarded after palette definitions are assembled.
+PALETTES.forEach(palette => {
+  ['dark', 'darkCallouts', 'darkCalloutFills', 'darkCalloutTexts', 'darkCalloutBorders'].forEach(key => delete palette[key]);
+});
+
 const BACKGROUNDS = [
   { id: 'bg-01-reading-ivory', label: '01 · Слоновая кость', group: 'Для чтения' },
   { id: 'bg-02-reading-parchment', label: '02 · Пергамент', group: 'Для чтения' },
@@ -2693,9 +2699,12 @@ class DesignStudioModal extends Modal {
     const currentOrder = Number.isFinite(Number(list[index].order)) ? Number(list[index].order) : index * 10;
     const targetOrder = Number.isFinite(Number(list[target].order)) ? Number(list[target].order) : target * 10;
     list[index].order = targetOrder; list[target].order = currentOrder;
+    this.sortModes.palettes = 'custom';
     await this.savePaletteLibraryAction('Порядок палитр обновлён.');
   }
   openPaletteCategoryMenu(categoryName, anchorEl) {
+    if (!this.plugin.userData.categories) this.plugin.userData.categories = {};
+    if (!Array.isArray(this.plugin.userData.categories.palettes)) this.plugin.userData.categories.palettes = clone(DEFAULT_CATEGORIES.palettes || []);
     const categories = this.getCategories('palettes'), category = categories.find(item => item.name === categoryName);
     if (!category) return;
     const index = categories.findIndex(item => item.id === category.id), actions = [];
@@ -2744,7 +2753,10 @@ class DesignStudioModal extends Modal {
       items.push(['↗ Переместить в категорию', '', async () => {
         const value = prompt('Название категории:', palette.category || 'Мои палитры');
         if (value === null || !value.trim()) return;
-        const category = value.trim(), categories = this.plugin.userData.categories.palettes;
+        const category = value.trim();
+        if (!this.plugin.userData.categories) this.plugin.userData.categories = {};
+        if (!Array.isArray(this.plugin.userData.categories.palettes)) this.plugin.userData.categories.palettes = clone(DEFAULT_CATEGORIES.palettes || []);
+        const categories = this.plugin.userData.categories.palettes;
         if (!categories.some(item => item.name.toLocaleLowerCase() === category.toLocaleLowerCase())) {
           const baseId = slugify(category); let id = baseId, suffix = 2;
           while (categories.some(item => item.id === id)) id = `${baseId}-${suffix++}`;
