@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "cosmic-fantasy-15-stardust-orchid",
+    "name": "Stardust Orchid",
+    "mood": "Орхидея звёздной пыли",
+    "description": "Космическая фантазийная палитра Stardust Orchid: индивидуальный радиальный градиентный фон, контрастные семантические роли и согласованные учебные блоки.",
+    "category": "Cosmic Fantasy",
+    "source": "user",
+    "swatches": [
+      "#311344",
+      "#63205E",
+      "#49236F",
+      "#1C315C",
+      "#b8a2f6"
+    ],
+    "defaultBackground": "bg-custom-cosmic-fantasy-15-stardust-orchid",
+    "defaultBlocks": "user-blocks-cosmic-fantasy-15-stardust-orchid",
+    "roles": {
+      "en": "#b8a2f6",
+      "letter": "#a2b4f6",
+      "ipa": "#ccf6a2",
+      "translation": "#edf6a2",
+      "term": "#a2daf6",
+      "definition": "#f6a2bd",
+      "focus": "#a2f6e2",
+      "secondary": "#baa2f6",
+      "soft": "#c6f6a2",
+      "heading": "#a2a9f6",
+      "ink": "#FFF9FF"
+    },
+    "callouts": {
+      "rule": [
+        184,
+        162,
+        246
+      ],
+      "example": [
+        204,
+        246,
+        162
+      ],
+      "important": [
+        162,
+        246,
+        226
+      ],
+      "tip": [
+        237,
+        246,
+        162
+      ],
+      "warning": [
+        186,
+        162,
+        246
+      ],
+      "question": [
+        162,
+        180,
+        246
+      ],
+      "practice": [
+        162,
+        218,
+        246
+      ],
+      "success": [
+        198,
+        246,
+        162
+      ],
+      "info": [
+        162,
+        169,
+        246
+      ],
+      "note": [
+        246,
+        162,
+        189
+      ],
+      "quote": [
+        162,
+        246,
+        226
+      ],
+      "abstract": [
+        204,
+        246,
+        162
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        247,
+        240,
+        250
+      ],
+      "example": [
+        250,
+        240,
+        247
+      ],
+      "important": [
+        250,
+        240,
+        242
+      ],
+      "tip": [
+        250,
+        243,
+        240
+      ],
+      "warning": [
+        250,
+        248,
+        240
+      ],
+      "question": [
+        246,
+        250,
+        240
+      ],
+      "practice": [
+        241,
+        250,
+        240
+      ],
+      "success": [
+        240,
+        250,
+        244
+      ],
+      "info": [
+        240,
+        250,
+        249
+      ],
+      "note": [
+        240,
+        246,
+        250
+      ],
+      "quote": [
+        240,
+        241,
+        250
+      ],
+      "abstract": [
+        244,
+        240,
+        250
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        37,
+        30,
+        51
+      ],
+      "example": [
+        37,
+        30,
+        51
+      ],
+      "important": [
+        37,
+        30,
+        51
+      ],
+      "tip": [
+        37,
+        30,
+        51
+      ],
+      "warning": [
+        37,
+        30,
+        51
+      ],
+      "question": [
+        37,
+        30,
+        51
+      ],
+      "practice": [
+        37,
+        30,
+        51
+      ],
+      "success": [
+        37,
+        30,
+        51
+      ],
+      "info": [
+        37,
+        30,
+        51
+      ],
+      "note": [
+        37,
+        30,
+        51
+      ],
+      "quote": [
+        37,
+        30,
+        51
+      ],
+      "abstract": [
+        37,
+        30,
+        51
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        184,
+        162,
+        246
+      ],
+      "example": [
+        204,
+        246,
+        162
+      ],
+      "important": [
+        162,
+        246,
+        226
+      ],
+      "tip": [
+        237,
+        246,
+        162
+      ],
+      "warning": [
+        186,
+        162,
+        246
+      ],
+      "question": [
+        162,
+        180,
+        246
+      ],
+      "practice": [
+        162,
+        218,
+        246
+      ],
+      "success": [
+        198,
+        246,
+        162
+      ],
+      "info": [
+        162,
+        169,
+        246
+      ],
+      "note": [
+        246,
+        162,
+        189
+      ],
+      "quote": [
+        162,
+        246,
+        226
+      ],
+      "abstract": [
+        204,
+        246,
+        162
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 10
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.5,
+        "radius": 12
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.5,
+        "radius": 8
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.5,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 12
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 14
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "note": {
+        "preset": "left",
+        "width": 1.5,
+        "radius": 10
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 12
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 1.5,
+        "radius": 14
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-cosmic-fantasy-15-stardust-orchid",
+    "name": "Stardust Orchid — космический фон",
+    "label": "Stardust Orchid — космический фон",
+    "group": "Cosmic Fantasy",
+    "light": "radial-gradient(ellipse at 30% 75%, #311344 0%, #63205E 38%, #49236F 72%, #1C315C 100%)",
+    "dark": "radial-gradient(ellipse at 30% 75%, #311344 0%, #63205E 38%, #49236F 72%, #1C315C 100%)",
+    "textColor": "#FFF9FF",
+    "darkTextColor": "#FFF9FF"
+  },
+  "blockStyle": {
+    "id": "user-blocks-cosmic-fantasy-15-stardust-orchid",
+    "name": "Stardust Orchid — учебные блоки",
+    "description": "Согласованные карточки и Callout для Stardust Orchid.",
+    "category": "Cosmic Fantasy",
+    "base": "soft",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        },
+        "dark": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        }
+      },
+      "tip": {
+        "light": {
+          "borderRadius": 15
+        },
+        "dark": {
+          "borderRadius": 15
+        }
+      },
+      "warning": {
+        "light": {
+          "borderWidth": 2
+        },
+        "dark": {
+          "borderWidth": 2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success"
+    ]
+  }
+}

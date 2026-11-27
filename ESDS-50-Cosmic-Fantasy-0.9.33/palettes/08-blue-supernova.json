@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "cosmic-fantasy-08-blue-supernova",
+    "name": "Blue Supernova",
+    "mood": "Синяя сверхновая",
+    "description": "Космическая фантазийная палитра Blue Supernova: индивидуальный линейный градиентный фон, контрастные семантические роли и согласованные учебные блоки.",
+    "category": "Cosmic Fantasy",
+    "source": "user",
+    "swatches": [
+      "#0B2252",
+      "#164B80",
+      "#1B3C73",
+      "#421C68",
+      "#a2f6ba"
+    ],
+    "defaultBackground": "bg-custom-cosmic-fantasy-08-blue-supernova",
+    "defaultBlocks": "user-blocks-cosmic-fantasy-08-blue-supernova",
+    "roles": {
+      "en": "#a2f6ba",
+      "letter": "#b3f6a2",
+      "ipa": "#f6a2cb",
+      "translation": "#f6a2ec",
+      "term": "#d9f6a2",
+      "definition": "#a2bbf6",
+      "focus": "#f6e4a2",
+      "secondary": "#a2f6bb",
+      "soft": "#f6a2c5",
+      "heading": "#a8f6a2",
+      "ink": "#FFF9FF"
+    },
+    "callouts": {
+      "rule": [
+        162,
+        246,
+        186
+      ],
+      "example": [
+        246,
+        162,
+        203
+      ],
+      "important": [
+        246,
+        228,
+        162
+      ],
+      "tip": [
+        246,
+        162,
+        236
+      ],
+      "warning": [
+        162,
+        246,
+        187
+      ],
+      "question": [
+        179,
+        246,
+        162
+      ],
+      "practice": [
+        217,
+        246,
+        162
+      ],
+      "success": [
+        246,
+        162,
+        197
+      ],
+      "info": [
+        168,
+        246,
+        162
+      ],
+      "note": [
+        162,
+        187,
+        246
+      ],
+      "quote": [
+        246,
+        228,
+        162
+      ],
+      "abstract": [
+        246,
+        162,
+        203
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        240,
+        250,
+        245
+      ],
+      "example": [
+        240,
+        249,
+        250
+      ],
+      "important": [
+        240,
+        244,
+        250
+      ],
+      "tip": [
+        241,
+        240,
+        250
+      ],
+      "warning": [
+        246,
+        240,
+        250
+      ],
+      "question": [
+        250,
+        240,
+        248
+      ],
+      "practice": [
+        250,
+        240,
+        243
+      ],
+      "success": [
+        250,
+        242,
+        240
+      ],
+      "info": [
+        250,
+        247,
+        240
+      ],
+      "note": [
+        248,
+        250,
+        240
+      ],
+      "quote": [
+        243,
+        250,
+        240
+      ],
+      "abstract": [
+        240,
+        250,
+        242
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        37,
+        30,
+        51
+      ],
+      "example": [
+        37,
+        30,
+        51
+      ],
+      "important": [
+        37,
+        30,
+        51
+      ],
+      "tip": [
+        37,
+        30,
+        51
+      ],
+      "warning": [
+        37,
+        30,
+        51
+      ],
+      "question": [
+        37,
+        30,
+        51
+      ],
+      "practice": [
+        37,
+        30,
+        51
+      ],
+      "success": [
+        37,
+        30,
+        51
+      ],
+      "info": [
+        37,
+        30,
+        51
+      ],
+      "note": [
+        37,
+        30,
+        51
+      ],
+      "quote": [
+        37,
+        30,
+        51
+      ],
+      "abstract": [
+        37,
+        30,
+        51
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        162,
+        246,
+        186
+      ],
+      "example": [
+        246,
+        162,
+        203
+      ],
+      "important": [
+        246,
+        228,
+        162
+      ],
+      "tip": [
+        246,
+        162,
+        236
+      ],
+      "warning": [
+        162,
+        246,
+        187
+      ],
+      "question": [
+        179,
+        246,
+        162
+      ],
+      "practice": [
+        217,
+        246,
+        162
+      ],
+      "success": [
+        246,
+        162,
+        197
+      ],
+      "info": [
+        168,
+        246,
+        162
+      ],
+      "note": [
+        162,
+        187,
+        246
+      ],
+      "quote": [
+        246,
+        228,
+        162
+      ],
+      "abstract": [
+        246,
+        162,
+        203
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 10
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.5,
+        "radius": 12
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.5,
+        "radius": 8
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.5,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 12
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 14
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "note": {
+        "preset": "left",
+        "width": 1.5,
+        "radius": 10
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 12
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 1.5,
+        "radius": 14
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-cosmic-fantasy-08-blue-supernova",
+    "name": "Blue Supernova — космический фон",
+    "label": "Blue Supernova — космический фон",
+    "group": "Cosmic Fantasy",
+    "light": "linear-gradient(152deg, #0B2252 0%, #164B80 34%, #1B3C73 68%, #421C68 100%)",
+    "dark": "linear-gradient(152deg, #0B2252 0%, #164B80 34%, #1B3C73 68%, #421C68 100%)",
+    "textColor": "#FFF9FF",
+    "darkTextColor": "#FFF9FF"
+  },
+  "blockStyle": {
+    "id": "user-blocks-cosmic-fantasy-08-blue-supernova",
+    "name": "Blue Supernova — учебные блоки",
+    "description": "Согласованные карточки и Callout для Blue Supernova.",
+    "category": "Cosmic Fantasy",
+    "base": "soft",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        },
+        "dark": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        }
+      },
+      "tip": {
+        "light": {
+          "borderRadius": 15
+        },
+        "dark": {
+          "borderRadius": 15
+        }
+      },
+      "warning": {
+        "light": {
+          "borderWidth": 2
+        },
+        "dark": {
+          "borderWidth": 2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success"
+    ]
+  }
+}

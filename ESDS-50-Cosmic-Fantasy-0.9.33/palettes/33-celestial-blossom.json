@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "cosmic-fantasy-33-celestial-blossom",
+    "name": "Celestial Blossom",
+    "mood": "Небесное цветение",
+    "description": "Космическая фантазийная палитра Celestial Blossom: индивидуальный линейный градиентный фон, контрастные семантические роли и согласованные учебные блоки.",
+    "category": "Cosmic Fantasy",
+    "source": "user",
+    "swatches": [
+      "#F8DDE2",
+      "#F9E2D4",
+      "#F4DCEF",
+      "#F8EBCB",
+      "#0b4e74"
+    ],
+    "defaultBackground": "bg-custom-cosmic-fantasy-33-celestial-blossom",
+    "defaultBlocks": "user-blocks-cosmic-fantasy-33-celestial-blossom",
+    "roles": {
+      "en": "#0b4e74",
+      "letter": "#0b6f64",
+      "ipa": "#744a0b",
+      "translation": "#74200b",
+      "term": "#0b7439",
+      "definition": "#5d0b74",
+      "focus": "#19740b",
+      "secondary": "#0b4c74",
+      "soft": "#74510b",
+      "heading": "#0b6e6f",
+      "ink": "#211B31"
+    },
+    "callouts": {
+      "rule": [
+        11,
+        78,
+        116
+      ],
+      "example": [
+        116,
+        74,
+        11
+      ],
+      "important": [
+        25,
+        116,
+        11
+      ],
+      "tip": [
+        116,
+        32,
+        11
+      ],
+      "warning": [
+        11,
+        76,
+        116
+      ],
+      "question": [
+        11,
+        111,
+        100
+      ],
+      "practice": [
+        11,
+        116,
+        57
+      ],
+      "success": [
+        116,
+        81,
+        11
+      ],
+      "info": [
+        11,
+        110,
+        111
+      ],
+      "note": [
+        93,
+        11,
+        116
+      ],
+      "quote": [
+        25,
+        116,
+        11
+      ],
+      "abstract": [
+        116,
+        74,
+        11
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        244,
+        240,
+        250
+      ],
+      "example": [
+        250,
+        240,
+        250
+      ],
+      "important": [
+        250,
+        240,
+        245
+      ],
+      "tip": [
+        250,
+        240,
+        240
+      ],
+      "warning": [
+        250,
+        245,
+        240
+      ],
+      "question": [
+        249,
+        250,
+        240
+      ],
+      "practice": [
+        244,
+        250,
+        240
+      ],
+      "success": [
+        240,
+        250,
+        241
+      ],
+      "info": [
+        240,
+        250,
+        246
+      ],
+      "note": [
+        240,
+        249,
+        250
+      ],
+      "quote": [
+        240,
+        243,
+        250
+      ],
+      "abstract": [
+        241,
+        240,
+        250
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        37,
+        30,
+        51
+      ],
+      "example": [
+        37,
+        30,
+        51
+      ],
+      "important": [
+        37,
+        30,
+        51
+      ],
+      "tip": [
+        37,
+        30,
+        51
+      ],
+      "warning": [
+        37,
+        30,
+        51
+      ],
+      "question": [
+        37,
+        30,
+        51
+      ],
+      "practice": [
+        37,
+        30,
+        51
+      ],
+      "success": [
+        37,
+        30,
+        51
+      ],
+      "info": [
+        37,
+        30,
+        51
+      ],
+      "note": [
+        37,
+        30,
+        51
+      ],
+      "quote": [
+        37,
+        30,
+        51
+      ],
+      "abstract": [
+        37,
+        30,
+        51
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        11,
+        78,
+        116
+      ],
+      "example": [
+        116,
+        74,
+        11
+      ],
+      "important": [
+        25,
+        116,
+        11
+      ],
+      "tip": [
+        116,
+        32,
+        11
+      ],
+      "warning": [
+        11,
+        76,
+        116
+      ],
+      "question": [
+        11,
+        111,
+        100
+      ],
+      "practice": [
+        11,
+        116,
+        57
+      ],
+      "success": [
+        116,
+        81,
+        11
+      ],
+      "info": [
+        11,
+        110,
+        111
+      ],
+      "note": [
+        93,
+        11,
+        116
+      ],
+      "quote": [
+        25,
+        116,
+        11
+      ],
+      "abstract": [
+        116,
+        74,
+        11
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 10
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.5,
+        "radius": 12
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.5,
+        "radius": 8
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.5,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 12
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 14
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "note": {
+        "preset": "left",
+        "width": 1.5,
+        "radius": 10
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 12
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 1.5,
+        "radius": 14
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-cosmic-fantasy-33-celestial-blossom",
+    "name": "Celestial Blossom — космический фон",
+    "label": "Celestial Blossom — космический фон",
+    "group": "Cosmic Fantasy",
+    "light": "linear-gradient(152deg, #F8DDE2 0%, #F9E2D4 34%, #F4DCEF 68%, #F8EBCB 100%)",
+    "dark": "linear-gradient(152deg, #F8DDE2 0%, #F9E2D4 34%, #F4DCEF 68%, #F8EBCB 100%)",
+    "textColor": "#211B31",
+    "darkTextColor": "#211B31"
+  },
+  "blockStyle": {
+    "id": "user-blocks-cosmic-fantasy-33-celestial-blossom",
+    "name": "Celestial Blossom — учебные блоки",
+    "description": "Согласованные карточки и Callout для Celestial Blossom.",
+    "category": "Cosmic Fantasy",
+    "base": "soft",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        },
+        "dark": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        }
+      },
+      "tip": {
+        "light": {
+          "borderRadius": 15
+        },
+        "dark": {
+          "borderRadius": 15
+        }
+      },
+      "warning": {
+        "light": {
+          "borderWidth": 2
+        },
+        "dark": {
+          "borderWidth": 2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success"
+    ]
+  }
+}

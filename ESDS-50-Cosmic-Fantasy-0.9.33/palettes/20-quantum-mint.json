@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "cosmic-fantasy-20-quantum-mint",
+    "name": "Quantum Mint",
+    "mood": "Квантовая мята",
+    "description": "Космическая фантазийная палитра Quantum Mint: индивидуальный линейный градиентный фон, контрастные семантические роли и согласованные учебные блоки.",
+    "category": "Cosmic Fantasy",
+    "source": "user",
+    "swatches": [
+      "#0C303A",
+      "#135A5A",
+      "#1C5D49",
+      "#2D2A62",
+      "#f8b5ca"
+    ],
+    "defaultBackground": "bg-custom-cosmic-fantasy-20-quantum-mint",
+    "defaultBlocks": "user-blocks-cosmic-fantasy-20-quantum-mint",
+    "roles": {
+      "en": "#f8b5ca",
+      "letter": "#f7b0e9",
+      "ipa": "#a2f6ef",
+      "translation": "#a2f6cd",
+      "term": "#e7b5f8",
+      "definition": "#edf6a2",
+      "focus": "#c9bef9",
+      "secondary": "#f8b5c9",
+      "soft": "#a2f6f4",
+      "heading": "#f7b0df",
+      "ink": "#FFF9FF"
+    },
+    "callouts": {
+      "rule": [
+        248,
+        181,
+        202
+      ],
+      "example": [
+        162,
+        246,
+        239
+      ],
+      "important": [
+        201,
+        190,
+        249
+      ],
+      "tip": [
+        162,
+        246,
+        205
+      ],
+      "warning": [
+        248,
+        181,
+        201
+      ],
+      "question": [
+        247,
+        176,
+        233
+      ],
+      "practice": [
+        231,
+        181,
+        248
+      ],
+      "success": [
+        162,
+        246,
+        244
+      ],
+      "info": [
+        247,
+        176,
+        223
+      ],
+      "note": [
+        237,
+        246,
+        162
+      ],
+      "quote": [
+        201,
+        190,
+        249
+      ],
+      "abstract": [
+        162,
+        246,
+        239
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        250,
+        243,
+        240
+      ],
+      "example": [
+        250,
+        248,
+        240
+      ],
+      "important": [
+        246,
+        250,
+        240
+      ],
+      "tip": [
+        241,
+        250,
+        240
+      ],
+      "warning": [
+        240,
+        250,
+        244
+      ],
+      "question": [
+        240,
+        250,
+        249
+      ],
+      "practice": [
+        240,
+        245,
+        250
+      ],
+      "success": [
+        240,
+        240,
+        250
+      ],
+      "info": [
+        245,
+        240,
+        250
+      ],
+      "note": [
+        250,
+        240,
+        250
+      ],
+      "quote": [
+        250,
+        240,
+        245
+      ],
+      "abstract": [
+        250,
+        240,
+        240
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        37,
+        30,
+        51
+      ],
+      "example": [
+        37,
+        30,
+        51
+      ],
+      "important": [
+        37,
+        30,
+        51
+      ],
+      "tip": [
+        37,
+        30,
+        51
+      ],
+      "warning": [
+        37,
+        30,
+        51
+      ],
+      "question": [
+        37,
+        30,
+        51
+      ],
+      "practice": [
+        37,
+        30,
+        51
+      ],
+      "success": [
+        37,
+        30,
+        51
+      ],
+      "info": [
+        37,
+        30,
+        51
+      ],
+      "note": [
+        37,
+        30,
+        51
+      ],
+      "quote": [
+        37,
+        30,
+        51
+      ],
+      "abstract": [
+        37,
+        30,
+        51
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        248,
+        181,
+        202
+      ],
+      "example": [
+        162,
+        246,
+        239
+      ],
+      "important": [
+        201,
+        190,
+        249
+      ],
+      "tip": [
+        162,
+        246,
+        205
+      ],
+      "warning": [
+        248,
+        181,
+        201
+      ],
+      "question": [
+        247,
+        176,
+        233
+      ],
+      "practice": [
+        231,
+        181,
+        248
+      ],
+      "success": [
+        162,
+        246,
+        244
+      ],
+      "info": [
+        247,
+        176,
+        223
+      ],
+      "note": [
+        237,
+        246,
+        162
+      ],
+      "quote": [
+        201,
+        190,
+        249
+      ],
+      "abstract": [
+        162,
+        246,
+        239
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 10
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.5,
+        "radius": 12
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.5,
+        "radius": 8
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.5,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 12
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 14
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "note": {
+        "preset": "left",
+        "width": 1.5,
+        "radius": 10
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 12
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 1.5,
+        "radius": 14
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-cosmic-fantasy-20-quantum-mint",
+    "name": "Quantum Mint — космический фон",
+    "label": "Quantum Mint — космический фон",
+    "group": "Cosmic Fantasy",
+    "light": "linear-gradient(145deg, #0C303A 0%, #135A5A 34%, #1C5D49 68%, #2D2A62 100%)",
+    "dark": "linear-gradient(145deg, #0C303A 0%, #135A5A 34%, #1C5D49 68%, #2D2A62 100%)",
+    "textColor": "#FFF9FF",
+    "darkTextColor": "#FFF9FF"
+  },
+  "blockStyle": {
+    "id": "user-blocks-cosmic-fantasy-20-quantum-mint",
+    "name": "Quantum Mint — учебные блоки",
+    "description": "Согласованные карточки и Callout для Quantum Mint.",
+    "category": "Cosmic Fantasy",
+    "base": "soft",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        },
+        "dark": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        }
+      },
+      "tip": {
+        "light": {
+          "borderRadius": 15
+        },
+        "dark": {
+          "borderRadius": 15
+        }
+      },
+      "warning": {
+        "light": {
+          "borderWidth": 2
+        },
+        "dark": {
+          "borderWidth": 2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success"
+    ]
+  }
+}

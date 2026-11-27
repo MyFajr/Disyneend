@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "cosmic-fantasy-07-golden-quasar",
+    "name": "Golden Quasar",
+    "mood": "Золотой квазар",
+    "description": "Космическая фантазийная палитра Golden Quasar: индивидуальный радиальный градиентный фон, контрастные семантические роли и согласованные учебные блоки.",
+    "category": "Cosmic Fantasy",
+    "source": "user",
+    "swatches": [
+      "#382015",
+      "#71401B",
+      "#765321",
+      "#3D2149",
+      "#a2f6a2"
+    ],
+    "defaultBackground": "bg-custom-cosmic-fantasy-07-golden-quasar",
+    "defaultBlocks": "user-blocks-cosmic-fantasy-07-golden-quasar",
+    "roles": {
+      "en": "#a2f6a2",
+      "letter": "#cbf6a2",
+      "ipa": "#f9c3ec",
+      "translation": "#f0c3f9",
+      "term": "#f0f6a2",
+      "definition": "#abd7f7",
+      "focus": "#f6cca2",
+      "secondary": "#a2f6a4",
+      "soft": "#f9c3e9",
+      "heading": "#bff6a2",
+      "ink": "#FFF9FF"
+    },
+    "callouts": {
+      "rule": [
+        162,
+        246,
+        162
+      ],
+      "example": [
+        249,
+        195,
+        236
+      ],
+      "important": [
+        246,
+        204,
+        162
+      ],
+      "tip": [
+        240,
+        195,
+        249
+      ],
+      "warning": [
+        162,
+        246,
+        164
+      ],
+      "question": [
+        203,
+        246,
+        162
+      ],
+      "practice": [
+        240,
+        246,
+        162
+      ],
+      "success": [
+        249,
+        195,
+        233
+      ],
+      "info": [
+        191,
+        246,
+        162
+      ],
+      "note": [
+        171,
+        215,
+        247
+      ],
+      "quote": [
+        246,
+        204,
+        162
+      ],
+      "abstract": [
+        249,
+        195,
+        236
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        240,
+        250,
+        242
+      ],
+      "example": [
+        240,
+        250,
+        247
+      ],
+      "important": [
+        240,
+        247,
+        250
+      ],
+      "tip": [
+        240,
+        242,
+        250
+      ],
+      "warning": [
+        243,
+        240,
+        250
+      ],
+      "question": [
+        248,
+        240,
+        250
+      ],
+      "practice": [
+        250,
+        240,
+        246
+      ],
+      "success": [
+        250,
+        240,
+        241
+      ],
+      "info": [
+        250,
+        243,
+        240
+      ],
+      "note": [
+        250,
+        249,
+        240
+      ],
+      "quote": [
+        246,
+        250,
+        240
+      ],
+      "abstract": [
+        241,
+        250,
+        240
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        37,
+        30,
+        51
+      ],
+      "example": [
+        37,
+        30,
+        51
+      ],
+      "important": [
+        37,
+        30,
+        51
+      ],
+      "tip": [
+        37,
+        30,
+        51
+      ],
+      "warning": [
+        37,
+        30,
+        51
+      ],
+      "question": [
+        37,
+        30,
+        51
+      ],
+      "practice": [
+        37,
+        30,
+        51
+      ],
+      "success": [
+        37,
+        30,
+        51
+      ],
+      "info": [
+        37,
+        30,
+        51
+      ],
+      "note": [
+        37,
+        30,
+        51
+      ],
+      "quote": [
+        37,
+        30,
+        51
+      ],
+      "abstract": [
+        37,
+        30,
+        51
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        162,
+        246,
+        162
+      ],
+      "example": [
+        249,
+        195,
+        236
+      ],
+      "important": [
+        246,
+        204,
+        162
+      ],
+      "tip": [
+        240,
+        195,
+        249
+      ],
+      "warning": [
+        162,
+        246,
+        164
+      ],
+      "question": [
+        203,
+        246,
+        162
+      ],
+      "practice": [
+        240,
+        246,
+        162
+      ],
+      "success": [
+        249,
+        195,
+        233
+      ],
+      "info": [
+        191,
+        246,
+        162
+      ],
+      "note": [
+        171,
+        215,
+        247
+      ],
+      "quote": [
+        246,
+        204,
+        162
+      ],
+      "abstract": [
+        249,
+        195,
+        236
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 10
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.5,
+        "radius": 12
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.5,
+        "radius": 8
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.5,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 12
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 14
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "note": {
+        "preset": "left",
+        "width": 1.5,
+        "radius": 10
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 12
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 1.5,
+        "radius": 14
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-cosmic-fantasy-07-golden-quasar",
+    "name": "Golden Quasar — космический фон",
+    "label": "Golden Quasar — космический фон",
+    "group": "Cosmic Fantasy",
+    "light": "radial-gradient(ellipse at 30% 75%, #382015 0%, #71401B 38%, #765321 72%, #3D2149 100%)",
+    "dark": "radial-gradient(ellipse at 30% 75%, #382015 0%, #71401B 38%, #765321 72%, #3D2149 100%)",
+    "textColor": "#FFF9FF",
+    "darkTextColor": "#FFF9FF"
+  },
+  "blockStyle": {
+    "id": "user-blocks-cosmic-fantasy-07-golden-quasar",
+    "name": "Golden Quasar — учебные блоки",
+    "description": "Согласованные карточки и Callout для Golden Quasar.",
+    "category": "Cosmic Fantasy",
+    "base": "soft",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        },
+        "dark": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        }
+      },
+      "tip": {
+        "light": {
+          "borderRadius": 15
+        },
+        "dark": {
+          "borderRadius": 15
+        }
+      },
+      "warning": {
+        "light": {
+          "borderWidth": 2
+        },
+        "dark": {
+          "borderWidth": 2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success"
+    ]
+  }
+}

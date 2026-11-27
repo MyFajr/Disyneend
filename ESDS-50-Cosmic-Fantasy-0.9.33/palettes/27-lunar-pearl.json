@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "cosmic-fantasy-27-lunar-pearl",
+    "name": "Lunar Pearl",
+    "mood": "Лунный жемчуг",
+    "description": "Космическая фантазийная палитра Lunar Pearl: индивидуальный радиальный градиентный фон, контрастные семантические роли и согласованные учебные блоки.",
+    "category": "Cosmic Fantasy",
+    "source": "user",
+    "swatches": [
+      "#F4F0E8",
+      "#DCE5F0",
+      "#E9DDF7",
+      "#D6E8E9",
+      "#2c6f0b"
+    ],
+    "defaultBackground": "bg-custom-cosmic-fantasy-27-lunar-pearl",
+    "defaultBlocks": "user-blocks-cosmic-fantasy-27-lunar-pearl",
+    "roles": {
+      "en": "#2c6f0b",
+      "letter": "#596b0b",
+      "ipa": "#6a0b74",
+      "translation": "#400b74",
+      "term": "#74580b",
+      "definition": "#0b6b74",
+      "focus": "#741d0b",
+      "secondary": "#2b6f0b",
+      "soft": "#710b74",
+      "heading": "#4c6b0b",
+      "ink": "#211B31"
+    },
+    "callouts": {
+      "rule": [
+        44,
+        111,
+        11
+      ],
+      "example": [
+        106,
+        11,
+        116
+      ],
+      "important": [
+        116,
+        29,
+        11
+      ],
+      "tip": [
+        64,
+        11,
+        116
+      ],
+      "warning": [
+        43,
+        111,
+        11
+      ],
+      "question": [
+        89,
+        107,
+        11
+      ],
+      "practice": [
+        116,
+        88,
+        11
+      ],
+      "success": [
+        113,
+        11,
+        116
+      ],
+      "info": [
+        76,
+        107,
+        11
+      ],
+      "note": [
+        11,
+        107,
+        116
+      ],
+      "quote": [
+        116,
+        29,
+        11
+      ],
+      "abstract": [
+        106,
+        11,
+        116
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        240,
+        250,
+        245
+      ],
+      "example": [
+        240,
+        249,
+        250
+      ],
+      "important": [
+        240,
+        244,
+        250
+      ],
+      "tip": [
+        241,
+        240,
+        250
+      ],
+      "warning": [
+        246,
+        240,
+        250
+      ],
+      "question": [
+        250,
+        240,
+        248
+      ],
+      "practice": [
+        250,
+        240,
+        243
+      ],
+      "success": [
+        250,
+        242,
+        240
+      ],
+      "info": [
+        250,
+        247,
+        240
+      ],
+      "note": [
+        248,
+        250,
+        240
+      ],
+      "quote": [
+        243,
+        250,
+        240
+      ],
+      "abstract": [
+        240,
+        250,
+        242
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        37,
+        30,
+        51
+      ],
+      "example": [
+        37,
+        30,
+        51
+      ],
+      "important": [
+        37,
+        30,
+        51
+      ],
+      "tip": [
+        37,
+        30,
+        51
+      ],
+      "warning": [
+        37,
+        30,
+        51
+      ],
+      "question": [
+        37,
+        30,
+        51
+      ],
+      "practice": [
+        37,
+        30,
+        51
+      ],
+      "success": [
+        37,
+        30,
+        51
+      ],
+      "info": [
+        37,
+        30,
+        51
+      ],
+      "note": [
+        37,
+        30,
+        51
+      ],
+      "quote": [
+        37,
+        30,
+        51
+      ],
+      "abstract": [
+        37,
+        30,
+        51
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        44,
+        111,
+        11
+      ],
+      "example": [
+        106,
+        11,
+        116
+      ],
+      "important": [
+        116,
+        29,
+        11
+      ],
+      "tip": [
+        64,
+        11,
+        116
+      ],
+      "warning": [
+        43,
+        111,
+        11
+      ],
+      "question": [
+        89,
+        107,
+        11
+      ],
+      "practice": [
+        116,
+        88,
+        11
+      ],
+      "success": [
+        113,
+        11,
+        116
+      ],
+      "info": [
+        76,
+        107,
+        11
+      ],
+      "note": [
+        11,
+        107,
+        116
+      ],
+      "quote": [
+        116,
+        29,
+        11
+      ],
+      "abstract": [
+        106,
+        11,
+        116
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 10
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.5,
+        "radius": 12
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.5,
+        "radius": 8
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.5,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 12
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 14
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "note": {
+        "preset": "left",
+        "width": 1.5,
+        "radius": 10
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 12
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 1.5,
+        "radius": 14
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-cosmic-fantasy-27-lunar-pearl",
+    "name": "Lunar Pearl — космический фон",
+    "label": "Lunar Pearl — космический фон",
+    "group": "Cosmic Fantasy",
+    "light": "radial-gradient(ellipse at 30% 75%, #F4F0E8 0%, #DCE5F0 38%, #E9DDF7 72%, #D6E8E9 100%)",
+    "dark": "radial-gradient(ellipse at 30% 75%, #F4F0E8 0%, #DCE5F0 38%, #E9DDF7 72%, #D6E8E9 100%)",
+    "textColor": "#211B31",
+    "darkTextColor": "#211B31"
+  },
+  "blockStyle": {
+    "id": "user-blocks-cosmic-fantasy-27-lunar-pearl",
+    "name": "Lunar Pearl — учебные блоки",
+    "description": "Согласованные карточки и Callout для Lunar Pearl.",
+    "category": "Cosmic Fantasy",
+    "base": "soft",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        },
+        "dark": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        }
+      },
+      "tip": {
+        "light": {
+          "borderRadius": 15
+        },
+        "dark": {
+          "borderRadius": 15
+        }
+      },
+      "warning": {
+        "light": {
+          "borderWidth": 2
+        },
+        "dark": {
+          "borderWidth": 2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success"
+    ]
+  }
+}

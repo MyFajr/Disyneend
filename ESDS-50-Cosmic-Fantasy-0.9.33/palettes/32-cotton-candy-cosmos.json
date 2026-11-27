@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "cosmic-fantasy-32-cotton-candy-cosmos",
+    "name": "Cotton Candy Cosmos",
+    "mood": "Космическая сладкая вата",
+    "description": "Космическая фантазийная палитра Cotton Candy Cosmos: индивидуальный линейный градиентный фон, контрастные семантические роли и согласованные учебные блоки.",
+    "category": "Cosmic Fantasy",
+    "source": "user",
+    "swatches": [
+      "#F9DDF2",
+      "#E9DDFC",
+      "#D8F1FB",
+      "#FFE4E9",
+      "#0b6b74"
+    ],
+    "defaultBackground": "bg-custom-cosmic-fantasy-32-cotton-candy-cosmos",
+    "defaultBlocks": "user-blocks-cosmic-fantasy-32-cotton-candy-cosmos",
+    "roles": {
+      "en": "#0b6b74",
+      "letter": "#0b6f47",
+      "ipa": "#742d0b",
+      "translation": "#740b14",
+      "term": "#0b741b",
+      "definition": "#400b74",
+      "focus": "#356f0b",
+      "secondary": "#0b6a74",
+      "soft": "#74340b",
+      "heading": "#0b6f55",
+      "ink": "#211B31"
+    },
+    "callouts": {
+      "rule": [
+        11,
+        107,
+        116
+      ],
+      "example": [
+        116,
+        45,
+        11
+      ],
+      "important": [
+        53,
+        111,
+        11
+      ],
+      "tip": [
+        116,
+        11,
+        20
+      ],
+      "warning": [
+        11,
+        106,
+        116
+      ],
+      "question": [
+        11,
+        111,
+        71
+      ],
+      "practice": [
+        11,
+        116,
+        27
+      ],
+      "success": [
+        116,
+        52,
+        11
+      ],
+      "info": [
+        11,
+        111,
+        85
+      ],
+      "note": [
+        64,
+        11,
+        116
+      ],
+      "quote": [
+        53,
+        111,
+        11
+      ],
+      "abstract": [
+        116,
+        45,
+        11
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        241,
+        240,
+        250
+      ],
+      "example": [
+        246,
+        240,
+        250
+      ],
+      "important": [
+        250,
+        240,
+        248
+      ],
+      "tip": [
+        250,
+        240,
+        243
+      ],
+      "warning": [
+        250,
+        242,
+        240
+      ],
+      "question": [
+        250,
+        247,
+        240
+      ],
+      "practice": [
+        247,
+        250,
+        240
+      ],
+      "success": [
+        242,
+        250,
+        240
+      ],
+      "info": [
+        240,
+        250,
+        243
+      ],
+      "note": [
+        240,
+        250,
+        248
+      ],
+      "quote": [
+        240,
+        247,
+        250
+      ],
+      "abstract": [
+        240,
+        242,
+        250
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        37,
+        30,
+        51
+      ],
+      "example": [
+        37,
+        30,
+        51
+      ],
+      "important": [
+        37,
+        30,
+        51
+      ],
+      "tip": [
+        37,
+        30,
+        51
+      ],
+      "warning": [
+        37,
+        30,
+        51
+      ],
+      "question": [
+        37,
+        30,
+        51
+      ],
+      "practice": [
+        37,
+        30,
+        51
+      ],
+      "success": [
+        37,
+        30,
+        51
+      ],
+      "info": [
+        37,
+        30,
+        51
+      ],
+      "note": [
+        37,
+        30,
+        51
+      ],
+      "quote": [
+        37,
+        30,
+        51
+      ],
+      "abstract": [
+        37,
+        30,
+        51
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        11,
+        107,
+        116
+      ],
+      "example": [
+        116,
+        45,
+        11
+      ],
+      "important": [
+        53,
+        111,
+        11
+      ],
+      "tip": [
+        116,
+        11,
+        20
+      ],
+      "warning": [
+        11,
+        106,
+        116
+      ],
+      "question": [
+        11,
+        111,
+        71
+      ],
+      "practice": [
+        11,
+        116,
+        27
+      ],
+      "success": [
+        116,
+        52,
+        11
+      ],
+      "info": [
+        11,
+        111,
+        85
+      ],
+      "note": [
+        64,
+        11,
+        116
+      ],
+      "quote": [
+        53,
+        111,
+        11
+      ],
+      "abstract": [
+        116,
+        45,
+        11
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 10
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.5,
+        "radius": 12
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.5,
+        "radius": 8
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.5,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 12
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 14
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "note": {
+        "preset": "left",
+        "width": 1.5,
+        "radius": 10
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 12
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 1.5,
+        "radius": 14
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-cosmic-fantasy-32-cotton-candy-cosmos",
+    "name": "Cotton Candy Cosmos — космический фон",
+    "label": "Cotton Candy Cosmos — космический фон",
+    "group": "Cosmic Fantasy",
+    "light": "linear-gradient(135deg, #F9DDF2 0%, #E9DDFC 34%, #D8F1FB 68%, #FFE4E9 100%)",
+    "dark": "linear-gradient(135deg, #F9DDF2 0%, #E9DDFC 34%, #D8F1FB 68%, #FFE4E9 100%)",
+    "textColor": "#211B31",
+    "darkTextColor": "#211B31"
+  },
+  "blockStyle": {
+    "id": "user-blocks-cosmic-fantasy-32-cotton-candy-cosmos",
+    "name": "Cotton Candy Cosmos — учебные блоки",
+    "description": "Согласованные карточки и Callout для Cotton Candy Cosmos.",
+    "category": "Cosmic Fantasy",
+    "base": "soft",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        },
+        "dark": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        }
+      },
+      "tip": {
+        "light": {
+          "borderRadius": 15
+        },
+        "dark": {
+          "borderRadius": 15
+        }
+      },
+      "warning": {
+        "light": {
+          "borderWidth": 2
+        },
+        "dark": {
+          "borderWidth": 2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success"
+    ]
+  }
+}

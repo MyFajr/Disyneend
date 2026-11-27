@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "cosmic-fantasy-47-turquoise-dream",
+    "name": "Turquoise Dream",
+    "mood": "Бирюзовая мечта",
+    "description": "Космическая фантазийная палитра Turquoise Dream: индивидуальный радиальный градиентный фон, контрастные семантические роли и согласованные учебные блоки.",
+    "category": "Cosmic Fantasy",
+    "source": "user",
+    "swatches": [
+      "#D6F1EE",
+      "#D9F2F7",
+      "#DFF1E2",
+      "#E4E1FA",
+      "#4e6f0b"
+    ],
+    "defaultBackground": "bg-custom-cosmic-fantasy-47-turquoise-dream",
+    "defaultBlocks": "user-blocks-cosmic-fantasy-47-turquoise-dream",
+    "roles": {
+      "en": "#4e6f0b",
+      "letter": "#74640b",
+      "ipa": "#470b74",
+      "translation": "#1d0b74",
+      "term": "#74350b",
+      "definition": "#0b6f56",
+      "focus": "#740b1d",
+      "secondary": "#4c6f0b",
+      "soft": "#4e0b74",
+      "heading": "#6b690b",
+      "ink": "#211B31"
+    },
+    "callouts": {
+      "rule": [
+        78,
+        111,
+        11
+      ],
+      "example": [
+        71,
+        11,
+        116
+      ],
+      "important": [
+        116,
+        11,
+        29
+      ],
+      "tip": [
+        29,
+        11,
+        116
+      ],
+      "warning": [
+        76,
+        111,
+        11
+      ],
+      "question": [
+        116,
+        100,
+        11
+      ],
+      "practice": [
+        116,
+        53,
+        11
+      ],
+      "success": [
+        78,
+        11,
+        116
+      ],
+      "info": [
+        107,
+        105,
+        11
+      ],
+      "note": [
+        11,
+        111,
+        86
+      ],
+      "quote": [
+        116,
+        11,
+        29
+      ],
+      "abstract": [
+        71,
+        11,
+        116
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        240,
+        250,
+        249
+      ],
+      "example": [
+        240,
+        246,
+        250
+      ],
+      "important": [
+        240,
+        241,
+        250
+      ],
+      "tip": [
+        244,
+        240,
+        250
+      ],
+      "warning": [
+        249,
+        240,
+        250
+      ],
+      "question": [
+        250,
+        240,
+        245
+      ],
+      "practice": [
+        250,
+        240,
+        240
+      ],
+      "success": [
+        250,
+        245,
+        240
+      ],
+      "info": [
+        249,
+        250,
+        240
+      ],
+      "note": [
+        244,
+        250,
+        240
+      ],
+      "quote": [
+        240,
+        250,
+        241
+      ],
+      "abstract": [
+        240,
+        250,
+        246
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        37,
+        30,
+        51
+      ],
+      "example": [
+        37,
+        30,
+        51
+      ],
+      "important": [
+        37,
+        30,
+        51
+      ],
+      "tip": [
+        37,
+        30,
+        51
+      ],
+      "warning": [
+        37,
+        30,
+        51
+      ],
+      "question": [
+        37,
+        30,
+        51
+      ],
+      "practice": [
+        37,
+        30,
+        51
+      ],
+      "success": [
+        37,
+        30,
+        51
+      ],
+      "info": [
+        37,
+        30,
+        51
+      ],
+      "note": [
+        37,
+        30,
+        51
+      ],
+      "quote": [
+        37,
+        30,
+        51
+      ],
+      "abstract": [
+        37,
+        30,
+        51
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        78,
+        111,
+        11
+      ],
+      "example": [
+        71,
+        11,
+        116
+      ],
+      "important": [
+        116,
+        11,
+        29
+      ],
+      "tip": [
+        29,
+        11,
+        116
+      ],
+      "warning": [
+        76,
+        111,
+        11
+      ],
+      "question": [
+        116,
+        100,
+        11
+      ],
+      "practice": [
+        116,
+        53,
+        11
+      ],
+      "success": [
+        78,
+        11,
+        116
+      ],
+      "info": [
+        107,
+        105,
+        11
+      ],
+      "note": [
+        11,
+        111,
+        86
+      ],
+      "quote": [
+        116,
+        11,
+        29
+      ],
+      "abstract": [
+        71,
+        11,
+        116
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 10
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.5,
+        "radius": 12
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.5,
+        "radius": 8
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.5,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 12
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 14
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "note": {
+        "preset": "left",
+        "width": 1.5,
+        "radius": 10
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 12
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 1.5,
+        "radius": 14
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-cosmic-fantasy-47-turquoise-dream",
+    "name": "Turquoise Dream — космический фон",
+    "label": "Turquoise Dream — космический фон",
+    "group": "Cosmic Fantasy",
+    "light": "radial-gradient(ellipse at 30% 75%, #D6F1EE 0%, #D9F2F7 38%, #DFF1E2 72%, #E4E1FA 100%)",
+    "dark": "radial-gradient(ellipse at 30% 75%, #D6F1EE 0%, #D9F2F7 38%, #DFF1E2 72%, #E4E1FA 100%)",
+    "textColor": "#211B31",
+    "darkTextColor": "#211B31"
+  },
+  "blockStyle": {
+    "id": "user-blocks-cosmic-fantasy-47-turquoise-dream",
+    "name": "Turquoise Dream — учебные блоки",
+    "description": "Согласованные карточки и Callout для Turquoise Dream.",
+    "category": "Cosmic Fantasy",
+    "base": "soft",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        },
+        "dark": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        }
+      },
+      "tip": {
+        "light": {
+          "borderRadius": 15
+        },
+        "dark": {
+          "borderRadius": 15
+        }
+      },
+      "warning": {
+        "light": {
+          "borderWidth": 2
+        },
+        "dark": {
+          "borderWidth": 2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success"
+    ]
+  }
+}

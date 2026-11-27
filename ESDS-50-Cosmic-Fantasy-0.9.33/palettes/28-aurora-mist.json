@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "cosmic-fantasy-28-aurora-mist",
+    "name": "Aurora Mist",
+    "mood": "Туманное сияние",
+    "description": "Космическая фантазийная палитра Aurora Mist: индивидуальный линейный градиентный фон, контрастные семантические роли и согласованные учебные блоки.",
+    "category": "Cosmic Fantasy",
+    "source": "user",
+    "swatches": [
+      "#DFF4E9",
+      "#DCEFFB",
+      "#EDE2FA",
+      "#D5F2F1",
+      "#11740b"
+    ],
+    "defaultBackground": "bg-custom-cosmic-fantasy-28-aurora-mist",
+    "defaultBlocks": "user-blocks-cosmic-fantasy-28-aurora-mist",
+    "roles": {
+      "en": "#11740b",
+      "letter": "#43740b",
+      "ipa": "#740b61",
+      "translation": "#5d0b74",
+      "term": "#696b0b",
+      "definition": "#0b4e74",
+      "focus": "#743b0b",
+      "secondary": "#0f740b",
+      "soft": "#740b5a",
+      "heading": "#35740b",
+      "ink": "#211B31"
+    },
+    "callouts": {
+      "rule": [
+        17,
+        116,
+        11
+      ],
+      "example": [
+        116,
+        11,
+        97
+      ],
+      "important": [
+        116,
+        59,
+        11
+      ],
+      "tip": [
+        93,
+        11,
+        116
+      ],
+      "warning": [
+        15,
+        116,
+        11
+      ],
+      "question": [
+        67,
+        116,
+        11
+      ],
+      "practice": [
+        105,
+        107,
+        11
+      ],
+      "success": [
+        116,
+        11,
+        90
+      ],
+      "info": [
+        53,
+        116,
+        11
+      ],
+      "note": [
+        11,
+        78,
+        116
+      ],
+      "quote": [
+        116,
+        59,
+        11
+      ],
+      "abstract": [
+        116,
+        11,
+        97
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        240,
+        250,
+        249
+      ],
+      "example": [
+        240,
+        246,
+        250
+      ],
+      "important": [
+        240,
+        241,
+        250
+      ],
+      "tip": [
+        244,
+        240,
+        250
+      ],
+      "warning": [
+        249,
+        240,
+        250
+      ],
+      "question": [
+        250,
+        240,
+        245
+      ],
+      "practice": [
+        250,
+        240,
+        240
+      ],
+      "success": [
+        250,
+        245,
+        240
+      ],
+      "info": [
+        250,
+        250,
+        240
+      ],
+      "note": [
+        244,
+        250,
+        240
+      ],
+      "quote": [
+        240,
+        250,
+        240
+      ],
+      "abstract": [
+        240,
+        250,
+        245
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        37,
+        30,
+        51
+      ],
+      "example": [
+        37,
+        30,
+        51
+      ],
+      "important": [
+        37,
+        30,
+        51
+      ],
+      "tip": [
+        37,
+        30,
+        51
+      ],
+      "warning": [
+        37,
+        30,
+        51
+      ],
+      "question": [
+        37,
+        30,
+        51
+      ],
+      "practice": [
+        37,
+        30,
+        51
+      ],
+      "success": [
+        37,
+        30,
+        51
+      ],
+      "info": [
+        37,
+        30,
+        51
+      ],
+      "note": [
+        37,
+        30,
+        51
+      ],
+      "quote": [
+        37,
+        30,
+        51
+      ],
+      "abstract": [
+        37,
+        30,
+        51
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        17,
+        116,
+        11
+      ],
+      "example": [
+        116,
+        11,
+        97
+      ],
+      "important": [
+        116,
+        59,
+        11
+      ],
+      "tip": [
+        93,
+        11,
+        116
+      ],
+      "warning": [
+        15,
+        116,
+        11
+      ],
+      "question": [
+        67,
+        116,
+        11
+      ],
+      "practice": [
+        105,
+        107,
+        11
+      ],
+      "success": [
+        116,
+        11,
+        90
+      ],
+      "info": [
+        53,
+        116,
+        11
+      ],
+      "note": [
+        11,
+        78,
+        116
+      ],
+      "quote": [
+        116,
+        59,
+        11
+      ],
+      "abstract": [
+        116,
+        11,
+        97
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 10
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.5,
+        "radius": 12
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.5,
+        "radius": 8
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.5,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 12
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 14
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "note": {
+        "preset": "left",
+        "width": 1.5,
+        "radius": 10
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 12
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 1.5,
+        "radius": 14
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-cosmic-fantasy-28-aurora-mist",
+    "name": "Aurora Mist — космический фон",
+    "label": "Aurora Mist — космический фон",
+    "group": "Cosmic Fantasy",
+    "light": "linear-gradient(152deg, #DFF4E9 0%, #DCEFFB 34%, #EDE2FA 68%, #D5F2F1 100%)",
+    "dark": "linear-gradient(152deg, #DFF4E9 0%, #DCEFFB 34%, #EDE2FA 68%, #D5F2F1 100%)",
+    "textColor": "#211B31",
+    "darkTextColor": "#211B31"
+  },
+  "blockStyle": {
+    "id": "user-blocks-cosmic-fantasy-28-aurora-mist",
+    "name": "Aurora Mist — учебные блоки",
+    "description": "Согласованные карточки и Callout для Aurora Mist.",
+    "category": "Cosmic Fantasy",
+    "base": "soft",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        },
+        "dark": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        }
+      },
+      "tip": {
+        "light": {
+          "borderRadius": 15
+        },
+        "dark": {
+          "borderRadius": 15
+        }
+      },
+      "warning": {
+        "light": {
+          "borderWidth": 2
+        },
+        "dark": {
+          "borderWidth": 2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success"
+    ]
+  }
+}

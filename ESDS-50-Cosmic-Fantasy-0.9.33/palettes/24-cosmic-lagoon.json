@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "cosmic-fantasy-24-cosmic-lagoon",
+    "name": "Cosmic Lagoon",
+    "mood": "Космическая лагуна",
+    "description": "Космическая фантазийная палитра Cosmic Lagoon: индивидуальный линейный градиентный фон, контрастные семантические роли и согласованные учебные блоки.",
+    "category": "Cosmic Fantasy",
+    "source": "user",
+    "swatches": [
+      "#0C3344",
+      "#145D70",
+      "#1B4D83",
+      "#2D285D",
+      "#f6e6a2"
+    ],
+    "defaultBackground": "bg-custom-cosmic-fantasy-24-cosmic-lagoon",
+    "defaultBlocks": "user-blocks-cosmic-fantasy-24-cosmic-lagoon",
+    "roles": {
+      "en": "#f6e6a2",
+      "letter": "#f6bea2",
+      "ipa": "#cac7f9",
+      "translation": "#b5ccf8",
+      "term": "#f9bec5",
+      "definition": "#a2f6b6",
+      "focus": "#f8b9e4",
+      "secondary": "#f6e8a2",
+      "soft": "#cdc7f9",
+      "heading": "#f6c9a2",
+      "ink": "#FFF9FF"
+    },
+    "callouts": {
+      "rule": [
+        246,
+        230,
+        162
+      ],
+      "example": [
+        202,
+        199,
+        249
+      ],
+      "important": [
+        248,
+        185,
+        228
+      ],
+      "tip": [
+        181,
+        204,
+        248
+      ],
+      "warning": [
+        246,
+        232,
+        162
+      ],
+      "question": [
+        246,
+        190,
+        162
+      ],
+      "practice": [
+        249,
+        190,
+        197
+      ],
+      "success": [
+        205,
+        199,
+        249
+      ],
+      "info": [
+        246,
+        201,
+        162
+      ],
+      "note": [
+        162,
+        246,
+        182
+      ],
+      "quote": [
+        248,
+        185,
+        228
+      ],
+      "abstract": [
+        202,
+        199,
+        249
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        244,
+        250,
+        240
+      ],
+      "example": [
+        240,
+        250,
+        241
+      ],
+      "important": [
+        240,
+        250,
+        246
+      ],
+      "tip": [
+        240,
+        248,
+        250
+      ],
+      "warning": [
+        240,
+        243,
+        250
+      ],
+      "question": [
+        242,
+        240,
+        250
+      ],
+      "practice": [
+        247,
+        240,
+        250
+      ],
+      "success": [
+        250,
+        240,
+        247
+      ],
+      "info": [
+        250,
+        240,
+        242
+      ],
+      "note": [
+        250,
+        243,
+        240
+      ],
+      "quote": [
+        250,
+        248,
+        240
+      ],
+      "abstract": [
+        247,
+        250,
+        240
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        37,
+        30,
+        51
+      ],
+      "example": [
+        37,
+        30,
+        51
+      ],
+      "important": [
+        37,
+        30,
+        51
+      ],
+      "tip": [
+        37,
+        30,
+        51
+      ],
+      "warning": [
+        37,
+        30,
+        51
+      ],
+      "question": [
+        37,
+        30,
+        51
+      ],
+      "practice": [
+        37,
+        30,
+        51
+      ],
+      "success": [
+        37,
+        30,
+        51
+      ],
+      "info": [
+        37,
+        30,
+        51
+      ],
+      "note": [
+        37,
+        30,
+        51
+      ],
+      "quote": [
+        37,
+        30,
+        51
+      ],
+      "abstract": [
+        37,
+        30,
+        51
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        246,
+        230,
+        162
+      ],
+      "example": [
+        202,
+        199,
+        249
+      ],
+      "important": [
+        248,
+        185,
+        228
+      ],
+      "tip": [
+        181,
+        204,
+        248
+      ],
+      "warning": [
+        246,
+        232,
+        162
+      ],
+      "question": [
+        246,
+        190,
+        162
+      ],
+      "practice": [
+        249,
+        190,
+        197
+      ],
+      "success": [
+        205,
+        199,
+        249
+      ],
+      "info": [
+        246,
+        201,
+        162
+      ],
+      "note": [
+        162,
+        246,
+        182
+      ],
+      "quote": [
+        248,
+        185,
+        228
+      ],
+      "abstract": [
+        202,
+        199,
+        249
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 10
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.5,
+        "radius": 12
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.5,
+        "radius": 8
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.5,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 12
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 14
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "note": {
+        "preset": "left",
+        "width": 1.5,
+        "radius": 10
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 12
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 1.5,
+        "radius": 14
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-cosmic-fantasy-24-cosmic-lagoon",
+    "name": "Cosmic Lagoon — космический фон",
+    "label": "Cosmic Lagoon — космический фон",
+    "group": "Cosmic Fantasy",
+    "light": "linear-gradient(125deg, #0C3344 0%, #145D70 34%, #1B4D83 68%, #2D285D 100%)",
+    "dark": "linear-gradient(125deg, #0C3344 0%, #145D70 34%, #1B4D83 68%, #2D285D 100%)",
+    "textColor": "#FFF9FF",
+    "darkTextColor": "#FFF9FF"
+  },
+  "blockStyle": {
+    "id": "user-blocks-cosmic-fantasy-24-cosmic-lagoon",
+    "name": "Cosmic Lagoon — учебные блоки",
+    "description": "Согласованные карточки и Callout для Cosmic Lagoon.",
+    "category": "Cosmic Fantasy",
+    "base": "soft",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        },
+        "dark": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        }
+      },
+      "tip": {
+        "light": {
+          "borderRadius": 15
+        },
+        "dark": {
+          "borderRadius": 15
+        }
+      },
+      "warning": {
+        "light": {
+          "borderWidth": 2
+        },
+        "dark": {
+          "borderWidth": 2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success"
+    ]
+  }
+}

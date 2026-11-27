@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "cosmic-fantasy-37-lavender-supernova",
+    "name": "Lavender Supernova",
+    "mood": "Лавандовая сверхновая",
+    "description": "Космическая фантазийная палитра Lavender Supernova: индивидуальный линейный градиентный фон, контрастные семантические роли и согласованные учебные блоки.",
+    "category": "Cosmic Fantasy",
+    "source": "user",
+    "swatches": [
+      "#E6DDFB",
+      "#F3DDF1",
+      "#DDE6FA",
+      "#F7E4EA",
+      "#400b74"
+    ],
+    "defaultBackground": "bg-custom-cosmic-fantasy-37-lavender-supernova",
+    "defaultBlocks": "user-blocks-cosmic-fantasy-37-lavender-supernova",
+    "roles": {
+      "en": "#400b74",
+      "letter": "#0d0b74",
+      "ipa": "#266f0b",
+      "translation": "#4b6b0b",
+      "term": "#0b3974",
+      "definition": "#740b14",
+      "focus": "#0b6f6f",
+      "secondary": "#410b74",
+      "soft": "#20740b",
+      "heading": "#1b0b74",
+      "ink": "#211B31"
+    },
+    "callouts": {
+      "rule": [
+        64,
+        11,
+        116
+      ],
+      "example": [
+        38,
+        111,
+        11
+      ],
+      "important": [
+        11,
+        111,
+        111
+      ],
+      "tip": [
+        75,
+        107,
+        11
+      ],
+      "warning": [
+        65,
+        11,
+        116
+      ],
+      "question": [
+        13,
+        11,
+        116
+      ],
+      "practice": [
+        11,
+        57,
+        116
+      ],
+      "success": [
+        32,
+        116,
+        11
+      ],
+      "info": [
+        27,
+        11,
+        116
+      ],
+      "note": [
+        116,
+        11,
+        20
+      ],
+      "quote": [
+        11,
+        111,
+        111
+      ],
+      "abstract": [
+        38,
+        111,
+        11
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        250,
+        240,
+        243
+      ],
+      "example": [
+        250,
+        242,
+        240
+      ],
+      "important": [
+        250,
+        247,
+        240
+      ],
+      "tip": [
+        247,
+        250,
+        240
+      ],
+      "warning": [
+        242,
+        250,
+        240
+      ],
+      "question": [
+        240,
+        250,
+        243
+      ],
+      "practice": [
+        240,
+        250,
+        248
+      ],
+      "success": [
+        240,
+        246,
+        250
+      ],
+      "info": [
+        240,
+        241,
+        250
+      ],
+      "note": [
+        244,
+        240,
+        250
+      ],
+      "quote": [
+        249,
+        240,
+        250
+      ],
+      "abstract": [
+        250,
+        240,
+        246
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        37,
+        30,
+        51
+      ],
+      "example": [
+        37,
+        30,
+        51
+      ],
+      "important": [
+        37,
+        30,
+        51
+      ],
+      "tip": [
+        37,
+        30,
+        51
+      ],
+      "warning": [
+        37,
+        30,
+        51
+      ],
+      "question": [
+        37,
+        30,
+        51
+      ],
+      "practice": [
+        37,
+        30,
+        51
+      ],
+      "success": [
+        37,
+        30,
+        51
+      ],
+      "info": [
+        37,
+        30,
+        51
+      ],
+      "note": [
+        37,
+        30,
+        51
+      ],
+      "quote": [
+        37,
+        30,
+        51
+      ],
+      "abstract": [
+        37,
+        30,
+        51
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        64,
+        11,
+        116
+      ],
+      "example": [
+        38,
+        111,
+        11
+      ],
+      "important": [
+        11,
+        111,
+        111
+      ],
+      "tip": [
+        75,
+        107,
+        11
+      ],
+      "warning": [
+        65,
+        11,
+        116
+      ],
+      "question": [
+        13,
+        11,
+        116
+      ],
+      "practice": [
+        11,
+        57,
+        116
+      ],
+      "success": [
+        32,
+        116,
+        11
+      ],
+      "info": [
+        27,
+        11,
+        116
+      ],
+      "note": [
+        116,
+        11,
+        20
+      ],
+      "quote": [
+        11,
+        111,
+        111
+      ],
+      "abstract": [
+        38,
+        111,
+        11
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 10
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.5,
+        "radius": 12
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.5,
+        "radius": 8
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.5,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 12
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 14
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "note": {
+        "preset": "left",
+        "width": 1.5,
+        "radius": 10
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 12
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 1.5,
+        "radius": 14
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-cosmic-fantasy-37-lavender-supernova",
+    "name": "Lavender Supernova — космический фон",
+    "label": "Lavender Supernova — космический фон",
+    "group": "Cosmic Fantasy",
+    "light": "linear-gradient(135deg, #E6DDFB 0%, #F3DDF1 34%, #DDE6FA 68%, #F7E4EA 100%)",
+    "dark": "linear-gradient(135deg, #E6DDFB 0%, #F3DDF1 34%, #DDE6FA 68%, #F7E4EA 100%)",
+    "textColor": "#211B31",
+    "darkTextColor": "#211B31"
+  },
+  "blockStyle": {
+    "id": "user-blocks-cosmic-fantasy-37-lavender-supernova",
+    "name": "Lavender Supernova — учебные блоки",
+    "description": "Согласованные карточки и Callout для Lavender Supernova.",
+    "category": "Cosmic Fantasy",
+    "base": "soft",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        },
+        "dark": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        }
+      },
+      "tip": {
+        "light": {
+          "borderRadius": 15
+        },
+        "dark": {
+          "borderRadius": 15
+        }
+      },
+      "warning": {
+        "light": {
+          "borderWidth": 2
+        },
+        "dark": {
+          "borderWidth": 2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success"
+    ]
+  }
+}

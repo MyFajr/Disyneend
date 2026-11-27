@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "cosmic-fantasy-38-peach-nebula",
+    "name": "Peach Nebula",
+    "mood": "Персиковая туманность",
+    "description": "Космическая фантазийная палитра Peach Nebula: индивидуальный радиальный градиентный фон, контрастные семантические роли и согласованные учебные блоки.",
+    "category": "Cosmic Fantasy",
+    "source": "user",
+    "swatches": [
+      "#FFE2D2",
+      "#FAD8D1",
+      "#F7E6C8",
+      "#F1DDF3",
+      "#5d0b74"
+    ],
+    "defaultBackground": "bg-custom-cosmic-fantasy-38-peach-nebula",
+    "defaultBlocks": "user-blocks-cosmic-fantasy-38-peach-nebula",
+    "roles": {
+      "en": "#5d0b74",
+      "letter": "#2b0b74",
+      "ipa": "#0b6f0d",
+      "translation": "#316f0b",
+      "term": "#0b1b74",
+      "definition": "#74200b",
+      "focus": "#0b5674",
+      "secondary": "#5f0b74",
+      "soft": "#0b6f13",
+      "heading": "#390b74",
+      "ink": "#211B31"
+    },
+    "callouts": {
+      "rule": [
+        93,
+        11,
+        116
+      ],
+      "example": [
+        11,
+        111,
+        13
+      ],
+      "important": [
+        11,
+        86,
+        116
+      ],
+      "tip": [
+        49,
+        111,
+        11
+      ],
+      "warning": [
+        95,
+        11,
+        116
+      ],
+      "question": [
+        43,
+        11,
+        116
+      ],
+      "practice": [
+        11,
+        27,
+        116
+      ],
+      "success": [
+        11,
+        111,
+        19
+      ],
+      "info": [
+        57,
+        11,
+        116
+      ],
+      "note": [
+        116,
+        32,
+        11
+      ],
+      "quote": [
+        11,
+        86,
+        116
+      ],
+      "abstract": [
+        11,
+        111,
+        13
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        250,
+        240,
+        240
+      ],
+      "example": [
+        250,
+        245,
+        240
+      ],
+      "important": [
+        249,
+        250,
+        240
+      ],
+      "tip": [
+        244,
+        250,
+        240
+      ],
+      "warning": [
+        240,
+        250,
+        241
+      ],
+      "question": [
+        240,
+        250,
+        246
+      ],
+      "practice": [
+        240,
+        248,
+        250
+      ],
+      "success": [
+        240,
+        243,
+        250
+      ],
+      "info": [
+        242,
+        240,
+        250
+      ],
+      "note": [
+        247,
+        240,
+        250
+      ],
+      "quote": [
+        250,
+        240,
+        248
+      ],
+      "abstract": [
+        250,
+        240,
+        243
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        37,
+        30,
+        51
+      ],
+      "example": [
+        37,
+        30,
+        51
+      ],
+      "important": [
+        37,
+        30,
+        51
+      ],
+      "tip": [
+        37,
+        30,
+        51
+      ],
+      "warning": [
+        37,
+        30,
+        51
+      ],
+      "question": [
+        37,
+        30,
+        51
+      ],
+      "practice": [
+        37,
+        30,
+        51
+      ],
+      "success": [
+        37,
+        30,
+        51
+      ],
+      "info": [
+        37,
+        30,
+        51
+      ],
+      "note": [
+        37,
+        30,
+        51
+      ],
+      "quote": [
+        37,
+        30,
+        51
+      ],
+      "abstract": [
+        37,
+        30,
+        51
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        93,
+        11,
+        116
+      ],
+      "example": [
+        11,
+        111,
+        13
+      ],
+      "important": [
+        11,
+        86,
+        116
+      ],
+      "tip": [
+        49,
+        111,
+        11
+      ],
+      "warning": [
+        95,
+        11,
+        116
+      ],
+      "question": [
+        43,
+        11,
+        116
+      ],
+      "practice": [
+        11,
+        27,
+        116
+      ],
+      "success": [
+        11,
+        111,
+        19
+      ],
+      "info": [
+        57,
+        11,
+        116
+      ],
+      "note": [
+        116,
+        32,
+        11
+      ],
+      "quote": [
+        11,
+        86,
+        116
+      ],
+      "abstract": [
+        11,
+        111,
+        13
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 10
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.5,
+        "radius": 12
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.5,
+        "radius": 8
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.5,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 12
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 14
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "note": {
+        "preset": "left",
+        "width": 1.5,
+        "radius": 10
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 12
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 1.5,
+        "radius": 14
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-cosmic-fantasy-38-peach-nebula",
+    "name": "Peach Nebula — космический фон",
+    "label": "Peach Nebula — космический фон",
+    "group": "Cosmic Fantasy",
+    "light": "radial-gradient(ellipse at 72% 24%, #FFE2D2 0%, #FAD8D1 38%, #F7E6C8 72%, #F1DDF3 100%)",
+    "dark": "radial-gradient(ellipse at 72% 24%, #FFE2D2 0%, #FAD8D1 38%, #F7E6C8 72%, #F1DDF3 100%)",
+    "textColor": "#211B31",
+    "darkTextColor": "#211B31"
+  },
+  "blockStyle": {
+    "id": "user-blocks-cosmic-fantasy-38-peach-nebula",
+    "name": "Peach Nebula — учебные блоки",
+    "description": "Согласованные карточки и Callout для Peach Nebula.",
+    "category": "Cosmic Fantasy",
+    "base": "soft",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        },
+        "dark": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        }
+      },
+      "tip": {
+        "light": {
+          "borderRadius": 15
+        },
+        "dark": {
+          "borderRadius": 15
+        }
+      },
+      "warning": {
+        "light": {
+          "borderWidth": 2
+        },
+        "dark": {
+          "borderWidth": 2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success"
+    ]
+  }
+}

@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "cosmic-fantasy-13-saturn-rings",
+    "name": "Saturn Rings",
+    "mood": "Кольца Сатурна",
+    "description": "Космическая фантазийная палитра Saturn Rings: индивидуальный линейный градиентный фон, контрастные семантические роли и согласованные учебные блоки.",
+    "category": "Cosmic Fantasy",
+    "source": "user",
+    "swatches": [
+      "#342019",
+      "#63401F",
+      "#6B532B",
+      "#2B2545",
+      "#b9ccf8"
+    ],
+    "defaultBackground": "bg-custom-cosmic-fantasy-13-saturn-rings",
+    "defaultBlocks": "user-blocks-cosmic-fantasy-13-saturn-rings",
+    "roles": {
+      "en": "#b9ccf8",
+      "letter": "#a2e4f6",
+      "ipa": "#f6f0a2",
+      "translation": "#f6cfa2",
+      "term": "#a2f6e2",
+      "definition": "#f8b9f1",
+      "focus": "#a2f6b3",
+      "secondary": "#becff9",
+      "soft": "#f6f6a2",
+      "heading": "#a2d9f6",
+      "ink": "#FFF9FF"
+    },
+    "callouts": {
+      "rule": [
+        185,
+        204,
+        248
+      ],
+      "example": [
+        246,
+        240,
+        162
+      ],
+      "important": [
+        162,
+        246,
+        179
+      ],
+      "tip": [
+        246,
+        207,
+        162
+      ],
+      "warning": [
+        190,
+        207,
+        249
+      ],
+      "question": [
+        162,
+        228,
+        246
+      ],
+      "practice": [
+        162,
+        246,
+        226
+      ],
+      "success": [
+        246,
+        246,
+        162
+      ],
+      "info": [
+        162,
+        217,
+        246
+      ],
+      "note": [
+        248,
+        185,
+        241
+      ],
+      "quote": [
+        162,
+        246,
+        179
+      ],
+      "abstract": [
+        246,
+        240,
+        162
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        241,
+        240,
+        250
+      ],
+      "example": [
+        246,
+        240,
+        250
+      ],
+      "important": [
+        250,
+        240,
+        248
+      ],
+      "tip": [
+        250,
+        240,
+        243
+      ],
+      "warning": [
+        250,
+        242,
+        240
+      ],
+      "question": [
+        250,
+        247,
+        240
+      ],
+      "practice": [
+        247,
+        250,
+        240
+      ],
+      "success": [
+        242,
+        250,
+        240
+      ],
+      "info": [
+        240,
+        250,
+        243
+      ],
+      "note": [
+        240,
+        250,
+        248
+      ],
+      "quote": [
+        240,
+        247,
+        250
+      ],
+      "abstract": [
+        240,
+        242,
+        250
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        37,
+        30,
+        51
+      ],
+      "example": [
+        37,
+        30,
+        51
+      ],
+      "important": [
+        37,
+        30,
+        51
+      ],
+      "tip": [
+        37,
+        30,
+        51
+      ],
+      "warning": [
+        37,
+        30,
+        51
+      ],
+      "question": [
+        37,
+        30,
+        51
+      ],
+      "practice": [
+        37,
+        30,
+        51
+      ],
+      "success": [
+        37,
+        30,
+        51
+      ],
+      "info": [
+        37,
+        30,
+        51
+      ],
+      "note": [
+        37,
+        30,
+        51
+      ],
+      "quote": [
+        37,
+        30,
+        51
+      ],
+      "abstract": [
+        37,
+        30,
+        51
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        185,
+        204,
+        248
+      ],
+      "example": [
+        246,
+        240,
+        162
+      ],
+      "important": [
+        162,
+        246,
+        179
+      ],
+      "tip": [
+        246,
+        207,
+        162
+      ],
+      "warning": [
+        190,
+        207,
+        249
+      ],
+      "question": [
+        162,
+        228,
+        246
+      ],
+      "practice": [
+        162,
+        246,
+        226
+      ],
+      "success": [
+        246,
+        246,
+        162
+      ],
+      "info": [
+        162,
+        217,
+        246
+      ],
+      "note": [
+        248,
+        185,
+        241
+      ],
+      "quote": [
+        162,
+        246,
+        179
+      ],
+      "abstract": [
+        246,
+        240,
+        162
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 10
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.5,
+        "radius": 12
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.5,
+        "radius": 8
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.5,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 12
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 14
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "note": {
+        "preset": "left",
+        "width": 1.5,
+        "radius": 10
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 12
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 1.5,
+        "radius": 14
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-cosmic-fantasy-13-saturn-rings",
+    "name": "Saturn Rings — космический фон",
+    "label": "Saturn Rings — космический фон",
+    "group": "Cosmic Fantasy",
+    "light": "linear-gradient(152deg, #342019 0%, #63401F 34%, #6B532B 68%, #2B2545 100%)",
+    "dark": "linear-gradient(152deg, #342019 0%, #63401F 34%, #6B532B 68%, #2B2545 100%)",
+    "textColor": "#FFF9FF",
+    "darkTextColor": "#FFF9FF"
+  },
+  "blockStyle": {
+    "id": "user-blocks-cosmic-fantasy-13-saturn-rings",
+    "name": "Saturn Rings — учебные блоки",
+    "description": "Согласованные карточки и Callout для Saturn Rings.",
+    "category": "Cosmic Fantasy",
+    "base": "soft",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        },
+        "dark": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        }
+      },
+      "tip": {
+        "light": {
+          "borderRadius": 15
+        },
+        "dark": {
+          "borderRadius": 15
+        }
+      },
+      "warning": {
+        "light": {
+          "borderWidth": 2
+        },
+        "dark": {
+          "borderWidth": 2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success"
+    ]
+  }
+}

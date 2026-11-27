@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "cosmic-fantasy-16-black-hole-halo",
+    "name": "Black Hole Halo",
+    "mood": "Ореол чёрной дыры",
+    "description": "Космическая фантазийная палитра Black Hole Halo: индивидуальный линейный градиентный фон, контрастные семантические роли и согласованные учебные блоки.",
+    "category": "Cosmic Fantasy",
+    "source": "user",
+    "swatches": [
+      "#17192D",
+      "#33234F",
+      "#59401D",
+      "#2C3156",
+      "#d0a2f6"
+    ],
+    "defaultBackground": "bg-custom-cosmic-fantasy-16-black-hole-halo",
+    "defaultBlocks": "user-blocks-cosmic-fantasy-16-black-hole-halo",
+    "roles": {
+      "en": "#d0a2f6",
+      "letter": "#b0abf7",
+      "ipa": "#b4f6a2",
+      "translation": "#d6f6a2",
+      "term": "#a2c2f6",
+      "definition": "#f6a2a5",
+      "focus": "#a2f2f6",
+      "secondary": "#d2a2f6",
+      "soft": "#aff6a2",
+      "heading": "#b7a7f6",
+      "ink": "#FFF9FF"
+    },
+    "callouts": {
+      "rule": [
+        208,
+        162,
+        246
+      ],
+      "example": [
+        180,
+        246,
+        162
+      ],
+      "important": [
+        162,
+        242,
+        246
+      ],
+      "tip": [
+        214,
+        246,
+        162
+      ],
+      "warning": [
+        210,
+        162,
+        246
+      ],
+      "question": [
+        176,
+        171,
+        247
+      ],
+      "practice": [
+        162,
+        194,
+        246
+      ],
+      "success": [
+        175,
+        246,
+        162
+      ],
+      "info": [
+        183,
+        167,
+        246
+      ],
+      "note": [
+        246,
+        162,
+        165
+      ],
+      "quote": [
+        162,
+        242,
+        246
+      ],
+      "abstract": [
+        180,
+        246,
+        162
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        250,
+        240,
+        249
+      ],
+      "example": [
+        250,
+        240,
+        244
+      ],
+      "important": [
+        250,
+        241,
+        240
+      ],
+      "tip": [
+        250,
+        246,
+        240
+      ],
+      "warning": [
+        248,
+        250,
+        240
+      ],
+      "question": [
+        243,
+        250,
+        240
+      ],
+      "practice": [
+        240,
+        250,
+        242
+      ],
+      "success": [
+        240,
+        250,
+        247
+      ],
+      "info": [
+        240,
+        248,
+        250
+      ],
+      "note": [
+        240,
+        243,
+        250
+      ],
+      "quote": [
+        242,
+        240,
+        250
+      ],
+      "abstract": [
+        247,
+        240,
+        250
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        37,
+        30,
+        51
+      ],
+      "example": [
+        37,
+        30,
+        51
+      ],
+      "important": [
+        37,
+        30,
+        51
+      ],
+      "tip": [
+        37,
+        30,
+        51
+      ],
+      "warning": [
+        37,
+        30,
+        51
+      ],
+      "question": [
+        37,
+        30,
+        51
+      ],
+      "practice": [
+        37,
+        30,
+        51
+      ],
+      "success": [
+        37,
+        30,
+        51
+      ],
+      "info": [
+        37,
+        30,
+        51
+      ],
+      "note": [
+        37,
+        30,
+        51
+      ],
+      "quote": [
+        37,
+        30,
+        51
+      ],
+      "abstract": [
+        37,
+        30,
+        51
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        208,
+        162,
+        246
+      ],
+      "example": [
+        180,
+        246,
+        162
+      ],
+      "important": [
+        162,
+        242,
+        246
+      ],
+      "tip": [
+        214,
+        246,
+        162
+      ],
+      "warning": [
+        210,
+        162,
+        246
+      ],
+      "question": [
+        176,
+        171,
+        247
+      ],
+      "practice": [
+        162,
+        194,
+        246
+      ],
+      "success": [
+        175,
+        246,
+        162
+      ],
+      "info": [
+        183,
+        167,
+        246
+      ],
+      "note": [
+        246,
+        162,
+        165
+      ],
+      "quote": [
+        162,
+        242,
+        246
+      ],
+      "abstract": [
+        180,
+        246,
+        162
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 10
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.5,
+        "radius": 12
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.5,
+        "radius": 8
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.5,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 12
+      },
+      "success": {
+        "preset": "dashed",
+        "width": 1.5,
+        "radius": 14
+      },
+      "info": {
+        "preset": "classic",
+        "width": 1.5,
+        "radius": 8
+      },
+      "note": {
+        "preset": "left",
+        "width": 1.5,
+        "radius": 10
+      },
+      "quote": {
+        "preset": "dotted",
+        "width": 1.5,
+        "radius": 12
+      },
+      "abstract": {
+        "preset": "double",
+        "width": 1.5,
+        "radius": 14
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-cosmic-fantasy-16-black-hole-halo",
+    "name": "Black Hole Halo — космический фон",
+    "label": "Black Hole Halo — космический фон",
+    "group": "Cosmic Fantasy",
+    "light": "linear-gradient(118deg, #17192D 0%, #33234F 34%, #59401D 68%, #2C3156 100%)",
+    "dark": "linear-gradient(118deg, #17192D 0%, #33234F 34%, #59401D 68%, #2C3156 100%)",
+    "textColor": "#FFF9FF",
+    "darkTextColor": "#FFF9FF"
+  },
+  "blockStyle": {
+    "id": "user-blocks-cosmic-fantasy-16-black-hole-halo",
+    "name": "Black Hole Halo — учебные блоки",
+    "description": "Согласованные карточки и Callout для Black Hole Halo.",
+    "category": "Cosmic Fantasy",
+    "base": "soft",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.17,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.62,
+        "borderRadius": 14,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        },
+        "dark": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        }
+      },
+      "tip": {
+        "light": {
+          "borderRadius": 15
+        },
+        "dark": {
+          "borderRadius": 15
+        }
+      },
+      "warning": {
+        "light": {
+          "borderWidth": 2
+        },
+        "dark": {
+          "borderWidth": 2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success"
+    ]
+  }
+}
