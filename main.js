@@ -1711,6 +1711,27 @@ class CategoryManagerModal extends Modal {
     deleteCategories.addEventListener('click', () => bulkDelete(false));
     const deleteWithItems = bulk.createEl('button', { cls: 'esds-button esds-btn-outline-coral', text: 'Удалить с элементами', attr: { type: 'button' } });
     deleteWithItems.addEventListener('click', () => bulkDelete(true));
+    const moveSelected = bulk.createEl('button', { cls: 'esds-button esds-btn-cyan', text: 'Переместить выбранные', attr: { type: 'button' } });
+    moveSelected.addEventListener('click', async () => {
+      const ids = [...this.selectedCategoryIds].filter(id => list.some(cat => cat.id === id));
+      if (!ids.length) { new Notice('Сначала выберите категории.'); return; }
+      const selected = new Set(ids);
+      const roots = list.filter(cat => selected.has(cat.id) && !list.some(parent => selected.has(parent.id) && studio.categoryDescendantIds(this.kind, parent.id).has(cat.id)));
+      const choices = [{ name: 'Корень (без родителя)', id: '' }, ...list.filter(cat => !selected.has(cat.id) && !roots.some(root => studio.categoryDescendantIds(this.kind, root.id).has(cat.id))).map(cat => ({ name: cat.name, id: cat.id }))];
+      const options = choices.map((choice, index) => `${index + 1}. ${choice.name}`).join('\\n');
+      const answer = await promptText(this.app, { title: 'Переместить категории', description: 'Введите номер категории назначения или 1 для корня:\\n' + options, placeholder: 'Номер назначения', submitLabel: 'Переместить' });
+      if (answer === null || !answer.trim()) return;
+      const choice = choices[Number(answer.trim()) - 1];
+      if (!choice) { new Notice('Неизвестная категория назначения.'); return; }
+      for (const cat of roots) {
+        if (choice.id && studio.categoryDescendantIds(this.kind, cat.id).has(choice.id)) { new Notice('Нельзя переместить категорию внутрь её собственной подкатегории.'); return; }
+      }
+      for (const cat of roots) {
+        if (!await studio.moveCategoryInto(this.kind, cat.id, choice.id)) return;
+      }
+      this.selectedCategoryIds.clear();
+      this.render();
+    });
 
     list.forEach((cat, index) => {
       const row = body.createDiv({ cls: 'esds-category-manage-row esds-category-manage-tree-row' });
