@@ -2617,11 +2617,7 @@ class DesignStudioModal extends Modal {
       used.add(name.toLocaleLowerCase()); return [item.id, name];
     });
     const names = new Map(pairs), before = clone(this.plugin.userData);
-    this.plugin.userData.palettes = source.map(item => {
-      if (!names.has(item.id)) return item;
-      const name = names.get(item.id);
-      return { ...item, name, id: 'user-' + slugify(name) + '-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,6) };
-    });
+    this.plugin.userData.palettes = source.map(item => names.has(item.id) ? { ...item, name: names.get(item.id) } : item);
     if (await this.plugin.saveUserLibrary() === false) { this.plugin.userData = before; return; }
     this.plugin.refreshGeneratedStyles(); new Notice('Переименовано палитр: ' + items.length); this.render();
   }
@@ -3443,6 +3439,112 @@ class DesignStudioModal extends Modal {
     return entries;
   }
 
+  async resolvePaletteImportBatch(items, destination) {
+    const current = this.allPalettes();
+    const conflicts = items.map(item => {
+      const incoming = item.palette;
+      const found = current.find(existing =>
+        (incoming.id && String(existing.id).toLowerCase() === String(incoming.id).toLowerCase()) ||
+        String(existing.name || '').trim().toLocaleLowerCase() === String(incoming.name || '').trim().toLocaleLowerCase()
+      );
+      return found || null;
+    });
+    const conflictIndexes = conflicts.map((item, index) => item ? index : -1).filter(index => index >= 0);
+    let decisions = items.map(() => ({ action: 'add', name: '' }));
+    if (conflictIndexes.length) {
+      decisions = await new Promise(resolve => {
+        let finished = false;
+        const modal = new class extends Modal {
+          constructor(app) { super(app); this.choices = new Map(); this.names = new Map(); }
+          finish(value) { if (finished) return; finished = true; this.close(); resolve(value); }
+          onOpen() { this.modalEl.addClass('esds-import-conflicts-modal'); this.contentEl.addClass('esds-import-conflicts'); this.renderChoices(); }
+          onClose() { this.contentEl.empty(); if (!finished) { finished = true; resolve(null); } }
+          renderChoices() {
+            const root = this.contentEl; root.empty();
+            root.createEl('h2', { text: 'Совпадения названий палитр' });
+            root.createEl('p', { text: 'Найдено совпадений: ' + conflictIndexes.length + '. Выбери действие для каждого файла или примени одно действие ко всем.' });
+            const global = root.createDiv({ cls: 'esds-import-conflict-global' });
+            const globalSelect = global.createEl('select');
+            [['skip','Пропустить все'],['replace','Заменить совпадающие'],['rename','Автоматически переименовать все'],['manual','Переименовать вручную']].forEach(([value,label]) => globalSelect.createEl('option',{text:label,attr:{value}}));
+            const apply = global.createEl('button',{cls:'esds-button',text:'Применить ко всем',attr:{type:'button'}});
+            const rows = root.createDiv({cls:'esds-import-conflict-list'});
+            const selects = new Map(), inputs = new Map();
+            conflictIndexes.forEach(index => {
+              const row = rows.createDiv({cls:'esds-import-conflict-row'});
+              row.createEl('strong',{text:items[index].palette.name});
+              row.createEl('small',{text:'Уже существует: '+conflicts[index].name});
+              const select = row.createEl('select');
+              [['rename','Автоматически переименовать'],['skip','Пропустить'],['replace','Заменить существующую'],['manual','Задать имя вручную']].forEach(([value,label])=>select.createEl('option',{text:label,attr:{value}}));
+              selects.set(index,select);
+              const input = row.createEl('input',{cls:'esds-text-input',attr:{type:'text',placeholder:'Новое имя (для ручного переименования)'}});
+              inputs.set(index,input);
+            });
+            apply.addEventListener('click',()=>{conflictIndexes.forEach(index=>{selects.get(index).value=globalSelect.value;});});
+            const footer=root.createDiv({cls:'esds-import-conflict-actions'});
+            const cancel=footer.createEl('button',{cls:'esds-button',text:'Отмена',attr:{type:'button'}});
+            cancel.addEventListener('click',()=>this.finish(null));
+            const confirm=footer.createEl('button',{cls:'esds-button esds-primary',text:'Продолжить импорт',attr:{type:'button'}});
+            confirm.addEventListener('click',()=>{
+              const result=items.map(()=>({action:'add',name:''}));
+              conflictIndexes.forEach(index=>result[index]={action:selects.get(index).value,name:inputs.get(index).value.trim()});
+              this.finish(result);
+            });
+          }
+        }(this.app);
+        modal.open();
+      });
+      if (!decisions) return null;
+    }
+    const before = clone(this.plugin.userData);
+    const user = this.plugin.userData.palettes || [];
+    const usedNames = new Set(current.map(item => String(item.name || '').toLocaleLowerCase()));
+    const usedIds = new Set(current.map(item => String(item.id || '').toLocaleLowerCase()));
+    const uniqueName = (base, preferred = '') => {
+      let candidate = preferred || base, n = 1;
+      if (!candidate || usedNames.has(candidate.toLocaleLowerCase())) {
+        candidate = base + ' ' + n;
+        while (usedNames.has(candidate.toLocaleLowerCase())) candidate = base + ' ' + (++n);
+      }
+      usedNames.add(candidate.toLocaleLowerCase()); return candidate;
+    };
+    let added=0,replaced=0,renamed=0,skipped=0;
+    for (let i=0;i<items.length;i++) {
+      const incoming=clone(items[i].palette), conflict=conflicts[i], decision=decisions[i] || {action:'add'};
+      if (conflict && decision.action==='skip') { skipped++; continue; }
+      if (conflict && decision.action==='replace' && user.some(item=>item.id===conflict.id)) {
+        const replacement={...incoming,id:conflict.id,name:incoming.name,category:destination,source:'user',updatedAt:new Date().toISOString()};
+        const at=user.findIndex(item=>item.id===conflict.id);
+        if(at>=0){user[at]=replacement;replaced++;usedNames.add(String(replacement.name).toLocaleLowerCase());continue;}
+      }
+      if (conflict && decision.action==='replace' && !user.some(item=>item.id===conflict.id)) decision.action='rename';
+      let name=String(incoming.name || 'Импортированная палитра').trim();
+      if (conflict && decision.action==='manual') {
+        if (!decision.name) { skipped++; continue; }
+        name=uniqueName(name,decision.name); renamed++;
+      } else if (conflict && decision.action==='rename') {
+        name=uniqueName(name,name); renamed++;
+      } else if (usedNames.has(name.toLocaleLowerCase())) {
+        name=uniqueName(name,name); renamed++;
+      } else usedNames.add(name.toLocaleLowerCase());
+      incoming.name=name; incoming.category=destination; incoming.source='user';
+      incoming.createdAt=incoming.createdAt || new Date().toISOString(); incoming.updatedAt=new Date().toISOString();
+      incoming.id='user-'+slugify(name)+'-'+Date.now().toString(36)+'-'+i;
+      let suffix=1; while(usedIds.has(incoming.id.toLowerCase())) incoming.id='user-'+slugify(name)+'-'+Date.now().toString(36)+'-'+i+'-'+suffix++;
+      usedIds.add(incoming.id.toLowerCase());
+      incoming.dark=Object.fromEntries(ROLE_KEYS.map(key=>[key,isHexColor(incoming.dark && incoming.dark[key])?incoming.dark[key]:incoming.roles[key]]));
+      incoming.callouts=incoming.callouts || clone(PALETTES[0].callouts);
+      incoming.darkCallouts=incoming.darkCallouts || clone(incoming.callouts);
+      incoming.defaultBackground=this.findBackground(incoming.defaultBackground)?.id || this.selectedBackground.id;
+      incoming.defaultBlocks=this.findBlockStyle(incoming.defaultBlocks)?.id || this.selectedBlocks.id;
+      user.push(incoming); added++;
+    }
+    this.plugin.userData.palettes=user;
+    if(await this.plugin.saveUserLibrary()===false){this.plugin.userData=before;return null;}
+    this.plugin.refreshGeneratedStyles();
+    new Notice('Импорт: добавлено '+added+', заменено '+replaced+', переименовано '+renamed+', пропущено '+skipped+'.');
+    this.paletteCategory=destination;this.activeView='studio';this.activeSection='palette';this.render();
+    return {added,replaced,renamed,skipped};
+  }
   async pickPaletteZip(defaultCategory = null) {
     const input = this.contentEl.createEl('input', { attr: { type: 'file', accept: '.zip,application/zip' } });
     input.style.display = 'none';
@@ -3479,31 +3581,8 @@ class DesignStudioModal extends Modal {
           categories: this.getCategories('palettes')
         });
         if (!choice) return;
-        const existing = this.allPalettes();
-        const ids = new Set(existing.map(item => String(item.id || '').toLowerCase()));
-        const names = new Set(existing.map(item => String(item.name || '').trim().toLowerCase()));
-        const unique = []; let skipped = 0;
-        candidates.forEach(item => {
-          const id = String(item.palette.id || '').toLowerCase(), name = String(item.palette.name || '').trim().toLowerCase();
-          if ((id && ids.has(id)) || (name && names.has(name))) { skipped++; return; }
-          if (id) ids.add(id); if (name) names.add(name); unique.push(item);
-        });
-        if (!unique.length) { new Notice('Все ' + skipped + ' палитр уже есть в библиотеке.'); return; }
-        if (!confirm('Добавить ' + unique.length + ' палитр в категорию «' + choice.name + '»? Дубликаты будут пропущены (' + skipped + ').')) return;
-        const before = clone(this.plugin.userData);
-        try {
-          const destination = await this.ensurePaletteCategory(choice.name);
-          for (const item of unique) {
-            const payload = clone(item.data), palette = payload.palette || payload;
-            palette.category = destination; payload.palette = palette;
-            await this.importJson('palette', payload);
-          }
-          new Notice('ZIP импортирован: добавлено ' + unique.length + ', дубликатов пропущено ' + skipped + ', ошибок JSON ' + errors.length + '.');
-          if (errors.length) console.warn('ESDS ZIP import: invalid JSON entries', errors);
-          this.paletteCategory = destination; this.activeView = 'studio'; this.activeSection = 'palette'; this.render();
-        } catch (error) {
-          this.plugin.userData = before; await this.plugin.saveUserLibrary(); this.plugin.refreshGeneratedStyles(); throw error;
-        }
+        const destination = await this.ensurePaletteCategory(choice.name);
+        await this.resolvePaletteImportBatch(candidates, destination);
       } catch (error) {
         console.error('ESDS ZIP import failed:', error);
         new Notice('ZIP импорт не выполнен: ' + (error.message || 'неизвестная ошибка'));
@@ -3636,33 +3715,8 @@ class DesignStudioModal extends Modal {
             categories: this.getCategories('palettes')
           });
           if (!choice) return;
-          const existing = this.allPalettes();
-          const ids = new Set(existing.map(item => String(item.id || '').toLowerCase()));
-          const names = new Set(existing.map(item => String(item.name || '').trim().toLowerCase()));
-          const unique = []; let skipped = 0;
-          parsedItems.forEach(item => {
-            const id = String(item.palette.id || '').toLowerCase(), name = String(item.palette.name || '').trim().toLowerCase();
-            if ((id && ids.has(id)) || (name && names.has(name))) { skipped++; return; }
-            if (id) ids.add(id); if (name) names.add(name); unique.push(item);
-          });
-          if (!unique.length) { new Notice('Все выбранные палитры уже есть в библиотеке.'); return; }
-          if (!confirm('Добавить ' + unique.length + ' палитр в категорию «' + choice.name + '»? Дубликаты будут пропущены (' + skipped + ').')) return;
-          const before = clone(this.plugin.userData);
-          try {
-            const destination = await this.ensurePaletteCategory(choice.name);
-            for (const item of unique) {
-              const payload = clone(item.data), palette = payload.palette || payload;
-              palette.category = destination;
-              if (payload.palette) payload.palette = palette;
-              else payload.category = destination;
-              await this.importJson('palette', payload);
-            }
-            new Notice('Импорт завершён: добавлено ' + unique.length + ', дубликатов пропущено ' + skipped + ', ошибок файлов ' + errors.length + '.');
-            if (errors.length) console.warn('ESDS multi-file import: skipped files', errors);
-            this.paletteCategory = destination; this.activeView = 'studio'; this.activeSection = 'palette'; this.render();
-          } catch (error) {
-            this.plugin.userData = before; await this.plugin.saveUserLibrary(); this.plugin.refreshGeneratedStyles(); throw error;
-          }
+          const destination = await this.ensurePaletteCategory(choice.name);
+          await this.resolvePaletteImportBatch(parsedItems, destination);
           return;
         }
         const data = JSON.parse(await files[0].text());
