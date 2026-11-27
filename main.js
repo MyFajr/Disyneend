@@ -4138,11 +4138,8 @@ class NoteBlockStyleModal extends Modal {
 
   paletteColor(type, kind = 'text') {
     const palette = this.studio.selectedPalette || PALETTES[0];
-    const dark = this.themeMode === 'dark';
-    const base = dark ? (palette.darkCallouts || palette.callouts) : palette.callouts;
-    const mapName = dark
-      ? ({ fill: 'darkCalloutFills', text: 'darkCalloutTexts', border: 'darkCalloutBorders' }[kind])
-      : ({ fill: 'calloutFills', text: 'calloutTexts', border: 'calloutBorders' }[kind]);
+    const base = palette.callouts;
+    const mapName = { fill: 'calloutFills', text: 'calloutTexts', border: 'calloutBorders' }[kind];
     const map = mapName && palette[mapName];
     return colorToHex((map && isValidPaletteColor(map[type]) ? map[type] : null) || (base && base[type]) || '#5a7dc8');
   }
