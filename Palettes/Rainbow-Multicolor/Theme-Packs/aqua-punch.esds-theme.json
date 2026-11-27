@@ -1,0 +1,411 @@
+{
+  "schemaVersion": 1,
+  "type": "esds-theme-pack",
+  "plugin": "english-study-design-studio",
+  "name": "Aqua Punch — полный дизайнерский набор",
+  "description": "Палитра, яркий цветной фон и согласованное оформление учебных блоков для ESDS 0.9.32.",
+  "frameSource": "palette",
+  "items": {
+    "palette": {
+      "id": "rainbow-aqua-punch",
+      "name": "Aqua Punch",
+      "mood": "Аква-панч: Освежающий аква-циан с яркими ягодными и солнечными контрастами.",
+      "description": "Освежающий аква-циан с яркими ягодными и солнечными контрастами. Полноценная многоцветная учебная палитра для ESDS 0.9.32: отдельные контрастные роли для английского текста, иностранных букв, IPA, перевода, терминов и смысловых акцентов; согласованные цвета 12 учебных Callout. Единая система цветов без отдельных пользовательских вариантов Light/Dark.",
+      "category": "Радужные и многоцветные",
+      "swatches": [
+        "#27ECE5",
+        "#4D2EEA",
+        "#E60F98",
+        "#E5932A",
+        "#64F038"
+      ],
+      "defaultBackground": "bg-08-reading-rose-cloud",
+      "defaultBlocks": "soft",
+      "roles": {
+        "en": "#158E89",
+        "letter": "#123D91",
+        "ipa": "#468E15",
+        "translation": "#8E155E",
+        "term": "#158E3D",
+        "definition": "#973017",
+        "focus": "#156E8E",
+        "secondary": "#151E8E",
+        "soft": "#18A018",
+        "heading": "#158E55",
+        "ink": "#28202E"
+      },
+      "callouts": {
+        "rule": [
+          171,
+          23,
+          109
+        ],
+        "example": [
+          23,
+          171,
+          55
+        ],
+        "important": [
+          97,
+          171,
+          23
+        ],
+        "tip": [
+          48,
+          23,
+          171
+        ],
+        "warning": [
+          23,
+          171,
+          80
+        ],
+        "question": [
+          158,
+          23,
+          171
+        ],
+        "practice": [
+          31,
+          171,
+          23
+        ],
+        "success": [
+          72,
+          23,
+          171
+        ],
+        "info": [
+          171,
+          23,
+          146
+        ],
+        "note": [
+          171,
+          48,
+          23
+        ],
+        "quote": [
+          158,
+          171,
+          23
+        ],
+        "abstract": [
+          171,
+          23,
+          48
+        ]
+      },
+      "calloutFills": {
+        "rule": [
+          252,
+          228,
+          242
+        ],
+        "example": [
+          228,
+          252,
+          233
+        ],
+        "important": [
+          240,
+          252,
+          228
+        ],
+        "tip": [
+          232,
+          228,
+          252
+        ],
+        "warning": [
+          228,
+          252,
+          237
+        ],
+        "question": [
+          250,
+          228,
+          252
+        ],
+        "practice": [
+          229,
+          252,
+          228
+        ],
+        "success": [
+          236,
+          228,
+          252
+        ],
+        "info": [
+          252,
+          228,
+          248
+        ],
+        "note": [
+          252,
+          232,
+          228
+        ],
+        "quote": [
+          250,
+          252,
+          228
+        ],
+        "abstract": [
+          252,
+          228,
+          232
+        ]
+      },
+      "calloutTexts": {
+        "rule": [
+          127,
+          21,
+          83
+        ],
+        "example": [
+          21,
+          127,
+          44
+        ],
+        "important": [
+          74,
+          127,
+          21
+        ],
+        "tip": [
+          38,
+          21,
+          127
+        ],
+        "warning": [
+          21,
+          127,
+          62
+        ],
+        "question": [
+          118,
+          21,
+          127
+        ],
+        "practice": [
+          26,
+          127,
+          21
+        ],
+        "success": [
+          56,
+          21,
+          127
+        ],
+        "info": [
+          127,
+          21,
+          109
+        ],
+        "note": [
+          127,
+          38,
+          21
+        ],
+        "quote": [
+          118,
+          127,
+          21
+        ],
+        "abstract": [
+          127,
+          21,
+          38
+        ]
+      },
+      "calloutBorders": {
+        "rule": [
+          195,
+          24,
+          124
+        ],
+        "example": [
+          24,
+          195,
+          61
+        ],
+        "important": [
+          110,
+          195,
+          24
+        ],
+        "tip": [
+          53,
+          24,
+          195
+        ],
+        "warning": [
+          24,
+          195,
+          90
+        ],
+        "question": [
+          181,
+          24,
+          195
+        ],
+        "practice": [
+          33,
+          195,
+          24
+        ],
+        "success": [
+          81,
+          24,
+          195
+        ],
+        "info": [
+          195,
+          24,
+          167
+        ],
+        "note": [
+          195,
+          53,
+          24
+        ],
+        "quote": [
+          181,
+          195,
+          24
+        ],
+        "abstract": [
+          195,
+          24,
+          53
+        ]
+      },
+      "calloutFrames": {
+        "rule": {
+          "preset": "classic",
+          "width": 1.5,
+          "radius": 10
+        },
+        "example": {
+          "preset": "dashed",
+          "width": 2,
+          "radius": 10
+        },
+        "important": {
+          "preset": "double",
+          "width": 3,
+          "radius": 8
+        },
+        "tip": {
+          "preset": "dotted",
+          "width": 2,
+          "radius": 12
+        },
+        "warning": {
+          "preset": "left",
+          "width": 3,
+          "radius": 8
+        },
+        "question": {
+          "preset": "top",
+          "width": 2,
+          "radius": 8
+        },
+        "practice": {
+          "preset": "classic",
+          "width": 1.5,
+          "radius": 10
+        },
+        "success": {
+          "preset": "dashed",
+          "width": 1.5,
+          "radius": 12
+        },
+        "info": {
+          "preset": "classic",
+          "width": 1.5,
+          "radius": 10
+        },
+        "note": {
+          "preset": "left",
+          "width": 2,
+          "radius": 8
+        },
+        "quote": {
+          "preset": "dotted",
+          "width": 2,
+          "radius": 10
+        },
+        "abstract": {
+          "preset": "double",
+          "width": 2,
+          "radius": 10
+        }
+      }
+    },
+    "background": {
+      "id": "bg-rainbow-aqua-punch",
+      "name": "Aqua Punch — цветной фон",
+      "label": "Aqua Punch — цветной фон",
+      "group": "Радужные и многоцветные",
+      "light": "linear-gradient(135deg, #A2F7F4 0%, #F7ADDC 54%, #D4FBC7 100%)",
+      "dark": "linear-gradient(135deg, #A2F7F4 0%, #F7ADDC 54%, #D4FBC7 100%)",
+      "textColor": "#28202E",
+      "darkTextColor": "#28202E"
+    },
+    "blockStyle": {
+      "id": "rainbow-blocks-aqua-punch",
+      "name": "Aqua Punch — учебные блоки",
+      "description": "Согласованные рамки и поверхности учебных Callout для палитры Aqua Punch.",
+      "category": "Радужные и многоцветные",
+      "base": "soft",
+      "framePreset": "classic",
+      "frameOverrides": {
+        "important": "double",
+        "warning": "left",
+        "question": "top"
+      },
+      "style": {
+        "light": {
+          "backgroundOpacity": 0.18,
+          "borderOpacity": 0.78,
+          "borderWidth": 1.6,
+          "borderRadius": 13,
+          "paddingY": 10,
+          "paddingX": 12,
+          "gap": 8,
+          "titleWeight": 700,
+          "titleSize": 13,
+          "bodySize": 12
+        },
+        "dark": {
+          "backgroundOpacity": 0.18,
+          "borderOpacity": 0.78,
+          "borderWidth": 1.6,
+          "borderRadius": 13,
+          "paddingY": 10,
+          "paddingX": 12,
+          "gap": 8,
+          "titleWeight": 700,
+          "titleSize": 13,
+          "bodySize": 12
+        }
+      },
+      "calloutOverrides": {},
+      "colors": {
+        "light": {},
+        "dark": {}
+      },
+      "previewCallouts": [
+        "rule",
+        "example",
+        "important",
+        "tip",
+        "warning",
+        "question"
+      ]
+    }
+  }
+}
