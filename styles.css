@@ -93,49 +93,31 @@
 .markdown-preview-view.esds-note.esds-palette-candy-pop,
 .markdown-source-view.esds-note.esds-palette-candy-pop { --esds-en: #2868d8; --esds-ipa: #9251bd; --esds-translation: #16845e; --esds-term: #a23b83; --esds-definition: #53627d; --esds-focus: #e74e70; --esds-secondary: #c27a18; --esds-soft: #9555b5; --esds-heading: #6540a2; --esds-ink: #352a45; }
 
-body.theme-dark .esds-preview.candy-pop,
-body.theme-dark .markdown-preview-view.esds-note.esds-palette-candy-pop,
-body.theme-dark .markdown-source-view.esds-note.esds-palette-candy-pop { --esds-en: #8fc1ff; --esds-ipa: #d4a4f2; --esds-translation: #82ddb4; --esds-term: #f0a5d7; --esds-definition: #bdc1d6; --esds-focus: #ff91aa; --esds-secondary: #f2c078; --esds-soft: #d1a2f0; --esds-heading: #d0b3ff; --esds-ink: #f0e8f7; }
 
 .esds-preview.candy-pop,
 .markdown-preview-view.esds-note.esds-palette-candy-pop,
 .markdown-source-view.esds-note.esds-palette-candy-pop { --esds-callout-rule: 48, 112, 210; --esds-callout-example: 142, 82, 194; --esds-callout-important: 228, 72, 112; --esds-callout-tip: 31, 145, 103; --esds-callout-warning: 209, 132, 34; --esds-callout-question: 25, 151, 177; --esds-callout-practice: 223, 111, 48; --esds-callout-success: 28, 153, 102; --esds-callout-info: 67, 111, 207; --esds-callout-note: 119, 111, 151; --esds-callout-quote: 194, 82, 143; --esds-callout-abstract: 125, 83, 185; }
 
-body.theme-dark .esds-preview.candy-pop,
-body.theme-dark .markdown-preview-view.esds-note.esds-palette-candy-pop,
-body.theme-dark .markdown-source-view.esds-note.esds-palette-candy-pop { --esds-callout-rule: 112, 166, 255; --esds-callout-example: 194, 146, 235; --esds-callout-important: 255, 137, 169; --esds-callout-tip: 105, 214, 170; --esds-callout-warning: 247, 193, 112; --esds-callout-question: 99, 211, 231; --esds-callout-practice: 255, 164, 112; --esds-callout-success: 103, 219, 163; --esds-callout-info: 133, 171, 255; --esds-callout-note: 185, 177, 215; --esds-callout-quote: 241, 143, 203; --esds-callout-abstract: 185, 149, 239; }
 
 .esds-preview.ocean-breeze,
 .markdown-preview-view.esds-note.esds-palette-ocean-breeze,
 .markdown-source-view.esds-note.esds-palette-ocean-breeze { --esds-en: #087eac; --esds-ipa: #7854bb; --esds-translation: #13866e; --esds-term: #197b89; --esds-definition: #516c7b; --esds-focus: #d46d3c; --esds-secondary: #9b762d; --esds-soft: #508da9; --esds-heading: #145d82; --esds-ink: #203a49; }
 
-body.theme-dark .esds-preview.ocean-breeze,
-body.theme-dark .markdown-preview-view.esds-note.esds-palette-ocean-breeze,
-body.theme-dark .markdown-source-view.esds-note.esds-palette-ocean-breeze { --esds-en: #7bd4ff; --esds-ipa: #c3a7ff; --esds-translation: #75dfbd; --esds-term: #81d5dc; --esds-definition: #b6cbd3; --esds-focus: #ffad80; --esds-secondary: #e4c27d; --esds-soft: #8ec5df; --esds-heading: #8dd8f3; --esds-ink: #e4f3f7; }
 
 .esds-preview.ocean-breeze,
 .markdown-preview-view.esds-note.esds-palette-ocean-breeze,
 .markdown-source-view.esds-note.esds-palette-ocean-breeze { --esds-callout-rule: 28, 126, 171; --esds-callout-example: 121, 86, 184; --esds-callout-important: 210, 100, 63; --esds-callout-tip: 28, 139, 112; --esds-callout-warning: 203, 139, 55; --esds-callout-question: 20, 151, 179; --esds-callout-practice: 202, 113, 61; --esds-callout-success: 29, 147, 105; --esds-callout-info: 48, 118, 179; --esds-callout-note: 93, 123, 139; --esds-callout-quote: 172, 92, 143; --esds-callout-abstract: 109, 91, 174; }
 
-body.theme-dark .esds-preview.ocean-breeze,
-body.theme-dark .markdown-preview-view.esds-note.esds-palette-ocean-breeze,
-body.theme-dark .markdown-source-view.esds-note.esds-palette-ocean-breeze { --esds-callout-rule: 105, 204, 241; --esds-callout-example: 186, 157, 244; --esds-callout-important: 255, 160, 126; --esds-callout-tip: 101, 215, 186; --esds-callout-warning: 238, 195, 117; --esds-callout-question: 94, 219, 237; --esds-callout-practice: 255, 169, 119; --esds-callout-success: 100, 219, 177; --esds-callout-info: 118, 186, 239; --esds-callout-note: 167, 201, 214; --esds-callout-quote: 226, 151, 207; --esds-callout-abstract: 175, 157, 232; }
 
 .esds-preview.royal-plum,
 .markdown-preview-view.esds-note.esds-palette-royal-plum,
 .markdown-source-view.esds-note.esds-palette-royal-plum { --esds-en: #3156a8; --esds-ipa: #9a4f91; --esds-translation: #23836e; --esds-term: #8b467c; --esds-definition: #5c5a70; --esds-focus: #bd5d78; --esds-secondary: #ad762c; --esds-soft: #8562b5; --esds-heading: #493c87; --esds-ink: #30283e; }
 
-body.theme-dark .esds-preview.royal-plum,
-body.theme-dark .markdown-preview-view.esds-note.esds-palette-royal-plum,
-body.theme-dark .markdown-source-view.esds-note.esds-palette-royal-plum { --esds-en: #9bb8ff; --esds-ipa: #e0a5d5; --esds-translation: #8bd9c0; --esds-term: #dc9acb; --esds-definition: #c9bfd2; --esds-focus: #f29bb5; --esds-secondary: #e8c17f; --esds-soft: #c6a4ec; --esds-heading: #c5b4ff; --esds-ink: #f1eaf6; }
 
 .esds-preview.royal-plum,
 .markdown-preview-view.esds-note.esds-palette-royal-plum,
 .markdown-source-view.esds-note.esds-palette-royal-plum { --esds-callout-rule: 61, 94, 174; --esds-callout-example: 145, 79, 151; --esds-callout-important: 191, 76, 112; --esds-callout-tip: 38, 132, 108; --esds-callout-warning: 187, 125, 49; --esds-callout-question: 56, 129, 164; --esds-callout-practice: 183, 102, 65; --esds-callout-success: 37, 139, 103; --esds-callout-info: 63, 100, 174; --esds-callout-note: 112, 100, 136; --esds-callout-quote: 178, 79, 132; --esds-callout-abstract: 112, 76, 165; }
 
-body.theme-dark .esds-preview.royal-plum,
-body.theme-dark .markdown-preview-view.esds-note.esds-palette-royal-plum,
-body.theme-dark .markdown-source-view.esds-note.esds-palette-royal-plum { --esds-callout-rule: 139, 164, 242; --esds-callout-example: 221, 148, 218; --esds-callout-important: 245, 143, 174; --esds-callout-tip: 100, 204, 170; --esds-callout-warning: 239, 195, 117; --esds-callout-question: 127, 197, 226; --esds-callout-practice: 241, 158, 125; --esds-callout-success: 104, 212, 171; --esds-callout-info: 138, 166, 232; --esds-callout-note: 190, 173, 207; --esds-callout-quote: 232, 151, 198; --esds-callout-abstract: 190, 155, 232; }
 
 
 /* Semantic spans inside the note: the palette controls role colours only. */
@@ -261,101 +243,7 @@ body.theme-dark .markdown-source-view.esds-note.esds-palette-royal-plum { --esds
 .esds-preview .esds-callout-abstract { --esds-callout-rgb: var(--esds-callout-border-abstract, var(--esds-callout-abstract)); --esds-callout-fill-rgb: var(--esds-callout-fill-abstract, var(--esds-callout-abstract)); --esds-callout-text-rgb: var(--esds-callout-text-abstract, var(--esds-callout-abstract)); color: rgb(var(--esds-callout-text-rgb)); }
 
 
-/* Dark note surfaces keep each palette readable even when Obsidian itself is in light mode. */
-
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-19-rich-midnight,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-19-rich-midnight,
-.esds-preview.candy-pop.bg-19-rich-midnight,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-20-rich-navy,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-20-rich-navy,
-.esds-preview.candy-pop.bg-20-rich-navy,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-21-rich-forest,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-21-rich-forest,
-.esds-preview.candy-pop.bg-21-rich-forest,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-22-rich-emerald,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-22-rich-emerald,
-.esds-preview.candy-pop.bg-22-rich-emerald,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-23-rich-plum,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-23-rich-plum,
-.esds-preview.candy-pop.bg-23-rich-plum,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-24-rich-burgundy,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-24-rich-burgundy,
-.esds-preview.candy-pop.bg-24-rich-burgundy,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-25-rich-cocoa,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-25-rich-cocoa,
-.esds-preview.candy-pop.bg-25-rich-cocoa,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-26-rich-slate,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-26-rich-slate,
-.esds-preview.candy-pop.bg-26-rich-slate,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-29-cobalt-dusk,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-29-cobalt-dusk,
-.esds-preview.candy-pop.bg-29-cobalt-dusk,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-30-deep-lagoon,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-30-deep-lagoon,
-.esds-preview.candy-pop.bg-30-deep-lagoon { --esds-en: #8fc1ff; --esds-ipa: #d4a4f2; --esds-translation: #82ddb4; --esds-term: #f0a5d7; --esds-definition: #bdc1d6; --esds-focus: #ff91aa; --esds-secondary: #f2c078; --esds-soft: #d1a2f0; --esds-heading: #d0b3ff; --esds-ink: #f0e8f7; --esds-callout-rule: 112, 166, 255; --esds-callout-example: 194, 146, 235; --esds-callout-important: 255, 137, 169; --esds-callout-tip: 105, 214, 170; --esds-callout-warning: 247, 193, 112; --esds-callout-question: 99, 211, 231; --esds-callout-practice: 255, 164, 112; --esds-callout-success: 103, 219, 163; --esds-callout-info: 133, 171, 255; --esds-callout-note: 185, 177, 215; --esds-callout-quote: 241, 143, 203; --esds-callout-abstract: 185, 149, 239; color: #f0e8f7; }
-
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-19-rich-midnight,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-19-rich-midnight,
-.esds-preview.ocean-breeze.bg-19-rich-midnight,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-20-rich-navy,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-20-rich-navy,
-.esds-preview.ocean-breeze.bg-20-rich-navy,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-21-rich-forest,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-21-rich-forest,
-.esds-preview.ocean-breeze.bg-21-rich-forest,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-22-rich-emerald,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-22-rich-emerald,
-.esds-preview.ocean-breeze.bg-22-rich-emerald,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-23-rich-plum,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-23-rich-plum,
-.esds-preview.ocean-breeze.bg-23-rich-plum,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-24-rich-burgundy,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-24-rich-burgundy,
-.esds-preview.ocean-breeze.bg-24-rich-burgundy,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-25-rich-cocoa,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-25-rich-cocoa,
-.esds-preview.ocean-breeze.bg-25-rich-cocoa,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-26-rich-slate,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-26-rich-slate,
-.esds-preview.ocean-breeze.bg-26-rich-slate,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-29-cobalt-dusk,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-29-cobalt-dusk,
-.esds-preview.ocean-breeze.bg-29-cobalt-dusk,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-30-deep-lagoon,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-30-deep-lagoon,
-.esds-preview.ocean-breeze.bg-30-deep-lagoon { --esds-en: #7bd4ff; --esds-ipa: #c3a7ff; --esds-translation: #75dfbd; --esds-term: #81d5dc; --esds-definition: #b6cbd3; --esds-focus: #ffad80; --esds-secondary: #e4c27d; --esds-soft: #8ec5df; --esds-heading: #8dd8f3; --esds-ink: #e4f3f7; --esds-callout-rule: 105, 204, 241; --esds-callout-example: 186, 157, 244; --esds-callout-important: 255, 160, 126; --esds-callout-tip: 101, 215, 186; --esds-callout-warning: 238, 195, 117; --esds-callout-question: 94, 219, 237; --esds-callout-practice: 255, 169, 119; --esds-callout-success: 100, 219, 177; --esds-callout-info: 118, 186, 239; --esds-callout-note: 167, 201, 214; --esds-callout-quote: 226, 151, 207; --esds-callout-abstract: 175, 157, 232; color: #e4f3f7; }
-
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-19-rich-midnight,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-19-rich-midnight,
-.esds-preview.royal-plum.bg-19-rich-midnight,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-20-rich-navy,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-20-rich-navy,
-.esds-preview.royal-plum.bg-20-rich-navy,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-21-rich-forest,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-21-rich-forest,
-.esds-preview.royal-plum.bg-21-rich-forest,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-22-rich-emerald,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-22-rich-emerald,
-.esds-preview.royal-plum.bg-22-rich-emerald,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-23-rich-plum,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-23-rich-plum,
-.esds-preview.royal-plum.bg-23-rich-plum,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-24-rich-burgundy,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-24-rich-burgundy,
-.esds-preview.royal-plum.bg-24-rich-burgundy,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-25-rich-cocoa,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-25-rich-cocoa,
-.esds-preview.royal-plum.bg-25-rich-cocoa,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-26-rich-slate,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-26-rich-slate,
-.esds-preview.royal-plum.bg-26-rich-slate,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-29-cobalt-dusk,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-29-cobalt-dusk,
-.esds-preview.royal-plum.bg-29-cobalt-dusk,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-30-deep-lagoon,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-30-deep-lagoon,
-.esds-preview.royal-plum.bg-30-deep-lagoon { --esds-en: #9bb8ff; --esds-ipa: #e0a5d5; --esds-translation: #8bd9c0; --esds-term: #dc9acb; --esds-definition: #c9bfd2; --esds-focus: #f29bb5; --esds-secondary: #e8c17f; --esds-soft: #c6a4ec; --esds-heading: #c5b4ff; --esds-ink: #f1eaf6; --esds-callout-rule: 139, 164, 242; --esds-callout-example: 221, 148, 218; --esds-callout-important: 245, 143, 174; --esds-callout-tip: 100, 204, 170; --esds-callout-warning: 239, 195, 117; --esds-callout-question: 127, 197, 226; --esds-callout-practice: 241, 158, 125; --esds-callout-success: 104, 212, 171; --esds-callout-info: 138, 166, 232; --esds-callout-note: 190, 173, 207; --esds-callout-quote: 232, 151, 198; --esds-callout-abstract: 190, 155, 232; color: #f1eaf6; }
-
+/* Legacy dark palette role overrides removed: every palette now uses its canonical roles. */
 
 /* Built-in independent 30-background collection. */
 
@@ -582,46 +470,46 @@ body.theme-dark .markdown-source-view.esds-note.esds-palette-royal-plum { --esds
 }
 
 /* ---------- Dark-theme alternatives for the light backgrounds ---------- */
-body.theme-dark .markdown-preview-view.esds-note.bg-01-reading-ivory,
-body.theme-dark .markdown-source-view.esds-note.bg-01-reading-ivory { --note-background: linear-gradient(145deg, #292720 0%, #24221e 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-02-reading-parchment,
-body.theme-dark .markdown-source-view.esds-note.bg-02-reading-parchment { --note-background: linear-gradient(145deg, #30291f 0%, #28231d 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-03-reading-linen,
-body.theme-dark .markdown-source-view.esds-note.bg-03-reading-linen { --note-background: linear-gradient(145deg, #292925 0%, #232522 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-04-reading-oatmilk,
-body.theme-dark .markdown-source-view.esds-note.bg-04-reading-oatmilk { --note-background: linear-gradient(145deg, #302a20 0%, #29231d 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-05-reading-mist,
-body.theme-dark .markdown-source-view.esds-note.bg-05-reading-mist { --note-background: linear-gradient(145deg, #292e32 0%, #22282d 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-06-reading-sage,
-body.theme-dark .markdown-source-view.esds-note.bg-06-reading-sage { --note-background: linear-gradient(145deg, #253029 0%, #202922 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-07-reading-powder-blue,
-body.theme-dark .markdown-source-view.esds-note.bg-07-reading-powder-blue { --note-background: linear-gradient(145deg, #26313a 0%, #202a33 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-08-reading-rose-cloud,
-body.theme-dark .markdown-source-view.esds-note.bg-08-reading-rose-cloud { --note-background: linear-gradient(145deg, #33282b 0%, #2a2227 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-09-reading-lavender,
-body.theme-dark .markdown-source-view.esds-note.bg-09-reading-lavender { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-10-reading-sand,
-body.theme-dark .markdown-source-view.esds-note.bg-10-reading-sand { --note-background: linear-gradient(145deg, #302b23 0%, #28231e 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-11-pearl-glow,
-body.theme-dark .markdown-source-view.esds-note.bg-11-pearl-glow { --note-background: linear-gradient(145deg, #2b2d30 0%, #242a30 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-12-sea-glass,
-body.theme-dark .markdown-source-view.esds-note.bg-12-sea-glass { --note-background: linear-gradient(145deg, #243332 0%, #202c2d 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-13-blush-silk,
-body.theme-dark .markdown-source-view.esds-note.bg-13-blush-silk { --note-background: linear-gradient(145deg, #33282a 0%, #2b2328 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-14-wisteria-haze,
-body.theme-dark .markdown-source-view.esds-note.bg-14-wisteria-haze { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-15-glacier,
-body.theme-dark .markdown-source-view.esds-note.bg-15-glacier { --note-background: linear-gradient(145deg, #253139 0%, #202a31 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-16-matcha-cream,
-body.theme-dark .markdown-source-view.esds-note.bg-16-matcha-cream { --note-background: linear-gradient(145deg, #2b3023 0%, #242a20 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-17-apricot-haze,
-body.theme-dark .markdown-source-view.esds-note.bg-17-apricot-haze { --note-background: linear-gradient(145deg, #352a25 0%, #2c2421 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-18-blue-hour,
-body.theme-dark .markdown-source-view.esds-note.bg-18-blue-hour { --note-background: linear-gradient(145deg, #292e3b 0%, #232936 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-27-terracotta-wash,
-body.theme-dark .markdown-source-view.esds-note.bg-27-terracotta-wash { --note-background: linear-gradient(145deg, #352923 0%, #2b231f 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-28-saffron-cream,
-body.theme-dark .markdown-source-view.esds-note.bg-28-saffron-cream { --note-background: linear-gradient(145deg, #352f20 0%, #2b271e 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-01-reading-ivory,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-01-reading-ivory { --note-background: linear-gradient(145deg, #292720 0%, #24221e 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-02-reading-parchment,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-02-reading-parchment { --note-background: linear-gradient(145deg, #30291f 0%, #28231d 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-03-reading-linen,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-03-reading-linen { --note-background: linear-gradient(145deg, #292925 0%, #232522 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-04-reading-oatmilk,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-04-reading-oatmilk { --note-background: linear-gradient(145deg, #302a20 0%, #29231d 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-05-reading-mist,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-05-reading-mist { --note-background: linear-gradient(145deg, #292e32 0%, #22282d 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-06-reading-sage,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-06-reading-sage { --note-background: linear-gradient(145deg, #253029 0%, #202922 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-07-reading-powder-blue,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-07-reading-powder-blue { --note-background: linear-gradient(145deg, #26313a 0%, #202a33 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-08-reading-rose-cloud,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-08-reading-rose-cloud { --note-background: linear-gradient(145deg, #33282b 0%, #2a2227 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-09-reading-lavender,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-09-reading-lavender { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-10-reading-sand,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-10-reading-sand { --note-background: linear-gradient(145deg, #302b23 0%, #28231e 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-11-pearl-glow,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-11-pearl-glow { --note-background: linear-gradient(145deg, #2b2d30 0%, #242a30 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-12-sea-glass,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-12-sea-glass { --note-background: linear-gradient(145deg, #243332 0%, #202c2d 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-13-blush-silk,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-13-blush-silk { --note-background: linear-gradient(145deg, #33282a 0%, #2b2328 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-14-wisteria-haze,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-14-wisteria-haze { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-15-glacier,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-15-glacier { --note-background: linear-gradient(145deg, #253139 0%, #202a31 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-16-matcha-cream,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-16-matcha-cream { --note-background: linear-gradient(145deg, #2b3023 0%, #242a20 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-17-apricot-haze,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-17-apricot-haze { --note-background: linear-gradient(145deg, #352a25 0%, #2c2421 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-18-blue-hour,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-18-blue-hour { --note-background: linear-gradient(145deg, #292e3b 0%, #232936 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-27-terracotta-wash,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-27-terracotta-wash { --note-background: linear-gradient(145deg, #352923 0%, #2b231f 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-28-saffron-cream,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-28-saffron-cream { --note-background: linear-gradient(145deg, #352f20 0%, #2b271e 100%); }
 
 /* Dark-surface contrast: explicit foreground colors work in BOTH app themes. */
 .markdown-preview-view.esds-note.bg-19-rich-midnight,
@@ -735,45 +623,45 @@ body.theme-dark .markdown-source-view.esds-note.bg-28-saffron-cream { --note-bac
 
 .esds-preview.bg-30-deep-lagoon{ --note-background: radial-gradient(ellipse at 0% 0%, #245452 0%, transparent 50%), linear-gradient(145deg, #193b3d 0%, #142c33 100%); } .esds-preview.esds-preview-light-mode.bg-30-deep-lagoon{ --note-background: radial-gradient(ellipse at 0% 0%, #245452 0%, transparent 50%), linear-gradient(145deg, #193b3d 0%, #142c33 100%); }
 
-body.theme-dark .esds-preview.bg-01-reading-ivory, .esds-preview.esds-preview-dark-mode.bg-01-reading-ivory { --note-background: linear-gradient(145deg, #292720 0%, #24221e 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-01-reading-ivory, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-01-reading-ivory { --note-background: linear-gradient(145deg, #292720 0%, #24221e 100%); }
 
-body.theme-dark .esds-preview.bg-02-reading-parchment, .esds-preview.esds-preview-dark-mode.bg-02-reading-parchment { --note-background: linear-gradient(145deg, #30291f 0%, #28231d 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-02-reading-parchment, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-02-reading-parchment { --note-background: linear-gradient(145deg, #30291f 0%, #28231d 100%); }
 
-body.theme-dark .esds-preview.bg-03-reading-linen, .esds-preview.esds-preview-dark-mode.bg-03-reading-linen { --note-background: linear-gradient(145deg, #292925 0%, #232522 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-03-reading-linen, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-03-reading-linen { --note-background: linear-gradient(145deg, #292925 0%, #232522 100%); }
 
-body.theme-dark .esds-preview.bg-04-reading-oatmilk, .esds-preview.esds-preview-dark-mode.bg-04-reading-oatmilk { --note-background: linear-gradient(145deg, #302a20 0%, #29231d 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-04-reading-oatmilk, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-04-reading-oatmilk { --note-background: linear-gradient(145deg, #302a20 0%, #29231d 100%); }
 
-body.theme-dark .esds-preview.bg-05-reading-mist, .esds-preview.esds-preview-dark-mode.bg-05-reading-mist { --note-background: linear-gradient(145deg, #292e32 0%, #22282d 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-05-reading-mist, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-05-reading-mist { --note-background: linear-gradient(145deg, #292e32 0%, #22282d 100%); }
 
-body.theme-dark .esds-preview.bg-06-reading-sage, .esds-preview.esds-preview-dark-mode.bg-06-reading-sage { --note-background: linear-gradient(145deg, #253029 0%, #202922 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-06-reading-sage, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-06-reading-sage { --note-background: linear-gradient(145deg, #253029 0%, #202922 100%); }
 
-body.theme-dark .esds-preview.bg-07-reading-powder-blue, .esds-preview.esds-preview-dark-mode.bg-07-reading-powder-blue { --note-background: linear-gradient(145deg, #26313a 0%, #202a33 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-07-reading-powder-blue, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-07-reading-powder-blue { --note-background: linear-gradient(145deg, #26313a 0%, #202a33 100%); }
 
-body.theme-dark .esds-preview.bg-08-reading-rose-cloud, .esds-preview.esds-preview-dark-mode.bg-08-reading-rose-cloud { --note-background: linear-gradient(145deg, #33282b 0%, #2a2227 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-08-reading-rose-cloud, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-08-reading-rose-cloud { --note-background: linear-gradient(145deg, #33282b 0%, #2a2227 100%); }
 
-body.theme-dark .esds-preview.bg-09-reading-lavender, .esds-preview.esds-preview-dark-mode.bg-09-reading-lavender { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-09-reading-lavender, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-09-reading-lavender { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
 
-body.theme-dark .esds-preview.bg-10-reading-sand, .esds-preview.esds-preview-dark-mode.bg-10-reading-sand { --note-background: linear-gradient(145deg, #302b23 0%, #28231e 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-10-reading-sand, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-10-reading-sand { --note-background: linear-gradient(145deg, #302b23 0%, #28231e 100%); }
 
-body.theme-dark .esds-preview.bg-11-pearl-glow, .esds-preview.esds-preview-dark-mode.bg-11-pearl-glow { --note-background: linear-gradient(145deg, #2b2d30 0%, #242a30 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-11-pearl-glow, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-11-pearl-glow { --note-background: linear-gradient(145deg, #2b2d30 0%, #242a30 100%); }
 
-body.theme-dark .esds-preview.bg-12-sea-glass, .esds-preview.esds-preview-dark-mode.bg-12-sea-glass { --note-background: linear-gradient(145deg, #243332 0%, #202c2d 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-12-sea-glass, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-12-sea-glass { --note-background: linear-gradient(145deg, #243332 0%, #202c2d 100%); }
 
-body.theme-dark .esds-preview.bg-13-blush-silk, .esds-preview.esds-preview-dark-mode.bg-13-blush-silk { --note-background: linear-gradient(145deg, #33282a 0%, #2b2328 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-13-blush-silk, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-13-blush-silk { --note-background: linear-gradient(145deg, #33282a 0%, #2b2328 100%); }
 
-body.theme-dark .esds-preview.bg-14-wisteria-haze, .esds-preview.esds-preview-dark-mode.bg-14-wisteria-haze { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-14-wisteria-haze, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-14-wisteria-haze { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
 
-body.theme-dark .esds-preview.bg-15-glacier, .esds-preview.esds-preview-dark-mode.bg-15-glacier { --note-background: linear-gradient(145deg, #253139 0%, #202a31 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-15-glacier, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-15-glacier { --note-background: linear-gradient(145deg, #253139 0%, #202a31 100%); }
 
-body.theme-dark .esds-preview.bg-16-matcha-cream, .esds-preview.esds-preview-dark-mode.bg-16-matcha-cream { --note-background: linear-gradient(145deg, #2b3023 0%, #242a20 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-16-matcha-cream, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-16-matcha-cream { --note-background: linear-gradient(145deg, #2b3023 0%, #242a20 100%); }
 
-body.theme-dark .esds-preview.bg-17-apricot-haze, .esds-preview.esds-preview-dark-mode.bg-17-apricot-haze { --note-background: linear-gradient(145deg, #352a25 0%, #2c2421 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-17-apricot-haze, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-17-apricot-haze { --note-background: linear-gradient(145deg, #352a25 0%, #2c2421 100%); }
 
-body.theme-dark .esds-preview.bg-18-blue-hour, .esds-preview.esds-preview-dark-mode.bg-18-blue-hour { --note-background: linear-gradient(145deg, #292e3b 0%, #232936 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-18-blue-hour, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-18-blue-hour { --note-background: linear-gradient(145deg, #292e3b 0%, #232936 100%); }
 
-body.theme-dark .esds-preview.bg-27-terracotta-wash, .esds-preview.esds-preview-dark-mode.bg-27-terracotta-wash { --note-background: linear-gradient(145deg, #352923 0%, #2b231f 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-27-terracotta-wash, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-27-terracotta-wash { --note-background: linear-gradient(145deg, #352923 0%, #2b231f 100%); }
 
-body.theme-dark .esds-preview.bg-28-saffron-cream, .esds-preview.esds-preview-dark-mode.bg-28-saffron-cream { --note-background: linear-gradient(145deg, #352f20 0%, #2b271e 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-28-saffron-cream { --note-background: linear-gradient(145deg, #352f20 0%, #2b271e 100%); }
 
 
 @media (max-width: 700px) {
@@ -3838,15 +3726,28 @@ body.theme-dark .esds-preview.bg-28-saffron-cream, .esds-preview.esds-preview-da
 .esds-main-modal .esds-library-catalog-thumb .esds-demo-callout { margin-top:4px; }
 .esds-main-modal .esds-library-catalog-actions {
   display:flex;
-  gap:7px;
+  flex-wrap:wrap;
+  gap:6px;
   margin-top:8px;
 }
 .esds-main-modal .esds-library-catalog-actions .esds-button {
   flex:1 1 0;
+  width:auto;
   min-width:0;
-  min-height:34px;
-  padding:6px 8px;
+  min-height:36px;
+  padding:6px 7px;
   font-size:11px;
+}
+.esds-main-modal .esds-library-catalog-actions .esds-button:first-child {
+  flex:1 1 100%;
+}
+@media (max-width:360px) {
+  .esds-main-modal .esds-library-catalog-actions .esds-button {
+    flex:1 1 calc(50% - 6px);
+  }
+  .esds-main-modal .esds-library-catalog-actions .esds-button:first-child {
+    flex:1 1 100%;
+  }
 }
 .esds-preview-modal .esds-library-preview-content { max-height:82vh; overflow-y:auto; }
 .esds-preview-modal .esds-library-large-preview {
@@ -4385,3 +4286,39 @@ body.theme-dark .esds-preview.bg-28-saffron-cream, .esds-preview.esds-preview-da
   .esds-zip-export-modal { width:94vw; }
   .esds-zip-export-actions > button { flex:1 1 100%; }
 }
+
+
+/* 0.9.25 — category actions are visible and touch-friendly on Android. */
+.esds-catalog-folder { position:relative; }
+.esds-catalog-folder-menu { position:absolute; top:6px; right:6px; flex:0 0 32px; min-width:32px; width:32px; height:32px; margin:0; z-index:3; }
+.esds-catalog-folder-info { padding-right:30px; }
+.esds-catalog-folder-menu:focus-visible { outline:2px solid var(--interactive-accent); outline-offset:2px; }
+
+
+/* 0.9.27 — модальный ввод текста (замена window.prompt, который не работает в Electron). */
+.esds-prompt-modal { width: min(92vw, 440px); }
+.esds-prompt-content { display: flex; flex-direction: column; gap: 12px; }
+.esds-prompt-content h2 { margin: 0; font-size: 1.12rem; }
+.esds-prompt-description { margin: 0; color: var(--text-muted); font-size: var(--font-sm); line-height: 1.45; }
+.esds-prompt-field { display: flex; flex-direction: column; gap: 6px; }
+.esds-prompt-field input { width: 100%; }
+.esds-prompt-actions { display: flex; justify-content: flex-end; gap: 8px; padding-top: 2px; }
+
+/* 0.9.27 — панель массовых операций каталога. */
+.esds-bulk-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 9px 11px; border: 1px solid var(--interactive-accent); border-radius: 12px; background: var(--background-secondary); }
+.esds-bulk-bar-info { flex: 1 1 140px; min-width: 120px; }
+.esds-bulk-count { color: var(--text-normal); font-size: var(--font-sm); font-weight: 600; }
+.esds-bulk-bar-actions { display: flex; flex-wrap: wrap; gap: 7px; }
+.esds-bulk-bar-actions .esds-button { min-height: 36px; }
+.esds-library-catalog-controls .esds-button.is-active { border-color: var(--interactive-accent); background: var(--background-modifier-hover); color: var(--text-normal); }
+
+/* 0.9.27 — флажок выделения на карточке. */
+.esds-bulk-check-wrap { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 2px 8px; border: 1px solid var(--background-modifier-border); border-radius: 9px; background: var(--background-primary); cursor: pointer; }
+.esds-bulk-check-wrap input { width: 16px; height: 16px; margin: 0; accent-color: var(--interactive-accent); }
+.esds-bulk-check-label { font-size: var(--font-sm); color: var(--text-muted); }
+.esds-library-catalog-card.is-bulk-selected { border-color: var(--interactive-accent); box-shadow: 0 0 0 1px var(--interactive-accent); }
+
+/* 0.9.27 — меню категории в заголовке группы стилей блоков. */
+.esds-block-style-divider { position: relative; }
+.esds-block-category-menu { position: absolute; top: 50%; right: 4px; transform: translateY(-50%); margin: 0; }
+.esds-block-style-divider .esds-block-style-name { padding-right: 34px; }
