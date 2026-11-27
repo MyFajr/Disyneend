@@ -3,7 +3,7 @@
   "type": "esds-theme-pack",
   "plugin": "english-study-design-studio",
   "name": "Blue Raspberry — полный дизайнерский набор",
-  "description": "Полный дизайн Blue Raspberry: палитра, индивидуальный цветной фон и единое оформление блоков.",
+  "description": "Полный дизайн Blue Raspberry: индивидуальный насыщенный фон, палитра и стиль блоков.",
   "frameSource": "blockStyle",
   "items": {
     "palette": {
@@ -351,8 +351,8 @@
       "name": "Blue Raspberry — фон",
       "label": "Blue Raspberry — фон",
       "group": "Rainbow Multicolor",
-      "light": "linear-gradient(135deg, #C5DBF9 0%, #FFDCF0 100%)",
-      "dark": "linear-gradient(135deg, #C5DBF9 0%, #FFDCF0 100%)",
+      "light": "linear-gradient(135deg, #81B2F3 0%, #FF87CC 100%)",
+      "dark": "linear-gradient(135deg, #81B2F3 0%, #FF87CC 100%)",
       "textColor": "#201B2A",
       "darkTextColor": "#201B2A"
     },
