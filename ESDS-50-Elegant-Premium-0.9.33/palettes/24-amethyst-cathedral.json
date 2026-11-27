@@ -5,277 +5,276 @@
     "id": "elegant-premium-24-amethyst-cathedral",
     "name": "Amethyst Cathedral — Аметистовый собор",
     "mood": "Многогранный аметистовый градиент с фиолетовым кристаллическим свечением.",
-    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный линейный градиент с эффектом металлического блика; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный линейный градиент с эффектом металлического блика; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian. Полноценная премиальная дизайн-система: выразительный градиент, световой эффект, 30 семантических классов и контрастные карточки.",
     "category": "Элегантные и премиальные",
     "source": "user",
     "swatches": [
       "#281044",
       "#51217C",
       "#71349A",
-      "#36154D",
-      "#F9D8EE"
+      "#36154D"
     ],
     "defaultBackground": "bg-custom-elegant-premium-24-amethyst-cathedral",
     "defaultBlocks": "user-blocks-elegant-premium-24-amethyst-cathedral",
     "roles": {
-      "en": "#F9D8F7",
-      "letter": "#EFD8F9",
-      "ipa": "#F9D8F2",
-      "translation": "#F6D8F9",
-      "term": "#F9D8EE",
-      "definition": "#F9D8F6",
-      "focus": "#F0D8F9",
-      "secondary": "#F9D8F8",
-      "soft": "#F9D8F1",
-      "heading": "#EED8F9",
-      "ink": "#FFFFFF"
+      "en": "#A9C8F4",
+      "letter": "#F5B2C8",
+      "ipa": "#DCB6F6",
+      "translation": "#A4F4D3",
+      "term": "#F4C9A4",
+      "definition": "#A4E7F4",
+      "focus": "#F6B6BC",
+      "secondary": "#F4E0A4",
+      "soft": "#C4BFF7",
+      "heading": "#E3E9FC",
+      "ink": "#FFF7F0"
     },
     "callouts": {
       "rule": [
-        117,
-        110,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        237,
-        110,
-        230
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        149,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        219,
-        237
+        102,
+        245,
+        221
       ],
       "warning": [
-        213,
-        237,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        145,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        219,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        212
+        102,
+        245,
+        149
       ],
       "info": [
-        149,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        124
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        177,
-        237
+        102,
+        209,
+        245
       ],
       "abstract": [
-        237,
-        110,
-        187
+        245,
+        102,
+        185
       ]
     },
     "calloutFills": {
       "rule": [
-        21,
-        17,
-        74
+        219,
+        191,
+        247
       ],
       "example": [
-        74,
-        17,
-        71
+        191,
+        224,
+        247
       ],
       "important": [
-        74,
-        35,
-        17
+        247,
+        196,
+        191
       ],
       "tip": [
-        17,
-        66,
-        74
+        191,
+        247,
+        238
       ],
       "warning": [
-        64,
-        74,
-        17
+        247,
+        224,
+        191
       ],
       "question": [
-        17,
-        33,
-        74
+        191,
+        201,
+        247
       ],
       "practice": [
-        74,
-        66,
-        17
+        247,
+        243,
+        191
       ],
       "success": [
-        17,
-        74,
-        63
+        191,
+        247,
+        210
       ],
       "info": [
-        35,
-        17,
-        74
+        238,
+        191,
+        247
       ],
       "note": [
-        74,
-        17,
-        24
+        247,
+        205,
+        191
       ],
       "quote": [
-        17,
-        47,
-        74
+        191,
+        233,
+        247
       ],
       "abstract": [
-        74,
-        17,
-        52
+        247,
+        191,
+        224
       ]
     },
     "calloutTexts": {
       "rule": [
-        222,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "example": [
-        243,
-        221,
-        242
+        30,
+        22,
+        32
       ],
       "important": [
-        243,
-        228,
-        221
+        30,
+        22,
+        32
       ],
       "tip": [
-        221,
-        240,
-        243
+        30,
+        22,
+        32
       ],
       "warning": [
-        239,
-        243,
-        221
+        30,
+        22,
+        32
       ],
       "question": [
-        221,
-        227,
-        243
+        30,
+        22,
+        32
       ],
       "practice": [
-        243,
-        240,
-        221
+        30,
+        22,
+        32
       ],
       "success": [
-        221,
-        243,
-        239
+        30,
+        22,
+        32
       ],
       "info": [
-        228,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "note": [
-        243,
-        221,
-        223
+        30,
+        22,
+        32
       ],
       "quote": [
-        221,
-        233,
-        243
+        30,
+        22,
+        32
       ],
       "abstract": [
-        243,
-        221,
-        234
+        30,
+        22,
+        32
       ]
     },
     "calloutBorders": {
       "rule": [
-        117,
-        110,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        237,
-        110,
-        230
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        149,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        219,
-        237
+        102,
+        245,
+        221
       ],
       "warning": [
-        213,
-        237,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        145,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        219,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        212
+        102,
+        245,
+        149
       ],
       "info": [
-        149,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        124
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        177,
-        237
+        102,
+        209,
+        245
       ],
       "abstract": [
-        237,
-        110,
-        187
+        245,
+        102,
+        185
       ]
     },
     "calloutFrames": {
@@ -346,16 +345,16 @@
     "name": "Amethyst Cathedral — Аметистовый собор — фон",
     "label": "Amethyst Cathedral — Аметистовый собор — фон",
     "group": "Элегантные и премиальные",
-    "light": "linear-gradient(116deg, transparent 28%, #28104455 46%, #281044CC 50%, #28104455 54%, transparent 72%), linear-gradient(154deg, #281044 0%, #51217C 42%, #71349A 72%, #36154D 100%)",
-    "dark": "linear-gradient(116deg, transparent 28%, #28104455 46%, #281044CC 50%, #28104455 54%, transparent 72%), linear-gradient(154deg, #281044 0%, #51217C 42%, #71349A 72%, #36154D 100%)",
-    "textColor": "#FFFFFF",
-    "darkTextColor": "#FFFFFF",
+    "light": "radial-gradient(ellipse at 18% 12%, #28104430 0%, transparent 58%), linear-gradient(116deg, transparent 28%, #28104455 46%, #281044CC 50%, #28104455 54%, transparent 72%), linear-gradient(154deg, #281044 0%, #51217C 42%, #71349A 72%, #36154D 100%)",
+    "dark": "radial-gradient(ellipse at 18% 12%, #28104430 0%, transparent 58%), linear-gradient(116deg, transparent 28%, #28104455 46%, #281044CC 50%, #28104455 54%, transparent 72%), linear-gradient(154deg, #281044 0%, #51217C 42%, #71349A 72%, #36154D 100%)",
+    "textColor": "#FFF7F0",
+    "darkTextColor": "#FFF7F0",
     "source": "user"
   },
   "blockStyle": {
     "id": "user-blocks-elegant-premium-24-amethyst-cathedral",
     "name": "Amethyst Cathedral — Аметистовый собор — учебные блоки",
-    "description": "12 цветовых карточек, согласованных с фоном Amethyst Cathedral — Аметистовый собор; увеличенный текст Medium и заголовки Semibold.",
+    "description": "Контрастные цветные учебные карточки: основной текст Medium 500, заголовки Semibold 650, отдельные заливки и рамки.",
     "category": "Элегантные и премиальные",
     "base": "rich",
     "framePreset": "classic",
@@ -367,9 +366,9 @@
     },
     "style": {
       "light": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -381,9 +380,9 @@
         "shadow": "none"
       },
       "dark": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -398,22 +397,32 @@
     "calloutOverrides": {
       "important": {
         "light": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         },
         "dark": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         }
       },
       "warning": {
         "light": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
         },
         "dark": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
+        }
+      },
+      "question": {
+        "light": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
+        },
+        "dark": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
         }
       }
     },
