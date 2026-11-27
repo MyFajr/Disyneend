@@ -1671,6 +1671,9 @@ class DesignStudioModal extends Modal {
     this.libraryCategory = null;
     this.librarySearchText = '';
     this.paletteCategory = null;
+    this.paletteMultiSelection = new Set();
+    this.paletteSelectionAnchor = null;
+    this.paletteViewMode = 'grid';
     this.backgroundCategory = null;
     this.catalogPageSize = 24;
     this.plugin.userData.frameSource = 'palette';
@@ -2522,8 +2525,10 @@ class DesignStudioModal extends Modal {
         header.createEl('strong', { text: selectedCategory });
       } else header.createEl('strong', { text: 'Результаты поиска по всем категориям' });
       header.createEl('small', { text: `${matching.length} элементов` });
+      this.renderPaletteBulkToolbar(results, matching);
       if (!matching.length) { results.createEl('p', { cls: 'esds-empty', text: 'Палитры не найдены.' }); return; }
       const grid = results.createDiv({ cls: 'esds-template-card-list esds-catalog-palette-grid' });
+      if (this.paletteViewMode === 'list') grid.addClass('esds-view-list');
       let rendered = 0;
       const appendBatch = () => {
         const next = matching.slice(rendered, rendered + this.catalogPageSize);
@@ -2547,6 +2552,87 @@ class DesignStudioModal extends Modal {
     });
     renderDirectory(search.value.trim().toLocaleLowerCase());
   }
+  renderPaletteBulkToolbar(parent, visibleItems) {
+    const toolbar = parent.createDiv({ cls: 'esds-palette-manager-toolbar' }), ids = visibleItems.map(item => item.id);
+    const selected = ids.filter(id => this.paletteMultiSelection.has(id));
+    const button = (label, fn, parentEl = toolbar, danger = false) => {
+      const b = parentEl.createEl('button', { cls: 'esds-button' + (danger ? ' esds-danger' : ''), text: label, attr: { type: 'button' } });
+      b.addEventListener('click', fn); return b;
+    };
+    button('Выбрать всё', () => { ids.forEach(id => this.paletteMultiSelection.add(id)); this.render(); });
+    button('Снять выбор', () => { this.paletteMultiSelection.clear(); this.paletteSelectionAnchor = null; this.render(); });
+    button('Инвертировать', () => { ids.forEach(id => this.paletteMultiSelection.has(id) ? this.paletteMultiSelection.delete(id) : this.paletteMultiSelection.add(id)); this.render(); });
+    button(this.paletteViewMode === 'grid' ? '☷ Список' : '▦ Сетка', () => { this.paletteViewMode = this.paletteViewMode === 'grid' ? 'list' : 'grid'; this.render(); });
+    toolbar.createSpan({ cls: 'esds-palette-selection-count', text: 'Выбрано: ' + selected.length + ' из ' + ids.length });
+    const actions = toolbar.createDiv({ cls: 'esds-palette-manager-actions' });
+    const act = (label, fn, danger = false) => { const b = button(label, fn, actions, danger); b.disabled = selected.length === 0; };
+    act('Переместить', () => this.bulkMovePalettes(selected, false));
+    act('Копировать', () => this.bulkMovePalettes(selected, true));
+    act('Переименовать', () => this.bulkRenamePalettes(selected));
+    act('Удалить', () => this.bulkDeletePalettes(selected), true);
+    act('Экспорт ZIP', () => this.exportPaletteIdsZip(selected));
+  }
+  async bulkDeletePalettes(ids) {
+    const chosen = new Set(ids), source = this.plugin.userData.palettes || [], removable = source.filter(item => chosen.has(item.id));
+    const protectedCount = ids.length - removable.length;
+    if (!removable.length) { new Notice('Встроенные палитры нельзя удалить из библиотеки.'); return; }
+    if (!confirm('Удалить выбранные палитры? Будет удалено: ' + removable.length + (protectedCount ? '. Встроенные палитры останутся: ' + protectedCount : '') + '.')) return;
+    const before = clone(this.plugin.userData);
+    this.plugin.userData.palettes = source.filter(item => !chosen.has(item.id));
+    if (await this.plugin.saveUserLibrary() === false) { this.plugin.userData = before; return; }
+    ids.forEach(id => this.paletteMultiSelection.delete(id));
+    if (removable.some(item => item.id === this.selectedPalette.id)) this.selectedPalette = PALETTES[0];
+    this.plugin.refreshGeneratedStyles(); new Notice('Удалено палитр: ' + removable.length); this.render();
+  }
+  async bulkMovePalettes(ids, copy = false) {
+    const choice = await this.choosePaletteCategory({ title: copy ? 'Копировать палитры' : 'Переместить палитры', description: 'Выберите категорию назначения.', suggestedName: this.paletteCategory || 'Мои палитры', categories: this.getCategories('palettes') });
+    if (!choice) return;
+    const selected = new Set(ids), source = this.plugin.userData.palettes || [], moving = source.filter(item => selected.has(item.id));
+    if (!moving.length) { new Notice('Выбранные палитры нельзя переместить: они встроенные.'); return; }
+    const before = clone(this.plugin.userData), names = new Set(this.allPalettes().map(item => String(item.name || '').toLocaleLowerCase())), idsUsed = new Set(this.allPalettes().map(item => String(item.id || '').toLocaleLowerCase()));
+    const uniqueName = base => { let name = base, n = 2; while (names.has(name.toLocaleLowerCase())) name = base + ' (' + n++ + ')'; names.add(name.toLocaleLowerCase()); return name; };
+    const destination = await this.ensurePaletteCategory(choice.name);
+    if (copy) {
+      const copies = moving.map((item, index) => {
+        const next = clone(item); next.name = uniqueName(item.name || 'Копия палитры');
+        let id = 'user-' + slugify(next.name) + '-' + Date.now().toString(36) + '-' + index;
+        while (idsUsed.has(id.toLowerCase())) id += '-1';
+        idsUsed.add(id.toLowerCase()); next.id = id; next.category = destination; next.source = 'user'; next.createdAt = new Date().toISOString(); return next;
+      });
+      this.plugin.userData.palettes = [...source, ...copies];
+    } else this.plugin.userData.palettes = source.map(item => selected.has(item.id) ? { ...item, category: destination } : item);
+    if (await this.plugin.saveUserLibrary() === false) { this.plugin.userData = before; return; }
+    this.plugin.refreshGeneratedStyles(); new Notice((copy ? 'Скопировано: ' : 'Перемещено: ') + moving.length);
+    this.paletteCategory = destination; this.paletteMultiSelection.clear(); this.render();
+  }
+  async bulkRenamePalettes(ids) {
+    const selected = new Set(ids), source = this.plugin.userData.palettes || [], items = source.filter(item => selected.has(item.id));
+    if (!items.length) { new Notice('Переименовывать можно пользовательские палитры.'); return; }
+    const base = prompt(items.length === 1 ? 'Новое название палитры:' : 'Общее имя. К каждой палитре будет добавлен номер:', items[0].name);
+    if (base === null || !String(base).trim()) return;
+    const used = new Set(this.allPalettes().filter(item => !selected.has(item.id)).map(item => String(item.name || '').toLocaleLowerCase()));
+    const pairs = items.map((item, i) => {
+      const initial = String(base).trim() + (items.length === 1 ? '' : ' ' + (i + 1)); let name = initial, n = 2;
+      while (used.has(name.toLocaleLowerCase())) name = initial + ' (' + n++ + ')';
+      used.add(name.toLocaleLowerCase()); return [item.id, name];
+    });
+    const names = new Map(pairs), before = clone(this.plugin.userData);
+    this.plugin.userData.palettes = source.map(item => {
+      if (!names.has(item.id)) return item;
+      const name = names.get(item.id);
+      return { ...item, name, id: 'user-' + slugify(name) + '-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,6) };
+    });
+    if (await this.plugin.saveUserLibrary() === false) { this.plugin.userData = before; return; }
+    this.plugin.refreshGeneratedStyles(); new Notice('Переименовано палитр: ' + items.length); this.render();
+  }
+  async exportPaletteIdsZip(ids) {
+    const chosen = new Set(ids), selected = this.allPalettes().filter(item => chosen.has(item.id));
+    if (!selected.length) return;
+    const original = this.allPalettes;
+    this.allPalettes = () => selected;
+    try { await this.exportPaletteCategoryZip(null); }
+    finally { this.allPalettes = original; }
+  }
   renderPaletteCard(parent, p, visibleItems = null) {
     const selected = p.id === this.selectedPalette.id;
     const bg = this.findBackground(p.defaultBackground) || this.selectedBackground || BACKGROUNDS[0];
@@ -2557,6 +2643,19 @@ class DesignStudioModal extends Modal {
       attr: { role: 'button', tabindex: '0', 'aria-pressed': selected ? 'true' : 'false', 'aria-label': `${p.name}${selected ? ', выбрана' : ''}` }
     });
     const heading = card.createDiv({ cls: 'esds-template-card-heading' });
+    const selection = heading.createEl('input', { cls: 'esds-palette-select-checkbox', attr: { type: 'checkbox', 'aria-label': 'Выбрать палитру ' + p.name } });
+    selection.checked = this.paletteMultiSelection.has(p.id);
+    selection.addEventListener('click', event => event.stopPropagation());
+    selection.addEventListener('change', event => {
+      event.stopPropagation();
+      const ids = (visibleItems || this.allPalettes()).map(item => item.id);
+      if (event.shiftKey && this.paletteSelectionAnchor && ids.includes(this.paletteSelectionAnchor)) {
+        const a = ids.indexOf(this.paletteSelectionAnchor), b = ids.indexOf(p.id);
+        ids.slice(Math.min(a,b), Math.max(a,b)+1).forEach(id => this.paletteMultiSelection.add(id));
+      } else if (selection.checked) this.paletteMultiSelection.add(p.id);
+      else this.paletteMultiSelection.delete(p.id);
+      this.paletteSelectionAnchor = p.id; this.render();
+    });
     heading.createEl('strong', { text: p.name });
     if (selected) heading.createSpan({ cls: 'esds-template-check is-visible', text: '✓' });
     const tools = heading.createDiv({ cls: 'esds-card-manage-tools' });
