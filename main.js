@@ -1131,7 +1131,11 @@ function makeLocalNoteStyleCss(raw) {
 }
 
 class PreviewModal extends Modal {
-  constructor(app, studio) { super(app); this.studio = studio; }
+  constructor(app, studio) {
+    super(app);
+    this.studio = studio;
+    this.mode = document.body.classList.contains('theme-dark') ? 'dark' : 'light';
+  }
   onOpen() {
     this.modalEl.addClass('esds-preview-modal');
     this.contentEl.addClass('esds-preview-modal-content');
@@ -1147,17 +1151,34 @@ class PreviewModal extends Modal {
     const title = header.createDiv({ cls: 'esds-heading-wrap' });
     title.createEl('h2', { text: 'Предпросмотр оформления' });
     title.createEl('p', { text: `${p.name} · ${b.label || b.name} · Геометрия рамок палитры` });
+    const closeTop = header.createEl('button', { cls: 'esds-icon-button esds-preview-close-top', text: '×', attr: { type: 'button', 'aria-label': 'Закрыть предпросмотр', title: 'Закрыть' } });
+    closeTop.addEventListener('click', () => this.close());
 
-    const preview = root.createDiv({ cls: `esds-preview ${p.id} esds-palette-${p.id} ${b.id} esds-frames-from-palette` });
-    this.studio.renderPreview(preview);
+    const modeBar = root.createDiv({ cls: 'esds-library-preview-mode esds-primary-preview-mode' });
+    ['light', 'dark'].forEach(mode => {
+      const button = modeBar.createEl('button', { cls: `esds-button esds-btn-quiet${this.mode === mode ? ' is-active' : ''}`, text: mode === 'light' ? '☀ Светлая' : '☾ Тёмная', attr: { type: 'button', 'aria-pressed': this.mode === mode ? 'true' : 'false' } });
+      button.addEventListener('click', () => { this.mode = mode; this.render(); });
+    });
 
-    const actions = root.createDiv({ cls: 'esds-preview-actions' });
+    const preview = root.createDiv({ cls: `esds-preview esds-preview-stage ${p.id} esds-palette-${p.id} ${b.id} esds-frames-from-palette` });
+    this.studio.setPreviewTheme(preview, p, b, this.studio.selectedBlocks, this.mode);
+    this.studio.renderMiniNote(preview, true);
+
+    const actions = root.createDiv({ cls: 'esds-preview-actions esds-primary-preview-actions' });
     const apply = actions.createEl('button', { cls: 'esds-button esds-primary esds-btn-teal', text: '✓ Применить', attr: { type: 'button' } });
     apply.addEventListener('click', async () => {
+      if (apply.disabled) return;
       apply.disabled = true;
-      const ok = await this.studio.applySelected();
-      if (ok) { this.close(); this.studio.close(); }
-      else apply.disabled = false;
+      const oldText = apply.textContent;
+      apply.setText('Применяем…');
+      try {
+        const ok = await this.studio.applySelected();
+        if (ok) { this.close(); this.studio.close(); }
+        else apply.setText(oldText);
+      } catch (error) {
+        console.error('ESDS preview apply:', error);
+        apply.setText(oldText);
+      } finally { apply.disabled = false; }
     });
 
     const cancel = actions.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Закрыть', attr: { type: 'button' } });
@@ -1167,13 +1188,17 @@ class PreviewModal extends Modal {
     const fav = actions.createEl('button', { cls: 'esds-button esds-btn-coral', text: alreadyFavorite ? '★ В избранном' : '☆ В избранное', attr: { type: 'button' } });
     if (alreadyFavorite) fav.addClass('is-saved');
     fav.addEventListener('click', async () => {
+      if (this.studio.isFavorite()) {
+        fav.setText('★ Уже в избранном');
+        fav.addClass('is-saved');
+        return;
+      }
       const added = await this.studio.addFavorite();
       fav.setText(added ? '★ В избранном' : '★ Уже в избранном');
       fav.addClass('is-saved');
     });
   }
 }
-
 class LibraryItemPreviewModal extends Modal {
   constructor(app, studio, kind, items, index = 0) {
     super(app);
@@ -1206,6 +1231,8 @@ class LibraryItemPreviewModal extends Modal {
     const heading = header.createDiv({ cls: 'esds-heading-wrap' });
     heading.createEl('h2', { text: name });
     heading.createEl('p', { text: `${this.kind === 'palette' ? 'Палитра' : this.kind === 'background' ? 'Фон заметки' : 'Стиль блоков'} · ${item.category || item.group || 'Моя библиотека'} · ${this.index + 1} из ${this.items.length}` });
+    const closeTop = header.createEl('button', { cls: 'esds-icon-button esds-preview-close-top', text: '×', attr: { type: 'button', 'aria-label': 'Закрыть предпросмотр', title: 'Закрыть' } });
+    closeTop.addEventListener('click', () => this.close());
 
     const modeBar = root.createDiv({ cls: 'esds-library-preview-mode' });
     ['light', 'dark'].forEach(mode => {
@@ -1213,7 +1240,7 @@ class LibraryItemPreviewModal extends Modal {
       button.addEventListener('click', () => { this.mode = mode; this.render(); });
     });
 
-    const preview = root.createDiv({ cls: `esds-library-large-preview esds-preview ${palette.id} esds-palette-${palette.id} ${background.id || ''} esds-frames-from-palette` });
+    const preview = root.createDiv({ cls: `esds-library-large-preview esds-preview esds-preview-stage ${palette.id} esds-palette-${palette.id} ${background.id || ''} esds-frames-from-palette` });
     s.setPreviewTheme(preview, palette, background, block, this.mode);
     if (this.kind === 'palette') s.renderPaletteRichSampleContent(preview);
     else if (this.kind === 'background') s.renderMiniNote(preview, true);
@@ -2263,7 +2290,7 @@ class DesignStudioModal extends Modal {
     const palette = kind === 'palette' ? item : this.selectedPalette;
     const background = kind === 'background' ? item : (kind === 'palette' ? (this.findBackground(item.defaultBackground) || this.selectedBackground) : this.selectedBackground);
     const block = kind === 'blockStyle' ? item : this.getPreferredBlockStyle(palette);
-    const card = parent.createDiv({ cls: `esds-library-catalog-card esds-library-catalog-${kind}` });
+    const card = parent.createDiv({ cls: `esds-library-catalog-card esds-library-catalog-${kind}`, attr: { role: 'button', tabindex: '0', 'aria-label': `Открыть предпросмотр: ${item.name || item.label || 'Элемент оформления'}` } });
     const heading = card.createDiv({ cls: 'esds-library-catalog-heading' });
     heading.createEl('strong', { text: item.name || item.label || 'Без названия' });
     const category = this.libraryCategoryName(kind, item);
@@ -2273,10 +2300,11 @@ class DesignStudioModal extends Modal {
     if (kind === 'palette') this.renderPaletteCardThumbnail(preview);
     else if (kind === 'background') this.renderMiniNote(preview, true);
     else this.renderBlockGallery(preview, item.previewCallouts || ['example', 'important', 'tip']);
-    const actions = card.createDiv({ cls: 'esds-library-catalog-actions' });
-    const view = actions.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Просмотр и применение', attr: { type: 'button' } });
-    view.addEventListener('click', () => this.openLibraryItemPreview(kind, item, visibleItems));
-    card.addEventListener('click', event => { if (!event.target.closest('button')) this.openLibraryItemPreview(kind, item, visibleItems); });
+    const openPreview = () => this.openLibraryItemPreview(kind, item, visibleItems);
+    card.addEventListener('click', openPreview);
+    card.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openPreview(); }
+    });
   }
   renderLibraryCatalog(parent) {
     const kinds = [
