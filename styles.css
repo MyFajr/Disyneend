@@ -4385,3 +4385,17 @@ body.theme-dark .esds-preview.bg-28-saffron-cream, .esds-preview.esds-preview-da
   .esds-zip-export-modal { width:94vw; }
   .esds-zip-export-actions > button { flex:1 1 100%; }
 }
+
+/* Palette collection manager */
+.esds-palette-manager-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:7px;padding:10px;margin:8px 0 12px;border:1px solid var(--background-modifier-border);border-radius:12px;background:var(--background-secondary)}
+.esds-palette-manager-toolbar>.esds-button{min-height:40px;font-size:.75rem;padding:7px 10px}
+.esds-palette-selection-count{font-size:.75rem;color:var(--text-muted);font-weight:650;padding:4px}
+.esds-palette-manager-actions{display:flex;flex-wrap:wrap;gap:6px;width:100%;padding-top:5px;border-top:1px solid var(--background-modifier-border)}
+.esds-palette-manager-actions .esds-button{flex:1 1 auto;min-width:90px;min-height:40px}
+.esds-palette-select-checkbox{width:20px;height:20px;min-width:20px;accent-color:var(--interactive-accent);margin:0 7px 0 0;cursor:pointer}
+.esds-palette-manager-toolbar button:disabled{opacity:.4}
+.esds-catalog-palette-grid.esds-view-list{display:flex;flex-direction:column;gap:7px}
+.esds-catalog-palette-grid.esds-view-list>.esds-palette-template-card{width:100%;max-width:none;display:grid;grid-template-columns:minmax(0,1fr) 112px;align-items:start}
+.esds-catalog-palette-grid.esds-view-list .esds-palette-rich-sample{grid-column:2;grid-row:1 / span 3;max-height:105px;overflow:hidden}
+.esds-catalog-palette-grid.esds-view-list .esds-template-card-heading{grid-column:1;grid-row:1}
+@media(max-width:420px){.esds-palette-manager-toolbar{gap:5px;padding:8px}.esds-palette-manager-toolbar>.esds-button{flex:1 1 42%}.esds-palette-manager-actions .esds-button{flex:1 1 42%}}
