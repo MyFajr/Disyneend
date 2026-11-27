@@ -1,0 +1,411 @@
+{
+  "schemaVersion": 1,
+  "type": "esds-theme-pack",
+  "plugin": "english-study-design-studio",
+  "name": "Turquoise Party — полный дизайнерский набор",
+  "description": "Палитра, яркий цветной фон и согласованное оформление учебных блоков для ESDS 0.9.32.",
+  "frameSource": "palette",
+  "items": {
+    "palette": {
+      "id": "rainbow-turquoise-party",
+      "name": "Turquoise Party",
+      "mood": "Бирюзовая вечеринка: Насыщенная бирюза с кораллом, фиолетовым, лаймом и манго.",
+      "description": "Насыщенная бирюза с кораллом, фиолетовым, лаймом и манго. Полноценная многоцветная учебная палитра для ESDS 0.9.32: отдельные контрастные роли для английского текста, иностранных букв, IPA, перевода, терминов и смысловых акцентов; согласованные цвета 12 учебных Callout. Единая система цветов без отдельных пользовательских вариантов Light/Dark.",
+      "category": "Радужные и многоцветные",
+      "swatches": [
+        "#27ECDC",
+        "#442EEA",
+        "#E60FA2",
+        "#E58B2A",
+        "#6CF038"
+      ],
+      "defaultBackground": "bg-08-reading-rose-cloud",
+      "defaultBlocks": "soft",
+      "roles": {
+        "en": "#158E84",
+        "letter": "#124391",
+        "ipa": "#4B8E15",
+        "translation": "#8E1563",
+        "term": "#158E38",
+        "definition": "#972A17",
+        "focus": "#15748E",
+        "secondary": "#15238E",
+        "soft": "#1EA018",
+        "heading": "#158E50",
+        "ink": "#28202E"
+      },
+      "callouts": {
+        "rule": [
+          171,
+          23,
+          23
+        ],
+        "example": [
+          23,
+          171,
+          141
+        ],
+        "important": [
+          23,
+          171,
+          36
+        ],
+        "tip": [
+          134,
+          23,
+          171
+        ],
+        "warning": [
+          23,
+          171,
+          166
+        ],
+        "question": [
+          171,
+          23,
+          97
+        ],
+        "practice": [
+          23,
+          171,
+          102
+        ],
+        "success": [
+          158,
+          23,
+          171
+        ],
+        "info": [
+          171,
+          23,
+          60
+        ],
+        "note": [
+          171,
+          134,
+          23
+        ],
+        "quote": [
+          72,
+          171,
+          23
+        ],
+        "abstract": [
+          171,
+          85,
+          23
+        ]
+      },
+      "calloutFills": {
+        "rule": [
+          252,
+          228,
+          228
+        ],
+        "example": [
+          228,
+          252,
+          247
+        ],
+        "important": [
+          228,
+          252,
+          230
+        ],
+        "tip": [
+          246,
+          228,
+          252
+        ],
+        "warning": [
+          228,
+          252,
+          252
+        ],
+        "question": [
+          252,
+          228,
+          240
+        ],
+        "practice": [
+          228,
+          252,
+          241
+        ],
+        "success": [
+          250,
+          228,
+          252
+        ],
+        "info": [
+          252,
+          228,
+          234
+        ],
+        "note": [
+          252,
+          246,
+          228
+        ],
+        "quote": [
+          236,
+          252,
+          228
+        ],
+        "abstract": [
+          252,
+          238,
+          228
+        ]
+      },
+      "calloutTexts": {
+        "rule": [
+          127,
+          21,
+          21
+        ],
+        "example": [
+          21,
+          127,
+          106
+        ],
+        "important": [
+          21,
+          127,
+          30
+        ],
+        "tip": [
+          101,
+          21,
+          127
+        ],
+        "warning": [
+          21,
+          127,
+          124
+        ],
+        "question": [
+          127,
+          21,
+          74
+        ],
+        "practice": [
+          21,
+          127,
+          77
+        ],
+        "success": [
+          118,
+          21,
+          127
+        ],
+        "info": [
+          127,
+          21,
+          47
+        ],
+        "note": [
+          127,
+          101,
+          21
+        ],
+        "quote": [
+          56,
+          127,
+          21
+        ],
+        "abstract": [
+          127,
+          65,
+          21
+        ]
+      },
+      "calloutBorders": {
+        "rule": [
+          195,
+          24,
+          24
+        ],
+        "example": [
+          24,
+          195,
+          161
+        ],
+        "important": [
+          24,
+          195,
+          38
+        ],
+        "tip": [
+          152,
+          24,
+          195
+        ],
+        "warning": [
+          24,
+          195,
+          189
+        ],
+        "question": [
+          195,
+          24,
+          110
+        ],
+        "practice": [
+          24,
+          195,
+          115
+        ],
+        "success": [
+          181,
+          24,
+          195
+        ],
+        "info": [
+          195,
+          24,
+          67
+        ],
+        "note": [
+          195,
+          152,
+          24
+        ],
+        "quote": [
+          81,
+          195,
+          24
+        ],
+        "abstract": [
+          195,
+          95,
+          24
+        ]
+      },
+      "calloutFrames": {
+        "rule": {
+          "preset": "classic",
+          "width": 1.5,
+          "radius": 10
+        },
+        "example": {
+          "preset": "dashed",
+          "width": 2,
+          "radius": 10
+        },
+        "important": {
+          "preset": "double",
+          "width": 3,
+          "radius": 8
+        },
+        "tip": {
+          "preset": "dotted",
+          "width": 2,
+          "radius": 12
+        },
+        "warning": {
+          "preset": "left",
+          "width": 3,
+          "radius": 8
+        },
+        "question": {
+          "preset": "top",
+          "width": 2,
+          "radius": 8
+        },
+        "practice": {
+          "preset": "classic",
+          "width": 1.5,
+          "radius": 10
+        },
+        "success": {
+          "preset": "dashed",
+          "width": 1.5,
+          "radius": 12
+        },
+        "info": {
+          "preset": "classic",
+          "width": 1.5,
+          "radius": 10
+        },
+        "note": {
+          "preset": "left",
+          "width": 2,
+          "radius": 8
+        },
+        "quote": {
+          "preset": "dotted",
+          "width": 2,
+          "radius": 10
+        },
+        "abstract": {
+          "preset": "double",
+          "width": 2,
+          "radius": 10
+        }
+      }
+    },
+    "background": {
+      "id": "bg-rainbow-turquoise-party",
+      "name": "Turquoise Party — цветной фон",
+      "label": "Turquoise Party — цветной фон",
+      "group": "Радужные и многоцветные",
+      "light": "linear-gradient(135deg, #A2F7F0 0%, #F7ADDF 54%, #D6FBC7 100%)",
+      "dark": "linear-gradient(135deg, #A2F7F0 0%, #F7ADDF 54%, #D6FBC7 100%)",
+      "textColor": "#28202E",
+      "darkTextColor": "#28202E"
+    },
+    "blockStyle": {
+      "id": "rainbow-blocks-turquoise-party",
+      "name": "Turquoise Party — учебные блоки",
+      "description": "Согласованные рамки и поверхности учебных Callout для палитры Turquoise Party.",
+      "category": "Радужные и многоцветные",
+      "base": "soft",
+      "framePreset": "classic",
+      "frameOverrides": {
+        "important": "double",
+        "warning": "left",
+        "question": "top"
+      },
+      "style": {
+        "light": {
+          "backgroundOpacity": 0.18,
+          "borderOpacity": 0.78,
+          "borderWidth": 1.6,
+          "borderRadius": 13,
+          "paddingY": 10,
+          "paddingX": 12,
+          "gap": 8,
+          "titleWeight": 700,
+          "titleSize": 13,
+          "bodySize": 12
+        },
+        "dark": {
+          "backgroundOpacity": 0.18,
+          "borderOpacity": 0.78,
+          "borderWidth": 1.6,
+          "borderRadius": 13,
+          "paddingY": 10,
+          "paddingX": 12,
+          "gap": 8,
+          "titleWeight": 700,
+          "titleSize": 13,
+          "bodySize": 12
+        }
+      },
+      "calloutOverrides": {},
+      "colors": {
+        "light": {},
+        "dark": {}
+      },
+      "previewCallouts": [
+        "rule",
+        "example",
+        "important",
+        "tip",
+        "warning",
+        "question"
+      ]
+    }
+  }
+}
