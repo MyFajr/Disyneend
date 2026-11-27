@@ -346,8 +346,8 @@
     "name": "Lime Shock — фон",
     "label": "Lime Shock — фон",
     "group": "Rainbow Multicolor",
-    "light": "linear-gradient(135deg, #ECFBC5 0%, #CCE6D6 100%)",
-    "dark": "linear-gradient(135deg, #ECFBC5 0%, #CCE6D6 100%)",
+    "light": "linear-gradient(135deg, #C1F441 0%, #B6DBC4 100%)",
+    "dark": "linear-gradient(135deg, #C1F441 0%, #B6DBC4 100%)",
     "textColor": "#201B2A",
     "darkTextColor": "#201B2A"
   },
