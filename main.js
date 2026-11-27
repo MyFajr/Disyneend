@@ -830,9 +830,9 @@ function makeBlockStyleCss(style) {
 .markdown-preview-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).${cls} .callout,
 .markdown-source-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).${cls} .callout,
 .esds-preview.${cls} { ${lightVars} }
-body.theme-dark .markdown-preview-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).${cls} .callout,
-body.theme-dark .markdown-source-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).${cls} .callout,
-body.theme-dark .esds-preview.${cls} { ${darkVars} }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]):not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).${cls} .callout,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]):not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).${cls} .callout,
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).${cls} { ${darkVars} }
 `;
 
   // Per-callout overrides
@@ -847,7 +847,7 @@ body.theme-dark .esds-preview.${cls} { ${darkVars} }
       css += `.markdown-preview-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).${cls} .callout[data-callout="${type}"],.esds-preview.${cls} .esds-callout-${type},.esds-preview.${cls} .esds-demo-callout.esds-callout-${type}{${lVars}}\n`;
     }
     if (dVars) {
-      css += `body.theme-dark .markdown-preview-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).${cls} .callout[data-callout="${type}"],body.theme-dark .esds-preview.${cls} .esds-callout-${type},body.theme-dark .esds-preview.${cls} .esds-demo-callout.esds-callout-${type}{${dVars}}\n`;
+      css += `body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]):not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).${cls} .callout[data-callout="${type}"],body.theme-dark .esds-preview:not([class*="esds-palette-"]).${cls} .esds-callout-${type},body.theme-dark .esds-preview:not([class*="esds-palette-"]).${cls} .esds-demo-callout.esds-callout-${type}{${dVars}}\n`;
     }
   });
 
@@ -4798,7 +4798,7 @@ module.exports = class EnglishStudyDesignStudio extends Plugin {
         const dark = bg.dark || bg.light;
         const fg = isHexColor(bg.textColor) ? bg.textColor : '#302d31';
         const darkFg = isHexColor(bg.darkTextColor) ? bg.darkTextColor : '#e9eaf0';
-        return `.markdown-preview-view.esds-note.${bg.id},.markdown-source-view.esds-note.${bg.id}{--note-background:${light};--esds-bg-fg:${fg};}\nbody.theme-dark .markdown-preview-view.esds-note.${bg.id},body.theme-dark .markdown-source-view.esds-note.${bg.id}{--note-background:${dark};--esds-bg-fg:${darkFg};}\n.esds-preview.${bg.id}{--note-background:${light};}\nbody.theme-dark .esds-preview.${bg.id}{--note-background:${dark};}\n.markdown-preview-view.esds-note.${bg.id},.markdown-source-view.esds-note.${bg.id}{color:var(--esds-bg-fg);--text-normal:var(--esds-bg-fg);}\n.markdown-preview-view.esds-note.${bg.id} h1,.markdown-preview-view.esds-note.${bg.id} h2,.markdown-preview-view.esds-note.${bg.id} h3,.markdown-preview-view.esds-note.${bg.id} h4,.markdown-preview-view.esds-note.${bg.id} h5,.markdown-preview-view.esds-note.${bg.id} h6{color:var(--esds-heading,var(--esds-bg-fg));}`;
+        return `.markdown-preview-view.esds-note.${bg.id},.markdown-source-view.esds-note.${bg.id}{--note-background:${light};--esds-bg-fg:${fg};}\nbody.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).${bg.id},body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).${bg.id}{--note-background:${dark};--esds-bg-fg:${darkFg};}\n.esds-preview.${bg.id}{--note-background:${light};}\nbody.theme-dark .esds-preview:not([class*="esds-palette-"]).${bg.id}{--note-background:${dark};}\n.markdown-preview-view.esds-note.${bg.id},.markdown-source-view.esds-note.${bg.id}{color:var(--esds-bg-fg);--text-normal:var(--esds-bg-fg);}\n.markdown-preview-view.esds-note.${bg.id} h1,.markdown-preview-view.esds-note.${bg.id} h2,.markdown-preview-view.esds-note.${bg.id} h3,.markdown-preview-view.esds-note.${bg.id} h4,.markdown-preview-view.esds-note.${bg.id} h5,.markdown-preview-view.esds-note.${bg.id} h6{color:var(--esds-heading,var(--esds-bg-fg));}`;
       }).join('\n');
     const blockStyles = (this.userData.blockStyles || [])
       .map(normalizeBlockStyle)

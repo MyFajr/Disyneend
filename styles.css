@@ -243,101 +243,7 @@
 .esds-preview .esds-callout-abstract { --esds-callout-rgb: var(--esds-callout-border-abstract, var(--esds-callout-abstract)); --esds-callout-fill-rgb: var(--esds-callout-fill-abstract, var(--esds-callout-abstract)); --esds-callout-text-rgb: var(--esds-callout-text-abstract, var(--esds-callout-abstract)); color: rgb(var(--esds-callout-text-rgb)); }
 
 
-/* Dark note surfaces keep each palette readable even when Obsidian itself is in light mode. */
-
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-19-rich-midnight,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-19-rich-midnight,
-.esds-preview.candy-pop.bg-19-rich-midnight,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-20-rich-navy,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-20-rich-navy,
-.esds-preview.candy-pop.bg-20-rich-navy,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-21-rich-forest,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-21-rich-forest,
-.esds-preview.candy-pop.bg-21-rich-forest,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-22-rich-emerald,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-22-rich-emerald,
-.esds-preview.candy-pop.bg-22-rich-emerald,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-23-rich-plum,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-23-rich-plum,
-.esds-preview.candy-pop.bg-23-rich-plum,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-24-rich-burgundy,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-24-rich-burgundy,
-.esds-preview.candy-pop.bg-24-rich-burgundy,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-25-rich-cocoa,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-25-rich-cocoa,
-.esds-preview.candy-pop.bg-25-rich-cocoa,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-26-rich-slate,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-26-rich-slate,
-.esds-preview.candy-pop.bg-26-rich-slate,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-29-cobalt-dusk,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-29-cobalt-dusk,
-.esds-preview.candy-pop.bg-29-cobalt-dusk,
-.markdown-preview-view.esds-note.esds-palette-candy-pop.bg-30-deep-lagoon,
-.markdown-source-view.esds-note.esds-palette-candy-pop.bg-30-deep-lagoon,
-.esds-preview.candy-pop.bg-30-deep-lagoon { --esds-en: #8fc1ff; --esds-ipa: #d4a4f2; --esds-translation: #82ddb4; --esds-term: #f0a5d7; --esds-definition: #bdc1d6; --esds-focus: #ff91aa; --esds-secondary: #f2c078; --esds-soft: #d1a2f0; --esds-heading: #d0b3ff; --esds-ink: #f0e8f7; --esds-callout-rule: 112, 166, 255; --esds-callout-example: 194, 146, 235; --esds-callout-important: 255, 137, 169; --esds-callout-tip: 105, 214, 170; --esds-callout-warning: 247, 193, 112; --esds-callout-question: 99, 211, 231; --esds-callout-practice: 255, 164, 112; --esds-callout-success: 103, 219, 163; --esds-callout-info: 133, 171, 255; --esds-callout-note: 185, 177, 215; --esds-callout-quote: 241, 143, 203; --esds-callout-abstract: 185, 149, 239; color: #f0e8f7; }
-
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-19-rich-midnight,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-19-rich-midnight,
-.esds-preview.ocean-breeze.bg-19-rich-midnight,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-20-rich-navy,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-20-rich-navy,
-.esds-preview.ocean-breeze.bg-20-rich-navy,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-21-rich-forest,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-21-rich-forest,
-.esds-preview.ocean-breeze.bg-21-rich-forest,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-22-rich-emerald,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-22-rich-emerald,
-.esds-preview.ocean-breeze.bg-22-rich-emerald,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-23-rich-plum,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-23-rich-plum,
-.esds-preview.ocean-breeze.bg-23-rich-plum,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-24-rich-burgundy,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-24-rich-burgundy,
-.esds-preview.ocean-breeze.bg-24-rich-burgundy,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-25-rich-cocoa,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-25-rich-cocoa,
-.esds-preview.ocean-breeze.bg-25-rich-cocoa,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-26-rich-slate,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-26-rich-slate,
-.esds-preview.ocean-breeze.bg-26-rich-slate,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-29-cobalt-dusk,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-29-cobalt-dusk,
-.esds-preview.ocean-breeze.bg-29-cobalt-dusk,
-.markdown-preview-view.esds-note.esds-palette-ocean-breeze.bg-30-deep-lagoon,
-.markdown-source-view.esds-note.esds-palette-ocean-breeze.bg-30-deep-lagoon,
-.esds-preview.ocean-breeze.bg-30-deep-lagoon { --esds-en: #7bd4ff; --esds-ipa: #c3a7ff; --esds-translation: #75dfbd; --esds-term: #81d5dc; --esds-definition: #b6cbd3; --esds-focus: #ffad80; --esds-secondary: #e4c27d; --esds-soft: #8ec5df; --esds-heading: #8dd8f3; --esds-ink: #e4f3f7; --esds-callout-rule: 105, 204, 241; --esds-callout-example: 186, 157, 244; --esds-callout-important: 255, 160, 126; --esds-callout-tip: 101, 215, 186; --esds-callout-warning: 238, 195, 117; --esds-callout-question: 94, 219, 237; --esds-callout-practice: 255, 169, 119; --esds-callout-success: 100, 219, 177; --esds-callout-info: 118, 186, 239; --esds-callout-note: 167, 201, 214; --esds-callout-quote: 226, 151, 207; --esds-callout-abstract: 175, 157, 232; color: #e4f3f7; }
-
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-19-rich-midnight,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-19-rich-midnight,
-.esds-preview.royal-plum.bg-19-rich-midnight,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-20-rich-navy,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-20-rich-navy,
-.esds-preview.royal-plum.bg-20-rich-navy,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-21-rich-forest,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-21-rich-forest,
-.esds-preview.royal-plum.bg-21-rich-forest,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-22-rich-emerald,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-22-rich-emerald,
-.esds-preview.royal-plum.bg-22-rich-emerald,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-23-rich-plum,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-23-rich-plum,
-.esds-preview.royal-plum.bg-23-rich-plum,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-24-rich-burgundy,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-24-rich-burgundy,
-.esds-preview.royal-plum.bg-24-rich-burgundy,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-25-rich-cocoa,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-25-rich-cocoa,
-.esds-preview.royal-plum.bg-25-rich-cocoa,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-26-rich-slate,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-26-rich-slate,
-.esds-preview.royal-plum.bg-26-rich-slate,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-29-cobalt-dusk,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-29-cobalt-dusk,
-.esds-preview.royal-plum.bg-29-cobalt-dusk,
-.markdown-preview-view.esds-note.esds-palette-royal-plum.bg-30-deep-lagoon,
-.markdown-source-view.esds-note.esds-palette-royal-plum.bg-30-deep-lagoon,
-.esds-preview.royal-plum.bg-30-deep-lagoon { --esds-en: #9bb8ff; --esds-ipa: #e0a5d5; --esds-translation: #8bd9c0; --esds-term: #dc9acb; --esds-definition: #c9bfd2; --esds-focus: #f29bb5; --esds-secondary: #e8c17f; --esds-soft: #c6a4ec; --esds-heading: #c5b4ff; --esds-ink: #f1eaf6; --esds-callout-rule: 139, 164, 242; --esds-callout-example: 221, 148, 218; --esds-callout-important: 245, 143, 174; --esds-callout-tip: 100, 204, 170; --esds-callout-warning: 239, 195, 117; --esds-callout-question: 127, 197, 226; --esds-callout-practice: 241, 158, 125; --esds-callout-success: 104, 212, 171; --esds-callout-info: 138, 166, 232; --esds-callout-note: 190, 173, 207; --esds-callout-quote: 232, 151, 198; --esds-callout-abstract: 190, 155, 232; color: #f1eaf6; }
-
+/* Legacy dark palette role overrides removed: every palette now uses its canonical roles. */
 
 /* Built-in independent 30-background collection. */
 
@@ -564,46 +470,46 @@
 }
 
 /* ---------- Dark-theme alternatives for the light backgrounds ---------- */
-body.theme-dark .markdown-preview-view.esds-note.bg-01-reading-ivory,
-body.theme-dark .markdown-source-view.esds-note.bg-01-reading-ivory { --note-background: linear-gradient(145deg, #292720 0%, #24221e 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-02-reading-parchment,
-body.theme-dark .markdown-source-view.esds-note.bg-02-reading-parchment { --note-background: linear-gradient(145deg, #30291f 0%, #28231d 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-03-reading-linen,
-body.theme-dark .markdown-source-view.esds-note.bg-03-reading-linen { --note-background: linear-gradient(145deg, #292925 0%, #232522 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-04-reading-oatmilk,
-body.theme-dark .markdown-source-view.esds-note.bg-04-reading-oatmilk { --note-background: linear-gradient(145deg, #302a20 0%, #29231d 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-05-reading-mist,
-body.theme-dark .markdown-source-view.esds-note.bg-05-reading-mist { --note-background: linear-gradient(145deg, #292e32 0%, #22282d 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-06-reading-sage,
-body.theme-dark .markdown-source-view.esds-note.bg-06-reading-sage { --note-background: linear-gradient(145deg, #253029 0%, #202922 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-07-reading-powder-blue,
-body.theme-dark .markdown-source-view.esds-note.bg-07-reading-powder-blue { --note-background: linear-gradient(145deg, #26313a 0%, #202a33 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-08-reading-rose-cloud,
-body.theme-dark .markdown-source-view.esds-note.bg-08-reading-rose-cloud { --note-background: linear-gradient(145deg, #33282b 0%, #2a2227 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-09-reading-lavender,
-body.theme-dark .markdown-source-view.esds-note.bg-09-reading-lavender { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-10-reading-sand,
-body.theme-dark .markdown-source-view.esds-note.bg-10-reading-sand { --note-background: linear-gradient(145deg, #302b23 0%, #28231e 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-11-pearl-glow,
-body.theme-dark .markdown-source-view.esds-note.bg-11-pearl-glow { --note-background: linear-gradient(145deg, #2b2d30 0%, #242a30 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-12-sea-glass,
-body.theme-dark .markdown-source-view.esds-note.bg-12-sea-glass { --note-background: linear-gradient(145deg, #243332 0%, #202c2d 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-13-blush-silk,
-body.theme-dark .markdown-source-view.esds-note.bg-13-blush-silk { --note-background: linear-gradient(145deg, #33282a 0%, #2b2328 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-14-wisteria-haze,
-body.theme-dark .markdown-source-view.esds-note.bg-14-wisteria-haze { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-15-glacier,
-body.theme-dark .markdown-source-view.esds-note.bg-15-glacier { --note-background: linear-gradient(145deg, #253139 0%, #202a31 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-16-matcha-cream,
-body.theme-dark .markdown-source-view.esds-note.bg-16-matcha-cream { --note-background: linear-gradient(145deg, #2b3023 0%, #242a20 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-17-apricot-haze,
-body.theme-dark .markdown-source-view.esds-note.bg-17-apricot-haze { --note-background: linear-gradient(145deg, #352a25 0%, #2c2421 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-18-blue-hour,
-body.theme-dark .markdown-source-view.esds-note.bg-18-blue-hour { --note-background: linear-gradient(145deg, #292e3b 0%, #232936 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-27-terracotta-wash,
-body.theme-dark .markdown-source-view.esds-note.bg-27-terracotta-wash { --note-background: linear-gradient(145deg, #352923 0%, #2b231f 100%); }
-body.theme-dark .markdown-preview-view.esds-note.bg-28-saffron-cream,
-body.theme-dark .markdown-source-view.esds-note.bg-28-saffron-cream { --note-background: linear-gradient(145deg, #352f20 0%, #2b271e 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-01-reading-ivory,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-01-reading-ivory { --note-background: linear-gradient(145deg, #292720 0%, #24221e 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-02-reading-parchment,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-02-reading-parchment { --note-background: linear-gradient(145deg, #30291f 0%, #28231d 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-03-reading-linen,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-03-reading-linen { --note-background: linear-gradient(145deg, #292925 0%, #232522 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-04-reading-oatmilk,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-04-reading-oatmilk { --note-background: linear-gradient(145deg, #302a20 0%, #29231d 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-05-reading-mist,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-05-reading-mist { --note-background: linear-gradient(145deg, #292e32 0%, #22282d 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-06-reading-sage,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-06-reading-sage { --note-background: linear-gradient(145deg, #253029 0%, #202922 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-07-reading-powder-blue,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-07-reading-powder-blue { --note-background: linear-gradient(145deg, #26313a 0%, #202a33 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-08-reading-rose-cloud,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-08-reading-rose-cloud { --note-background: linear-gradient(145deg, #33282b 0%, #2a2227 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-09-reading-lavender,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-09-reading-lavender { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-10-reading-sand,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-10-reading-sand { --note-background: linear-gradient(145deg, #302b23 0%, #28231e 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-11-pearl-glow,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-11-pearl-glow { --note-background: linear-gradient(145deg, #2b2d30 0%, #242a30 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-12-sea-glass,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-12-sea-glass { --note-background: linear-gradient(145deg, #243332 0%, #202c2d 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-13-blush-silk,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-13-blush-silk { --note-background: linear-gradient(145deg, #33282a 0%, #2b2328 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-14-wisteria-haze,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-14-wisteria-haze { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-15-glacier,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-15-glacier { --note-background: linear-gradient(145deg, #253139 0%, #202a31 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-16-matcha-cream,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-16-matcha-cream { --note-background: linear-gradient(145deg, #2b3023 0%, #242a20 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-17-apricot-haze,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-17-apricot-haze { --note-background: linear-gradient(145deg, #352a25 0%, #2c2421 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-18-blue-hour,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-18-blue-hour { --note-background: linear-gradient(145deg, #292e3b 0%, #232936 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-27-terracotta-wash,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-27-terracotta-wash { --note-background: linear-gradient(145deg, #352923 0%, #2b231f 100%); }
+body.theme-dark .markdown-preview-view.esds-note:not([class*="esds-palette-"]).bg-28-saffron-cream,
+body.theme-dark .markdown-source-view.esds-note:not([class*="esds-palette-"]).bg-28-saffron-cream { --note-background: linear-gradient(145deg, #352f20 0%, #2b271e 100%); }
 
 /* Dark-surface contrast: explicit foreground colors work in BOTH app themes. */
 .markdown-preview-view.esds-note.bg-19-rich-midnight,
@@ -717,45 +623,45 @@ body.theme-dark .markdown-source-view.esds-note.bg-28-saffron-cream { --note-bac
 
 .esds-preview.bg-30-deep-lagoon{ --note-background: radial-gradient(ellipse at 0% 0%, #245452 0%, transparent 50%), linear-gradient(145deg, #193b3d 0%, #142c33 100%); } .esds-preview.esds-preview-light-mode.bg-30-deep-lagoon{ --note-background: radial-gradient(ellipse at 0% 0%, #245452 0%, transparent 50%), linear-gradient(145deg, #193b3d 0%, #142c33 100%); }
 
-body.theme-dark .esds-preview.bg-01-reading-ivory, .esds-preview.esds-preview-dark-mode.bg-01-reading-ivory { --note-background: linear-gradient(145deg, #292720 0%, #24221e 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-01-reading-ivory, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-01-reading-ivory { --note-background: linear-gradient(145deg, #292720 0%, #24221e 100%); }
 
-body.theme-dark .esds-preview.bg-02-reading-parchment, .esds-preview.esds-preview-dark-mode.bg-02-reading-parchment { --note-background: linear-gradient(145deg, #30291f 0%, #28231d 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-02-reading-parchment, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-02-reading-parchment { --note-background: linear-gradient(145deg, #30291f 0%, #28231d 100%); }
 
-body.theme-dark .esds-preview.bg-03-reading-linen, .esds-preview.esds-preview-dark-mode.bg-03-reading-linen { --note-background: linear-gradient(145deg, #292925 0%, #232522 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-03-reading-linen, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-03-reading-linen { --note-background: linear-gradient(145deg, #292925 0%, #232522 100%); }
 
-body.theme-dark .esds-preview.bg-04-reading-oatmilk, .esds-preview.esds-preview-dark-mode.bg-04-reading-oatmilk { --note-background: linear-gradient(145deg, #302a20 0%, #29231d 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-04-reading-oatmilk, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-04-reading-oatmilk { --note-background: linear-gradient(145deg, #302a20 0%, #29231d 100%); }
 
-body.theme-dark .esds-preview.bg-05-reading-mist, .esds-preview.esds-preview-dark-mode.bg-05-reading-mist { --note-background: linear-gradient(145deg, #292e32 0%, #22282d 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-05-reading-mist, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-05-reading-mist { --note-background: linear-gradient(145deg, #292e32 0%, #22282d 100%); }
 
-body.theme-dark .esds-preview.bg-06-reading-sage, .esds-preview.esds-preview-dark-mode.bg-06-reading-sage { --note-background: linear-gradient(145deg, #253029 0%, #202922 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-06-reading-sage, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-06-reading-sage { --note-background: linear-gradient(145deg, #253029 0%, #202922 100%); }
 
-body.theme-dark .esds-preview.bg-07-reading-powder-blue, .esds-preview.esds-preview-dark-mode.bg-07-reading-powder-blue { --note-background: linear-gradient(145deg, #26313a 0%, #202a33 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-07-reading-powder-blue, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-07-reading-powder-blue { --note-background: linear-gradient(145deg, #26313a 0%, #202a33 100%); }
 
-body.theme-dark .esds-preview.bg-08-reading-rose-cloud, .esds-preview.esds-preview-dark-mode.bg-08-reading-rose-cloud { --note-background: linear-gradient(145deg, #33282b 0%, #2a2227 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-08-reading-rose-cloud, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-08-reading-rose-cloud { --note-background: linear-gradient(145deg, #33282b 0%, #2a2227 100%); }
 
-body.theme-dark .esds-preview.bg-09-reading-lavender, .esds-preview.esds-preview-dark-mode.bg-09-reading-lavender { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-09-reading-lavender, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-09-reading-lavender { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
 
-body.theme-dark .esds-preview.bg-10-reading-sand, .esds-preview.esds-preview-dark-mode.bg-10-reading-sand { --note-background: linear-gradient(145deg, #302b23 0%, #28231e 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-10-reading-sand, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-10-reading-sand { --note-background: linear-gradient(145deg, #302b23 0%, #28231e 100%); }
 
-body.theme-dark .esds-preview.bg-11-pearl-glow, .esds-preview.esds-preview-dark-mode.bg-11-pearl-glow { --note-background: linear-gradient(145deg, #2b2d30 0%, #242a30 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-11-pearl-glow, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-11-pearl-glow { --note-background: linear-gradient(145deg, #2b2d30 0%, #242a30 100%); }
 
-body.theme-dark .esds-preview.bg-12-sea-glass, .esds-preview.esds-preview-dark-mode.bg-12-sea-glass { --note-background: linear-gradient(145deg, #243332 0%, #202c2d 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-12-sea-glass, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-12-sea-glass { --note-background: linear-gradient(145deg, #243332 0%, #202c2d 100%); }
 
-body.theme-dark .esds-preview.bg-13-blush-silk, .esds-preview.esds-preview-dark-mode.bg-13-blush-silk { --note-background: linear-gradient(145deg, #33282a 0%, #2b2328 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-13-blush-silk, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-13-blush-silk { --note-background: linear-gradient(145deg, #33282a 0%, #2b2328 100%); }
 
-body.theme-dark .esds-preview.bg-14-wisteria-haze, .esds-preview.esds-preview-dark-mode.bg-14-wisteria-haze { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-14-wisteria-haze, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-14-wisteria-haze { --note-background: linear-gradient(145deg, #302b39 0%, #282431 100%); }
 
-body.theme-dark .esds-preview.bg-15-glacier, .esds-preview.esds-preview-dark-mode.bg-15-glacier { --note-background: linear-gradient(145deg, #253139 0%, #202a31 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-15-glacier, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-15-glacier { --note-background: linear-gradient(145deg, #253139 0%, #202a31 100%); }
 
-body.theme-dark .esds-preview.bg-16-matcha-cream, .esds-preview.esds-preview-dark-mode.bg-16-matcha-cream { --note-background: linear-gradient(145deg, #2b3023 0%, #242a20 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-16-matcha-cream, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-16-matcha-cream { --note-background: linear-gradient(145deg, #2b3023 0%, #242a20 100%); }
 
-body.theme-dark .esds-preview.bg-17-apricot-haze, .esds-preview.esds-preview-dark-mode.bg-17-apricot-haze { --note-background: linear-gradient(145deg, #352a25 0%, #2c2421 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-17-apricot-haze, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-17-apricot-haze { --note-background: linear-gradient(145deg, #352a25 0%, #2c2421 100%); }
 
-body.theme-dark .esds-preview.bg-18-blue-hour, .esds-preview.esds-preview-dark-mode.bg-18-blue-hour { --note-background: linear-gradient(145deg, #292e3b 0%, #232936 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-18-blue-hour, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-18-blue-hour { --note-background: linear-gradient(145deg, #292e3b 0%, #232936 100%); }
 
-body.theme-dark .esds-preview.bg-27-terracotta-wash, .esds-preview.esds-preview-dark-mode.bg-27-terracotta-wash { --note-background: linear-gradient(145deg, #352923 0%, #2b231f 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-27-terracotta-wash, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-27-terracotta-wash { --note-background: linear-gradient(145deg, #352923 0%, #2b231f 100%); }
 
-body.theme-dark .esds-preview.bg-28-saffron-cream, .esds-preview.esds-preview-dark-mode.bg-28-saffron-cream { --note-background: linear-gradient(145deg, #352f20 0%, #2b271e 100%); }
+body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream, .esds-preview:not([class*="esds-palette-"]).esds-preview-dark-mode.bg-28-saffron-cream { --note-background: linear-gradient(145deg, #352f20 0%, #2b271e 100%); }
 
 
 @media (max-width: 700px) {
