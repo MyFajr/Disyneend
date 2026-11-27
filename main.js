@@ -4248,7 +4248,7 @@ class DesignStudioModal extends Modal {
             if (!raw.name) throw new Error('у палитры отсутствует название');
             if (!raw.roles || typeof raw.roles !== 'object' || !ROLE_KEYS.every(key => isHexColor(raw.roles[key]))) throw new Error('неполные или неверные цветовые роли палитры ESDS');
             const schema = Number(parsed.schemaVersion || 1);
-            if (!Number.isInteger(schema) || schema < 1 || schema > 4) throw new Error('версия палитры не поддерживается');
+            if (!Number.isInteger(schema) || schema < 1 || schema > 5) throw new Error('версия палитры не поддерживается');
             candidates.push({ data: parsed, palette: raw });
           } catch (error) { errors.push(entry.name + ': ' + (error.message || 'ошибка JSON')); }
         }
@@ -4357,7 +4357,17 @@ class DesignStudioModal extends Modal {
     await this.saveZipArchive(files, `palettes-${items.length}`, `палитр: ${items.length}`);
   }
   buildExportPayload(itemKind, item) {
-    if (itemKind === 'palette') return { schemaVersion: 4, type: 'esds-palette', palette: normalizeSingleModePalette(item) };
+    if (itemKind === 'palette') {
+      const palette = normalizeSingleModePalette(item);
+      const payload = { schemaVersion: 5, type: 'esds-palette', palette };
+      const background = this.findBackground(palette.defaultBackground);
+      const blockStyle = this.findBlockStyle(palette.defaultBlocks);
+      // Built-in backgrounds are shipped in styles.css; custom backgrounds must
+      // travel with the palette so ZIP import never substitutes the ivory default.
+      if (background && background.source === 'user' && background.light) payload.background = clone(background);
+      if (blockStyle) payload.blockStyle = clone(normalizeBlockStyle(blockStyle));
+      return payload;
+    }
     if (itemKind === 'background') return { schemaVersion: 2, type: 'esds-background', background: clone(item) };
     return { schemaVersion: 2, type: 'esds-block-style', blockStyle: normalizeBlockStyle(clone(item)) };
   }
@@ -4681,6 +4691,7 @@ class DesignStudioModal extends Modal {
     if (kind === 'themePack') return this.importThemePack(data);
     let previousBlockStyles = null;
     let importedBlockStyle = false;
+    let previousPaletteState = null;
     if (kind === 'library') {
       let source = data && data.library ? data.library : data;
       if (!source || typeof source !== 'object' || Array.isArray(source)) throw new Error('Library structure is invalid');
@@ -4729,18 +4740,68 @@ class DesignStudioModal extends Modal {
     }
     if (kind === 'palette') {
       const paletteSchemaVersion = Number(data.schemaVersion || 1);
-      if (!Number.isInteger(paletteSchemaVersion) || paletteSchemaVersion < 1 || paletteSchemaVersion > 4) throw new Error('Версия формата палитры не поддерживается.');
+      if (!Number.isInteger(paletteSchemaVersion) || paletteSchemaVersion < 1 || paletteSchemaVersion > 5) throw new Error('Версия формата палитры не поддерживается.');
       let p = normalizeSingleModePalette(data.palette || data);
       const roles = p.roles || {};
       if (!p.name || !ROLE_KEYS.every(key => isHexColor(roles[key]))) throw new Error('Palette roles are missing or invalid');
+
+      // A complete palette export may carry its own background and block style.
+      // Import these dependencies before resolving the palette defaults; otherwise
+      // unknown IDs silently fall back to the currently selected (often ivory) background.
+      const rawBackground = data.background || (data.items && data.items.background) || p.background || null;
+      const rawBlockStyle = data.blockStyle || (data.items && data.items.blockStyle) || p.blockStyle || null;
+      const bgLight = rawBackground && rawBackground.light;
+      const bgDark = rawBackground && (rawBackground.dark || rawBackground.light);
+      if (rawBackground && (!(rawBackground.name || rawBackground.label) || !safeCssBackground(bgLight) || !safeCssBackground(bgDark))) {
+        throw new Error('Фон палитры содержит недопустимое описание или CSS-значение.');
+      }
+      if (rawBlockStyle && !(rawBlockStyle.name || rawBlockStyle.id)) {
+        throw new Error('В палитре указан некорректный стиль блоков.');
+      }
+
+      previousPaletteState = {
+        palettes: [...(this.plugin.userData.palettes || [])],
+        backgrounds: [...(this.plugin.userData.backgrounds || [])],
+        blockStyles: [...(this.plugin.userData.blockStyles || [])]
+      };
+      const importedAt = new Date().toISOString();
+      let importedBackground = null;
+      if (rawBackground) {
+        const requestedBackgroundName = String(rawBackground.name || rawBackground.label).trim().slice(0, 120);
+        const backgroundName = esdsUniqueName(requestedBackgroundName, this.allBackgrounds().map(item => item.name || item.label), 120);
+        const backgroundId = esdsUniqueId(`bg-custom-${slugify(backgroundName)}`, this.allBackgrounds().map(item => item.id));
+        importedBackground = {
+          ...clone(rawBackground), id: backgroundId, name: backgroundName, label: backgroundName,
+          group: String(rawBackground.group || rawBackground.category || 'Мои фоны').slice(0, 80),
+          light: bgLight, dark: bgDark,
+          textColor: isHexColor(rawBackground.textColor) ? colorToHex(rawBackground.textColor) : '#302d31',
+          darkTextColor: isHexColor(rawBackground.darkTextColor) ? colorToHex(rawBackground.darkTextColor) : '#e9eaf0',
+          source: 'user', createdAt: importedAt, updatedAt: importedAt
+        };
+        this.plugin.userData.backgrounds = [...(this.plugin.userData.backgrounds || []), importedBackground];
+      }
+
+      let importedBlockStyle = null;
+      if (rawBlockStyle) {
+        const requestedStyleName = String(rawBlockStyle.name || rawBlockStyle.id).trim().slice(0, 120) || 'Импортированный стиль';
+        const styleName = esdsUniqueName(requestedStyleName, this.allBlockStyles().map(item => item.name), 120);
+        const styleId = esdsUniqueId(`user-blocks-${slugify(styleName) || 'imported'}`, this.allBlockStyles().map(item => item.id));
+        importedBlockStyle = normalizeBlockStyle({
+          ...clone(rawBlockStyle), id: styleId, name: styleName,
+          category: String(rawBlockStyle.category || 'Мои стили').slice(0, 80),
+          source: 'user', createdAt: importedAt, updatedAt: importedAt
+        });
+        this.plugin.userData.blockStyles = [...(this.plugin.userData.blockStyles || []), importedBlockStyle];
+      }
+
       const palette = normalizeSingleModePalette(p);
       const requestedName = palette.name;
       palette.name = esdsUniqueName(requestedName, this.allPalettes().map(item => item.name), 100);
       palette.id = esdsUniqueId(`user-${slugify(palette.name)}`, this.allPalettes().map(item => item.id));
-      palette.createdAt = new Date().toISOString(); palette.updatedAt = palette.createdAt; palette.source = 'user';
+      palette.createdAt = importedAt; palette.updatedAt = importedAt; palette.source = 'user';
       if (palette.name !== requestedName) new Notice(`Палитра уже существует. Импортирована как «${palette.name}».`);
-      palette.defaultBackground = this.findBackground(p.defaultBackground)?.id || this.selectedBackground.id;
-      palette.defaultBlocks = this.findBlockStyle(p.defaultBlocks) ? p.defaultBlocks : this.selectedBlocks.id;
+      palette.defaultBackground = importedBackground ? importedBackground.id : (this.findBackground(p.defaultBackground)?.id || this.selectedBackground.id);
+      palette.defaultBlocks = importedBlockStyle ? importedBlockStyle.id : (this.findBlockStyle(p.defaultBlocks)?.id || this.selectedBlocks.id);
       palette.callouts = palette.callouts || clone(PALETTES[0].callouts);
       ['calloutFills','calloutTexts','calloutBorders'].forEach(mapName => {
         const source = palette[mapName];
@@ -4760,7 +4821,10 @@ class DesignStudioModal extends Modal {
       palette.swatches = palette.swatches || ROLE_KEYS.slice(0,5).map(k => palette.roles[k]);
       if (p.category) palette.category = p.category;
       this.plugin.userData.palettes.push(palette); this.plugin.refreshGeneratedStyles();
-      this.selectedPalette = palette; this.selectedBackground = this.findBackground(palette.defaultBackground) || this.selectedBackground; this.backgroundOverridden = false;
+      this.selectedPalette = palette;
+      this.selectedBackground = this.findBackground(palette.defaultBackground) || this.selectedBackground;
+      this.selectedBlocks = this.findBlockStyle(palette.defaultBlocks) || this.selectedBlocks;
+      this.backgroundOverridden = false;
     } else if (kind === 'background') {
       const b = data.background || data;
       if (!b.name && !b.label) throw new Error('Background name is required');
@@ -4820,6 +4884,12 @@ class DesignStudioModal extends Modal {
     }
     const saved = await this.plugin.saveUserLibrary();
     if (saved === false) {
+      if (previousPaletteState) {
+        this.plugin.userData.palettes = previousPaletteState.palettes;
+        this.plugin.userData.backgrounds = previousPaletteState.backgrounds;
+        this.plugin.userData.blockStyles = previousPaletteState.blockStyles;
+        this.plugin.refreshGeneratedStyles();
+      }
       if (importedBlockStyle) {
         this.plugin.userData.blockStyles = previousBlockStyles;
         this.plugin.refreshGeneratedStyles();
@@ -4836,8 +4906,7 @@ class DesignStudioModal extends Modal {
     let item, payload;
     if (kind === 'palette') {
       item = this.selectedPalette;
-      item = normalizeSingleModePalette(item);
-      payload = { schemaVersion: 4, type: 'esds-palette', palette: item };
+      payload = this.buildExportPayload('palette', item);
     } else if (kind === 'background') {
       item = this.selectedBackground;
       payload = { schemaVersion: 2, type: 'esds-background', background: item };
