@@ -4346,3 +4346,215 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
 .esds-block-style-divider { position: relative; }
 .esds-block-category-menu { position: absolute; top: 50%; right: 4px; transform: translateY(-50%); margin: 0; }
 .esds-block-style-divider .esds-block-style-name { padding-right: 34px; }
+
+
+/* ESDS 0.9.30 — Android library file-manager layout and rendering polish.
+   Keep action controls in normal card flow: no floating/overlapping labels. */
+.esds-main-modal .esds-library-catalog-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  contain: layout paint;
+}
+.esds-main-modal .esds-library-catalog-heading {
+  width: 100%;
+  min-width: 0;
+  align-items: flex-start;
+}
+.esds-main-modal .esds-library-catalog-heading strong,
+.esds-main-modal .esds-library-catalog-heading small {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+.esds-main-modal .esds-library-catalog-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+  margin-top: 8px;
+  padding-top: 8px;
+}
+.esds-main-modal .esds-library-catalog-actions > .esds-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 38px;
+  height: auto;
+  padding: 7px 5px;
+  white-space: normal;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  line-height: 1.2;
+  text-align: center;
+  font-size: 11px;
+}
+.esds-main-modal .esds-library-catalog-actions > .esds-button:first-child {
+  grid-column: 1 / -1;
+}
+.esds-main-modal .esds-library-catalog-actions > .esds-bulk-check-wrap {
+  grid-column: 1 / -1;
+  justify-content: center;
+}
+
+/* Category manager: actions wrap below the label on narrow Android screens. */
+.esds-builder-modal .esds-category-manage-tree-row {
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 9px 7px;
+}
+.esds-builder-modal .esds-category-manage-label {
+  flex: 1 1 100%;
+  width: 100%;
+}
+.esds-builder-modal .esds-category-manage-label strong {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.esds-builder-modal .esds-category-manage-actions {
+  display: flex;
+  flex: 1 1 100%;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+.esds-builder-modal .esds-category-manage-actions > .esds-button {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 36px;
+  padding: 6px 8px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.2;
+}
+.esds-main-modal .esds-catalog-folder {
+  min-width: 0;
+  position: relative;
+  padding-top: 42px;
+}
+.esds-main-modal .esds-catalog-folder-menu {
+  top: 7px;
+  right: 7px;
+  z-index: 4;
+}
+.esds-main-modal .esds-catalog-folder-info {
+  min-width: 0;
+  padding-right: 0;
+}
+.esds-main-modal .esds-catalog-folder-info strong {
+  overflow-wrap: anywhere;
+}
+
+/* Avoid an animated transform on every accordion child during expansion.
+   The catalog itself is lazy-built and paginated; a static reveal is cheaper on Android. */
+.esds-main-modal .esds-accordion.is-open .esds-accordion-body {
+  animation: none !important;
+}
+@media (hover: none) {
+  .esds-main-modal .esds-library-catalog-card:hover,
+  .esds-main-modal .esds-catalog-folder:hover,
+  .esds-main-modal .esds-palette-card:hover,
+  .esds-main-modal .esds-bg-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .esds-main-modal .esds-library-catalog-card:active,
+  .esds-main-modal .esds-catalog-folder:active,
+  .esds-main-modal .esds-palette-card:active,
+  .esds-main-modal .esds-bg-card:active {
+    transform: none;
+  }
+}
+@media (max-width: 360px) {
+  .esds-main-modal .esds-library-catalog-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .esds-main-modal .esds-library-catalog-actions > .esds-button {
+    min-height: 40px;
+    font-size: 12px;
+  }
+}
+
+
+/* ESDS 0.9.30 — bulk category controls in the Android category manager. */
+.esds-builder-modal .esds-category-bulk-toolbar {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:7px;
+  margin:4px 0 12px;
+  padding:9px;
+  border:1px solid var(--background-modifier-border);
+  border-radius:11px;
+  background:var(--background-secondary);
+}
+.esds-builder-modal .esds-category-bulk-count {
+  flex:1 1 100%;
+  min-width:0;
+  color:var(--text-normal);
+  font-size:var(--font-sm);
+  font-weight:650;
+}
+.esds-builder-modal .esds-category-bulk-toolbar > .esds-button {
+  flex:1 1 auto;
+  min-width:0;
+  min-height:38px;
+  white-space:normal;
+  line-height:1.2;
+}
+.esds-builder-modal .esds-category-bulk-check {
+  display:inline-flex;
+  flex:0 0 28px;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  margin:0;
+}
+.esds-builder-modal .esds-category-bulk-check input {
+  width:19px;
+  height:19px;
+  margin:0;
+  accent-color:var(--interactive-accent);
+}
+.esds-builder-modal .esds-category-manage-tree-row:has(.esds-category-bulk-check input:checked) {
+  background:var(--background-modifier-hover);
+  outline:1px solid var(--interactive-accent);
+  outline-offset:-1px;
+}
+@media (max-width:420px) {
+  .esds-builder-modal .esds-category-bulk-toolbar > .esds-button {
+    flex:1 1 calc(50% - 7px);
+    font-size:11px;
+  }
+}
+
+
+/* ESDS 0.9.31 — all default and custom categories are manageable. */
+.esds-builder-modal .esds-category-bulk-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  box-shadow: 0 3px 12px rgba(0,0,0,.08);
+}
+.esds-builder-modal .esds-category-manage-tree-row .esds-badge-protected {
+  opacity: .7;
+}
+.esds-builder-modal .esds-category-manage-tree-row {
+  touch-action: pan-y;
+}
+.esds-builder-modal .esds-category-bulk-check {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.esds-builder-modal .esds-category-bulk-check input {
+  min-width: 22px;
+  min-height: 22px;
+}

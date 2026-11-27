@@ -1,9 +1,9 @@
 {
   "id": "english-study-design-studio",
   "name": "English Study Design Studio",
-  "version": "0.9.29",
+  "version": "0.9.31",
   "minAppVersion": "1.5.0",
-  "description": "Nested category management (move into category, subcategories, delete with items), full item controls inside categories, fixed floating palette card buttons and faster accordion rendering.",
+  "description": "Full management of all palette and background categories, bulk selection, move and delete, Android-friendly UI.",
   "author": "Custom personal plugin",
   "isDesktopOnly": false
 }

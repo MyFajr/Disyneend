@@ -1670,6 +1670,8 @@ class CategoryManagerModal extends Modal {
     const body = root.createDiv({ cls: 'esds-builder-body' });
     const list = this.studio.plugin.userData.categories[this.kind] || [];
     list.sort((a, b) => (a.order || 0) - (b.order || 0));
+    this.selectedCategoryIds = this.selectedCategoryIds || new Set();
+    this.selectedCategoryIds = new Set([...this.selectedCategoryIds].filter(id => list.some(cat => cat.id === id)));
     const studio = this.studio;
     const itemKind = this.kind === 'palettes' ? 'palette' : this.kind === 'backgrounds' ? 'background' : 'blockStyle';
     const byId = new Map(list.map(cat => [cat.id, cat]));
@@ -1679,6 +1681,57 @@ class CategoryManagerModal extends Modal {
       return depth;
     };
     const totalOf = cat => studio.categoryTotalItems(this.kind, itemKind, cat.id);
+    const bulk = body.createDiv({ cls: 'esds-category-bulk-toolbar' });
+    const bulkInfo = bulk.createSpan({ cls: 'esds-category-bulk-count', text: `Выбрано категорий: ${this.selectedCategoryIds.size}` });
+    const refreshBulk = () => { bulkInfo.textContent = `Выбрано категорий: ${this.selectedCategoryIds.size}`; };
+    const selectAll = bulk.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Выбрать все', attr: { type: 'button' } });
+    selectAll.addEventListener('click', () => { list.forEach(cat => this.selectedCategoryIds.add(cat.id)); this.render(); });
+    const clearSelection = bulk.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Снять выбор', attr: { type: 'button' } });
+    clearSelection.addEventListener('click', () => { this.selectedCategoryIds.clear(); this.render(); });
+    const bulkDelete = async (withItems) => {
+      const ids = [...this.selectedCategoryIds].filter(id => list.some(cat => cat.id === id));
+      if (!ids.length) { new Notice('Сначала выберите категории.'); return; }
+      const selected = new Set(ids);
+      const candidates = withItems
+        ? list.filter(cat => selected.has(cat.id) && !list.some(parent => selected.has(parent.id) && studio.categoryDescendantIds(this.kind, parent.id).has(cat.id)))
+        : list.filter(cat => selected.has(cat.id)).sort((x, y) => depthOf(y) - depthOf(x));
+      const itemCount = candidates.reduce((sum, cat) => sum + totalOf(cat), 0);
+      const message = withItems
+        ? `Удалить ${candidates.length} выбранных категорий вместе с подкатегориями и элементами (примерно ${itemCount})? Это действие нельзя отменить.`
+        : `Удалить ${candidates.length} выбранных категорий? Элементы будут сохранены и перенесены в оставшиеся категории.`;
+      if (!confirm(message)) return;
+      for (const cat of candidates) {
+        const ok = await studio.deleteCategoryById(this.kind, cat.id, { withItems });
+        if (!ok) return;
+      }
+      this.selectedCategoryIds.clear();
+      this.render();
+    };
+    const deleteCategories = bulk.createEl('button', { cls: 'esds-button esds-btn-outline-coral', text: 'Удалить категории', attr: { type: 'button' } });
+    deleteCategories.addEventListener('click', () => bulkDelete(false));
+    const deleteWithItems = bulk.createEl('button', { cls: 'esds-button esds-btn-outline-coral', text: 'Удалить с элементами', attr: { type: 'button' } });
+    deleteWithItems.addEventListener('click', () => bulkDelete(true));
+    const moveSelected = bulk.createEl('button', { cls: 'esds-button esds-btn-cyan', text: 'Переместить выбранные', attr: { type: 'button' } });
+    moveSelected.addEventListener('click', async () => {
+      const ids = [...this.selectedCategoryIds].filter(id => list.some(cat => cat.id === id));
+      if (!ids.length) { new Notice('Сначала выберите категории.'); return; }
+      const selected = new Set(ids);
+      const roots = list.filter(cat => selected.has(cat.id) && !list.some(parent => selected.has(parent.id) && studio.categoryDescendantIds(this.kind, parent.id).has(cat.id)));
+      const choices = [{ name: 'Корень (без родителя)', id: '' }, ...list.filter(cat => !selected.has(cat.id) && !roots.some(root => studio.categoryDescendantIds(this.kind, root.id).has(cat.id))).map(cat => ({ name: cat.name, id: cat.id }))];
+      const options = choices.map((choice, index) => `${index + 1}. ${choice.name}`).join('\n');
+      const answer = await promptText(this.app, { title: 'Переместить категории', description: 'Введите номер категории назначения или 1 для корня:\n' + options, placeholder: 'Номер назначения', submitLabel: 'Переместить' });
+      if (answer === null || !answer.trim()) return;
+      const choice = choices[Number(answer.trim()) - 1];
+      if (!choice) { new Notice('Неизвестная категория назначения.'); return; }
+      for (const cat of roots) {
+        if (choice.id && studio.categoryDescendantIds(this.kind, cat.id).has(choice.id)) { new Notice('Нельзя переместить категорию внутрь её собственной подкатегории.'); return; }
+      }
+      for (const cat of roots) {
+        if (!await studio.moveCategoryInto(this.kind, cat.id, choice.id)) return;
+      }
+      this.selectedCategoryIds.clear();
+      this.render();
+    });
 
     list.forEach((cat, index) => {
       const row = body.createDiv({ cls: 'esds-category-manage-row esds-category-manage-tree-row' });
@@ -1687,7 +1740,17 @@ class CategoryManagerModal extends Modal {
       label.createEl('strong', { text: cat.name });
       const meta = label.createDiv({ cls: 'esds-category-manage-meta' });
       meta.createEl('small', { text: `${totalOf(cat)} эл.` });
-      if (cat.protected) meta.createEl('span', { cls: 'esds-badge-protected', text: 'системная' });
+      if (cat.protected) meta.createEl('span', { cls: 'esds-badge-protected', text: 'стандартная' });
+      {
+        const selectLabel = row.createEl('label', { cls: 'esds-category-bulk-check' });
+        const selectBox = selectLabel.createEl('input', { attr: { type: 'checkbox', 'aria-label': 'Выбрать категорию ' + cat.name } });
+        selectBox.checked = this.selectedCategoryIds.has(cat.id);
+        selectBox.addEventListener('change', () => {
+          if (selectBox.checked) this.selectedCategoryIds.add(cat.id);
+          else this.selectedCategoryIds.delete(cat.id);
+          refreshBulk();
+        });
+      }
       const buttons = row.createDiv({ cls: 'esds-category-manage-actions' });
       const move = buttons.createEl('button', { cls: 'esds-button esds-btn-quiet', text: '↳ В категорию', attr: { type: 'button', title: 'Переместить в другую категорию' } });
       move.addEventListener('click', () => studio.openMoveCategoryMenu(this.kind, cat.id, move));
@@ -1698,7 +1761,7 @@ class CategoryManagerModal extends Modal {
         const created = await studio.createCategoryIn(this.kind, name, cat.id);
         if (created) this.render();
       });
-      if (!cat.protected) {
+      {
         const rename = buttons.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Переименовать', attr: { type: 'button' } });
         rename.addEventListener('click', async () => {
           const name = await promptText(this.app, { title: 'Переименование категории', description: 'Категория: ' + cat.name, value: cat.name, placeholder: 'Новое название категории', submitLabel: 'Переименовать' });
@@ -1844,7 +1907,7 @@ class DesignStudioModal extends Modal {
     const stored = this.plugin.userData && this.plugin.userData.categories
       ? this.plugin.userData.categories[kind]
       : null;
-    const source = Array.isArray(stored) && stored.length ? stored : fallback;
+    const source = Array.isArray(stored) ? stored : fallback;
     const list = source.filter(item =>
       item && typeof item === 'object' && !Array.isArray(item) &&
       typeof item.name === 'string' && item.name.trim().length > 0
@@ -1938,7 +2001,7 @@ class DesignStudioModal extends Modal {
   }
   async renameCategoryById(categoryKind, categoryId, requestedName) {
     const category = this.getCategoryById(categoryKind, categoryId);
-    if (!category || category.protected) return false;
+    if (!category) return false;
     const name = String(requestedName || '').trim();
     if (!name) return false;
     const categories = this.getCategories(categoryKind);
@@ -1964,7 +2027,7 @@ class DesignStudioModal extends Modal {
   }
   async deleteCategoryById(categoryKind, categoryId, { withItems = false } = {}) {
     const category = this.getCategoryById(categoryKind, categoryId);
-    if (!category || category.protected) return false;
+    if (!category) return false;
     const itemKind = categoryKind === 'palettes' ? 'palette' : categoryKind === 'backgrounds' ? 'background' : 'blockStyle';
     const fallback = this.getCategories(categoryKind).find(item => item.id !== categoryId && !this.categoryDescendantIds(categoryKind, categoryId).has(item.id));
     const fallbackName = fallback ? fallback.name
@@ -1990,9 +2053,23 @@ class DesignStudioModal extends Modal {
         else item.category = fallbackName;
       });
     }
-    this.plugin.userData.categories[categoryKind] = this.getCategories(categoryKind)
+    const remainingCategories = this.getCategories(categoryKind)
       .filter(item => !descendantIds.has(item.id))
       .map(item => { if (item.parentId === categoryId) item.parentId = category.parentId || ''; return item; });
+    // When the last category is removed but its items are kept, preserve those
+    // items in a real, manageable fallback category instead of creating an
+    // orphan virtual folder that has no category ID and cannot be deleted.
+    if (!withItems && !remainingCategories.length) {
+      const safeName = fallbackName;
+      remainingCategories.push({
+        id: esdsUniqueId(slugify(safeName), []),
+        name: safeName,
+        order: 0,
+        protected: false,
+        parentId: ''
+      });
+    }
+    this.plugin.userData.categories[categoryKind] = remainingCategories;
     ['paletteCategory', 'backgroundCategory', 'libraryCategory'].forEach(key => { if (this[key] && descendantNames.has(this[key])) this[key] = null; });
     if (await this.plugin.saveUserLibrary()) {
       this.plugin.refreshGeneratedStyles();
@@ -3261,7 +3338,7 @@ class DesignStudioModal extends Modal {
     const syncActiveCategory = (oldName, newName) => {
       ['paletteCategory', 'backgroundCategory', 'libraryCategory'].forEach(key => { if (this[key] === oldName) this[key] = newName; });
     };
-    if (!category.protected) {
+    {
       actions.push(['✎ Переименовать категорию', '', async () => {
         const value = await promptText(this.app, { title: 'Переименование категории', description: 'Категория: ' + category.name, value: category.name, placeholder: 'Новое название категории', submitLabel: 'Переименовать' });
         if (value === null || !value.trim()) return;
@@ -3275,7 +3352,7 @@ class DesignStudioModal extends Modal {
       if (created) { new Notice(`Создана подкатегория «${created.name}».`); this.render(); }
     }]);
     actions.push(['↳ Переместить в категорию…', '', () => this.openMoveCategoryMenu(categoryKind, category.id, anchorEl)]);
-    if (!category.protected) {
+    {
       const itemKind = categoryKind === 'palettes' ? 'palette' : categoryKind === 'backgrounds' ? 'background' : 'blockStyle';
       const total = this.categoryTotalItems(categoryKind, itemKind, category.id);
       actions.push(['✕ Удалить категорию', 'esds-menu-danger', async () => {
