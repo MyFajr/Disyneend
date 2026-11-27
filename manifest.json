@@ -1,9 +1,0 @@
-{
-  "id": "english-study-design-studio",
-  "name": "English Study Design Studio",
-  "version": "0.9.33",
-  "minAppVersion": "1.5.0",
-  "description": "Complete linked palette designs with bundled backgrounds and block styles, 30 semantic classes, and Android-friendly note styling.",
-  "author": "Custom personal plugin",
-  "isDesktopOnly": false
-}
