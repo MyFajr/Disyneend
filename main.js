@@ -1718,8 +1718,8 @@ class CategoryManagerModal extends Modal {
       const selected = new Set(ids);
       const roots = list.filter(cat => selected.has(cat.id) && !list.some(parent => selected.has(parent.id) && studio.categoryDescendantIds(this.kind, parent.id).has(cat.id)));
       const choices = [{ name: 'Корень (без родителя)', id: '' }, ...list.filter(cat => !selected.has(cat.id) && !roots.some(root => studio.categoryDescendantIds(this.kind, root.id).has(cat.id))).map(cat => ({ name: cat.name, id: cat.id }))];
-      const options = choices.map((choice, index) => `${index + 1}. ${choice.name}`).join('\\n');
-      const answer = await promptText(this.app, { title: 'Переместить категории', description: 'Введите номер категории назначения или 1 для корня:\\n' + options, placeholder: 'Номер назначения', submitLabel: 'Переместить' });
+      const options = choices.map((choice, index) => `${index + 1}. ${choice.name}`).join('\n');
+      const answer = await promptText(this.app, { title: 'Переместить категории', description: 'Введите номер категории назначения или 1 для корня:\n' + options, placeholder: 'Номер назначения', submitLabel: 'Переместить' });
       if (answer === null || !answer.trim()) return;
       const choice = choices[Number(answer.trim()) - 1];
       if (!choice) { new Notice('Неизвестная категория назначения.'); return; }
@@ -1740,7 +1740,7 @@ class CategoryManagerModal extends Modal {
       label.createEl('strong', { text: cat.name });
       const meta = label.createDiv({ cls: 'esds-category-manage-meta' });
       meta.createEl('small', { text: `${totalOf(cat)} эл.` });
-      if (cat.protected) meta.createEl('span', { cls: 'esds-badge-protected', text: 'системная' });
+      if (cat.protected) meta.createEl('span', { cls: 'esds-badge-protected', text: 'стандартная' });
       {
         const selectLabel = row.createEl('label', { cls: 'esds-category-bulk-check' });
         const selectBox = selectLabel.createEl('input', { attr: { type: 'checkbox', 'aria-label': 'Выбрать категорию ' + cat.name } });
