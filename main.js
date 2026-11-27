@@ -793,7 +793,7 @@ function makePaletteCss(palette) {
     const previewSelector = `${modePrefix}.esds-preview.esds-frames-from-palette.${cls} .esds-demo-callout.esds-callout-${type}`;
     return `${noteSelector},${previewSelector}{border-style:${preset.style} !important;border-width:${widths} !important;border-radius:${radius}px !important;}`;
   }).join('\n');
-  return `${selectors}{${roleVars} ${calloutVars} ${lightExtra}} ${darkSelectors}{${darkRoleVars} ${darkCalloutVars} ${darkExtra}}\n${frameCss('light')}\n${frameCss('dark')}`;
+  return `${selectors}{${roleVars} ${calloutVars} ${lightExtra}}\n${frameCss('light')}`;
 }
 
 function mergeStyleProps(base, override) {
@@ -1272,7 +1272,7 @@ class LibraryItemPreviewModal extends Modal {
 }
 
 class PaletteBuilderModal extends Modal {
-  constructor(app, studio, existing = null) { super(app); this.studio = studio; this.existing = existing; this.base = clone(existing || studio.selectedPalette); this.inputs = { light: {}, dark: {} }; this.category = (existing && existing.category) || 'Мои палитры'; this.themeMode = 'light'; this.calloutType = 'important'; }
+  constructor(app, studio, existing = null) { super(app); this.studio = studio; this.existing = existing; this.base = clone(existing || studio.selectedPalette); this.inputs = {}; this.category = (existing && existing.category) || 'Мои палитры'; this.calloutType = 'important'; }
   onOpen() { this.modalEl.addClass('esds-builder-modal'); this.contentEl.addClass('esds-builder-content'); this.render(); }
   onClose() { this.contentEl.empty(); }
   render() {
@@ -1316,8 +1316,7 @@ class PaletteBuilderModal extends Modal {
       field.createEl('label', { text: labels[key] });
       const value = isHexColor(currentRoles[key]) ? currentRoles[key] : (this.base.roles[key] || '#777777');
       const input = field.createEl('input', { attr: { type: 'color', value } });
-      input.value = value; this.inputs[this.themeMode][key] = input;
-      const editingMode = this.themeMode;
+      input.value = value; this.inputs[key] = input;
       input.addEventListener('input', () => {
         this.base.roles = { ...(this.base.roles || {}), [key]: input.value };
         if (this.palettePreview) this.palettePreview.style.setProperty(`--esds-${key}`, input.value);
@@ -1330,8 +1329,7 @@ class PaletteBuilderModal extends Modal {
       const fallback = currentRoles.ipa || this.base.roles.ipa || '#743A9D';
       const value = isHexColor(currentRoles[key]) ? currentRoles[key] : fallback;
       const input = field.createEl('input', { attr: { type: 'color', value } });
-      input.value = value; this.inputs[this.themeMode][key] = input;
-      const editingMode = this.themeMode;
+      input.value = value; this.inputs[key] = input;
       input.addEventListener('input', () => {
         this.base.roles = { ...(this.base.roles || {}), letter: input.value };
         if (this.palettePreview) this.palettePreview.style.setProperty('--esds-letter', input.value);
@@ -1409,7 +1407,7 @@ class PaletteBuilderModal extends Modal {
       const bg = this.studio.findBackground(this.defaultBackgroundSelect.value) || this.studio.selectedBackground;
       const blocks = this.studio.findBlockStyle(this.base.defaultBlocks) || this.studio.getPreferredBlockStyle(this.base);
       this.palettePreview.className = `esds-preview esds-inline-theme ${this.base.id} esds-palette-${this.base.id} ${bg.id} esds-frames-from-palette`;
-      this.studio.setPreviewTheme(this.palettePreview, this.base, bg, blocks, this.themeMode);
+      this.studio.setPreviewTheme(this.palettePreview, this.base, bg, blocks);
     };
     this.palettePreview.style.setProperty('--esds-en', currentRoles.en || '#187b75');
     this.palettePreview.style.setProperty('--esds-ipa', currentRoles.ipa || '#7450a8');
@@ -3129,22 +3127,20 @@ class DesignStudioModal extends Modal {
       if (modeOverride === 'light') container.addClass('esds-preview-light-mode');
       else container.removeClass('esds-preview-light-mode');
     }
-    const roles = darkMode && palette.dark ? palette.dark : palette.roles;
+    const roles = palette.roles;
     if (roles) {
       ROLE_KEYS.forEach(key => {
         if (roles[key]) container.style.setProperty(`--esds-${key}`, roles[key]);
       });
       container.style.setProperty('--esds-letter', isHexColor(roles.letter) ? roles.letter : (roles.ipa || palette.roles?.ipa || '#777777'));
     }
-    const callouts = darkMode && palette.darkCallouts ? palette.darkCallouts : palette.callouts;
+    const callouts = palette.callouts;
     if (callouts) {
       CALLOUT_KEYS.forEach(key => {
         if (callouts[key]) container.style.setProperty(`--esds-callout-${key}`, rgbValue(callouts[key]));
       });
     }
-    const mapPairs = darkMode
-      ? [['darkCalloutFills', null, 'fill'], ['darkCalloutTexts', null, 'text'], ['darkCalloutBorders', null, 'border']]
-      : [['calloutFills', null, 'fill'], ['calloutTexts', null, 'text'], ['calloutBorders', null, 'border']];
+    const mapPairs = [['calloutFills', null, 'fill'], ['calloutTexts', null, 'text'], ['calloutBorders', null, 'border']];
     mapPairs.forEach(([primary, fallback, kind]) => {
       const values = palette[primary] || (fallback ? palette[fallback] : null) || {};
       CALLOUT_KEYS.forEach(key => {
