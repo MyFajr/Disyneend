@@ -2259,7 +2259,7 @@ class DesignStudioModal extends Modal {
     const index = Math.max(0, items.findIndex(entry => entry.id === item.id));
     new LibraryItemPreviewModal(this.app, this, kind, items, index).open();
   }
-  manageLibraryCatalogItem(kind, item, anchorEl) {
+  manageLibraryCatalogItem(kind, item, anchorEl, action = null) {
     const getArray = () => kind === 'palette' ? 'palettes' : kind === 'background' ? 'backgrounds' : 'blockStyles';
     const arrayKey = getArray();
     const categoryField = kind === 'background' ? 'group' : 'category';
@@ -2310,6 +2310,7 @@ class DesignStudioModal extends Modal {
         if (!await saveAndRefresh('Элемент удалён.')) this.plugin.userData = before;
       }]
     ];
+    if (action) { const selectedAction = items.find(entry => entry[0].includes(action)); if (selectedAction) { selectedAction[2](); return; } }
     this.openItemMenu(anchorEl, items);
   }
   renderLibraryCatalogCard(parent, kind, item, visibleItems) {
@@ -2330,9 +2331,9 @@ class DesignStudioModal extends Modal {
     const view = actions.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Просмотр и применение', attr: { type: 'button' } });
     view.addEventListener('click', () => this.openLibraryItemPreview(kind, item, visibleItems));
     const move = actions.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Переместить', attr: { type: 'button', title: 'Переместить в другую категорию' } });
-    move.addEventListener('click', event => { event.stopPropagation(); this.manageLibraryCatalogItem(kind, item, move); this._catalogManageAction = 'move'; });
+    move.addEventListener('click', event => { event.stopPropagation(); this.manageLibraryCatalogItem(kind, item, move, 'Переместить'); });
     const remove = actions.createEl('button', { cls: 'esds-button esds-btn-outline-coral', text: 'Удалить', attr: { type: 'button', title: 'Удалить из пользовательской библиотеки' } });
-    remove.addEventListener('click', event => { event.stopPropagation(); this.manageLibraryCatalogItem(kind, item, remove); this._catalogManageAction = 'delete'; });
+    remove.addEventListener('click', event => { event.stopPropagation(); this.manageLibraryCatalogItem(kind, item, remove, 'Удалить'); });
     const more = actions.createEl('button', { cls: 'esds-button esds-btn-quiet', text: '⋯', attr: { type: 'button', title: 'Дублировать или экспортировать JSON' } });
     more.addEventListener('click', event => { event.stopPropagation(); this.manageLibraryCatalogItem(kind, item, more); });
     card.addEventListener('click', event => { if (!event.target.closest('button')) this.openLibraryItemPreview(kind, item, visibleItems); });
