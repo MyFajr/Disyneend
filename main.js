@@ -4768,37 +4768,70 @@ class DesignStudioModal extends Modal {
       let importedBackground = null;
       if (rawBackground) {
         const requestedBackgroundName = String(rawBackground.name || rawBackground.label).trim().slice(0, 120);
-        const backgroundName = esdsUniqueName(requestedBackgroundName, this.allBackgrounds().map(item => item.name || item.label), 120);
-        const backgroundId = esdsUniqueId(`bg-custom-${slugify(backgroundName)}`, this.allBackgrounds().map(item => item.id));
+        const currentBackgrounds = this.plugin.userData.backgrounds || [];
+        const existingBackground = currentBackgrounds.find(item =>
+          item.id === rawBackground.id ||
+          String(item.name || item.label || '').toLocaleLowerCase() === requestedBackgroundName.toLocaleLowerCase()
+        );
+        const backgroundName = existingBackground
+          ? String(existingBackground.name || existingBackground.label || requestedBackgroundName)
+          : esdsUniqueName(requestedBackgroundName, this.allBackgrounds().map(item => item.name || item.label), 120);
+        const preferredBackgroundId = /^bg-custom-[a-z0-9-]+$/i.test(String(rawBackground.id || '')) &&
+          !this.allBackgrounds().some(item => item.id === rawBackground.id) ? rawBackground.id : '';
+        const backgroundId = existingBackground ? existingBackground.id :
+          (preferredBackgroundId || esdsUniqueId(`bg-custom-${slugify(backgroundName)}`, this.allBackgrounds().map(item => item.id)));
         importedBackground = {
           ...clone(rawBackground), id: backgroundId, name: backgroundName, label: backgroundName,
           group: String(rawBackground.group || rawBackground.category || 'Мои фоны').slice(0, 80),
           light: bgLight, dark: bgDark,
           textColor: isHexColor(rawBackground.textColor) ? colorToHex(rawBackground.textColor) : '#302d31',
           darkTextColor: isHexColor(rawBackground.darkTextColor) ? colorToHex(rawBackground.darkTextColor) : '#e9eaf0',
-          source: 'user', createdAt: importedAt, updatedAt: importedAt
+          source: 'user', createdAt: existingBackground?.createdAt || importedAt, updatedAt: importedAt
         };
-        this.plugin.userData.backgrounds = [...(this.plugin.userData.backgrounds || []), importedBackground];
+        this.plugin.userData.backgrounds = existingBackground
+          ? currentBackgrounds.map(item => item.id === existingBackground.id ? importedBackground : item)
+          : [...currentBackgrounds, importedBackground];
       }
 
       let importedBlockStyle = null;
       if (rawBlockStyle) {
         const requestedStyleName = String(rawBlockStyle.name || rawBlockStyle.id).trim().slice(0, 120) || 'Импортированный стиль';
-        const styleName = esdsUniqueName(requestedStyleName, this.allBlockStyles().map(item => item.name), 120);
-        const styleId = esdsUniqueId(`user-blocks-${slugify(styleName) || 'imported'}`, this.allBlockStyles().map(item => item.id));
+        const currentBlockStyles = this.plugin.userData.blockStyles || [];
+        const existingBlockStyle = currentBlockStyles.find(item =>
+          item.id === rawBlockStyle.id ||
+          String(item.name || '').toLocaleLowerCase() === requestedStyleName.toLocaleLowerCase()
+        );
+        const styleName = existingBlockStyle
+          ? existingBlockStyle.name
+          : esdsUniqueName(requestedStyleName, this.allBlockStyles().map(item => item.name), 120);
+        const preferredStyleId = /^user-blocks-[a-z0-9-]+$/i.test(String(rawBlockStyle.id || '')) &&
+          !this.allBlockStyles().some(item => item.id === rawBlockStyle.id) ? rawBlockStyle.id : '';
+        const styleId = existingBlockStyle ? existingBlockStyle.id :
+          (preferredStyleId || esdsUniqueId(`user-blocks-${slugify(styleName) || 'imported'}`, this.allBlockStyles().map(item => item.id)));
         importedBlockStyle = normalizeBlockStyle({
           ...clone(rawBlockStyle), id: styleId, name: styleName,
           category: String(rawBlockStyle.category || 'Мои стили').slice(0, 80),
-          source: 'user', createdAt: importedAt, updatedAt: importedAt
+          source: 'user', createdAt: existingBlockStyle?.createdAt || importedAt, updatedAt: importedAt
         });
-        this.plugin.userData.blockStyles = [...(this.plugin.userData.blockStyles || []), importedBlockStyle];
+        this.plugin.userData.blockStyles = existingBlockStyle
+          ? currentBlockStyles.map(item => item.id === existingBlockStyle.id ? importedBlockStyle : item)
+          : [...currentBlockStyles, importedBlockStyle];
       }
 
       const palette = normalizeSingleModePalette(p);
       const requestedName = palette.name;
-      palette.name = esdsUniqueName(requestedName, this.allPalettes().map(item => item.name), 100);
-      palette.id = esdsUniqueId(`user-${slugify(palette.name)}`, this.allPalettes().map(item => item.id));
-      palette.createdAt = importedAt; palette.updatedAt = importedAt; palette.source = 'user';
+      const currentPalettes = this.plugin.userData.palettes || [];
+      const existingPalette = currentPalettes.find(item =>
+        item.id === p.id ||
+        String(item.name || '').toLocaleLowerCase() === String(requestedName || '').toLocaleLowerCase()
+      );
+      palette.name = existingPalette
+        ? existingPalette.name
+        : esdsUniqueName(requestedName, this.allPalettes().map(item => item.name), 100);
+      palette.id = existingPalette
+        ? existingPalette.id
+        : esdsUniqueId(`user-${slugify(palette.name)}`, this.allPalettes().map(item => item.id));
+      palette.createdAt = existingPalette?.createdAt || importedAt; palette.updatedAt = importedAt; palette.source = 'user';
       if (palette.name !== requestedName) new Notice(`Палитра уже существует. Импортирована как «${palette.name}».`);
       palette.defaultBackground = importedBackground ? importedBackground.id : (this.findBackground(p.defaultBackground)?.id || this.selectedBackground.id);
       palette.defaultBlocks = importedBlockStyle ? importedBlockStyle.id : (this.findBlockStyle(p.defaultBlocks)?.id || this.selectedBlocks.id);
@@ -4820,7 +4853,10 @@ class DesignStudioModal extends Modal {
       } else delete palette.calloutFrames;
       palette.swatches = palette.swatches || ROLE_KEYS.slice(0,5).map(k => palette.roles[k]);
       if (p.category) palette.category = p.category;
-      this.plugin.userData.palettes.push(palette); this.plugin.refreshGeneratedStyles();
+      this.plugin.userData.palettes = existingPalette
+        ? currentPalettes.map(item => item.id === existingPalette.id ? palette : item)
+        : [...currentPalettes, palette];
+      this.plugin.refreshGeneratedStyles();
       this.selectedPalette = palette;
       this.selectedBackground = this.findBackground(palette.defaultBackground) || this.selectedBackground;
       this.selectedBlocks = this.findBlockStyle(palette.defaultBlocks) || this.selectedBlocks;
