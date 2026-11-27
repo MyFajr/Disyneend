@@ -3,7 +3,7 @@
   "type": "esds-theme-pack",
   "plugin": "english-study-design-studio",
   "name": "Cobalt Energy — полный дизайнерский набор",
-  "description": "Полный дизайн Cobalt Energy: палитра, индивидуальный цветной фон и единое оформление блоков.",
+  "description": "Полный дизайн Cobalt Energy: индивидуальный насыщенный фон, палитра и стиль блоков.",
   "frameSource": "blockStyle",
   "items": {
     "palette": {
@@ -351,8 +351,8 @@
       "name": "Cobalt Energy — фон",
       "label": "Cobalt Energy — фон",
       "group": "Rainbow Multicolor",
-      "light": "linear-gradient(135deg, #C0CEF6 0%, #DAFAFF 100%)",
-      "dark": "linear-gradient(135deg, #C0CEF6 0%, #DAFAFF 100%)",
+      "light": "linear-gradient(135deg, #A4B9F3 0%, #69E9FF 100%)",
+      "dark": "linear-gradient(135deg, #A4B9F3 0%, #69E9FF 100%)",
       "textColor": "#201B2A",
       "darkTextColor": "#201B2A"
     },
