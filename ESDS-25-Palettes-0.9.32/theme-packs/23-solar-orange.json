@@ -3,7 +3,7 @@
   "type": "esds-theme-pack",
   "plugin": "english-study-design-studio",
   "name": "Solar Orange — полный дизайнерский набор",
-  "description": "Полный дизайн Solar Orange: палитра, индивидуальный цветной фон и единое оформление блоков.",
+  "description": "Полный дизайн Solar Orange: индивидуальный насыщенный фон, палитра и стиль блоков.",
   "frameSource": "blockStyle",
   "items": {
     "palette": {
@@ -351,8 +351,8 @@
       "name": "Solar Orange — фон",
       "label": "Solar Orange — фон",
       "group": "Rainbow Multicolor",
-      "light": "linear-gradient(135deg, #FBD2BA 0%, #D6CFEC 100%)",
-      "dark": "linear-gradient(135deg, #FBD2BA 0%, #D6CFEC 100%)",
+      "light": "linear-gradient(135deg, #F69860 0%, #B4A9DC 100%)",
+      "dark": "linear-gradient(135deg, #F69860 0%, #B4A9DC 100%)",
       "textColor": "#201B2A",
       "darkTextColor": "#201B2A"
     },
