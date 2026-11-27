@@ -3,7 +3,7 @@
   "type": "esds-theme-pack",
   "plugin": "english-study-design-studio",
   "name": "Purple Voltage — полный дизайнерский набор",
-  "description": "Полный дизайн Purple Voltage: палитра, индивидуальный цветной фон и единое оформление блоков.",
+  "description": "Полный дизайн Purple Voltage: индивидуальный насыщенный фон, палитра и стиль блоков.",
   "frameSource": "blockStyle",
   "items": {
     "palette": {
@@ -351,8 +351,8 @@
       "name": "Purple Voltage — фон",
       "label": "Purple Voltage — фон",
       "group": "Rainbow Multicolor",
-      "light": "linear-gradient(135deg, #D9C8F6 0%, #F9FCD4 100%)",
-      "dark": "linear-gradient(135deg, #D9C8F6 0%, #F9FCD4 100%)",
+      "light": "linear-gradient(135deg, #D0BBF3 0%, #E7F453 100%)",
+      "dark": "linear-gradient(135deg, #D0BBF3 0%, #E7F453 100%)",
       "textColor": "#201B2A",
       "darkTextColor": "#201B2A"
     },
