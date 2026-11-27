@@ -346,8 +346,8 @@
     "name": "Cherry Red — фон",
     "label": "Cherry Red — фон",
     "group": "Rainbow Multicolor",
-    "light": "linear-gradient(135deg, #FCC4CC 0%, #FFEEEC 100%)",
-    "dark": "linear-gradient(135deg, #FCC4CC 0%, #FFEEEC 100%)",
+    "light": "linear-gradient(135deg, #FA99A7 0%, #FFBCB2 100%)",
+    "dark": "linear-gradient(135deg, #FA99A7 0%, #FFBCB2 100%)",
     "textColor": "#201B2A",
     "darkTextColor": "#201B2A"
   },
