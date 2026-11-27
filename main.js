@@ -1754,6 +1754,7 @@ class LibraryManagerModal extends Modal {
       input.click();
     });
     button('Экспорт JSON', () => this.exportSelected());
+    if (this.kind === 'palette') button('ZIP архив', () => this.studio.exportPaletteCategoryZip(null, [...this.selected]), 'esds-btn-teal');
     button('Удалить', () => this.deleteSelected(), 'esds-menu-danger');
     button('Категории', () => this.studio.openCategoryManager(this.config.key));
     search.addEventListener('input', () => { this.query = search.value; draw(); });
@@ -3632,13 +3633,13 @@ class DesignStudioModal extends Modal {
     });
     input.click();
   }
-  async exportPaletteCategoryZip(categoryName = null) {
+  async exportPaletteCategoryZip(categoryName = null, presetIds = null) {
     const all = this.allPalettes();
     if (!all.length) { new Notice('В библиотеке пока нет пользовательских палитр для экспорта.'); return; }
     const selectedIds = await new Promise(resolve => {
       let completed = false;
       const selected = new Set(all
-        .filter(item => !categoryName || (item.category || 'Мои палитры') === categoryName)
+        .filter(item => presetIds ? presetIds.includes(item.id) : (!categoryName || (item.category || 'Мои палитры') === categoryName))
         .map(item => item.id));
       const modal = new class extends Modal {
         constructor(app) { super(app); }
