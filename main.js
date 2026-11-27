@@ -757,8 +757,8 @@ function makePaletteCss(palette) {
   const cls = `esds-palette-${palette.id}`;
   const roles = palette.roles || {};
   const callouts = palette.callouts || {};
-  const darkRoles = palette.dark || roles;
-  const darkCallouts = palette.darkCallouts || callouts;
+  const darkRoles = roles;
+  const darkCallouts = callouts;
   const selectors = [
     `.markdown-preview-view.esds-note.${cls}`,
     `.markdown-source-view.esds-note.${cls}`,
@@ -776,7 +776,7 @@ function makePaletteCss(palette) {
     return vars.join(' ');
   }).join(' ');
   const lightExtra = mapVars(palette.calloutFills, palette.calloutTexts, palette.calloutBorders);
-  const darkExtra = mapVars(palette.darkCalloutFills, palette.darkCalloutTexts, palette.darkCalloutBorders);
+  const darkExtra = lightExtra;
   const darkSelectors = selectors.split(',').map(selector => `body.theme-dark ${selector}`).join(',');
   const frameCss = (mode) => CALLOUT_KEYS.map(type => {
     const frame = (palette.calloutFrames && palette.calloutFrames[type]) || { preset: 'classic', width: 1.5, radius: 10 };
@@ -1304,14 +1304,10 @@ class PaletteBuilderModal extends Modal {
     let refreshLinkedPreview = () => {};
     this.defaultBackgroundSelect.addEventListener('change', () => { this.base.defaultBackground = this.defaultBackgroundSelect.value; refreshLinkedPreview(); });
 
-    const themeToggle = body.createDiv({ cls: 'esds-theme-toggle' });
-    const lightBtn = themeToggle.createEl('button', { cls: `esds-button ${this.themeMode === 'light' ? 'esds-primary' : 'esds-btn-quiet'}`, text: 'Light', attr: { type: 'button' } });
-    const darkBtn = themeToggle.createEl('button', { cls: `esds-button ${this.themeMode === 'dark' ? 'esds-primary' : 'esds-btn-quiet'}`, text: 'Dark', attr: { type: 'button' } });
-    lightBtn.addEventListener('click', () => { this.themeMode = 'light'; this.render(); });
-    darkBtn.addEventListener('click', () => { this.themeMode = 'dark'; this.render(); });
+    // Single palette color set for both Obsidian theme modes.
     const swatches = body.createDiv({ cls: 'esds-color-grid' });
     const labels = { en:'Иностранные слова', ipa:'Произношение / транскрипция', translation:'Перевод', term:'Термины', definition:'Определения', focus:'Главный акцент', secondary:'Второй акцент', soft:'Мягкий акцент', heading:'Заголовки', ink:'Основной текст', letter:'Иностранные буквы' };
-    const currentRoles = this.themeMode === 'dark' ? (this.base.dark || this.base.roles) : this.base.roles;
+    const currentRoles = this.base.roles;
     ROLE_KEYS.forEach(key => {
       const field = swatches.createDiv({ cls: 'esds-color-field' });
       field.createEl('label', { text: labels[key] });
@@ -1320,8 +1316,7 @@ class PaletteBuilderModal extends Modal {
       input.value = value; this.inputs[this.themeMode][key] = input;
       const editingMode = this.themeMode;
       input.addEventListener('input', () => {
-        if (editingMode === 'dark') this.base.dark = { ...(this.base.dark || this.base.roles), [key]: input.value };
-        else this.base.roles = { ...(this.base.roles || {}), [key]: input.value };
+        this.base.roles = { ...(this.base.roles || {}), [key]: input.value };
         if (this.palettePreview) this.palettePreview.style.setProperty(`--esds-${key}`, input.value);
       });
     });
@@ -1335,8 +1330,7 @@ class PaletteBuilderModal extends Modal {
       input.value = value; this.inputs[this.themeMode][key] = input;
       const editingMode = this.themeMode;
       input.addEventListener('input', () => {
-        if (editingMode === 'dark') this.base.dark = { ...(this.base.dark || this.base.roles), letter: input.value };
-        else this.base.roles = { ...(this.base.roles || {}), letter: input.value };
+        this.base.roles = { ...(this.base.roles || {}), letter: input.value };
         if (this.palettePreview) this.palettePreview.style.setProperty('--esds-letter', input.value);
       });
     }
@@ -1350,9 +1344,7 @@ class PaletteBuilderModal extends Modal {
     });
     calloutTypeSelect.addEventListener('change', () => { this.calloutType = calloutTypeSelect.value; this.render(); });
     const calloutColorGrid = calloutColorsSection.createDiv({ cls: 'esds-palette-callout-color-grid' });
-    const calloutColorMaps = this.themeMode === 'dark'
-      ? { fill: 'darkCalloutFills', text: 'darkCalloutTexts', border: 'darkCalloutBorders', base: this.base.darkCallouts || this.base.callouts }
-      : { fill: 'calloutFills', text: 'calloutTexts', border: 'calloutBorders', base: this.base.callouts };
+    const calloutColorMaps = { fill: 'calloutFills', text: 'calloutTexts', border: 'calloutBorders', base: this.base.callouts };
     [['fill', 'Заливка'], ['text', 'Цвет текста блока'], ['border', 'Обводка']].forEach(([kind, label]) => {
       const mapName = calloutColorMaps[kind];
       const map = this.base[mapName] && typeof this.base[mapName] === 'object' ? this.base[mapName] : {};
@@ -1467,15 +1459,13 @@ class PaletteBuilderModal extends Modal {
       // The palette stores its recommended base block preset; it is selected automatically.
       palette.defaultBlocks = palette.defaultBlocks || this.studio.selectedBlocks.id;
       palette.roles = { ...(palette.roles || {}) };
-      palette.dark = { ...(palette.dark || palette.roles) };
+      palette.dark = { ...(palette.roles || {}) };
       ROLE_KEYS.forEach(key => {
         if (this.inputs.light[key]) palette.roles[key] = this.inputs.light[key].value;
-        if (this.inputs.dark[key]) palette.dark[key] = this.inputs.dark[key].value;
       });
       if (this.inputs.light.letter) palette.roles.letter = this.inputs.light.letter.value;
       else palette.roles.letter = palette.roles.letter || palette.roles.ipa;
-      if (this.inputs.dark.letter) palette.dark.letter = this.inputs.dark.letter.value;
-      else palette.dark.letter = palette.dark.letter || palette.dark.ipa || palette.roles.letter;
+      palette.dark.letter = palette.roles.letter || palette.roles.ipa;
       palette.swatches = [palette.roles.en, palette.roles.ipa, palette.roles.translation, palette.roles.term, palette.roles.focus];
       const now = new Date().toISOString();
       palette.createdAt = palette.createdAt || now;
@@ -1504,7 +1494,7 @@ class PaletteBuilderModal extends Modal {
 }
 
 class BackgroundBuilderModal extends Modal {
-  constructor(app, studio, existing = null) { super(app); this.studio = studio; this.existing = existing; this.category = (existing && (existing.group || existing.category)) || 'Мои фоны'; this.themeMode = 'light'; const stops = (value, a, b) => { const found = String(value || '').match(/#[0-9a-f]{6}/ig) || []; return [found[0] || a, found[1] || b]; }; this.colors = { light: stops(existing && existing.light, '#e8f1ed', '#d6e6df'), dark: stops(existing && existing.dark, '#292d35', '#20242d') }; }
+  constructor(app, studio, existing = null) { super(app); this.studio = studio; this.existing = existing; this.category = (existing && (existing.group || existing.category)) || 'Мои фоны'; const stops = (value, a, b) => { const found = String(value || '').match(/#[0-9a-f]{6}/ig) || []; return [found[0] || a, found[1] || b]; }; this.colors = stops(existing && (existing.light || existing.dark), '#e8f1ed', '#d6e6df'); }
   onOpen() { this.modalEl.addClass('esds-builder-modal'); this.contentEl.addClass('esds-builder-content'); this.render(); }
   onClose() { this.contentEl.empty(); }
   render() {
@@ -1525,22 +1515,18 @@ class BackgroundBuilderModal extends Modal {
       if (cat.name === this.category) option.selected = true;
     });
     categorySelect.addEventListener('change', () => { this.category = categorySelect.value; });
-    const themeToggle = body.createDiv({ cls: 'esds-theme-toggle' });
-    const lightBtn = themeToggle.createEl('button', { cls: `esds-button ${this.themeMode === 'light' ? 'esds-primary' : 'esds-btn-quiet'}`, text: 'Light', attr: { type: 'button' } });
-    const darkBtn = themeToggle.createEl('button', { cls: `esds-button ${this.themeMode === 'dark' ? 'esds-primary' : 'esds-btn-quiet'}`, text: 'Dark', attr: { type: 'button' } });
-    lightBtn.addEventListener('click', () => { this.themeMode = 'light'; this.render(); });
-    darkBtn.addEventListener('click', () => { this.themeMode = 'dark'; this.render(); });
+    // One background color pair; no separate light/dark version.
     const colors = body.createDiv({ cls: 'esds-color-grid esds-background-colors' });
-    const c1f = colors.createDiv({ cls: 'esds-color-field' }); c1f.createEl('label', { text: 'Первый цвет' }); const c1 = c1f.createEl('input', { attr: { type: 'color', value: this.colors[this.themeMode][0] } });
-    const c2f = colors.createDiv({ cls: 'esds-color-field' }); c2f.createEl('label', { text: 'Второй цвет' }); const c2 = c2f.createEl('input', { attr: { type: 'color', value: this.colors[this.themeMode][1] } });
+    const c1f = colors.createDiv({ cls: 'esds-color-field' }); c1f.createEl('label', { text: 'Первый цвет' }); const c1 = c1f.createEl('input', { attr: { type: 'color', value: this.colors[0] } });
+    const c2f = colors.createDiv({ cls: 'esds-color-field' }); c2f.createEl('label', { text: 'Второй цвет' }); const c2 = c2f.createEl('input', { attr: { type: 'color', value: this.colors[1] } });
     const preview = body.createDiv({ cls: 'esds-custom-bg-preview' });
     const previewTitle = preview.createEl('strong', { text: 'Универсальный конспект' });
     const previewText = preview.createEl('span', { text: 'Ключевой термин или иностранное выражение' });
     const previewTranslation = preview.createEl('small', { text: 'Перевод, объяснение или значение' });
     const update = () => {
-      this.colors[this.themeMode] = [c1.value, c2.value];
+      this.colors = [c1.value, c2.value];
       preview.style.background = `linear-gradient(135deg, ${c1.value} 0%, ${c2.value} 100%)`;
-      const textColor = this.themeMode === 'dark' ? '#f1edf5' : '#292b31';
+      const textColor = '#292b31';
       previewTitle.style.color = textColor; previewText.style.color = textColor; previewTranslation.style.color = textColor;
     };
     c1.addEventListener('input', update); c2.addEventListener('input', update); update();
@@ -1554,10 +1540,10 @@ class BackgroundBuilderModal extends Modal {
         id: this.existing ? this.existing.id : `bg-custom-${slugify(label)}-${Date.now().toString(36).slice(-4)}`,
         createdAt: (this.existing && this.existing.createdAt) || now, updatedAt: now,
         name: label, label, group: this.category || 'Мои фоны', category: this.category || 'Мои фоны',
-        light: `linear-gradient(135deg, ${this.colors.light[0]} 0%, ${this.colors.light[1]} 100%)`,
-        dark: `linear-gradient(135deg, ${this.colors.dark[0]} 0%, ${this.colors.dark[1]} 100%)`,
+        light: `linear-gradient(135deg, ${this.colors[0]} 0%, ${this.colors[1]} 100%)`,
+        dark: `linear-gradient(135deg, ${this.colors[0]} 0%, ${this.colors[1]} 100%)`,
         textColor: (this.existing && this.existing.textColor) || '#302d31',
-        darkTextColor: (this.existing && this.existing.darkTextColor) || '#e9eaf0', source: 'user'
+        darkTextColor: '#302d31', source: 'user'
       };
       const list = this.studio.plugin.userData.backgrounds;
       if (this.existing) {
