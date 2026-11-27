@@ -1,0 +1,411 @@
+{
+  "schemaVersion": 1,
+  "type": "esds-theme-pack",
+  "plugin": "english-study-design-studio",
+  "name": "Purple Neon — полный дизайнерский набор",
+  "description": "Палитра, яркий цветной фон и согласованное оформление учебных блоков для ESDS 0.9.32.",
+  "frameSource": "palette",
+  "items": {
+    "palette": {
+      "id": "rainbow-purple-neon",
+      "name": "Purple Neon",
+      "mood": "Фиолетовый неон: Неоновый фиолетовый в компании циана, розового и кислотного лайма.",
+      "description": "Неоновый фиолетовый в компании циана, розового и кислотного лайма. Полноценная многоцветная учебная палитра для ESDS 0.9.32: отдельные контрастные роли для английского текста, иностранных букв, IPA, перевода, терминов и смысловых акцентов; согласованные цвета 12 учебных Callout. Единая система цветов без отдельных пользовательских вариантов Light/Dark.",
+      "category": "Радужные и многоцветные",
+      "swatches": [
+        "#9827EC",
+        "#EA2E59",
+        "#E6E00F",
+        "#2AE54A",
+        "#38ABF0"
+      ],
+      "defaultBackground": "bg-08-reading-rose-cloud",
+      "defaultBlocks": "soft",
+      "roles": {
+        "en": "#5A158E",
+        "letter": "#91126E",
+        "ipa": "#15758E",
+        "translation": "#8D8E15",
+        "term": "#151C8E",
+        "definition": "#2F9717",
+        "focus": "#7F158E",
+        "secondary": "#8E154D",
+        "soft": "#184DA0",
+        "heading": "#26158E",
+        "ink": "#28202E"
+      },
+      "callouts": {
+        "rule": [
+          77,
+          23,
+          171
+        ],
+        "example": [
+          146,
+          171,
+          23
+        ],
+        "important": [
+          171,
+          90,
+          23
+        ],
+        "tip": [
+          23,
+          153,
+          171
+        ],
+        "warning": [
+          121,
+          171,
+          23
+        ],
+        "question": [
+          23,
+          43,
+          171
+        ],
+        "practice": [
+          171,
+          156,
+          23
+        ],
+        "success": [
+          23,
+          129,
+          171
+        ],
+        "info": [
+          40,
+          23,
+          171
+        ],
+        "note": [
+          171,
+          23,
+          153
+        ],
+        "quote": [
+          171,
+          28,
+          23
+        ],
+        "abstract": [
+          139,
+          23,
+          171
+        ]
+      },
+      "calloutFills": {
+        "rule": [
+          237,
+          228,
+          252
+        ],
+        "example": [
+          248,
+          252,
+          228
+        ],
+        "important": [
+          252,
+          239,
+          228
+        ],
+        "tip": [
+          228,
+          249,
+          252
+        ],
+        "warning": [
+          244,
+          252,
+          228
+        ],
+        "question": [
+          228,
+          231,
+          252
+        ],
+        "practice": [
+          252,
+          250,
+          228
+        ],
+        "success": [
+          228,
+          245,
+          252
+        ],
+        "info": [
+          231,
+          228,
+          252
+        ],
+        "note": [
+          252,
+          228,
+          249
+        ],
+        "quote": [
+          252,
+          229,
+          228
+        ],
+        "abstract": [
+          247,
+          228,
+          252
+        ]
+      },
+      "calloutTexts": {
+        "rule": [
+          60,
+          21,
+          127
+        ],
+        "example": [
+          109,
+          127,
+          21
+        ],
+        "important": [
+          127,
+          69,
+          21
+        ],
+        "tip": [
+          21,
+          115,
+          127
+        ],
+        "warning": [
+          92,
+          127,
+          21
+        ],
+        "question": [
+          21,
+          35,
+          127
+        ],
+        "practice": [
+          127,
+          117,
+          21
+        ],
+        "success": [
+          21,
+          97,
+          127
+        ],
+        "info": [
+          33,
+          21,
+          127
+        ],
+        "note": [
+          127,
+          21,
+          115
+        ],
+        "quote": [
+          127,
+          24,
+          21
+        ],
+        "abstract": [
+          104,
+          21,
+          127
+        ]
+      },
+      "calloutBorders": {
+        "rule": [
+          87,
+          24,
+          195
+        ],
+        "example": [
+          167,
+          195,
+          24
+        ],
+        "important": [
+          195,
+          101,
+          24
+        ],
+        "tip": [
+          24,
+          175,
+          195
+        ],
+        "warning": [
+          138,
+          195,
+          24
+        ],
+        "question": [
+          24,
+          47,
+          195
+        ],
+        "practice": [
+          195,
+          178,
+          24
+        ],
+        "success": [
+          24,
+          147,
+          195
+        ],
+        "info": [
+          44,
+          24,
+          195
+        ],
+        "note": [
+          195,
+          24,
+          175
+        ],
+        "quote": [
+          195,
+          30,
+          24
+        ],
+        "abstract": [
+          158,
+          24,
+          195
+        ]
+      },
+      "calloutFrames": {
+        "rule": {
+          "preset": "classic",
+          "width": 1.5,
+          "radius": 10
+        },
+        "example": {
+          "preset": "dashed",
+          "width": 2,
+          "radius": 10
+        },
+        "important": {
+          "preset": "double",
+          "width": 3,
+          "radius": 8
+        },
+        "tip": {
+          "preset": "dotted",
+          "width": 2,
+          "radius": 12
+        },
+        "warning": {
+          "preset": "left",
+          "width": 3,
+          "radius": 8
+        },
+        "question": {
+          "preset": "top",
+          "width": 2,
+          "radius": 8
+        },
+        "practice": {
+          "preset": "classic",
+          "width": 1.5,
+          "radius": 10
+        },
+        "success": {
+          "preset": "dashed",
+          "width": 1.5,
+          "radius": 12
+        },
+        "info": {
+          "preset": "classic",
+          "width": 1.5,
+          "radius": 10
+        },
+        "note": {
+          "preset": "left",
+          "width": 2,
+          "radius": 8
+        },
+        "quote": {
+          "preset": "dotted",
+          "width": 2,
+          "radius": 10
+        },
+        "abstract": {
+          "preset": "double",
+          "width": 2,
+          "radius": 10
+        }
+      }
+    },
+    "background": {
+      "id": "bg-rainbow-purple-neon",
+      "name": "Purple Neon — цветной фон",
+      "label": "Purple Neon — цветной фон",
+      "group": "Радужные и многоцветные",
+      "light": "linear-gradient(135deg, #D3A2F7 0%, #F7F4AD 54%, #C7E7FB 100%)",
+      "dark": "linear-gradient(135deg, #D3A2F7 0%, #F7F4AD 54%, #C7E7FB 100%)",
+      "textColor": "#28202E",
+      "darkTextColor": "#28202E"
+    },
+    "blockStyle": {
+      "id": "rainbow-blocks-purple-neon",
+      "name": "Purple Neon — учебные блоки",
+      "description": "Согласованные рамки и поверхности учебных Callout для палитры Purple Neon.",
+      "category": "Радужные и многоцветные",
+      "base": "soft",
+      "framePreset": "classic",
+      "frameOverrides": {
+        "important": "double",
+        "warning": "left",
+        "question": "top"
+      },
+      "style": {
+        "light": {
+          "backgroundOpacity": 0.18,
+          "borderOpacity": 0.78,
+          "borderWidth": 1.6,
+          "borderRadius": 13,
+          "paddingY": 10,
+          "paddingX": 12,
+          "gap": 8,
+          "titleWeight": 700,
+          "titleSize": 13,
+          "bodySize": 12
+        },
+        "dark": {
+          "backgroundOpacity": 0.18,
+          "borderOpacity": 0.78,
+          "borderWidth": 1.6,
+          "borderRadius": 13,
+          "paddingY": 10,
+          "paddingX": 12,
+          "gap": 8,
+          "titleWeight": 700,
+          "titleSize": 13,
+          "bodySize": 12
+        }
+      },
+      "calloutOverrides": {},
+      "colors": {
+        "light": {},
+        "dark": {}
+      },
+      "previewCallouts": [
+        "rule",
+        "example",
+        "important",
+        "tip",
+        "warning",
+        "question"
+      ]
+    }
+  }
+}
