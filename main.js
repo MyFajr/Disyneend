@@ -1553,6 +1553,217 @@ class BackgroundBuilderModal extends Modal {
   }
 }
 
+
+class LibraryManagerModal extends Modal {
+  constructor(app, studio, kind) { super(app); this.studio = studio; this.kind = kind; this.selected = new Set(); this.query = ''; this.categoryFilter = ''; this.sortMode = 'custom'; }
+  get config() {
+    return {
+      palette: { key: 'palettes', label: 'палитры', name: x => x.name || 'Без названия', category: x => x.category || 'Мои палитры' },
+      background: { key: 'backgrounds', label: 'фоны', name: x => x.label || x.name || 'Без названия', category: x => x.group || x.category || 'Мои фоны' },
+      blockStyle: { key: 'blockStyles', label: 'стили блоков', name: x => x.name || 'Без названия', category: x => x.category || 'Мои стили' }
+    }[this.kind];
+  }
+  get items() { return this.studio.libraryItems(this.kind); }
+  onOpen() { this.modalEl.addClass('esds-builder-modal'); this.modalEl.addClass('esds-library-manager-modal'); this.contentEl.addClass('esds-builder-content'); this.render(); }
+  onClose() { this.contentEl.empty(); }
+  ensureCategory(name) {
+    const clean = String(name || '').trim().slice(0, 80); if (!clean) return null;
+    const all = this.studio.plugin.userData;
+    if (!all.categories) all.categories = {};
+    if (!all.categories[this.config.key]) all.categories[this.config.key] = [];
+    const list = all.categories[this.config.key];
+    let found = list.find(x => String(x.name).toLowerCase() === clean.toLowerCase());
+    if (!found) {
+      const base = slugify(clean) || 'category'; let id = base, n = 2;
+      while (list.some(x => x.id === id)) id = base + '-' + n++;
+      found = { id, name: clean, order: list.length + 10, protected: false }; list.push(found);
+    }
+    return found.name;
+  }
+  async commit(mutator, message) {
+    const data = this.studio.plugin.userData, key = this.config.key;
+    const before = clone(data[key] || []), favBefore = clone(data.favoriteItems || []), categoriesBefore = clone(data.categories || {});
+    const selectedBefore = { palette: this.studio.selectedPalette, background: this.studio.selectedBackground, blocks: this.studio.selectedBlocks };
+    try {
+      await mutator(data[key] || []);
+      if (await this.studio.plugin.saveUserLibrary() === false) throw new Error('save failed');
+      this.studio.plugin.refreshGeneratedStyles();
+      if (message) new Notice(message);
+      this.studio.render(); this.render();
+    } catch (error) {
+      data[key] = before; data.favoriteItems = favBefore; data.categories = categoriesBefore;
+      this.studio.selectedPalette = selectedBefore.palette; this.studio.selectedBackground = selectedBefore.background; this.studio.selectedBlocks = selectedBefore.blocks;
+      console.error('ESDS library manager operation failed:', error);
+      new Notice('Не удалось сохранить изменения. Библиотека восстановлена.'); this.render();
+    }
+  }
+  async moveSelected() {
+    const ids = new Set(this.selected); if (!ids.size) return;
+    const cats = [...new Set(this.items.filter(x => ids.has(x.id)).map(x => this.config.category(x)))];
+    const name = prompt('Переместить выбранные элементы в категорию:', cats.length === 1 ? cats[0] : '');
+    if (!name || !name.trim()) return;
+    const target = this.ensureCategory(name); if (!target) return;
+    this.selected.clear();
+    await this.commit(items => items.forEach(x => { if (!ids.has(x.id)) return; if (this.kind === 'background') { x.group = target; x.category = target; } else x.category = target; x.updatedAt = new Date().toISOString(); }), 'Элементы перемещены в «' + target + '».');
+  }
+  async duplicateSelected() {
+    const ids = new Set(this.selected); if (!ids.size) return;
+    this.selected.clear();
+    await this.commit(items => {
+      const copies = items.filter(x => ids.has(x.id)).map(item => {
+        const copy = clone(item), name = this.config.name(item) + ' (копия)';
+        copy.name = name; if (this.kind === 'background') copy.label = name;
+        const prefix = this.kind === 'background' ? 'bg-custom-' : 'user-';
+        copy.id = prefix + slugify(name) + '-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,5);
+        copy.source = 'user'; copy.createdAt = new Date().toISOString(); copy.updatedAt = copy.createdAt;
+        return this.kind === 'blockStyle' ? normalizeBlockStyle(copy) : copy;
+      });
+      items.push(...copies);
+    }, 'Созданы копии: ' + ids.size + '.');
+  }
+  async importSelection(file) {
+    if (!file) return;
+    try {
+      const payload = JSON.parse(await file.text());
+      if (!payload || payload.type !== 'esds-library-selection' || payload.kind !== this.kind || !Array.isArray(payload.items)) {
+        throw new Error('Файл не является экспортом выбранной библиотеки этого типа.');
+      }
+      const incoming = payload.items;
+      if (!incoming.length) throw new Error('В файле нет элементов.');
+      await this.commit(items => {
+        const now = new Date().toISOString();
+        incoming.forEach((raw, index) => {
+          const item = clone(raw);
+          const label = this.config.name(item);
+          if (this.kind === 'palette') {
+            if (!item.roles || !ROLE_KEYS.every(key => isHexColor(item.roles[key]))) throw new Error('В файле есть палитра с некорректными цветами.');
+            item.id = 'user-' + slugify(label) + '-' + Date.now().toString(36) + '-' + index;
+            item.defaultBackground = this.studio.findBackground(item.defaultBackground)?.id || BACKGROUNDS[0].id;
+            item.defaultBlocks = this.studio.findBlockStyle(item.defaultBlocks)?.id || BUILTIN_BLOCK_STYLES[0].id;
+            item.source = 'user';
+            item.category = this.ensureCategory(item.category || 'Мои палитры');
+          } else if (this.kind === 'background') {
+            if (!safeCssBackground(item.light) || !safeCssBackground(item.dark || item.light)) throw new Error('В файле есть некорректный фон.');
+            item.id = 'bg-custom-' + slugify(label) + '-' + Date.now().toString(36) + '-' + index;
+            item.name = label; item.label = label; item.source = 'user';
+            item.group = this.ensureCategory(item.group || item.category || 'Мои фоны'); item.category = item.group;
+          } else {
+            item.id = 'user-blocks-' + slugify(label) + '-' + Date.now().toString(36) + '-' + index;
+            item.category = this.ensureCategory(item.category || 'Мои стили');
+            item.source = 'user';
+          }
+          item.createdAt = now; item.updatedAt = now;
+          items.push(this.kind === 'blockStyle' ? normalizeBlockStyle(item) : item);
+        });
+      }, 'Импортировано элементов: ' + incoming.length + '.');
+    } catch (error) {
+      console.error('ESDS library selection import failed:', error);
+      new Notice(error && error.message ? error.message : 'Не удалось импортировать JSON.');
+    }
+  }
+  async exportSelected() {
+    const chosen = this.items.filter(x => this.selected.has(x.id)); if (!chosen.length) return;
+    try {
+      const adapter = this.app.vault.adapter, folder = 'ESDS Exports';
+      if (!(await adapter.exists(folder))) await adapter.mkdir(folder);
+      const path = folder + '/library-' + this.kind + '-' + Date.now() + '.json';
+      await adapter.write(path, JSON.stringify({ schemaVersion: 1, type: 'esds-library-selection', kind: this.kind, items: chosen }, null, 2));
+      new Notice('Экспортировано ' + chosen.length + ' элементов: ' + path);
+    } catch (error) { console.error(error); new Notice('Не удалось экспортировать выбранные элементы.'); }
+  }
+  async deleteSelected() {
+    const ids = new Set(this.selected), chosen = this.items.filter(x => ids.has(x.id)); if (!chosen.length) return;
+    if (!confirm('Удалить выбранные элементы (' + chosen.length + ')? Это действие нельзя отменить.')) return;
+    this.selected.clear();
+    await this.commit(items => {
+      const removed = new Set(items.filter(x => ids.has(x.id)).map(x => x.id));
+      this.studio.plugin.userData[this.config.key] = items.filter(x => !removed.has(x.id));
+      this.studio.plugin.userData.favoriteItems = (this.studio.plugin.userData.favoriteItems || []).filter(x => !(x.kind === this.kind && removed.has(x.id)));
+      if (this.kind === 'palette' && removed.has(this.studio.selectedPalette && this.studio.selectedPalette.id)) this.studio.selectedPalette = PALETTES[0];
+      if (this.kind === 'background' && removed.has(this.studio.selectedBackground && this.studio.selectedBackground.id)) this.studio.selectedBackground = BACKGROUNDS[0];
+      if (this.kind === 'blockStyle' && removed.has(this.studio.selectedBlocks && this.studio.selectedBlocks.id)) this.studio.selectedBlocks = BUILTIN_BLOCK_STYLES[0];
+    }, 'Удалено элементов: ' + chosen.length + '.');
+  }
+  async renameItem(item) {
+    const old = this.config.name(item), value = prompt('Новое название:', old);
+    if (!value || !value.trim() || value.trim() === old) return;
+    const next = value.trim().slice(0, 120);
+    await this.commit(items => { const x = items.find(v => v.id === item.id); if (!x) return; x.name = next; if (this.kind === 'background') x.label = next; x.updatedAt = new Date().toISOString(); }, 'Название изменено.');
+  }
+  async moveOne(item) {
+    const name = prompt('Переместить в категорию:', this.config.category(item)); if (!name || !name.trim()) return;
+    const target = this.ensureCategory(name);
+    await this.commit(items => { const x = items.find(v => v.id === item.id); if (!x) return; if (this.kind === 'background') { x.group = target; x.category = target; } else x.category = target; x.updatedAt = new Date().toISOString(); }, 'Элемент перемещён в «' + target + '».');
+  }
+  render() {
+    const root = this.contentEl; root.empty();
+    const header = root.createDiv({ cls: 'esds-header esds-builder-header' });
+    const back = header.createEl('button', { cls: 'esds-button esds-btn-quiet esds-back-button', attr: { type: 'button' } });
+    back.createSpan({ cls: 'esds-back-arrow', text: '‹' }); back.createSpan({ cls: 'esds-back-label', text: 'Назад' });
+    back.addEventListener('click', () => this.close());
+    const heading = header.createDiv({ cls: 'esds-heading-wrap' });
+    heading.createEl('h2', { text: 'Управление: ' + this.config.label });
+    heading.createEl('small', { text: 'Выбери один или несколько элементов для массовых действий.' });
+    const body = root.createDiv({ cls: 'esds-library-manager-body' });
+    const search = body.createEl('input', { cls: 'esds-text-input', attr: { type: 'search', placeholder: 'Поиск по названию и категории…' } });
+    search.value = this.query;
+    const filters = body.createDiv({ cls: 'esds-library-manager-filters' });
+    const categorySelect = filters.createEl('select', { cls: 'esds-select' });
+    categorySelect.createEl('option', { text: 'Все категории', attr: { value: '' } });
+    [...new Set(this.items.map(x => this.config.category(x)))].sort((a,b) => a.localeCompare(b,'ru')).forEach(name => categorySelect.createEl('option', { text: name, attr: { value: name } }));
+    categorySelect.value = this.categoryFilter;
+    const sortSelect = filters.createEl('select', { cls: 'esds-select' });
+    [['custom','По порядку'],['name','По названию: А—Я'],['category','По категории'],['newest','Сначала новые']].forEach(([value,label]) => sortSelect.createEl('option', { text: label, attr: { value } }));
+    sortSelect.value = this.sortMode;
+    const toolbar = body.createDiv({ cls: 'esds-library-manager-toolbar' });
+    const button = (label, fn, cls) => { const b = toolbar.createEl('button', { cls: 'esds-button esds-btn-quiet ' + (cls || ''), text: label, attr: { type: 'button' } }); b.addEventListener('click', fn); };
+    const count = body.createDiv({ cls: 'esds-library-manager-count' }), list = body.createDiv({ cls: 'esds-library-manager-list' });
+    const visible = () => {
+      const rows = this.items.filter(x => (!this.query || (this.config.name(x) + ' ' + this.config.category(x)).toLowerCase().includes(this.query.toLowerCase())) && (!this.categoryFilter || this.config.category(x) === this.categoryFilter));
+      if (this.sortMode === 'name') rows.sort((a,b) => this.config.name(a).localeCompare(this.config.name(b),'ru'));
+      else if (this.sortMode === 'category') rows.sort((a,b) => this.config.category(a).localeCompare(this.config.category(b),'ru') || this.config.name(a).localeCompare(this.config.name(b),'ru'));
+      else if (this.sortMode === 'newest') rows.sort((a,b) => Date.parse(b.updatedAt || b.createdAt || 0) - Date.parse(a.updatedAt || a.createdAt || 0));
+      return rows;
+    };
+    const draw = () => {
+      list.empty(); const rows = visible();
+      if (!rows.length) list.createEl('p', { cls: 'esds-empty', text: 'Ничего не найдено.' });
+      rows.forEach(item => {
+        const row = list.createDiv({ cls: 'esds-library-manager-row' });
+        const check = row.createEl('input', { attr: { type: 'checkbox', 'aria-label': 'Выбрать ' + this.config.name(item) } });
+        check.checked = this.selected.has(item.id);
+        check.addEventListener('change', () => { if (check.checked) this.selected.add(item.id); else this.selected.delete(item.id); count.setText('Выбрано: ' + this.selected.size + ' · Всего: ' + this.items.length); });
+        const info = row.createDiv({ cls: 'esds-library-manager-info' });
+        info.createEl('strong', { text: this.config.name(item) }); info.createEl('small', { text: this.config.category(item) });
+        const tools = row.createDiv({ cls: 'esds-library-manager-item-actions' });
+        const tool = (label, title, fn) => { const b = tools.createEl('button', { cls: 'esds-icon-btn', text: label, attr: { type: 'button', title } }); b.addEventListener('click', fn); };
+        tool('✎', 'Переименовать', () => this.renameItem(item));
+        tool('↗', 'Переместить', () => this.moveOne(item));
+        tool('⧉', 'Дублировать', () => { this.selected = new Set([item.id]); this.duplicateSelected(); });
+        tool('×', 'Удалить', () => { this.selected = new Set([item.id]); this.deleteSelected(); });
+      });
+      count.setText('Выбрано: ' + this.selected.size + ' · Всего: ' + this.items.length);
+    };
+    button('Выбрать всё', () => { visible().forEach(x => this.selected.add(x.id)); draw(); });
+    button('Снять выбор', () => { this.selected.clear(); draw(); });
+    button('Переместить', () => this.moveSelected(), 'esds-btn-cyan');
+    button('Дублировать', () => this.duplicateSelected());
+    button('Импорт JSON', () => {
+      const input = document.createElement('input'); input.type = 'file'; input.accept = 'application/json,.json';
+      input.addEventListener('change', () => { const file = input.files && input.files[0]; if (file) this.importSelection(file); input.remove(); });
+      input.click();
+    });
+    button('Экспорт JSON', () => this.exportSelected());
+    if (this.kind === 'palette') button('ZIP архив', () => this.studio.exportPaletteCategoryZip(null, [...this.selected]), 'esds-btn-teal');
+    button('Удалить', () => this.deleteSelected(), 'esds-menu-danger');
+    button('Категории', () => this.studio.openCategoryManager(this.config.key));
+    search.addEventListener('input', () => { this.query = search.value; draw(); });
+    categorySelect.addEventListener('change', () => { this.categoryFilter = categorySelect.value; draw(); });
+    sortSelect.addEventListener('change', () => { this.sortMode = sortSelect.value; draw(); });
+    draw();
+  }
+}
+
 class CategoryManagerModal extends Modal {
   constructor(app, studio, kind) {
     super(app);
@@ -2274,8 +2485,14 @@ class DesignStudioModal extends Modal {
     else if (kind === 'background') this.renderMiniNote(preview, true);
     else this.renderBlockGallery(preview, item.previewCallouts || ['example', 'important', 'tip']);
     const actions = card.createDiv({ cls: 'esds-library-catalog-actions' });
-    const view = actions.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Просмотр и применение', attr: { type: 'button' } });
-    view.addEventListener('click', () => this.openLibraryItemPreview(kind, item, visibleItems));
+    const view = actions.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Просмотр', attr: { type: 'button' } });
+    view.addEventListener('click', event => { event.stopPropagation(); this.openLibraryItemPreview(kind, item, visibleItems); });
+    {
+      const menu = actions.createEl('button', { cls: 'esds-icon-btn esds-more-btn', text: '⋯', attr: { type: 'button', title: 'Действия с элементом' } });
+      menu.addEventListener('click', event => { event.stopPropagation(); if (kind === 'palette') this.openPaletteMenu(item, menu); else if (kind === 'background') this.openBackgroundMenu(item, menu); else this.openBlockStyleMenu(item, menu); });
+      const favorite = actions.createEl('button', { cls: 'esds-icon-btn esds-item-favorite-button', text: this.isItemFavorite(kind, item.id) ? '★' : '☆', attr: { type: 'button', title: 'В избранное' } });
+      favorite.addEventListener('click', event => { event.stopPropagation(); this.toggleItemFavorite(kind, item); });
+    }
     card.addEventListener('click', event => { if (!event.target.closest('button')) this.openLibraryItemPreview(kind, item, visibleItems); });
   }
   renderLibraryCatalog(parent) {
@@ -2299,6 +2516,10 @@ class DesignStudioModal extends Modal {
     const controls = parent.createDiv({ cls: 'esds-library-catalog-controls' });
     const search = controls.createEl('input', { cls: 'esds-text-input', attr: { type: 'search', placeholder: 'Поиск по всей коллекции…' } });
     search.value = this.librarySearchText || '';
+    const manage = controls.createEl('button', { cls: 'esds-button esds-btn-violet', text: '☷ Управление', attr: { type: 'button' } });
+    manage.addEventListener('click', () => new LibraryManagerModal(this.app, this, kind).open());
+    const manageCategories = controls.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Категории', attr: { type: 'button' } });
+    manageCategories.addEventListener('click', () => this.openCategoryManager(categoryKind));
     const count = controls.createEl('small', { cls: 'esds-library-catalog-count', text: '' });
     const directory = parent.createDiv({ cls: 'esds-catalog-directory' });
     const grid = parent.createDiv({ cls: 'esds-library-catalog-grid' });
@@ -3412,13 +3633,13 @@ class DesignStudioModal extends Modal {
     });
     input.click();
   }
-  async exportPaletteCategoryZip(categoryName = null) {
+  async exportPaletteCategoryZip(categoryName = null, presetIds = null) {
     const all = this.allPalettes();
     if (!all.length) { new Notice('В библиотеке пока нет пользовательских палитр для экспорта.'); return; }
     const selectedIds = await new Promise(resolve => {
       let completed = false;
       const selected = new Set(all
-        .filter(item => !categoryName || (item.category || 'Мои палитры') === categoryName)
+        .filter(item => presetIds ? presetIds.includes(item.id) : (!categoryName || (item.category || 'Мои палитры') === categoryName))
         .map(item => item.id));
       const modal = new class extends Modal {
         constructor(app) { super(app); }

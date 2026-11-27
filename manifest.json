@@ -1,9 +1,9 @@
 {
   "id": "english-study-design-studio",
   "name": "English Study Design Studio",
-  "version": "0.9.22",
+  "version": "0.9.23",
   "minAppVersion": "1.5.0",
-  "description": "Semantic study-note design studio with accessible UI, palette category import/export, ZIP collections and live previews. v0.9.22: fixed ZIP palette validation and added multi-palette import/export.",
+  "description": "Universal study-note design studio with palette, background and block-style library management, bulk actions and category tools.",
   "author": "Custom personal plugin",
   "isDesktopOnly": false
 }
