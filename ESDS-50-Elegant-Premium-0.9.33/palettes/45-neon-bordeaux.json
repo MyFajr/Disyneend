@@ -5,277 +5,276 @@
     "id": "elegant-premium-45-neon-bordeaux",
     "name": "Neon Bordeaux — Неоновое бордо",
     "mood": "Сливово-бордовая глубина с яркой фуксией и мягким неоновым ореолом.",
-    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный радиальный градиент с эффектом светового ореола; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный радиальный градиент с эффектом светового ореола; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian. Полноценная премиальная дизайн-система: выразительный градиент, световой эффект, 30 семантических классов и контрастные карточки.",
     "category": "Элегантные и премиальные",
     "source": "user",
     "swatches": [
       "#A93A85",
       "#6B1F65",
       "#3B1746",
-      "#210F2E",
-      "#FEF7F8"
+      "#210F2E"
     ],
     "defaultBackground": "bg-custom-elegant-premium-45-neon-bordeaux",
     "defaultBlocks": "user-blocks-elegant-premium-45-neon-bordeaux",
     "roles": {
-      "en": "#FEF7F9",
-      "letter": "#FEF7FC",
-      "ipa": "#FEF7F8",
-      "translation": "#FEF7FA",
-      "term": "#FEF7F8",
-      "definition": "#FEF7F9",
-      "focus": "#FEF7FB",
-      "secondary": "#FEF7FA",
-      "soft": "#FEF7F8",
-      "heading": "#FEF7FC",
-      "ink": "#FFFFFF"
+      "en": "#D6E5FA",
+      "letter": "#FBDBE5",
+      "ipa": "#EFDFFB",
+      "translation": "#A4F4D3",
+      "term": "#F8DFC9",
+      "definition": "#BBEDF7",
+      "focus": "#FBDFE2",
+      "secondary": "#F5E3AD",
+      "soft": "#E6E4FC",
+      "heading": "#E3E9FC",
+      "ink": "#FFF7F0"
     },
     "callouts": {
       "rule": [
-        126,
-        110,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        237,
-        110,
-        220
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        158,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        210,
-        237
+        102,
+        245,
+        221
       ],
       "warning": [
-        204,
-        237,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        136,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        228,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        222
+        102,
+        245,
+        149
       ],
       "info": [
-        158,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        114
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        167,
-        237
+        102,
+        209,
+        245
       ],
       "abstract": [
-        237,
-        110,
-        178
+        245,
+        102,
+        185
       ]
     },
     "calloutFills": {
       "rule": [
-        25,
-        17,
-        74
+        219,
+        191,
+        247
       ],
       "example": [
-        74,
-        17,
-        67
+        191,
+        224,
+        247
       ],
       "important": [
-        74,
-        39,
-        17
+        247,
+        196,
+        191
       ],
       "tip": [
-        17,
-        62,
-        74
+        191,
+        247,
+        238
       ],
       "warning": [
-        59,
-        74,
-        17
+        247,
+        224,
+        191
       ],
       "question": [
-        17,
-        29,
-        74
+        191,
+        201,
+        247
       ],
       "practice": [
-        74,
-        70,
-        17
+        247,
+        243,
+        191
       ],
       "success": [
-        17,
-        74,
-        68
+        191,
+        247,
+        210
       ],
       "info": [
-        39,
-        17,
-        74
+        238,
+        191,
+        247
       ],
       "note": [
-        74,
-        17,
-        20
+        247,
+        205,
+        191
       ],
       "quote": [
-        17,
-        43,
-        74
+        191,
+        233,
+        247
       ],
       "abstract": [
-        74,
-        17,
-        48
+        247,
+        191,
+        224
       ]
     },
     "calloutTexts": {
       "rule": [
-        224,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "example": [
-        243,
-        221,
-        240
+        30,
+        22,
+        32
       ],
       "important": [
-        243,
-        229,
-        221
+        30,
+        22,
+        32
       ],
       "tip": [
-        221,
-        238,
-        243
+        30,
+        22,
+        32
       ],
       "warning": [
-        237,
-        243,
-        221
+        30,
+        22,
+        32
       ],
       "question": [
-        221,
-        226,
-        243
+        30,
+        22,
+        32
       ],
       "practice": [
-        243,
-        242,
-        221
+        30,
+        22,
+        32
       ],
       "success": [
-        221,
-        243,
-        240
+        30,
+        22,
+        32
       ],
       "info": [
-        229,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "note": [
-        243,
-        221,
-        222
+        30,
+        22,
+        32
       ],
       "quote": [
-        221,
-        231,
-        243
+        30,
+        22,
+        32
       ],
       "abstract": [
-        243,
-        221,
-        233
+        30,
+        22,
+        32
       ]
     },
     "calloutBorders": {
       "rule": [
-        126,
-        110,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        237,
-        110,
-        220
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        158,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        210,
-        237
+        102,
+        245,
+        221
       ],
       "warning": [
-        204,
-        237,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        136,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        228,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        222
+        102,
+        245,
+        149
       ],
       "info": [
-        158,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        114
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        167,
-        237
+        102,
+        209,
+        245
       ],
       "abstract": [
-        237,
-        110,
-        178
+        245,
+        102,
+        185
       ]
     },
     "calloutFrames": {
@@ -346,16 +345,16 @@
     "name": "Neon Bordeaux — Неоновое бордо — фон",
     "label": "Neon Bordeaux — Неоновое бордо — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 66% 20%, #A93A85 0%, #A93A85 16%, transparent 60%), radial-gradient(circle at 66% 20%, #A93A85 0%, #6B1F65 36%, #3B1746 70%, #210F2E 100%)",
-    "dark": "radial-gradient(ellipse at 66% 20%, #A93A85 0%, #A93A85 16%, transparent 60%), radial-gradient(circle at 66% 20%, #A93A85 0%, #6B1F65 36%, #3B1746 70%, #210F2E 100%)",
-    "textColor": "#FFFFFF",
-    "darkTextColor": "#FFFFFF",
+    "light": "radial-gradient(ellipse at 18% 12%, #A93A8530 0%, transparent 58%), radial-gradient(ellipse at 66% 20%, #A93A85 0%, #A93A85 16%, transparent 60%), radial-gradient(circle at 66% 20%, #A93A85 0%, #6B1F65 36%, #3B1746 70%, #210F2E 100%)",
+    "dark": "radial-gradient(ellipse at 18% 12%, #A93A8530 0%, transparent 58%), radial-gradient(ellipse at 66% 20%, #A93A85 0%, #A93A85 16%, transparent 60%), radial-gradient(circle at 66% 20%, #A93A85 0%, #6B1F65 36%, #3B1746 70%, #210F2E 100%)",
+    "textColor": "#FFF7F0",
+    "darkTextColor": "#FFF7F0",
     "source": "user"
   },
   "blockStyle": {
     "id": "user-blocks-elegant-premium-45-neon-bordeaux",
     "name": "Neon Bordeaux — Неоновое бордо — учебные блоки",
-    "description": "12 цветовых карточек, согласованных с фоном Neon Bordeaux — Неоновое бордо; увеличенный текст Medium и заголовки Semibold.",
+    "description": "Контрастные цветные учебные карточки: основной текст Medium 500, заголовки Semibold 650, отдельные заливки и рамки.",
     "category": "Элегантные и премиальные",
     "base": "rich",
     "framePreset": "classic",
@@ -367,9 +366,9 @@
     },
     "style": {
       "light": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -381,9 +380,9 @@
         "shadow": "none"
       },
       "dark": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -398,22 +397,32 @@
     "calloutOverrides": {
       "important": {
         "light": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         },
         "dark": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         }
       },
       "warning": {
         "light": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
         },
         "dark": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
+        }
+      },
+      "question": {
+        "light": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
+        },
+        "dark": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
         }
       }
     },

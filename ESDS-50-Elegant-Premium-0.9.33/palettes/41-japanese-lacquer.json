@@ -5,277 +5,276 @@
     "id": "elegant-premium-41-japanese-lacquer",
     "name": "Japanese Lacquer — Японский лак",
     "mood": "Глубокий чёрно-красный лак с киноварным свечением и глянцевой глубиной.",
-    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный радиальный градиент с эффектом светового ореола; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный радиальный градиент с эффектом светового ореола; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian. Полноценная премиальная дизайн-система: выразительный градиент, световой эффект, 30 семантических классов и контрастные карточки.",
     "category": "Элегантные и премиальные",
     "source": "user",
     "swatches": [
       "#A83235",
       "#7D202D",
       "#4C1724",
-      "#21121C",
-      "#F9E8D8"
+      "#21121C"
     ],
     "defaultBackground": "bg-custom-elegant-premium-41-japanese-lacquer",
     "defaultBlocks": "user-blocks-elegant-premium-41-japanese-lacquer",
     "roles": {
-      "en": "#F9E0D8",
-      "letter": "#FADFE1",
-      "ipa": "#F9E4D8",
-      "translation": "#F9E1DD",
-      "term": "#F9E8D8",
-      "definition": "#F9E1D8",
-      "focus": "#FADFE0",
-      "secondary": "#F9E0D9",
-      "soft": "#F9E6D8",
-      "heading": "#FADFE2",
-      "ink": "#FFFFFF"
+      "en": "#BFD7F7",
+      "letter": "#F8C9D8",
+      "ipa": "#E7CDF9",
+      "translation": "#A4F4D3",
+      "term": "#F5CFAD",
+      "definition": "#A4E7F4",
+      "focus": "#F9CDD1",
+      "secondary": "#F4E0A4",
+      "soft": "#D5D2F9",
+      "heading": "#E3E9FC",
+      "ink": "#FFF7F0"
     },
     "callouts": {
       "rule": [
-        135,
-        110,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        237,
-        110,
-        212
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        167,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        201,
-        237
+        102,
+        245,
+        221
       ],
       "warning": [
-        195,
-        237,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        127,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        237,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        231
+        102,
+        245,
+        149
       ],
       "info": [
-        167,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        114,
-        110
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        159,
-        237
+        102,
+        209,
+        245
       ],
       "abstract": [
-        237,
-        110,
-        169
+        245,
+        102,
+        185
       ]
     },
     "calloutFills": {
       "rule": [
-        29,
-        17,
-        74
+        219,
+        191,
+        247
       ],
       "example": [
-        74,
-        17,
-        63
+        191,
+        224,
+        247
       ],
       "important": [
-        74,
-        43,
-        17
+        247,
+        196,
+        191
       ],
       "tip": [
-        17,
-        58,
-        74
+        191,
+        247,
+        238
       ],
       "warning": [
-        55,
-        74,
-        17
+        247,
+        224,
+        191
       ],
       "question": [
-        17,
-        25,
-        74
+        191,
+        201,
+        247
       ],
       "practice": [
-        74,
-        74,
-        17
+        247,
+        243,
+        191
       ],
       "success": [
-        17,
-        74,
-        72
+        191,
+        247,
+        210
       ],
       "info": [
-        43,
-        17,
-        74
+        238,
+        191,
+        247
       ],
       "note": [
-        74,
-        19,
-        17
+        247,
+        205,
+        191
       ],
       "quote": [
-        17,
-        39,
-        74
+        191,
+        233,
+        247
       ],
       "abstract": [
-        74,
-        17,
-        44
+        247,
+        191,
+        224
       ]
     },
     "calloutTexts": {
       "rule": [
-        225,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "example": [
-        243,
-        221,
-        239
+        30,
+        22,
+        32
       ],
       "important": [
-        243,
-        231,
-        221
+        30,
+        22,
+        32
       ],
       "tip": [
-        221,
-        237,
-        243
+        30,
+        22,
+        32
       ],
       "warning": [
-        236,
-        243,
-        221
+        30,
+        22,
+        32
       ],
       "question": [
-        221,
-        224,
-        243
+        30,
+        22,
+        32
       ],
       "practice": [
-        243,
-        243,
-        221
+        30,
+        22,
+        32
       ],
       "success": [
-        221,
-        243,
-        242
+        30,
+        22,
+        32
       ],
       "info": [
-        231,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "note": [
-        243,
-        222,
-        221
+        30,
+        22,
+        32
       ],
       "quote": [
-        221,
-        229,
-        243
+        30,
+        22,
+        32
       ],
       "abstract": [
-        243,
-        221,
-        231
+        30,
+        22,
+        32
       ]
     },
     "calloutBorders": {
       "rule": [
-        135,
-        110,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        237,
-        110,
-        212
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        167,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        201,
-        237
+        102,
+        245,
+        221
       ],
       "warning": [
-        195,
-        237,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        127,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        237,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        231
+        102,
+        245,
+        149
       ],
       "info": [
-        167,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        114,
-        110
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        159,
-        237
+        102,
+        209,
+        245
       ],
       "abstract": [
-        237,
-        110,
-        169
+        245,
+        102,
+        185
       ]
     },
     "calloutFrames": {
@@ -346,16 +345,16 @@
     "name": "Japanese Lacquer — Японский лак — фон",
     "label": "Japanese Lacquer — Японский лак — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 76% 24%, #A83235 0%, #A83235 16%, transparent 60%), radial-gradient(circle at 76% 24%, #A83235 0%, #7D202D 32%, #4C1724 68%, #21121C 100%)",
-    "dark": "radial-gradient(ellipse at 76% 24%, #A83235 0%, #A83235 16%, transparent 60%), radial-gradient(circle at 76% 24%, #A83235 0%, #7D202D 32%, #4C1724 68%, #21121C 100%)",
-    "textColor": "#FFFFFF",
-    "darkTextColor": "#FFFFFF",
+    "light": "radial-gradient(ellipse at 18% 12%, #A8323530 0%, transparent 58%), radial-gradient(ellipse at 76% 24%, #A83235 0%, #A83235 16%, transparent 60%), radial-gradient(circle at 76% 24%, #A83235 0%, #7D202D 32%, #4C1724 68%, #21121C 100%)",
+    "dark": "radial-gradient(ellipse at 18% 12%, #A8323530 0%, transparent 58%), radial-gradient(ellipse at 76% 24%, #A83235 0%, #A83235 16%, transparent 60%), radial-gradient(circle at 76% 24%, #A83235 0%, #7D202D 32%, #4C1724 68%, #21121C 100%)",
+    "textColor": "#FFF7F0",
+    "darkTextColor": "#FFF7F0",
     "source": "user"
   },
   "blockStyle": {
     "id": "user-blocks-elegant-premium-41-japanese-lacquer",
     "name": "Japanese Lacquer — Японский лак — учебные блоки",
-    "description": "12 цветовых карточек, согласованных с фоном Japanese Lacquer — Японский лак; увеличенный текст Medium и заголовки Semibold.",
+    "description": "Контрастные цветные учебные карточки: основной текст Medium 500, заголовки Semibold 650, отдельные заливки и рамки.",
     "category": "Элегантные и премиальные",
     "base": "rich",
     "framePreset": "classic",
@@ -367,9 +366,9 @@
     },
     "style": {
       "light": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -381,9 +380,9 @@
         "shadow": "none"
       },
       "dark": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -398,22 +397,32 @@
     "calloutOverrides": {
       "important": {
         "light": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         },
         "dark": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         }
       },
       "warning": {
         "light": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
         },
         "dark": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
+        }
+      },
+      "question": {
+        "light": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
+        },
+        "dark": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
         }
       }
     },

@@ -5,277 +5,276 @@
     "id": "elegant-premium-49-solar-bronze",
     "name": "Solar Bronze — Солнечная бронза",
     "mood": "Глубокая солнечная бронза с медовым ядром и направленным золотистым свечением.",
-    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный радиальный градиент с эффектом металлического блика; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный радиальный градиент с эффектом металлического блика; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian. Полноценная премиальная дизайн-система: выразительный градиент, световой эффект, 30 семантических классов и контрастные карточки.",
     "category": "Элегантные и премиальные",
     "source": "user",
     "swatches": [
       "#80502A",
       "#684021",
       "#4F321F",
-      "#382319",
-      "#F3F9D8"
+      "#382319"
     ],
     "defaultBackground": "bg-custom-elegant-premium-49-solar-bronze",
     "defaultBlocks": "user-blocks-elegant-premium-49-solar-bronze",
     "roles": {
-      "en": "#F9F6D8",
-      "letter": "#F9EAD8",
-      "ipa": "#F7F9D8",
-      "translation": "#F9F2D8",
-      "term": "#F3F9D8",
-      "definition": "#F9F7D8",
-      "focus": "#F9EBD8",
-      "secondary": "#F9F4D8",
-      "soft": "#F5F9D8",
-      "heading": "#F9EAD8",
-      "ink": "#FFFFFF"
+      "en": "#BFD7F7",
+      "letter": "#F8C9D8",
+      "ipa": "#E4C9F8",
+      "translation": "#A4F4D3",
+      "term": "#F4CCA9",
+      "definition": "#A4E7F4",
+      "focus": "#F8C9CD",
+      "secondary": "#F4E0A4",
+      "soft": "#D5D2F9",
+      "heading": "#E3E9FC",
+      "ink": "#FFF7F0"
     },
     "callouts": {
       "rule": [
-        110,
-        166,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        181,
-        110,
-        237
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        110,
-        134
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        237,
-        192
+        102,
+        245,
+        221
       ],
       "warning": [
-        237,
-        198,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        208,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        156,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
+        102,
+        245,
         149
       ],
       "info": [
-        110,
-        134,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        187
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        237,
-        234
+        102,
+        209,
+        245
       ],
       "abstract": [
-        223,
-        110,
-        237
+        245,
+        102,
+        185
       ]
     },
     "calloutFills": {
       "rule": [
-        17,
-        42,
-        74
+        219,
+        191,
+        247
       ],
       "example": [
-        49,
-        17,
-        74
+        191,
+        224,
+        247
       ],
       "important": [
-        74,
-        17,
-        28
+        247,
+        196,
+        191
       ],
       "tip": [
-        17,
-        74,
-        54
+        191,
+        247,
+        238
       ],
       "warning": [
-        74,
-        57,
-        17
+        247,
+        224,
+        191
       ],
       "question": [
-        17,
-        61,
-        74
+        191,
+        201,
+        247
       ],
       "practice": [
-        74,
-        38,
-        17
+        247,
+        243,
+        191
       ],
       "success": [
-        17,
-        74,
-        35
+        191,
+        247,
+        210
       ],
       "info": [
-        17,
-        28,
-        74
+        238,
+        191,
+        247
       ],
       "note": [
-        74,
-        17,
-        52
+        247,
+        205,
+        191
       ],
       "quote": [
-        17,
-        74,
-        73
+        191,
+        233,
+        247
       ],
       "abstract": [
-        68,
-        17,
-        74
+        247,
+        191,
+        224
       ]
     },
     "calloutTexts": {
       "rule": [
-        221,
-        231,
-        243
+        30,
+        22,
+        32
       ],
       "example": [
-        233,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "important": [
-        243,
-        221,
-        225
+        30,
+        22,
+        32
       ],
       "tip": [
-        221,
-        243,
-        235
+        30,
+        22,
+        32
       ],
       "warning": [
-        243,
-        236,
-        221
+        30,
+        22,
+        32
       ],
       "question": [
-        221,
-        238,
-        243
+        30,
+        22,
+        32
       ],
       "practice": [
-        243,
-        229,
-        221
+        30,
+        22,
+        32
       ],
       "success": [
-        221,
-        243,
-        228
+        30,
+        22,
+        32
       ],
       "info": [
-        221,
-        225,
-        243
+        30,
+        22,
+        32
       ],
       "note": [
-        243,
-        221,
-        234
+        30,
+        22,
+        32
       ],
       "quote": [
-        221,
-        243,
-        243
+        30,
+        22,
+        32
       ],
       "abstract": [
-        241,
-        221,
-        243
+        30,
+        22,
+        32
       ]
     },
     "calloutBorders": {
       "rule": [
-        110,
-        166,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        181,
-        110,
-        237
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        110,
-        134
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        237,
-        192
+        102,
+        245,
+        221
       ],
       "warning": [
-        237,
-        198,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        208,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        156,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
+        102,
+        245,
         149
       ],
       "info": [
-        110,
-        134,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        187
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        237,
-        234
+        102,
+        209,
+        245
       ],
       "abstract": [
-        223,
-        110,
-        237
+        245,
+        102,
+        185
       ]
     },
     "calloutFrames": {
@@ -346,16 +345,16 @@
     "name": "Solar Bronze — Солнечная бронза — фон",
     "label": "Solar Bronze — Солнечная бронза — фон",
     "group": "Элегантные и премиальные",
-    "light": "linear-gradient(116deg, transparent 28%, #80502A55 46%, #80502ACC 50%, #80502A55 54%, transparent 72%), radial-gradient(ellipse at 25% 18%, #80502A 0%, #684021 38%, #4F321F 72%, #382319 100%)",
-    "dark": "linear-gradient(116deg, transparent 28%, #80502A55 46%, #80502ACC 50%, #80502A55 54%, transparent 72%), radial-gradient(ellipse at 25% 18%, #80502A 0%, #684021 38%, #4F321F 72%, #382319 100%)",
-    "textColor": "#FFFFFF",
-    "darkTextColor": "#FFFFFF",
+    "light": "radial-gradient(ellipse at 18% 12%, #80502A30 0%, transparent 58%), linear-gradient(116deg, transparent 28%, #80502A55 46%, #80502ACC 50%, #80502A55 54%, transparent 72%), radial-gradient(ellipse at 25% 18%, #80502A 0%, #684021 38%, #4F321F 72%, #382319 100%)",
+    "dark": "radial-gradient(ellipse at 18% 12%, #80502A30 0%, transparent 58%), linear-gradient(116deg, transparent 28%, #80502A55 46%, #80502ACC 50%, #80502A55 54%, transparent 72%), radial-gradient(ellipse at 25% 18%, #80502A 0%, #684021 38%, #4F321F 72%, #382319 100%)",
+    "textColor": "#FFF7F0",
+    "darkTextColor": "#FFF7F0",
     "source": "user"
   },
   "blockStyle": {
     "id": "user-blocks-elegant-premium-49-solar-bronze",
     "name": "Solar Bronze — Солнечная бронза — учебные блоки",
-    "description": "12 цветовых карточек, согласованных с фоном Solar Bronze — Солнечная бронза; увеличенный текст Medium и заголовки Semibold.",
+    "description": "Контрастные цветные учебные карточки: основной текст Medium 500, заголовки Semibold 650, отдельные заливки и рамки.",
     "category": "Элегантные и премиальные",
     "base": "rich",
     "framePreset": "classic",
@@ -367,9 +366,9 @@
     },
     "style": {
       "light": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -381,9 +380,9 @@
         "shadow": "none"
       },
       "dark": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -398,22 +397,32 @@
     "calloutOverrides": {
       "important": {
         "light": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         },
         "dark": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         }
       },
       "warning": {
         "light": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
         },
         "dark": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
+        }
+      },
+      "question": {
+        "light": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
+        },
+        "dark": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
         }
       }
     },

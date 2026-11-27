@@ -5,277 +5,276 @@
     "id": "elegant-premium-44-stained-glass-royal",
     "name": "Stained Glass Royal — Королевский витраж",
     "mood": "Сапфир, нефрит, гранат и аметист в глубоком витражном цветовом потоке.",
-    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный линейный градиент с эффектом двойного свечения; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный линейный градиент с эффектом двойного свечения; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian. Полноценная премиальная дизайн-система: выразительный градиент, световой эффект, 30 семантических классов и контрастные карточки.",
     "category": "Элегантные и премиальные",
     "source": "user",
     "swatches": [
       "#35143A",
       "#173A69",
       "#0D554C",
-      "#71304A",
-      "#F9D8F8"
+      "#71304A"
     ],
     "defaultBackground": "bg-custom-elegant-premium-44-stained-glass-royal",
     "defaultBlocks": "user-blocks-elegant-premium-44-stained-glass-royal",
     "roles": {
-      "en": "#F0D8F9",
-      "letter": "#E5D8F9",
-      "ipa": "#F5D8F9",
-      "translation": "#ECD8F9",
-      "term": "#F9D8F8",
-      "definition": "#F1D8F9",
-      "focus": "#E6D8F9",
-      "secondary": "#EFD8F9",
-      "soft": "#F6D8F9",
-      "heading": "#E4D8F9",
-      "ink": "#FFFFFF"
+      "en": "#A4C5F4",
+      "letter": "#F4A4BF",
+      "ipa": "#D7ADF5",
+      "translation": "#A4F4D3",
+      "term": "#F4C9A4",
+      "definition": "#A4E7F4",
+      "focus": "#F4A9AF",
+      "secondary": "#F4E0A4",
+      "soft": "#BCB6F6",
+      "heading": "#E3E9FC",
+      "ink": "#FFF7F0"
     },
     "callouts": {
       "rule": [
-        112,
-        110,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        237,
-        110,
-        235
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        144,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        224,
-        237
+        102,
+        245,
+        221
       ],
       "warning": [
-        218,
-        237,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        150,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        214,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        208
+        102,
+        245,
+        149
       ],
       "info": [
-        144,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        128
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        181,
-        237
+        102,
+        209,
+        245
       ],
       "abstract": [
-        237,
-        110,
-        192
+        245,
+        102,
+        185
       ]
     },
     "calloutFills": {
       "rule": [
-        19,
-        17,
-        74
+        219,
+        191,
+        247
       ],
       "example": [
-        74,
-        17,
-        73
+        191,
+        224,
+        247
       ],
       "important": [
-        74,
-        33,
-        17
+        247,
+        196,
+        191
       ],
       "tip": [
-        17,
-        68,
-        74
+        191,
+        247,
+        238
       ],
       "warning": [
-        66,
-        74,
-        17
+        247,
+        224,
+        191
       ],
       "question": [
-        17,
-        35,
-        74
+        191,
+        201,
+        247
       ],
       "practice": [
-        74,
-        64,
-        17
+        247,
+        243,
+        191
       ],
       "success": [
-        17,
-        74,
-        61
+        191,
+        247,
+        210
       ],
       "info": [
-        33,
-        17,
-        74
+        238,
+        191,
+        247
       ],
       "note": [
-        74,
-        17,
-        26
+        247,
+        205,
+        191
       ],
       "quote": [
-        17,
-        50,
-        74
+        191,
+        233,
+        247
       ],
       "abstract": [
-        74,
-        17,
-        54
+        247,
+        191,
+        224
       ]
     },
     "calloutTexts": {
       "rule": [
-        221,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "example": [
-        243,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "important": [
-        243,
-        227,
-        221
+        30,
+        22,
+        32
       ],
       "tip": [
-        221,
-        241,
-        243
+        30,
+        22,
+        32
       ],
       "warning": [
-        240,
-        243,
-        221
+        30,
+        22,
+        32
       ],
       "question": [
-        221,
-        228,
-        243
+        30,
+        22,
+        32
       ],
       "practice": [
-        243,
-        239,
-        221
+        30,
+        22,
+        32
       ],
       "success": [
-        221,
-        243,
-        238
+        30,
+        22,
+        32
       ],
       "info": [
-        227,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "note": [
-        243,
-        221,
-        224
+        30,
+        22,
+        32
       ],
       "quote": [
-        221,
-        233,
-        243
+        30,
+        22,
+        32
       ],
       "abstract": [
-        243,
-        221,
-        235
+        30,
+        22,
+        32
       ]
     },
     "calloutBorders": {
       "rule": [
-        112,
-        110,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        237,
-        110,
-        235
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        144,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        224,
-        237
+        102,
+        245,
+        221
       ],
       "warning": [
-        218,
-        237,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        150,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        214,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        208
+        102,
+        245,
+        149
       ],
       "info": [
-        144,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        128
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        181,
-        237
+        102,
+        209,
+        245
       ],
       "abstract": [
-        237,
-        110,
-        192
+        245,
+        102,
+        185
       ]
     },
     "calloutFrames": {
@@ -348,14 +347,14 @@
     "group": "Элегантные и премиальные",
     "light": "radial-gradient(ellipse at 28% 22%, #35143A 0%, #35143A 16%, transparent 60%), linear-gradient(112deg, transparent 30%, #173A6966 49%, transparent 68%), linear-gradient(124deg, #35143A 0%, #173A69 34%, #0D554C 68%, #71304A 100%)",
     "dark": "radial-gradient(ellipse at 28% 22%, #35143A 0%, #35143A 16%, transparent 60%), linear-gradient(112deg, transparent 30%, #173A6966 49%, transparent 68%), linear-gradient(124deg, #35143A 0%, #173A69 34%, #0D554C 68%, #71304A 100%)",
-    "textColor": "#FFFFFF",
-    "darkTextColor": "#FFFFFF",
+    "textColor": "#FFF7F0",
+    "darkTextColor": "#FFF7F0",
     "source": "user"
   },
   "blockStyle": {
     "id": "user-blocks-elegant-premium-44-stained-glass-royal",
     "name": "Stained Glass Royal — Королевский витраж — учебные блоки",
-    "description": "12 цветовых карточек, согласованных с фоном Stained Glass Royal — Королевский витраж; увеличенный текст Medium и заголовки Semibold.",
+    "description": "Контрастные цветные учебные карточки: основной текст Medium 500, заголовки Semibold 650, отдельные заливки и рамки.",
     "category": "Элегантные и премиальные",
     "base": "rich",
     "framePreset": "classic",
@@ -367,9 +366,9 @@
     },
     "style": {
       "light": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -381,9 +380,9 @@
         "shadow": "none"
       },
       "dark": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -398,22 +397,32 @@
     "calloutOverrides": {
       "important": {
         "light": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         },
         "dark": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         }
       },
       "warning": {
         "light": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
         },
         "dark": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
+        }
+      },
+      "question": {
+        "light": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
+        },
+        "dark": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
         }
       }
     },

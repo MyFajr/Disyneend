@@ -5,277 +5,277 @@
     "id": "elegant-premium-43-silk-mirage",
     "name": "Silk Mirage — Шёлковый мираж",
     "mood": "Сливово-розовый шёлк с мягкими волнами и перламутровым рассеянным свечением.",
-    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный светлый многослойный радиальный градиент с эффектом металлического блика; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный светлый многослойный радиальный градиент с эффектом металлического блика; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian. Полноценная премиальная дизайн-система: выразительный градиент, световой эффект, 30 семантических классов и контрастные карточки.",
     "category": "Элегантные и премиальные",
     "source": "user",
     "swatches": [
+      "#FFFFFF",
       "#EBD5DF",
       "#DCC1D5",
       "#CBAAC8",
-      "#B995B8",
-      "#460B10"
+      "#B995B8"
     ],
     "defaultBackground": "bg-custom-elegant-premium-43-silk-mirage",
     "defaultBlocks": "user-blocks-elegant-premium-43-silk-mirage",
     "roles": {
-      "en": "#460B1F",
-      "letter": "#460B33",
-      "ipa": "#460B17",
-      "translation": "#460B26",
-      "term": "#460B10",
-      "definition": "#460B1D",
-      "focus": "#460B32",
-      "secondary": "#460B21",
-      "soft": "#460B14",
-      "heading": "#460B35",
-      "ink": "#201A22"
+      "en": "#0C3164",
+      "letter": "#640C2A",
+      "ipa": "#3F0C64",
+      "translation": "#084028",
+      "term": "#522C0A",
+      "definition": "#083A44",
+      "focus": "#640C14",
+      "secondary": "#443508",
+      "soft": "#140C64",
+      "heading": "#061238",
+      "ink": "#211A27"
     },
     "callouts": {
       "rule": [
-        41,
-        21,
-        172
+        107,
+        13,
+        201
       ],
       "example": [
-        172,
-        21,
-        153
+        13,
+        123,
+        201
       ],
       "important": [
-        172,
-        79,
-        21
+        201,
+        29,
+        13
       ],
       "tip": [
-        21,
-        140,
-        172
+        13,
+        201,
+        170
       ],
       "warning": [
-        133,
-        172,
-        21
+        201,
+        123,
+        13
       ],
       "question": [
-        21,
-        52,
-        172
+        13,
+        44,
+        201
       ],
       "practice": [
-        172,
-        162,
-        21
+        201,
+        186,
+        13
       ],
       "success": [
-        21,
-        172,
-        154
+        13,
+        201,
+        76
       ],
       "info": [
-        79,
-        21,
-        172
+        170,
+        13,
+        201
       ],
       "note": [
-        172,
-        21,
-        27
+        201,
+        60,
+        13
       ],
       "quote": [
-        21,
-        90,
-        172
+        13,
+        154,
+        201
       ],
       "abstract": [
-        172,
-        21,
-        102
+        201,
+        13,
+        123
       ]
     },
     "calloutFills": {
       "rule": [
-        229,
-        228,
-        242
+        51,
+        11,
+        91
       ],
       "example": [
-        242,
-        228,
-        240
+        11,
+        58,
+        91
       ],
       "important": [
-        242,
-        233,
-        228
+        91,
+        18,
+        11
       ],
       "tip": [
-        228,
-        239,
-        242
+        11,
+        91,
+        78
       ],
       "warning": [
-        238,
-        242,
-        228
+        91,
+        58,
+        11
       ],
       "question": [
-        228,
-        230,
-        242
+        11,
+        24,
+        91
       ],
       "practice": [
-        242,
-        241,
-        228
+        91,
+        84,
+        11
       ],
       "success": [
-        228,
-        242,
-        240
+        11,
+        91,
+        38
       ],
       "info": [
-        233,
-        228,
-        242
+        78,
+        11,
+        91
       ],
       "note": [
-        242,
-        228,
-        228
+        91,
+        31,
+        11
       ],
       "quote": [
-        228,
-        234,
-        242
+        11,
+        71,
+        91
       ],
       "abstract": [
-        242,
-        228,
-        235
+        91,
+        11,
+        58
       ]
     },
     "calloutTexts": {
       "rule": [
-        19,
-        11,
-        70
+        255,
+        255,
+        255
       ],
       "example": [
-        70,
-        11,
-        63
+        255,
+        255,
+        255
       ],
       "important": [
-        70,
-        34,
-        11
+        255,
+        255,
+        255
       ],
       "tip": [
-        11,
-        58,
-        70
+        255,
+        255,
+        255
       ],
       "warning": [
-        55,
-        70,
-        11
+        255,
+        255,
+        255
       ],
       "question": [
-        11,
-        23,
-        70
+        255,
+        255,
+        255
       ],
       "practice": [
-        70,
-        66,
-        11
+        255,
+        255,
+        255
       ],
       "success": [
-        11,
-        70,
-        63
+        255,
+        255,
+        255
       ],
       "info": [
-        34,
-        11,
-        70
+        255,
+        255,
+        255
       ],
       "note": [
-        70,
-        11,
-        14
+        255,
+        255,
+        255
       ],
       "quote": [
-        11,
-        38,
-        70
+        255,
+        255,
+        255
       ],
       "abstract": [
-        70,
-        11,
-        43
+        255,
+        255,
+        255
       ]
     },
     "calloutBorders": {
       "rule": [
-        41,
-        21,
-        172
+        107,
+        13,
+        201
       ],
       "example": [
-        172,
-        21,
-        153
+        13,
+        123,
+        201
       ],
       "important": [
-        172,
-        79,
-        21
+        201,
+        29,
+        13
       ],
       "tip": [
-        21,
-        140,
-        172
+        13,
+        201,
+        170
       ],
       "warning": [
-        133,
-        172,
-        21
+        201,
+        123,
+        13
       ],
       "question": [
-        21,
-        52,
-        172
+        13,
+        44,
+        201
       ],
       "practice": [
-        172,
-        162,
-        21
+        201,
+        186,
+        13
       ],
       "success": [
-        21,
-        172,
-        154
+        13,
+        201,
+        76
       ],
       "info": [
-        79,
-        21,
-        172
+        170,
+        13,
+        201
       ],
       "note": [
-        172,
-        21,
-        27
+        201,
+        60,
+        13
       ],
       "quote": [
-        21,
-        90,
-        172
+        13,
+        154,
+        201
       ],
       "abstract": [
-        172,
-        21,
-        102
+        201,
+        13,
+        123
       ]
     },
     "calloutFrames": {
@@ -346,16 +346,16 @@
     "name": "Silk Mirage — Шёлковый мираж — фон",
     "label": "Silk Mirage — Шёлковый мираж — фон",
     "group": "Элегантные и премиальные",
-    "light": "linear-gradient(116deg, transparent 28%, #EBD5DF55 46%, #EBD5DFCC 50%, #EBD5DF55 54%, transparent 72%), radial-gradient(ellipse at 35% 20%, #EBD5DF 0%, #DCC1D5 36%, #CBAAC8 68%, #B995B8 100%)",
-    "dark": "linear-gradient(116deg, transparent 28%, #EBD5DF55 46%, #EBD5DFCC 50%, #EBD5DF55 54%, transparent 72%), radial-gradient(ellipse at 35% 20%, #EBD5DF 0%, #DCC1D5 36%, #CBAAC8 68%, #B995B8 100%)",
-    "textColor": "#201A22",
-    "darkTextColor": "#201A22",
+    "light": "radial-gradient(ellipse at 18% 12%, #FFFFFF30 0%, transparent 58%), linear-gradient(116deg, transparent 28%, #EBD5DF55 46%, #EBD5DFCC 50%, #EBD5DF55 54%, transparent 72%), radial-gradient(ellipse at 35% 20%, #EBD5DF 0%, #DCC1D5 36%, #CBAAC8 68%, #B995B8 100%)",
+    "dark": "radial-gradient(ellipse at 18% 12%, #FFFFFF30 0%, transparent 58%), linear-gradient(116deg, transparent 28%, #EBD5DF55 46%, #EBD5DFCC 50%, #EBD5DF55 54%, transparent 72%), radial-gradient(ellipse at 35% 20%, #EBD5DF 0%, #DCC1D5 36%, #CBAAC8 68%, #B995B8 100%)",
+    "textColor": "#211A27",
+    "darkTextColor": "#211A27",
     "source": "user"
   },
   "blockStyle": {
     "id": "user-blocks-elegant-premium-43-silk-mirage",
     "name": "Silk Mirage — Шёлковый мираж — учебные блоки",
-    "description": "12 цветовых карточек, согласованных с фоном Silk Mirage — Шёлковый мираж; увеличенный текст Medium и заголовки Semibold.",
+    "description": "Контрастные цветные учебные карточки: основной текст Medium 500, заголовки Semibold 650, отдельные заливки и рамки.",
     "category": "Элегантные и премиальные",
     "base": "rich",
     "framePreset": "classic",
@@ -367,9 +367,9 @@
     },
     "style": {
       "light": {
-        "backgroundOpacity": 0.78,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -381,9 +381,9 @@
         "shadow": "none"
       },
       "dark": {
-        "backgroundOpacity": 0.78,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -398,22 +398,32 @@
     "calloutOverrides": {
       "important": {
         "light": {
-          "backgroundOpacity": 0.8300000000000001,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         },
         "dark": {
-          "backgroundOpacity": 0.8300000000000001,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         }
       },
       "warning": {
         "light": {
-          "backgroundOpacity": 0.81,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
         },
         "dark": {
-          "backgroundOpacity": 0.81,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
+        }
+      },
+      "question": {
+        "light": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
+        },
+        "dark": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
         }
       }
     },

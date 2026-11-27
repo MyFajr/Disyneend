@@ -5,277 +5,276 @@
     "id": "elegant-premium-47-electric-amethyst",
     "name": "Electric Amethyst — Электрический аметист",
     "mood": "Насыщенный аметистовый градиент с орхидейным свечением и кристаллической глубиной.",
-    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный радиальный градиент с эффектом светового ореола; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный радиальный градиент с эффектом светового ореола; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian. Полноценная премиальная дизайн-система: выразительный градиент, световой эффект, 30 семантических классов и контрастные карточки.",
     "category": "Элегантные и премиальные",
     "source": "user",
     "swatches": [
       "#7140A4",
       "#51227F",
       "#32175A",
-      "#1F1038",
-      "#F9DBF1"
+      "#1F1038"
     ],
     "defaultBackground": "bg-custom-elegant-premium-47-electric-amethyst",
     "defaultBlocks": "user-blocks-elegant-premium-47-electric-amethyst",
     "roles": {
-      "en": "#F9DBF9",
-      "letter": "#EFDDF9",
-      "ipa": "#F9DBF5",
-      "translation": "#F6DBF9",
-      "term": "#F9DBF1",
-      "definition": "#F9DBF8",
-      "focus": "#F0DDF9",
-      "secondary": "#F8DBF9",
-      "soft": "#F9DBF4",
-      "heading": "#EFDDF9",
-      "ink": "#FFFFFF"
+      "en": "#B6D1F6",
+      "letter": "#F8C4D5",
+      "ipa": "#E2C4F8",
+      "translation": "#A4F4D3",
+      "term": "#F4C9A4",
+      "definition": "#A4E7F4",
+      "focus": "#F8C4C8",
+      "secondary": "#F4E0A4",
+      "soft": "#D1CDF9",
+      "heading": "#E3E9FC",
+      "ink": "#FFF7F0"
     },
     "callouts": {
       "rule": [
-        116,
-        110,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        237,
-        110,
-        231
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        148,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        220,
-        237
+        102,
+        245,
+        221
       ],
       "warning": [
-        214,
-        237,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        146,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        218,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        212
+        102,
+        245,
+        149
       ],
       "info": [
-        148,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        125
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        178,
-        237
+        102,
+        209,
+        245
       ],
       "abstract": [
-        237,
-        110,
-        188
+        245,
+        102,
+        185
       ]
     },
     "calloutFills": {
       "rule": [
-        20,
-        17,
-        74
+        219,
+        191,
+        247
       ],
       "example": [
-        74,
-        17,
-        72
+        191,
+        224,
+        247
       ],
       "important": [
-        74,
-        35,
-        17
+        247,
+        196,
+        191
       ],
       "tip": [
-        17,
-        67,
-        74
+        191,
+        247,
+        238
       ],
       "warning": [
-        64,
-        74,
-        17
+        247,
+        224,
+        191
       ],
       "question": [
-        17,
-        34,
-        74
+        191,
+        201,
+        247
       ],
       "practice": [
-        74,
-        66,
-        17
+        247,
+        243,
+        191
       ],
       "success": [
-        17,
-        74,
-        63
+        191,
+        247,
+        210
       ],
       "info": [
-        35,
-        17,
-        74
+        238,
+        191,
+        247
       ],
       "note": [
-        74,
-        17,
-        24
+        247,
+        205,
+        191
       ],
       "quote": [
-        17,
-        48,
-        74
+        191,
+        233,
+        247
       ],
       "abstract": [
-        74,
-        17,
-        53
+        247,
+        191,
+        224
       ]
     },
     "calloutTexts": {
       "rule": [
-        222,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "example": [
-        243,
-        221,
-        242
+        30,
+        22,
+        32
       ],
       "important": [
-        243,
-        228,
-        221
+        30,
+        22,
+        32
       ],
       "tip": [
-        221,
-        240,
-        243
+        30,
+        22,
+        32
       ],
       "warning": [
-        239,
-        243,
-        221
+        30,
+        22,
+        32
       ],
       "question": [
-        221,
-        227,
-        243
+        30,
+        22,
+        32
       ],
       "practice": [
-        243,
-        240,
-        221
+        30,
+        22,
+        32
       ],
       "success": [
-        221,
-        243,
-        239
+        30,
+        22,
+        32
       ],
       "info": [
-        228,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "note": [
-        243,
-        221,
-        224
+        30,
+        22,
+        32
       ],
       "quote": [
-        221,
-        233,
-        243
+        30,
+        22,
+        32
       ],
       "abstract": [
-        243,
-        221,
-        235
+        30,
+        22,
+        32
       ]
     },
     "calloutBorders": {
       "rule": [
-        116,
-        110,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        237,
-        110,
-        231
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        148,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        220,
-        237
+        102,
+        245,
+        221
       ],
       "warning": [
-        214,
-        237,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        146,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        218,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        212
+        102,
+        245,
+        149
       ],
       "info": [
-        148,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        125
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        178,
-        237
+        102,
+        209,
+        245
       ],
       "abstract": [
-        237,
-        110,
-        188
+        245,
+        102,
+        185
       ]
     },
     "calloutFrames": {
@@ -346,16 +345,16 @@
     "name": "Electric Amethyst — Электрический аметист — фон",
     "label": "Electric Amethyst — Электрический аметист — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 30% 28%, #7140A4 0%, #7140A4 16%, transparent 60%), radial-gradient(circle at 30% 28%, #7140A4 0%, #51227F 36%, #32175A 70%, #1F1038 100%)",
-    "dark": "radial-gradient(ellipse at 30% 28%, #7140A4 0%, #7140A4 16%, transparent 60%), radial-gradient(circle at 30% 28%, #7140A4 0%, #51227F 36%, #32175A 70%, #1F1038 100%)",
-    "textColor": "#FFFFFF",
-    "darkTextColor": "#FFFFFF",
+    "light": "radial-gradient(ellipse at 18% 12%, #7140A430 0%, transparent 58%), radial-gradient(ellipse at 30% 28%, #7140A4 0%, #7140A4 16%, transparent 60%), radial-gradient(circle at 30% 28%, #7140A4 0%, #51227F 36%, #32175A 70%, #1F1038 100%)",
+    "dark": "radial-gradient(ellipse at 18% 12%, #7140A430 0%, transparent 58%), radial-gradient(ellipse at 30% 28%, #7140A4 0%, #7140A4 16%, transparent 60%), radial-gradient(circle at 30% 28%, #7140A4 0%, #51227F 36%, #32175A 70%, #1F1038 100%)",
+    "textColor": "#FFF7F0",
+    "darkTextColor": "#FFF7F0",
     "source": "user"
   },
   "blockStyle": {
     "id": "user-blocks-elegant-premium-47-electric-amethyst",
     "name": "Electric Amethyst — Электрический аметист — учебные блоки",
-    "description": "12 цветовых карточек, согласованных с фоном Electric Amethyst — Электрический аметист; увеличенный текст Medium и заголовки Semibold.",
+    "description": "Контрастные цветные учебные карточки: основной текст Medium 500, заголовки Semibold 650, отдельные заливки и рамки.",
     "category": "Элегантные и премиальные",
     "base": "rich",
     "framePreset": "classic",
@@ -367,9 +366,9 @@
     },
     "style": {
       "light": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -381,9 +380,9 @@
         "shadow": "none"
       },
       "dark": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -398,22 +397,32 @@
     "calloutOverrides": {
       "important": {
         "light": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         },
         "dark": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         }
       },
       "warning": {
         "light": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
         },
         "dark": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
+        }
+      },
+      "question": {
+        "light": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
+        },
+        "dark": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
         }
       }
     },

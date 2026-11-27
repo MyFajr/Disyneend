@@ -5,277 +5,276 @@
     "id": "elegant-premium-48-tropical-petrol",
     "name": "Tropical Petrol — Тропический петроль",
     "mood": "Глубокий сине-зелёный петроль с тропическим нефритовым сиянием.",
-    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный линейный градиент с эффектом светового ореола; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный линейный градиент с эффектом светового ореола; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian. Полноценная премиальная дизайн-система: выразительный градиент, световой эффект, 30 семантических классов и контрастные карточки.",
     "category": "Элегантные и премиальные",
     "source": "user",
     "swatches": [
       "#063D3B",
       "#075346",
       "#086656",
-      "#064B48",
-      "#D9E8F9"
+      "#064B48"
     ],
     "defaultBackground": "bg-custom-elegant-premium-48-tropical-petrol",
     "defaultBlocks": "user-blocks-elegant-premium-48-tropical-petrol",
     "roles": {
-      "en": "#D8EFF9",
-      "letter": "#D8F9F6",
-      "ipa": "#D8EBF9",
-      "translation": "#D8F3F9",
-      "term": "#D9E8F9",
-      "definition": "#D8EEF9",
-      "focus": "#D8F9F7",
-      "secondary": "#D8F1F9",
-      "soft": "#D8E9F9",
-      "heading": "#D8F9F6",
-      "ink": "#FFFFFF"
+      "en": "#BBD4F7",
+      "letter": "#F8C4D5",
+      "ipa": "#E4C9F8",
+      "translation": "#A4F4D3",
+      "term": "#F4C9A4",
+      "definition": "#A4E7F4",
+      "focus": "#F8C4C8",
+      "secondary": "#F4E0A4",
+      "soft": "#D1CDF9",
+      "heading": "#E3E9FC",
+      "ink": "#FFF7F0"
     },
     "callouts": {
       "rule": [
-        110,
-        130,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        217,
-        110,
-        237
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        122,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        237,
-        228
+        102,
+        245,
+        221
       ],
       "warning": [
-        237,
-        234,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        172,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        192,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        185
+        102,
+        245,
+        149
       ],
       "info": [
-        122,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        151
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        204,
-        237
+        102,
+        209,
+        245
       ],
       "abstract": [
-        237,
-        110,
-        214
+        245,
+        102,
+        185
       ]
     },
     "calloutFills": {
       "rule": [
-        17,
-        26,
-        74
+        219,
+        191,
+        247
       ],
       "example": [
-        65,
-        17,
-        74
+        191,
+        224,
+        247
       ],
       "important": [
-        74,
-        23,
-        17
+        247,
+        196,
+        191
       ],
       "tip": [
-        17,
-        74,
-        70
+        191,
+        247,
+        238
       ],
       "warning": [
-        74,
-        73,
-        17
+        247,
+        224,
+        191
       ],
       "question": [
-        17,
-        45,
-        74
+        191,
+        201,
+        247
       ],
       "practice": [
-        74,
-        54,
-        17
+        247,
+        243,
+        191
       ],
       "success": [
-        17,
-        74,
-        51
+        191,
+        247,
+        210
       ],
       "info": [
-        23,
-        17,
-        74
+        238,
+        191,
+        247
       ],
       "note": [
-        74,
-        17,
-        36
+        247,
+        205,
+        191
       ],
       "quote": [
-        17,
-        60,
-        74
+        191,
+        233,
+        247
       ],
       "abstract": [
-        74,
-        17,
-        64
+        247,
+        191,
+        224
       ]
     },
     "calloutTexts": {
       "rule": [
-        221,
-        224,
-        243
+        30,
+        22,
+        32
       ],
       "example": [
-        240,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "important": [
-        243,
-        223,
-        221
+        30,
+        22,
+        32
       ],
       "tip": [
-        221,
-        243,
-        241
+        30,
+        22,
+        32
       ],
       "warning": [
-        243,
-        243,
-        221
+        30,
+        22,
+        32
       ],
       "question": [
-        221,
-        232,
-        243
+        30,
+        22,
+        32
       ],
       "practice": [
-        243,
-        235,
-        221
+        30,
+        22,
+        32
       ],
       "success": [
-        221,
-        243,
-        234
+        30,
+        22,
+        32
       ],
       "info": [
-        223,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "note": [
-        243,
-        221,
-        228
+        30,
+        22,
+        32
       ],
       "quote": [
-        221,
-        237,
-        243
+        30,
+        22,
+        32
       ],
       "abstract": [
-        243,
-        221,
-        239
+        30,
+        22,
+        32
       ]
     },
     "calloutBorders": {
       "rule": [
-        110,
-        130,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        217,
-        110,
-        237
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        122,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        237,
-        228
+        102,
+        245,
+        221
       ],
       "warning": [
-        237,
-        234,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        172,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        192,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        185
+        102,
+        245,
+        149
       ],
       "info": [
-        122,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        151
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        204,
-        237
+        102,
+        209,
+        245
       ],
       "abstract": [
-        237,
-        110,
-        214
+        245,
+        102,
+        185
       ]
     },
     "calloutFrames": {
@@ -346,16 +345,16 @@
     "name": "Tropical Petrol — Тропический петроль — фон",
     "label": "Tropical Petrol — Тропический петроль — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 72% 20%, #063D3B 0%, #063D3B 16%, transparent 60%), linear-gradient(126deg, #063D3B 0%, #075346 36%, #086656 70%, #064B48 100%)",
-    "dark": "radial-gradient(ellipse at 72% 20%, #063D3B 0%, #063D3B 16%, transparent 60%), linear-gradient(126deg, #063D3B 0%, #075346 36%, #086656 70%, #064B48 100%)",
-    "textColor": "#FFFFFF",
-    "darkTextColor": "#FFFFFF",
+    "light": "radial-gradient(ellipse at 18% 12%, #063D3B30 0%, transparent 58%), radial-gradient(ellipse at 72% 20%, #063D3B 0%, #063D3B 16%, transparent 60%), linear-gradient(126deg, #063D3B 0%, #075346 36%, #086656 70%, #064B48 100%)",
+    "dark": "radial-gradient(ellipse at 18% 12%, #063D3B30 0%, transparent 58%), radial-gradient(ellipse at 72% 20%, #063D3B 0%, #063D3B 16%, transparent 60%), linear-gradient(126deg, #063D3B 0%, #075346 36%, #086656 70%, #064B48 100%)",
+    "textColor": "#FFF7F0",
+    "darkTextColor": "#FFF7F0",
     "source": "user"
   },
   "blockStyle": {
     "id": "user-blocks-elegant-premium-48-tropical-petrol",
     "name": "Tropical Petrol — Тропический петроль — учебные блоки",
-    "description": "12 цветовых карточек, согласованных с фоном Tropical Petrol — Тропический петроль; увеличенный текст Medium и заголовки Semibold.",
+    "description": "Контрастные цветные учебные карточки: основной текст Medium 500, заголовки Semibold 650, отдельные заливки и рамки.",
     "category": "Элегантные и премиальные",
     "base": "rich",
     "framePreset": "classic",
@@ -367,9 +366,9 @@
     },
     "style": {
       "light": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -381,9 +380,9 @@
         "shadow": "none"
       },
       "dark": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -398,22 +397,32 @@
     "calloutOverrides": {
       "important": {
         "light": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         },
         "dark": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         }
       },
       "warning": {
         "light": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
         },
         "dark": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
+        }
+      },
+      "question": {
+        "light": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
+        },
+        "dark": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
         }
       }
     },
