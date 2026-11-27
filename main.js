@@ -3791,10 +3791,8 @@ class DesignStudioModal extends Modal {
       name: backgroundName,
       label: backgroundName,
       group: String(rawBackground.group || rawBackground.category || 'Мои фоны').slice(0, 80),
-      light: bgLight,
-      dark: bgDark,
+      value: bgLight || bgDark,
       textColor: isHexColor(rawBackground.textColor) ? colorToHex(rawBackground.textColor) : '#302d31',
-      darkTextColor: isHexColor(rawBackground.darkTextColor) ? colorToHex(rawBackground.darkTextColor) : '#e9eaf0',
       source: 'user', createdAt: now, updatedAt: now
     };
     const blockStyle = normalizeBlockStyle({ ...rawBlockStyle, id: blockStyleId, name: blockName, category: String(rawBlockStyle.category || 'Мои стили').slice(0, 80), source: 'user', createdAt: now, updatedAt: now });
@@ -3814,11 +3812,9 @@ class DesignStudioModal extends Modal {
       defaultBackground: backgroundId,
       defaultBlocks: blockStyleId,
       roles: { ...Object.fromEntries(ROLE_KEYS.map(key => [key, colorToHex(roles[key])])), letter: colorToHex(isHexColor(roles.letter) ? roles.letter : roles.ipa) },
-      dark: { ...Object.fromEntries(ROLE_KEYS.map(key => [key, colorToHex(isHexColor(rawPalette.dark && rawPalette.dark[key]) ? rawPalette.dark[key] : roles[key])])), letter: colorToHex(isHexColor(rawPalette.dark && rawPalette.dark.letter) ? rawPalette.dark.letter : (isHexColor(rawPalette.dark && rawPalette.dark.ipa) ? rawPalette.dark.ipa : roles.ipa)) },
       callouts: cleanColorMap(rawPalette.callouts, PALETTES[0].callouts),
-      darkCallouts: cleanColorMap(rawPalette.darkCallouts, rawPalette.callouts || PALETTES[0].callouts),
       calloutFrames: rawPalette.calloutFrames && typeof rawPalette.calloutFrames === 'object' ? Object.fromEntries(CALLOUT_KEYS.map(key => { const frame = rawPalette.calloutFrames[key]; return frame && BLOCK_FRAME_PRESET_KEYS.includes(frame.preset) ? [key, { preset: frame.preset, width: Math.max(0, Math.min(8, Number.isFinite(Number(frame.width)) ? Number(frame.width) : 1.5)), radius: Math.max(0, Math.min(32, Number.isFinite(Number(frame.radius)) ? Number(frame.radius) : 10)) }] : null; }).filter(Boolean)) : undefined,
-      ...Object.fromEntries(['calloutFills','calloutTexts','calloutBorders','darkCalloutFills','darkCalloutTexts','darkCalloutBorders'].map(mapName => {
+      ...Object.fromEntries(['calloutFills','calloutTexts','calloutBorders'].map(mapName => {
         const source = rawPalette[mapName];
         if (!source || typeof source !== 'object' || Array.isArray(source)) return [mapName, undefined];
         return [mapName, cleanColorMap(source, null)];
@@ -4219,11 +4215,8 @@ class NoteBlockStyleModal extends Modal {
 
   paletteColor(type, kind = 'text') {
     const palette = this.studio.selectedPalette || PALETTES[0];
-    const dark = this.themeMode === 'dark';
-    const base = dark ? (palette.darkCallouts || palette.callouts) : palette.callouts;
-    const mapName = dark
-      ? ({ fill: 'darkCalloutFills', text: 'darkCalloutTexts', border: 'darkCalloutBorders' }[kind])
-      : ({ fill: 'calloutFills', text: 'calloutTexts', border: 'calloutBorders' }[kind]);
+    const base = palette.callouts;
+    const mapName = ({ fill: 'calloutFills', text: 'calloutTexts', border: 'calloutBorders' }[kind]);
     const map = mapName && palette[mapName];
     return colorToHex((map && isValidPaletteColor(map[type]) ? map[type] : null) || (base && base[type]) || '#5a7dc8');
   }
