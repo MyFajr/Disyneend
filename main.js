@@ -1494,7 +1494,7 @@ class PaletteBuilderModal extends Modal {
 }
 
 class BackgroundBuilderModal extends Modal {
-  constructor(app, studio, existing = null) { super(app); this.studio = studio; this.existing = existing; this.category = (existing && (existing.group || existing.category)) || 'Мои фоны'; const stops = (value, a, b) => { const found = String(value || '').match(/#[0-9a-f]{6}/ig) || []; return [found[0] || a, found[1] || b]; }; this.colors = stops(existing && (existing.light || existing.dark), '#e8f1ed', '#d6e6df'); }
+  constructor(app, studio, existing = null) { super(app); this.studio = studio; this.existing = existing; this.category = (existing && (existing.group || existing.category)) || 'Мои фоны'; const stops = (value, a, b) => { const found = String(value || '').match(/#[0-9a-f]{6}/ig) || []; return [found[0] || a, found[1] || b]; }; this.colors = stops(existing && (existing.value || existing.light || existing.dark), '#e8f1ed', '#d6e6df'); }
   onOpen() { this.modalEl.addClass('esds-builder-modal'); this.contentEl.addClass('esds-builder-content'); this.render(); }
   onClose() { this.contentEl.empty(); }
   render() {
@@ -1540,10 +1540,8 @@ class BackgroundBuilderModal extends Modal {
         id: this.existing ? this.existing.id : `bg-custom-${slugify(label)}-${Date.now().toString(36).slice(-4)}`,
         createdAt: (this.existing && this.existing.createdAt) || now, updatedAt: now,
         name: label, label, group: this.category || 'Мои фоны', category: this.category || 'Мои фоны',
-        light: `linear-gradient(135deg, ${this.colors[0]} 0%, ${this.colors[1]} 100%)`,
-        dark: `linear-gradient(135deg, ${this.colors[0]} 0%, ${this.colors[1]} 100%)`,
-        textColor: (this.existing && this.existing.textColor) || '#302d31',
-        darkTextColor: '#302d31', source: 'user'
+        value: `linear-gradient(135deg, ${this.colors[0]} 0%, ${this.colors[1]} 100%)`,
+        textColor: (this.existing && this.existing.textColor) || '#302d31', source: 'user'
       };
       const list = this.studio.plugin.userData.backgrounds;
       if (this.existing) {
@@ -2571,14 +2569,14 @@ class DesignStudioModal extends Modal {
     }
   }
   paletteSwatches(palette) {
-    const darkMode = document.body.classList.contains('theme-dark');
+    const darkMode = false;
     const roleKeys = [
       ['en', 'Иностранные слова'], ['ipa', 'Произношение / транскрипция'], ['translation', 'Перевод'],
       ['term', 'Термин'], ['focus', 'Акцент'], ['secondary', 'Второй акцент']
     ];
     return roleKeys.map(([key, label]) => ({
       label,
-      color: colorToHex((darkMode && palette.dark && palette.dark[key]) || (palette.roles && palette.roles[key]))
+      color: colorToHex((palette.roles && palette.roles[key]))
     }));
   }
   renderPaletteSection(parent) {
@@ -3151,9 +3149,9 @@ class DesignStudioModal extends Modal {
       });
     });
     if (background && background.source === 'user') {
-      const bgValue = darkMode ? (background.dark || background.light) : background.light;
+      const bgValue = background.value || background.light || background.dark;
       if (bgValue) container.style.setProperty('--note-background', bgValue);
-      const fg = darkMode ? background.darkTextColor : background.textColor;
+      const fg = background.textColor;
       if (fg) container.style.setProperty('--esds-bg-fg', fg);
     } else if (background) {
       // built-in backgrounds rely on CSS classes; ensure readable text
@@ -3948,7 +3946,7 @@ class DesignStudioModal extends Modal {
       const label = b.name || b.label;
       const group = b.group || b.category || 'Мои фоны';
       const importedAt = new Date().toISOString();
-      const bg = { ...b, id: `bg-custom-${slugify(label)}-${Date.now().toString(36).slice(-4)}`, name: label, label, group, createdAt: importedAt, updatedAt: importedAt, source: 'user', dark: b.dark || b.light, textColor: isHexColor(b.textColor) ? b.textColor : '#302d31', darkTextColor: isHexColor(b.darkTextColor) ? b.darkTextColor : '#e9eaf0' };
+      const bg = { ...b, id: `bg-custom-${slugify(label)}-${Date.now().toString(36).slice(-4)}`, name: label, label, group, createdAt: importedAt, updatedAt: importedAt, source: 'user', value: b.value || b.light || b.dark, textColor: isHexColor(b.textColor) ? b.textColor : '#302d31' }; delete bg.light; delete bg.dark; delete bg.darkTextColor;
       this.plugin.userData.backgrounds.push(bg); this.plugin.refreshGeneratedStyles(); this.selectedBackground = bg; this.backgroundOverridden = true;
     } else if (kind === 'blockStyle' || kind === 'blocks') {
       if (!data || typeof data !== 'object' || Array.isArray(data)) {
@@ -4012,10 +4010,12 @@ class DesignStudioModal extends Modal {
     let item, payload;
     if (kind === 'palette') {
       item = this.selectedPalette;
-      payload = { schemaVersion: 3, type: 'esds-palette', palette: item };
+      const cleanPalette = clone(item); delete cleanPalette.dark; delete cleanPalette.darkCallouts; delete cleanPalette.darkCalloutFills; delete cleanPalette.darkCalloutTexts; delete cleanPalette.darkCalloutBorders;
+      payload = { schemaVersion: 4, type: 'esds-palette', palette: cleanPalette };
     } else if (kind === 'background') {
       item = this.selectedBackground;
-      payload = { schemaVersion: 2, type: 'esds-background', background: item };
+      const cleanBackground = clone(item); cleanBackground.value = cleanBackground.value || cleanBackground.light || cleanBackground.dark; delete cleanBackground.light; delete cleanBackground.dark; delete cleanBackground.darkTextColor;
+      payload = { schemaVersion: 3, type: 'esds-background', background: cleanBackground };
     } else {
       item = this.selectedBlocks;
       payload = { schemaVersion: 2, type: 'esds-block-style', blockStyle: item };
