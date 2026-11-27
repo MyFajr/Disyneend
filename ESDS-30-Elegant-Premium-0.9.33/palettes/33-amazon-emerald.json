@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "elegant-premium-33-amazon-emerald",
+    "name": "Amazon Emerald — Амазонский изумруд",
+    "mood": "Глубокая изумрудная чаща с просветами драгоценной зелени и лесным свечением.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий радиальный градиент; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "category": "Элегантные и премиальные",
+    "source": "user",
+    "swatches": [
+      "#1E6A4D",
+      "#0F4E39",
+      "#08382B",
+      "#05261F",
+      "#D9F3F9"
+    ],
+    "defaultBackground": "bg-custom-elegant-premium-33-amazon-emerald",
+    "defaultBlocks": "user-blocks-elegant-premium-33-amazon-emerald",
+    "roles": {
+      "en": "#D8F9F6",
+      "letter": "#D8F9EA",
+      "ipa": "#D8F7F9",
+      "translation": "#D8F9F2",
+      "term": "#D9F3F9",
+      "definition": "#D8F9F7",
+      "focus": "#D8F9EB",
+      "secondary": "#D8F9F4",
+      "soft": "#D8F5F9",
+      "heading": "#D8F9EA",
+      "ink": "#FFFFFF"
+    },
+    "callouts": {
+      "rule": [
+        110,
+        135,
+        237
+      ],
+      "example": [
+        212,
+        110,
+        237
+      ],
+      "important": [
+        237,
+        116,
+        110
+      ],
+      "tip": [
+        110,
+        237,
+        222
+      ],
+      "warning": [
+        237,
+        229,
+        110
+      ],
+      "question": [
+        110,
+        178,
+        237
+      ],
+      "practice": [
+        237,
+        186,
+        110
+      ],
+      "success": [
+        110,
+        237,
+        180
+      ],
+      "info": [
+        116,
+        110,
+        237
+      ],
+      "note": [
+        237,
+        110,
+        156
+      ],
+      "quote": [
+        110,
+        209,
+        237
+      ],
+      "abstract": [
+        237,
+        110,
+        220
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        17,
+        29,
+        74
+      ],
+      "example": [
+        63,
+        17,
+        74
+      ],
+      "important": [
+        74,
+        20,
+        17
+      ],
+      "tip": [
+        17,
+        74,
+        68
+      ],
+      "warning": [
+        74,
+        71,
+        17
+      ],
+      "question": [
+        17,
+        48,
+        74
+      ],
+      "practice": [
+        74,
+        52,
+        17
+      ],
+      "success": [
+        17,
+        74,
+        49
+      ],
+      "info": [
+        20,
+        17,
+        74
+      ],
+      "note": [
+        74,
+        17,
+        38
+      ],
+      "quote": [
+        17,
+        62,
+        74
+      ],
+      "abstract": [
+        74,
+        17,
+        67
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        221,
+        225,
+        243
+      ],
+      "example": [
+        239,
+        221,
+        243
+      ],
+      "important": [
+        243,
+        222,
+        221
+      ],
+      "tip": [
+        221,
+        243,
+        240
+      ],
+      "warning": [
+        243,
+        242,
+        221
+      ],
+      "question": [
+        221,
+        233,
+        243
+      ],
+      "practice": [
+        243,
+        234,
+        221
+      ],
+      "success": [
+        221,
+        243,
+        233
+      ],
+      "info": [
+        222,
+        221,
+        243
+      ],
+      "note": [
+        243,
+        221,
+        229
+      ],
+      "quote": [
+        221,
+        238,
+        243
+      ],
+      "abstract": [
+        243,
+        221,
+        240
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        110,
+        135,
+        237
+      ],
+      "example": [
+        212,
+        110,
+        237
+      ],
+      "important": [
+        237,
+        116,
+        110
+      ],
+      "tip": [
+        110,
+        237,
+        222
+      ],
+      "warning": [
+        237,
+        229,
+        110
+      ],
+      "question": [
+        110,
+        178,
+        237
+      ],
+      "practice": [
+        237,
+        186,
+        110
+      ],
+      "success": [
+        110,
+        237,
+        180
+      ],
+      "info": [
+        116,
+        110,
+        237
+      ],
+      "note": [
+        237,
+        110,
+        156
+      ],
+      "quote": [
+        110,
+        209,
+        237
+      ],
+      "abstract": [
+        237,
+        110,
+        220
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 12
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.2,
+        "radius": 10
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.2,
+        "radius": 10
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "success": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 14
+      },
+      "info": {
+        "preset": "left",
+        "width": 1.6,
+        "radius": 12
+      },
+      "note": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 12
+      },
+      "quote": {
+        "preset": "double",
+        "width": 1.8,
+        "radius": 14
+      },
+      "abstract": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 12
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-elegant-premium-33-amazon-emerald",
+    "name": "Amazon Emerald — Амазонский изумруд — фон",
+    "label": "Amazon Emerald — Амазонский изумруд — фон",
+    "group": "Элегантные и премиальные",
+    "light": "radial-gradient(ellipse at 28% 22%, #1E6A4D 0%, #0F4E39 42%, #08382B 76%, #05261F 100%)",
+    "dark": "radial-gradient(ellipse at 28% 22%, #1E6A4D 0%, #0F4E39 42%, #08382B 76%, #05261F 100%)",
+    "textColor": "#FFFFFF",
+    "darkTextColor": "#FFFFFF",
+    "source": "user"
+  },
+  "blockStyle": {
+    "id": "user-blocks-elegant-premium-33-amazon-emerald",
+    "name": "Amazon Emerald — Амазонский изумруд — учебные блоки",
+    "description": "12 цветовых карточек, согласованных с фоном Amazon Emerald — Амазонский изумруд; увеличенный текст и выразительные рамки.",
+    "category": "Элегантные и премиальные",
+    "base": "rich",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.74,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.74,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.79,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.79,
+          "borderWidth": 2.2
+        }
+      },
+      "warning": {
+        "light": {
+          "backgroundOpacity": 0.77,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.77,
+          "borderWidth": 2.2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success",
+      "info",
+      "note",
+      "quote",
+      "abstract"
+    ]
+  }
+}

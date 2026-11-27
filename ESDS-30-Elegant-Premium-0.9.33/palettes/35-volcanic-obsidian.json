@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "elegant-premium-35-volcanic-obsidian",
+    "name": "Volcanic Obsidian — Вулканический обсидиан",
+    "mood": "Чёрный вулканический камень с красным лавовым свечением и раскалённым центром.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий радиальный градиент; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "category": "Элегантные и премиальные",
+    "source": "user",
+    "swatches": [
+      "#9C382D",
+      "#641F20",
+      "#38171B",
+      "#1D1119",
+      "#F9F1D8"
+    ],
+    "defaultBackground": "bg-custom-elegant-premium-35-volcanic-obsidian",
+    "defaultBlocks": "user-blocks-elegant-premium-35-volcanic-obsidian",
+    "roles": {
+      "en": "#F9E8D8",
+      "letter": "#F9DDD8",
+      "ipa": "#F9EDD8",
+      "translation": "#F9E4D8",
+      "term": "#F9F1D8",
+      "definition": "#F9E9D8",
+      "focus": "#F9DDD8",
+      "secondary": "#F9E7D8",
+      "soft": "#F9EED8",
+      "heading": "#F9DCD8",
+      "ink": "#FFFFFF"
+    },
+    "callouts": {
+      "rule": [
+        110,
+        172,
+        237
+      ],
+      "example": [
+        175,
+        110,
+        237
+      ],
+      "important": [
+        237,
+        110,
+        140
+      ],
+      "tip": [
+        110,
+        237,
+        185
+      ],
+      "warning": [
+        237,
+        192,
+        110
+      ],
+      "question": [
+        110,
+        215,
+        237
+      ],
+      "practice": [
+        237,
+        149,
+        110
+      ],
+      "success": [
+        110,
+        237,
+        143
+      ],
+      "info": [
+        110,
+        140,
+        237
+      ],
+      "note": [
+        237,
+        110,
+        193
+      ],
+      "quote": [
+        110,
+        237,
+        228
+      ],
+      "abstract": [
+        217,
+        110,
+        237
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        17,
+        45,
+        74
+      ],
+      "example": [
+        46,
+        17,
+        74
+      ],
+      "important": [
+        74,
+        17,
+        31
+      ],
+      "tip": [
+        17,
+        74,
+        51
+      ],
+      "warning": [
+        74,
+        54,
+        17
+      ],
+      "question": [
+        17,
+        64,
+        74
+      ],
+      "practice": [
+        74,
+        35,
+        17
+      ],
+      "success": [
+        17,
+        74,
+        32
+      ],
+      "info": [
+        17,
+        31,
+        74
+      ],
+      "note": [
+        74,
+        17,
+        55
+      ],
+      "quote": [
+        17,
+        74,
+        70
+      ],
+      "abstract": [
+        65,
+        17,
+        74
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        221,
+        232,
+        243
+      ],
+      "example": [
+        232,
+        221,
+        243
+      ],
+      "important": [
+        243,
+        221,
+        226
+      ],
+      "tip": [
+        221,
+        243,
+        234
+      ],
+      "warning": [
+        243,
+        235,
+        221
+      ],
+      "question": [
+        221,
+        239,
+        243
+      ],
+      "practice": [
+        243,
+        228,
+        221
+      ],
+      "success": [
+        221,
+        243,
+        227
+      ],
+      "info": [
+        221,
+        226,
+        243
+      ],
+      "note": [
+        243,
+        221,
+        236
+      ],
+      "quote": [
+        221,
+        243,
+        241
+      ],
+      "abstract": [
+        240,
+        221,
+        243
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        110,
+        172,
+        237
+      ],
+      "example": [
+        175,
+        110,
+        237
+      ],
+      "important": [
+        237,
+        110,
+        140
+      ],
+      "tip": [
+        110,
+        237,
+        185
+      ],
+      "warning": [
+        237,
+        192,
+        110
+      ],
+      "question": [
+        110,
+        215,
+        237
+      ],
+      "practice": [
+        237,
+        149,
+        110
+      ],
+      "success": [
+        110,
+        237,
+        143
+      ],
+      "info": [
+        110,
+        140,
+        237
+      ],
+      "note": [
+        237,
+        110,
+        193
+      ],
+      "quote": [
+        110,
+        237,
+        228
+      ],
+      "abstract": [
+        217,
+        110,
+        237
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 12
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.2,
+        "radius": 10
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.2,
+        "radius": 10
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "success": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 14
+      },
+      "info": {
+        "preset": "left",
+        "width": 1.6,
+        "radius": 12
+      },
+      "note": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 12
+      },
+      "quote": {
+        "preset": "double",
+        "width": 1.8,
+        "radius": 14
+      },
+      "abstract": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 12
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-elegant-premium-35-volcanic-obsidian",
+    "name": "Volcanic Obsidian — Вулканический обсидиан — фон",
+    "label": "Volcanic Obsidian — Вулканический обсидиан — фон",
+    "group": "Элегантные и премиальные",
+    "light": "radial-gradient(circle at 68% 28%, #9C382D 0%, #641F20 34%, #38171B 68%, #1D1119 100%)",
+    "dark": "radial-gradient(circle at 68% 28%, #9C382D 0%, #641F20 34%, #38171B 68%, #1D1119 100%)",
+    "textColor": "#FFFFFF",
+    "darkTextColor": "#FFFFFF",
+    "source": "user"
+  },
+  "blockStyle": {
+    "id": "user-blocks-elegant-premium-35-volcanic-obsidian",
+    "name": "Volcanic Obsidian — Вулканический обсидиан — учебные блоки",
+    "description": "12 цветовых карточек, согласованных с фоном Volcanic Obsidian — Вулканический обсидиан; увеличенный текст и выразительные рамки.",
+    "category": "Элегантные и премиальные",
+    "base": "rich",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.74,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.74,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.79,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.79,
+          "borderWidth": 2.2
+        }
+      },
+      "warning": {
+        "light": {
+          "backgroundOpacity": 0.77,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.77,
+          "borderWidth": 2.2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success",
+      "info",
+      "note",
+      "quote",
+      "abstract"
+    ]
+  }
+}

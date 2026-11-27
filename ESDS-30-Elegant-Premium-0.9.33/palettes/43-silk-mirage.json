@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "elegant-premium-43-silk-mirage",
+    "name": "Silk Mirage — Шёлковый мираж",
+    "mood": "Сливово-розовый шёлк с мягкими волнами и перламутровым рассеянным свечением.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный светлый радиальный градиент; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "category": "Элегантные и премиальные",
+    "source": "user",
+    "swatches": [
+      "#EBD5DF",
+      "#DCC1D5",
+      "#CBAAC8",
+      "#B995B8",
+      "#460B10"
+    ],
+    "defaultBackground": "bg-custom-elegant-premium-43-silk-mirage",
+    "defaultBlocks": "user-blocks-elegant-premium-43-silk-mirage",
+    "roles": {
+      "en": "#460B1F",
+      "letter": "#460B33",
+      "ipa": "#460B17",
+      "translation": "#460B26",
+      "term": "#460B10",
+      "definition": "#460B1D",
+      "focus": "#460B32",
+      "secondary": "#460B21",
+      "soft": "#460B14",
+      "heading": "#460B35",
+      "ink": "#201A22"
+    },
+    "callouts": {
+      "rule": [
+        41,
+        21,
+        172
+      ],
+      "example": [
+        172,
+        21,
+        153
+      ],
+      "important": [
+        172,
+        79,
+        21
+      ],
+      "tip": [
+        21,
+        140,
+        172
+      ],
+      "warning": [
+        133,
+        172,
+        21
+      ],
+      "question": [
+        21,
+        52,
+        172
+      ],
+      "practice": [
+        172,
+        162,
+        21
+      ],
+      "success": [
+        21,
+        172,
+        154
+      ],
+      "info": [
+        79,
+        21,
+        172
+      ],
+      "note": [
+        172,
+        21,
+        27
+      ],
+      "quote": [
+        21,
+        90,
+        172
+      ],
+      "abstract": [
+        172,
+        21,
+        102
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        229,
+        228,
+        242
+      ],
+      "example": [
+        242,
+        228,
+        240
+      ],
+      "important": [
+        242,
+        233,
+        228
+      ],
+      "tip": [
+        228,
+        239,
+        242
+      ],
+      "warning": [
+        238,
+        242,
+        228
+      ],
+      "question": [
+        228,
+        230,
+        242
+      ],
+      "practice": [
+        242,
+        241,
+        228
+      ],
+      "success": [
+        228,
+        242,
+        240
+      ],
+      "info": [
+        233,
+        228,
+        242
+      ],
+      "note": [
+        242,
+        228,
+        228
+      ],
+      "quote": [
+        228,
+        234,
+        242
+      ],
+      "abstract": [
+        242,
+        228,
+        235
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        19,
+        11,
+        70
+      ],
+      "example": [
+        70,
+        11,
+        63
+      ],
+      "important": [
+        70,
+        34,
+        11
+      ],
+      "tip": [
+        11,
+        58,
+        70
+      ],
+      "warning": [
+        55,
+        70,
+        11
+      ],
+      "question": [
+        11,
+        23,
+        70
+      ],
+      "practice": [
+        70,
+        66,
+        11
+      ],
+      "success": [
+        11,
+        70,
+        63
+      ],
+      "info": [
+        34,
+        11,
+        70
+      ],
+      "note": [
+        70,
+        11,
+        14
+      ],
+      "quote": [
+        11,
+        38,
+        70
+      ],
+      "abstract": [
+        70,
+        11,
+        43
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        41,
+        21,
+        172
+      ],
+      "example": [
+        172,
+        21,
+        153
+      ],
+      "important": [
+        172,
+        79,
+        21
+      ],
+      "tip": [
+        21,
+        140,
+        172
+      ],
+      "warning": [
+        133,
+        172,
+        21
+      ],
+      "question": [
+        21,
+        52,
+        172
+      ],
+      "practice": [
+        172,
+        162,
+        21
+      ],
+      "success": [
+        21,
+        172,
+        154
+      ],
+      "info": [
+        79,
+        21,
+        172
+      ],
+      "note": [
+        172,
+        21,
+        27
+      ],
+      "quote": [
+        21,
+        90,
+        172
+      ],
+      "abstract": [
+        172,
+        21,
+        102
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 12
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.2,
+        "radius": 10
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.2,
+        "radius": 10
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "success": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 14
+      },
+      "info": {
+        "preset": "left",
+        "width": 1.6,
+        "radius": 12
+      },
+      "note": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 12
+      },
+      "quote": {
+        "preset": "double",
+        "width": 1.8,
+        "radius": 14
+      },
+      "abstract": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 12
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-elegant-premium-43-silk-mirage",
+    "name": "Silk Mirage — Шёлковый мираж — фон",
+    "label": "Silk Mirage — Шёлковый мираж — фон",
+    "group": "Элегантные и премиальные",
+    "light": "radial-gradient(ellipse at 35% 20%, #EBD5DF 0%, #DCC1D5 36%, #CBAAC8 68%, #B995B8 100%)",
+    "dark": "radial-gradient(ellipse at 35% 20%, #EBD5DF 0%, #DCC1D5 36%, #CBAAC8 68%, #B995B8 100%)",
+    "textColor": "#201A22",
+    "darkTextColor": "#201A22",
+    "source": "user"
+  },
+  "blockStyle": {
+    "id": "user-blocks-elegant-premium-43-silk-mirage",
+    "name": "Silk Mirage — Шёлковый мираж — учебные блоки",
+    "description": "12 цветовых карточек, согласованных с фоном Silk Mirage — Шёлковый мираж; увеличенный текст и выразительные рамки.",
+    "category": "Элегантные и премиальные",
+    "base": "rich",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.78,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.78,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.8300000000000001,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.8300000000000001,
+          "borderWidth": 2.2
+        }
+      },
+      "warning": {
+        "light": {
+          "backgroundOpacity": 0.81,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.81,
+          "borderWidth": 2.2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success",
+      "info",
+      "note",
+      "quote",
+      "abstract"
+    ]
+  }
+}

@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "elegant-premium-31-bronze-patina",
+    "name": "Bronze Patina — Бронзовая патина",
+    "mood": "Сложный оттенок состаренной бронзы, окисленного металла и благородной зелёной патины.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный светлый линейный градиент; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "category": "Элегантные и премиальные",
+    "source": "user",
+    "swatches": [
+      "#D8C99F",
+      "#B9B58A",
+      "#98A58A",
+      "#7E9A87",
+      "#08310E"
+    ],
+    "defaultBackground": "bg-custom-elegant-premium-31-bronze-patina",
+    "defaultBlocks": "user-blocks-elegant-premium-31-bronze-patina",
+    "roles": {
+      "en": "#0D2F08",
+      "letter": "#192E07",
+      "ipa": "#083109",
+      "translation": "#112F08",
+      "term": "#08310E",
+      "definition": "#0B2F08",
+      "focus": "#182E07",
+      "secondary": "#0E2F08",
+      "soft": "#08310B",
+      "heading": "#1A2E07",
+      "ink": "#201A22"
+    },
+    "callouts": {
+      "rule": [
+        21,
+        70,
+        172
+      ],
+      "example": [
+        124,
+        21,
+        172
+      ],
+      "important": [
+        172,
+        21,
+        33
+      ],
+      "tip": [
+        21,
+        172,
+        136
+      ],
+      "warning": [
+        172,
+        144,
+        21
+      ],
+      "question": [
+        21,
+        121,
+        172
+      ],
+      "practice": [
+        172,
+        93,
+        21
+      ],
+      "success": [
+        21,
+        172,
+        86
+      ],
+      "info": [
+        21,
+        33,
+        172
+      ],
+      "note": [
+        172,
+        21,
+        95
+      ],
+      "quote": [
+        21,
+        158,
+        172
+      ],
+      "abstract": [
+        172,
+        21,
+        171
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        228,
+        232,
+        242
+      ],
+      "example": [
+        237,
+        228,
+        242
+      ],
+      "important": [
+        242,
+        228,
+        229
+      ],
+      "tip": [
+        228,
+        242,
+        238
+      ],
+      "warning": [
+        242,
+        239,
+        228
+      ],
+      "question": [
+        228,
+        237,
+        242
+      ],
+      "practice": [
+        242,
+        234,
+        228
+      ],
+      "success": [
+        228,
+        242,
+        234
+      ],
+      "info": [
+        228,
+        229,
+        242
+      ],
+      "note": [
+        242,
+        228,
+        234
+      ],
+      "quote": [
+        228,
+        240,
+        242
+      ],
+      "abstract": [
+        242,
+        228,
+        241
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        11,
+        30,
+        70
+      ],
+      "example": [
+        51,
+        11,
+        70
+      ],
+      "important": [
+        70,
+        11,
+        16
+      ],
+      "tip": [
+        11,
+        70,
+        56
+      ],
+      "warning": [
+        70,
+        59,
+        11
+      ],
+      "question": [
+        11,
+        50,
+        70
+      ],
+      "practice": [
+        70,
+        39,
+        11
+      ],
+      "success": [
+        11,
+        70,
+        36
+      ],
+      "info": [
+        11,
+        16,
+        70
+      ],
+      "note": [
+        70,
+        11,
+        40
+      ],
+      "quote": [
+        11,
+        65,
+        70
+      ],
+      "abstract": [
+        70,
+        11,
+        70
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        21,
+        70,
+        172
+      ],
+      "example": [
+        124,
+        21,
+        172
+      ],
+      "important": [
+        172,
+        21,
+        33
+      ],
+      "tip": [
+        21,
+        172,
+        136
+      ],
+      "warning": [
+        172,
+        144,
+        21
+      ],
+      "question": [
+        21,
+        121,
+        172
+      ],
+      "practice": [
+        172,
+        93,
+        21
+      ],
+      "success": [
+        21,
+        172,
+        86
+      ],
+      "info": [
+        21,
+        33,
+        172
+      ],
+      "note": [
+        172,
+        21,
+        95
+      ],
+      "quote": [
+        21,
+        158,
+        172
+      ],
+      "abstract": [
+        172,
+        21,
+        171
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 12
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.2,
+        "radius": 10
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.2,
+        "radius": 10
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "success": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 14
+      },
+      "info": {
+        "preset": "left",
+        "width": 1.6,
+        "radius": 12
+      },
+      "note": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 12
+      },
+      "quote": {
+        "preset": "double",
+        "width": 1.8,
+        "radius": 14
+      },
+      "abstract": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 12
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-elegant-premium-31-bronze-patina",
+    "name": "Bronze Patina — Бронзовая патина — фон",
+    "label": "Bronze Patina — Бронзовая патина — фон",
+    "group": "Элегантные и премиальные",
+    "light": "linear-gradient(136deg, #D8C99F 0%, #B9B58A 34%, #98A58A 68%, #7E9A87 100%)",
+    "dark": "linear-gradient(136deg, #D8C99F 0%, #B9B58A 34%, #98A58A 68%, #7E9A87 100%)",
+    "textColor": "#201A22",
+    "darkTextColor": "#201A22",
+    "source": "user"
+  },
+  "blockStyle": {
+    "id": "user-blocks-elegant-premium-31-bronze-patina",
+    "name": "Bronze Patina — Бронзовая патина — учебные блоки",
+    "description": "12 цветовых карточек, согласованных с фоном Bronze Patina — Бронзовая патина; увеличенный текст и выразительные рамки.",
+    "category": "Элегантные и премиальные",
+    "base": "rich",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.78,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.78,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.8300000000000001,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.8300000000000001,
+          "borderWidth": 2.2
+        }
+      },
+      "warning": {
+        "light": {
+          "backgroundOpacity": 0.81,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.81,
+          "borderWidth": 2.2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success",
+      "info",
+      "note",
+      "quote",
+      "abstract"
+    ]
+  }
+}

@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "elegant-premium-42-venetian-marble",
+    "name": "Venetian Marble — Венецианский мрамор",
+    "mood": "Серо-лиловый мрамор с холодными минеральными прожилками и серебристым рассеянным светом.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный светлый линейный градиент; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "category": "Элегантные и премиальные",
+    "source": "user",
+    "swatches": [
+      "#F3EEE8",
+      "#DDD7D9",
+      "#C5C3CC",
+      "#A9AFBC",
+      "#380B46"
+    ],
+    "defaultBackground": "bg-custom-elegant-premium-42-venetian-marble",
+    "defaultBlocks": "user-blocks-elegant-premium-42-venetian-marble",
+    "roles": {
+      "en": "#280B46",
+      "letter": "#140B46",
+      "ipa": "#310B46",
+      "translation": "#220B46",
+      "term": "#380B46",
+      "definition": "#2A0B46",
+      "focus": "#160B46",
+      "secondary": "#260B46",
+      "soft": "#330B46",
+      "heading": "#130B46",
+      "ink": "#201A22"
+    },
+    "callouts": {
+      "rule": [
+        21,
+        23,
+        172
+      ],
+      "example": [
+        171,
+        21,
+        172
+      ],
+      "important": [
+        172,
+        58,
+        21
+      ],
+      "tip": [
+        21,
+        161,
+        172
+      ],
+      "warning": [
+        154,
+        172,
+        21
+      ],
+      "question": [
+        21,
+        73,
+        172
+      ],
+      "practice": [
+        172,
+        141,
+        21
+      ],
+      "success": [
+        21,
+        172,
+        133
+      ],
+      "info": [
+        58,
+        21,
+        172
+      ],
+      "note": [
+        172,
+        21,
+        48
+      ],
+      "quote": [
+        21,
+        111,
+        172
+      ],
+      "abstract": [
+        172,
+        21,
+        124
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        228,
+        228,
+        242
+      ],
+      "example": [
+        241,
+        228,
+        242
+      ],
+      "important": [
+        242,
+        231,
+        228
+      ],
+      "tip": [
+        228,
+        241,
+        242
+      ],
+      "warning": [
+        240,
+        242,
+        228
+      ],
+      "question": [
+        228,
+        232,
+        242
+      ],
+      "practice": [
+        242,
+        239,
+        228
+      ],
+      "success": [
+        228,
+        242,
+        238
+      ],
+      "info": [
+        231,
+        228,
+        242
+      ],
+      "note": [
+        242,
+        228,
+        230
+      ],
+      "quote": [
+        228,
+        236,
+        242
+      ],
+      "abstract": [
+        242,
+        228,
+        237
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        11,
+        12,
+        70
+      ],
+      "example": [
+        70,
+        11,
+        70
+      ],
+      "important": [
+        70,
+        26,
+        11
+      ],
+      "tip": [
+        11,
+        66,
+        70
+      ],
+      "warning": [
+        63,
+        70,
+        11
+      ],
+      "question": [
+        11,
+        32,
+        70
+      ],
+      "practice": [
+        70,
+        58,
+        11
+      ],
+      "success": [
+        11,
+        70,
+        55
+      ],
+      "info": [
+        26,
+        11,
+        70
+      ],
+      "note": [
+        70,
+        11,
+        22
+      ],
+      "quote": [
+        11,
+        46,
+        70
+      ],
+      "abstract": [
+        70,
+        11,
+        51
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        21,
+        23,
+        172
+      ],
+      "example": [
+        171,
+        21,
+        172
+      ],
+      "important": [
+        172,
+        58,
+        21
+      ],
+      "tip": [
+        21,
+        161,
+        172
+      ],
+      "warning": [
+        154,
+        172,
+        21
+      ],
+      "question": [
+        21,
+        73,
+        172
+      ],
+      "practice": [
+        172,
+        141,
+        21
+      ],
+      "success": [
+        21,
+        172,
+        133
+      ],
+      "info": [
+        58,
+        21,
+        172
+      ],
+      "note": [
+        172,
+        21,
+        48
+      ],
+      "quote": [
+        21,
+        111,
+        172
+      ],
+      "abstract": [
+        172,
+        21,
+        124
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 12
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.2,
+        "radius": 10
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.2,
+        "radius": 10
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "success": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 14
+      },
+      "info": {
+        "preset": "left",
+        "width": 1.6,
+        "radius": 12
+      },
+      "note": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 12
+      },
+      "quote": {
+        "preset": "double",
+        "width": 1.8,
+        "radius": 14
+      },
+      "abstract": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 12
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-elegant-premium-42-venetian-marble",
+    "name": "Venetian Marble — Венецианский мрамор — фон",
+    "label": "Venetian Marble — Венецианский мрамор — фон",
+    "group": "Элегантные и премиальные",
+    "light": "linear-gradient(138deg, #F3EEE8 0%, #DDD7D9 34%, #C5C3CC 68%, #A9AFBC 100%)",
+    "dark": "linear-gradient(138deg, #F3EEE8 0%, #DDD7D9 34%, #C5C3CC 68%, #A9AFBC 100%)",
+    "textColor": "#201A22",
+    "darkTextColor": "#201A22",
+    "source": "user"
+  },
+  "blockStyle": {
+    "id": "user-blocks-elegant-premium-42-venetian-marble",
+    "name": "Venetian Marble — Венецианский мрамор — учебные блоки",
+    "description": "12 цветовых карточек, согласованных с фоном Venetian Marble — Венецианский мрамор; увеличенный текст и выразительные рамки.",
+    "category": "Элегантные и премиальные",
+    "base": "rich",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.78,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.78,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.8300000000000001,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.8300000000000001,
+          "borderWidth": 2.2
+        }
+      },
+      "warning": {
+        "light": {
+          "backgroundOpacity": 0.81,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.81,
+          "borderWidth": 2.2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success",
+      "info",
+      "note",
+      "quote",
+      "abstract"
+    ]
+  }
+}

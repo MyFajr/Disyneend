@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "elegant-premium-49-solar-bronze",
+    "name": "Solar Bronze — Солнечная бронза",
+    "mood": "Глубокая солнечная бронза с медовым ядром и направленным золотистым свечением.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий радиальный градиент; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "category": "Элегантные и премиальные",
+    "source": "user",
+    "swatches": [
+      "#80502A",
+      "#684021",
+      "#4F321F",
+      "#382319",
+      "#F3F9D8"
+    ],
+    "defaultBackground": "bg-custom-elegant-premium-49-solar-bronze",
+    "defaultBlocks": "user-blocks-elegant-premium-49-solar-bronze",
+    "roles": {
+      "en": "#F9F6D8",
+      "letter": "#F9EAD8",
+      "ipa": "#F7F9D8",
+      "translation": "#F9F2D8",
+      "term": "#F3F9D8",
+      "definition": "#F9F7D8",
+      "focus": "#F9EBD8",
+      "secondary": "#F9F4D8",
+      "soft": "#F5F9D8",
+      "heading": "#F9EAD8",
+      "ink": "#FFFFFF"
+    },
+    "callouts": {
+      "rule": [
+        110,
+        166,
+        237
+      ],
+      "example": [
+        181,
+        110,
+        237
+      ],
+      "important": [
+        237,
+        110,
+        134
+      ],
+      "tip": [
+        110,
+        237,
+        192
+      ],
+      "warning": [
+        237,
+        198,
+        110
+      ],
+      "question": [
+        110,
+        208,
+        237
+      ],
+      "practice": [
+        237,
+        156,
+        110
+      ],
+      "success": [
+        110,
+        237,
+        149
+      ],
+      "info": [
+        110,
+        134,
+        237
+      ],
+      "note": [
+        237,
+        110,
+        187
+      ],
+      "quote": [
+        110,
+        237,
+        234
+      ],
+      "abstract": [
+        223,
+        110,
+        237
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        17,
+        42,
+        74
+      ],
+      "example": [
+        49,
+        17,
+        74
+      ],
+      "important": [
+        74,
+        17,
+        28
+      ],
+      "tip": [
+        17,
+        74,
+        54
+      ],
+      "warning": [
+        74,
+        57,
+        17
+      ],
+      "question": [
+        17,
+        61,
+        74
+      ],
+      "practice": [
+        74,
+        38,
+        17
+      ],
+      "success": [
+        17,
+        74,
+        35
+      ],
+      "info": [
+        17,
+        28,
+        74
+      ],
+      "note": [
+        74,
+        17,
+        52
+      ],
+      "quote": [
+        17,
+        74,
+        73
+      ],
+      "abstract": [
+        68,
+        17,
+        74
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        221,
+        231,
+        243
+      ],
+      "example": [
+        233,
+        221,
+        243
+      ],
+      "important": [
+        243,
+        221,
+        225
+      ],
+      "tip": [
+        221,
+        243,
+        235
+      ],
+      "warning": [
+        243,
+        236,
+        221
+      ],
+      "question": [
+        221,
+        238,
+        243
+      ],
+      "practice": [
+        243,
+        229,
+        221
+      ],
+      "success": [
+        221,
+        243,
+        228
+      ],
+      "info": [
+        221,
+        225,
+        243
+      ],
+      "note": [
+        243,
+        221,
+        234
+      ],
+      "quote": [
+        221,
+        243,
+        243
+      ],
+      "abstract": [
+        241,
+        221,
+        243
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        110,
+        166,
+        237
+      ],
+      "example": [
+        181,
+        110,
+        237
+      ],
+      "important": [
+        237,
+        110,
+        134
+      ],
+      "tip": [
+        110,
+        237,
+        192
+      ],
+      "warning": [
+        237,
+        198,
+        110
+      ],
+      "question": [
+        110,
+        208,
+        237
+      ],
+      "practice": [
+        237,
+        156,
+        110
+      ],
+      "success": [
+        110,
+        237,
+        149
+      ],
+      "info": [
+        110,
+        134,
+        237
+      ],
+      "note": [
+        237,
+        110,
+        187
+      ],
+      "quote": [
+        110,
+        237,
+        234
+      ],
+      "abstract": [
+        223,
+        110,
+        237
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 12
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.2,
+        "radius": 10
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.2,
+        "radius": 10
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "success": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 14
+      },
+      "info": {
+        "preset": "left",
+        "width": 1.6,
+        "radius": 12
+      },
+      "note": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 12
+      },
+      "quote": {
+        "preset": "double",
+        "width": 1.8,
+        "radius": 14
+      },
+      "abstract": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 12
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-elegant-premium-49-solar-bronze",
+    "name": "Solar Bronze — Солнечная бронза — фон",
+    "label": "Solar Bronze — Солнечная бронза — фон",
+    "group": "Элегантные и премиальные",
+    "light": "radial-gradient(ellipse at 25% 18%, #80502A 0%, #684021 38%, #4F321F 72%, #382319 100%)",
+    "dark": "radial-gradient(ellipse at 25% 18%, #80502A 0%, #684021 38%, #4F321F 72%, #382319 100%)",
+    "textColor": "#FFFFFF",
+    "darkTextColor": "#FFFFFF",
+    "source": "user"
+  },
+  "blockStyle": {
+    "id": "user-blocks-elegant-premium-49-solar-bronze",
+    "name": "Solar Bronze — Солнечная бронза — учебные блоки",
+    "description": "12 цветовых карточек, согласованных с фоном Solar Bronze — Солнечная бронза; увеличенный текст и выразительные рамки.",
+    "category": "Элегантные и премиальные",
+    "base": "rich",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.74,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.74,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.79,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.79,
+          "borderWidth": 2.2
+        }
+      },
+      "warning": {
+        "light": {
+          "backgroundOpacity": 0.77,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.77,
+          "borderWidth": 2.2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success",
+      "info",
+      "note",
+      "quote",
+      "abstract"
+    ]
+  }
+}

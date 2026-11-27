@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 5,
+  "type": "esds-palette",
+  "palette": {
+    "id": "elegant-premium-46-cyber-sapphire",
+    "name": "Cyber Sapphire — Кибер-сапфир",
+    "mood": "Электрический сапфир, ночной индиго и холодная бирюзовая световая дуга.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий линейный градиент; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "category": "Элегантные и премиальные",
+    "source": "user",
+    "swatches": [
+      "#0D1D50",
+      "#144C91",
+      "#116C89",
+      "#0C354D",
+      "#FAF9FE"
+    ],
+    "defaultBackground": "bg-custom-elegant-premium-46-cyber-sapphire",
+    "defaultBlocks": "user-blocks-elegant-premium-46-cyber-sapphire",
+    "roles": {
+      "en": "#F9F9FE",
+      "letter": "#F7F9FE",
+      "ipa": "#FAF9FE",
+      "translation": "#F9F9FE",
+      "term": "#FAF9FE",
+      "definition": "#F9F9FE",
+      "focus": "#F7F9FE",
+      "secondary": "#F9F9FE",
+      "soft": "#FAF9FE",
+      "heading": "#F7FAFE",
+      "ink": "#FFFFFF"
+    },
+    "callouts": {
+      "rule": [
+        110,
+        119,
+        237
+      ],
+      "example": [
+        228,
+        110,
+        237
+      ],
+      "important": [
+        237,
+        133,
+        110
+      ],
+      "tip": [
+        110,
+        235,
+        237
+      ],
+      "warning": [
+        229,
+        237,
+        110
+      ],
+      "question": [
+        110,
+        161,
+        237
+      ],
+      "practice": [
+        237,
+        203,
+        110
+      ],
+      "success": [
+        110,
+        237,
+        196
+      ],
+      "info": [
+        133,
+        110,
+        237
+      ],
+      "note": [
+        237,
+        110,
+        140
+      ],
+      "quote": [
+        110,
+        193,
+        237
+      ],
+      "abstract": [
+        237,
+        110,
+        204
+      ]
+    },
+    "calloutFills": {
+      "rule": [
+        17,
+        21,
+        74
+      ],
+      "example": [
+        70,
+        17,
+        74
+      ],
+      "important": [
+        74,
+        28,
+        17
+      ],
+      "tip": [
+        17,
+        74,
+        74
+      ],
+      "warning": [
+        71,
+        74,
+        17
+      ],
+      "question": [
+        17,
+        40,
+        74
+      ],
+      "practice": [
+        74,
+        59,
+        17
+      ],
+      "success": [
+        17,
+        74,
+        56
+      ],
+      "info": [
+        28,
+        17,
+        74
+      ],
+      "note": [
+        74,
+        17,
+        31
+      ],
+      "quote": [
+        17,
+        55,
+        74
+      ],
+      "abstract": [
+        74,
+        17,
+        59
+      ]
+    },
+    "calloutTexts": {
+      "rule": [
+        221,
+        223,
+        243
+      ],
+      "example": [
+        242,
+        221,
+        243
+      ],
+      "important": [
+        243,
+        225,
+        221
+      ],
+      "tip": [
+        221,
+        243,
+        243
+      ],
+      "warning": [
+        242,
+        243,
+        221
+      ],
+      "question": [
+        221,
+        230,
+        243
+      ],
+      "practice": [
+        243,
+        237,
+        221
+      ],
+      "success": [
+        221,
+        243,
+        236
+      ],
+      "info": [
+        225,
+        221,
+        243
+      ],
+      "note": [
+        243,
+        221,
+        226
+      ],
+      "quote": [
+        221,
+        235,
+        243
+      ],
+      "abstract": [
+        243,
+        221,
+        237
+      ]
+    },
+    "calloutBorders": {
+      "rule": [
+        110,
+        119,
+        237
+      ],
+      "example": [
+        228,
+        110,
+        237
+      ],
+      "important": [
+        237,
+        133,
+        110
+      ],
+      "tip": [
+        110,
+        235,
+        237
+      ],
+      "warning": [
+        229,
+        237,
+        110
+      ],
+      "question": [
+        110,
+        161,
+        237
+      ],
+      "practice": [
+        237,
+        203,
+        110
+      ],
+      "success": [
+        110,
+        237,
+        196
+      ],
+      "info": [
+        133,
+        110,
+        237
+      ],
+      "note": [
+        237,
+        110,
+        140
+      ],
+      "quote": [
+        110,
+        193,
+        237
+      ],
+      "abstract": [
+        237,
+        110,
+        204
+      ]
+    },
+    "calloutFrames": {
+      "rule": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 12
+      },
+      "example": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "important": {
+        "preset": "double",
+        "width": 2.2,
+        "radius": 10
+      },
+      "tip": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 14
+      },
+      "warning": {
+        "preset": "left",
+        "width": 2.2,
+        "radius": 10
+      },
+      "question": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 10
+      },
+      "practice": {
+        "preset": "dashed",
+        "width": 1.6,
+        "radius": 12
+      },
+      "success": {
+        "preset": "classic",
+        "width": 1.6,
+        "radius": 14
+      },
+      "info": {
+        "preset": "left",
+        "width": 1.6,
+        "radius": 12
+      },
+      "note": {
+        "preset": "dotted",
+        "width": 1.6,
+        "radius": 12
+      },
+      "quote": {
+        "preset": "double",
+        "width": 1.8,
+        "radius": 14
+      },
+      "abstract": {
+        "preset": "top",
+        "width": 1.8,
+        "radius": 12
+      }
+    }
+  },
+  "background": {
+    "id": "bg-custom-elegant-premium-46-cyber-sapphire",
+    "name": "Cyber Sapphire — Кибер-сапфир — фон",
+    "label": "Cyber Sapphire — Кибер-сапфир — фон",
+    "group": "Элегантные и премиальные",
+    "light": "linear-gradient(132deg, #0D1D50 0%, #144C91 38%, #116C89 72%, #0C354D 100%)",
+    "dark": "linear-gradient(132deg, #0D1D50 0%, #144C91 38%, #116C89 72%, #0C354D 100%)",
+    "textColor": "#FFFFFF",
+    "darkTextColor": "#FFFFFF",
+    "source": "user"
+  },
+  "blockStyle": {
+    "id": "user-blocks-elegant-premium-46-cyber-sapphire",
+    "name": "Cyber Sapphire — Кибер-сапфир — учебные блоки",
+    "description": "12 цветовых карточек, согласованных с фоном Cyber Sapphire — Кибер-сапфир; увеличенный текст и выразительные рамки.",
+    "category": "Элегантные и премиальные",
+    "base": "rich",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.74,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.74,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.9,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.79,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.79,
+          "borderWidth": 2.2
+        }
+      },
+      "warning": {
+        "light": {
+          "backgroundOpacity": 0.77,
+          "borderWidth": 2.2
+        },
+        "dark": {
+          "backgroundOpacity": 0.77,
+          "borderWidth": 2.2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success",
+      "info",
+      "note",
+      "quote",
+      "abstract"
+    ]
+  }
+}
