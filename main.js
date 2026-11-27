@@ -1601,11 +1601,12 @@ class LibraryManagerModal extends Modal {
     const name = prompt('Переместить выбранные элементы в категорию:', cats.length === 1 ? cats[0] : '');
     if (!name || !name.trim()) return;
     const target = this.ensureCategory(name); if (!target) return;
-    await this.commit(items => items.forEach(x => { if (!ids.has(x.id)) return; if (this.kind === 'background') { x.group = target; x.category = target; } else x.category = target; x.updatedAt = new Date().toISOString(); }), 'Элементы перемещены в «' + target + '».');
     this.selected.clear();
+    await this.commit(items => items.forEach(x => { if (!ids.has(x.id)) return; if (this.kind === 'background') { x.group = target; x.category = target; } else x.category = target; x.updatedAt = new Date().toISOString(); }), 'Элементы перемещены в «' + target + '».');
   }
   async duplicateSelected() {
     const ids = new Set(this.selected); if (!ids.size) return;
+    this.selected.clear();
     await this.commit(items => {
       const copies = items.filter(x => ids.has(x.id)).map(item => {
         const copy = clone(item), name = this.config.name(item) + ' (копия)';
@@ -1617,7 +1618,6 @@ class LibraryManagerModal extends Modal {
       });
       items.push(...copies);
     }, 'Созданы копии: ' + ids.size + '.');
-    this.selected.clear();
   }
   async exportSelected() {
     const chosen = this.items.filter(x => this.selected.has(x.id)); if (!chosen.length) return;
@@ -1632,6 +1632,7 @@ class LibraryManagerModal extends Modal {
   async deleteSelected() {
     const ids = new Set(this.selected), chosen = this.items.filter(x => ids.has(x.id)); if (!chosen.length) return;
     if (!confirm('Удалить выбранные элементы (' + chosen.length + ')? Это действие нельзя отменить.')) return;
+    this.selected.clear();
     await this.commit(items => {
       const removed = new Set(items.filter(x => ids.has(x.id)).map(x => x.id));
       this.studio.plugin.userData[this.config.key] = items.filter(x => !removed.has(x.id));
@@ -1640,7 +1641,6 @@ class LibraryManagerModal extends Modal {
       if (this.kind === 'background' && removed.has(this.studio.selectedBackground && this.studio.selectedBackground.id)) this.studio.selectedBackground = BACKGROUNDS[0];
       if (this.kind === 'blockStyle' && removed.has(this.studio.selectedBlocks && this.studio.selectedBlocks.id)) this.studio.selectedBlocks = BUILTIN_BLOCK_STYLES[0];
     }, 'Удалено элементов: ' + chosen.length + '.');
-    this.selected.clear();
   }
   async renameItem(item) {
     const old = this.config.name(item), value = prompt('Новое название:', old);
@@ -2423,7 +2423,7 @@ class DesignStudioModal extends Modal {
     const actions = card.createDiv({ cls: 'esds-library-catalog-actions' });
     const view = actions.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Просмотр', attr: { type: 'button' } });
     view.addEventListener('click', event => { event.stopPropagation(); this.openLibraryItemPreview(kind, item, visibleItems); });
-    if (item.source === 'user') {
+    {
       const menu = actions.createEl('button', { cls: 'esds-icon-btn esds-more-btn', text: '⋯', attr: { type: 'button', title: 'Действия с элементом' } });
       menu.addEventListener('click', event => { event.stopPropagation(); if (kind === 'palette') this.openPaletteMenu(item, menu); else if (kind === 'background') this.openBackgroundMenu(item, menu); else this.openBlockStyleMenu(item, menu); });
       const favorite = actions.createEl('button', { cls: 'esds-icon-btn esds-item-favorite-button', text: this.isItemFavorite(kind, item.id) ? '★' : '☆', attr: { type: 'button', title: 'В избранное' } });
