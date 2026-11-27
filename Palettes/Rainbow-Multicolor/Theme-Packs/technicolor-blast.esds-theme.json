@@ -1,0 +1,411 @@
+{
+  "schemaVersion": 1,
+  "type": "esds-theme-pack",
+  "plugin": "english-study-design-studio",
+  "name": "Technicolor Blast — полный дизайнерский набор",
+  "description": "Палитра, яркий цветной фон и согласованное оформление учебных блоков для ESDS 0.9.32.",
+  "frameSource": "palette",
+  "items": {
+    "palette": {
+      "id": "rainbow-technicolor-blast",
+      "name": "Technicolor Blast",
+      "mood": "Техноколорный взрыв: Максимально выразительный спектр коралла, синего, лайма и фиолетового.",
+      "description": "Максимально выразительный спектр коралла, синего, лайма и фиолетового. Полноценная многоцветная учебная палитра для ESDS 0.9.32: отдельные контрастные роли для английского текста, иностранных букв, IPA, перевода, терминов и смысловых акцентов; согласованные цвета 12 учебных Callout. Единая система цветов без отдельных пользовательских вариантов Light/Dark.",
+      "category": "Радужные и многоцветные",
+      "swatches": [
+        "#EC274F",
+        "#EAEA2E",
+        "#0FE639",
+        "#2A9BE5",
+        "#A638F0"
+      ],
+      "defaultBackground": "bg-08-reading-rose-cloud",
+      "defaultBlocks": "soft",
+      "roles": {
+        "en": "#8E152E",
+        "letter": "#915112",
+        "ipa": "#49158E",
+        "translation": "#158E31",
+        "term": "#8E157A",
+        "definition": "#179397",
+        "focus": "#8E2115",
+        "secondary": "#8E7115",
+        "soft": "#8918A0",
+        "heading": "#8E1562",
+        "ink": "#28202E"
+      },
+      "callouts": {
+        "rule": [
+          171,
+          92,
+          23
+        ],
+        "example": [
+          23,
+          131,
+          171
+        ],
+        "important": [
+          23,
+          171,
+          104
+        ],
+        "tip": [
+          171,
+          23,
+          139
+        ],
+        "warning": [
+          23,
+          107,
+          171
+        ],
+        "question": [
+          171,
+          23,
+          28
+        ],
+        "practice": [
+          23,
+          171,
+          171
+        ],
+        "success": [
+          171,
+          23,
+          114
+        ],
+        "info": [
+          171,
+          55,
+          23
+        ],
+        "note": [
+          139,
+          171,
+          23
+        ],
+        "quote": [
+          23,
+          171,
+          43
+        ],
+        "abstract": [
+          171,
+          153,
+          23
+        ]
+      },
+      "calloutFills": {
+        "rule": [
+          252,
+          239,
+          228
+        ],
+        "example": [
+          228,
+          246,
+          252
+        ],
+        "important": [
+          228,
+          252,
+          241
+        ],
+        "tip": [
+          252,
+          228,
+          247
+        ],
+        "warning": [
+          228,
+          242,
+          252
+        ],
+        "question": [
+          252,
+          228,
+          229
+        ],
+        "practice": [
+          228,
+          252,
+          252
+        ],
+        "success": [
+          252,
+          228,
+          243
+        ],
+        "info": [
+          252,
+          233,
+          228
+        ],
+        "note": [
+          247,
+          252,
+          228
+        ],
+        "quote": [
+          228,
+          252,
+          231
+        ],
+        "abstract": [
+          252,
+          249,
+          228
+        ]
+      },
+      "calloutTexts": {
+        "rule": [
+          127,
+          70,
+          21
+        ],
+        "example": [
+          21,
+          99,
+          127
+        ],
+        "important": [
+          21,
+          127,
+          79
+        ],
+        "tip": [
+          127,
+          21,
+          104
+        ],
+        "warning": [
+          21,
+          81,
+          127
+        ],
+        "question": [
+          127,
+          21,
+          24
+        ],
+        "practice": [
+          21,
+          127,
+          127
+        ],
+        "success": [
+          127,
+          21,
+          86
+        ],
+        "info": [
+          127,
+          44,
+          21
+        ],
+        "note": [
+          104,
+          127,
+          21
+        ],
+        "quote": [
+          21,
+          127,
+          35
+        ],
+        "abstract": [
+          127,
+          115,
+          21
+        ]
+      },
+      "calloutBorders": {
+        "rule": [
+          195,
+          104,
+          24
+        ],
+        "example": [
+          24,
+          150,
+          195
+        ],
+        "important": [
+          24,
+          195,
+          118
+        ],
+        "tip": [
+          195,
+          24,
+          158
+        ],
+        "warning": [
+          24,
+          121,
+          195
+        ],
+        "question": [
+          195,
+          24,
+          30
+        ],
+        "practice": [
+          24,
+          195,
+          195
+        ],
+        "success": [
+          195,
+          24,
+          130
+        ],
+        "info": [
+          195,
+          61,
+          24
+        ],
+        "note": [
+          158,
+          195,
+          24
+        ],
+        "quote": [
+          24,
+          195,
+          47
+        ],
+        "abstract": [
+          195,
+          175,
+          24
+        ]
+      },
+      "calloutFrames": {
+        "rule": {
+          "preset": "classic",
+          "width": 1.5,
+          "radius": 10
+        },
+        "example": {
+          "preset": "dashed",
+          "width": 2,
+          "radius": 10
+        },
+        "important": {
+          "preset": "double",
+          "width": 3,
+          "radius": 8
+        },
+        "tip": {
+          "preset": "dotted",
+          "width": 2,
+          "radius": 12
+        },
+        "warning": {
+          "preset": "left",
+          "width": 3,
+          "radius": 8
+        },
+        "question": {
+          "preset": "top",
+          "width": 2,
+          "radius": 8
+        },
+        "practice": {
+          "preset": "classic",
+          "width": 1.5,
+          "radius": 10
+        },
+        "success": {
+          "preset": "dashed",
+          "width": 1.5,
+          "radius": 12
+        },
+        "info": {
+          "preset": "classic",
+          "width": 1.5,
+          "radius": 10
+        },
+        "note": {
+          "preset": "left",
+          "width": 2,
+          "radius": 8
+        },
+        "quote": {
+          "preset": "dotted",
+          "width": 2,
+          "radius": 10
+        },
+        "abstract": {
+          "preset": "double",
+          "width": 2,
+          "radius": 10
+        }
+      }
+    },
+    "background": {
+      "id": "bg-rainbow-technicolor-blast",
+      "name": "Technicolor Blast — цветной фон",
+      "label": "Technicolor Blast — цветной фон",
+      "group": "Радужные и многоцветные",
+      "light": "linear-gradient(135deg, #F7A2B3 0%, #ADF7BC 54%, #E6C7FB 100%)",
+      "dark": "linear-gradient(135deg, #F7A2B3 0%, #ADF7BC 54%, #E6C7FB 100%)",
+      "textColor": "#28202E",
+      "darkTextColor": "#28202E"
+    },
+    "blockStyle": {
+      "id": "rainbow-blocks-technicolor-blast",
+      "name": "Technicolor Blast — учебные блоки",
+      "description": "Согласованные рамки и поверхности учебных Callout для палитры Technicolor Blast.",
+      "category": "Радужные и многоцветные",
+      "base": "soft",
+      "framePreset": "classic",
+      "frameOverrides": {
+        "important": "double",
+        "warning": "left",
+        "question": "top"
+      },
+      "style": {
+        "light": {
+          "backgroundOpacity": 0.18,
+          "borderOpacity": 0.78,
+          "borderWidth": 1.6,
+          "borderRadius": 13,
+          "paddingY": 10,
+          "paddingX": 12,
+          "gap": 8,
+          "titleWeight": 700,
+          "titleSize": 13,
+          "bodySize": 12
+        },
+        "dark": {
+          "backgroundOpacity": 0.18,
+          "borderOpacity": 0.78,
+          "borderWidth": 1.6,
+          "borderRadius": 13,
+          "paddingY": 10,
+          "paddingX": 12,
+          "gap": 8,
+          "titleWeight": 700,
+          "titleSize": 13,
+          "bodySize": 12
+        }
+      },
+      "calloutOverrides": {},
+      "colors": {
+        "light": {},
+        "dark": {}
+      },
+      "previewCallouts": [
+        "rule",
+        "example",
+        "important",
+        "tip",
+        "warning",
+        "question"
+      ]
+    }
+  }
+}
