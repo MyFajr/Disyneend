@@ -1209,14 +1209,17 @@ class LibraryItemPreviewModal extends Modal {
     heading.createEl('h2', { text: name });
     heading.createEl('p', { text: `${this.kind === 'palette' ? 'Палитра' : this.kind === 'background' ? 'Фон заметки' : 'Стиль блоков'} · ${item.category || item.group || 'Моя библиотека'} · ${this.index + 1} из ${this.items.length}` });
 
-    const modeBar = root.createDiv({ cls: 'esds-library-preview-mode' });
-    ['light', 'dark'].forEach(mode => {
-      const button = modeBar.createEl('button', { cls: `esds-button esds-btn-quiet${this.mode === mode ? ' is-active' : ''}`, text: mode === 'light' ? '☀ Светлая' : '☾ Тёмная', attr: { type: 'button' } });
-      button.addEventListener('click', () => { this.mode = mode; this.render(); });
-    });
+    if (this.kind !== 'palette') {
+      const modeBar = root.createDiv({ cls: 'esds-library-preview-mode' });
+      ['light', 'dark'].forEach(mode => {
+        const button = modeBar.createEl('button', { cls: `esds-button esds-btn-quiet${this.mode === mode ? ' is-active' : ''}`, text: mode === 'light' ? '☀ Светлая' : '☾ Тёмная', attr: { type: 'button' } });
+        button.addEventListener('click', () => { this.mode = mode; this.render(); });
+      });
+    }
 
     const preview = root.createDiv({ cls: `esds-library-large-preview esds-preview ${palette.id} esds-palette-${palette.id} ${background.id || ''} esds-frames-from-palette` });
-    s.setPreviewTheme(preview, palette, background, block, this.mode);
+    // Palette preview is one fixed design, not two theme variants.
+    s.setPreviewTheme(preview, palette, background, block, this.kind === 'palette' ? 'light' : this.mode);
     if (this.kind === 'palette') s.renderPaletteRichSampleContent(preview);
     else if (this.kind === 'background') s.renderMiniNote(preview, true);
     else s.renderBlockGallery(preview, item.previewCallouts || ['rule', 'example', 'important', 'tip', 'warning', 'success']);
@@ -1682,7 +1685,10 @@ class DesignStudioModal extends Modal {
       };
       return copy.sort((a, b) => timestamp(b) - timestamp(a));
     }
-    return copy.sort((a, b) => (a.order || 0) - (b.order || 0));
+    return copy.sort((a, b) => {
+      const order = item => Number.isFinite(Number(item.order)) ? Number(item.order) : 0;
+      return order(a) - order(b);
+    });
   }
   addSortSelect(parent, kind) {
     const select = parent.createEl('select', { cls: 'esds-select esds-sort-select' });
@@ -2440,7 +2446,7 @@ class DesignStudioModal extends Modal {
 
     const intro = parent.createDiv({ cls: 'esds-subsection esds-library-section esds-library-intro' });
     intro.createEl('h3', { text: 'Личная коллекция оформления' });
-    intro.createEl('p', { cls: 'esds-section-note', text: 'Импортированные элементы сохраняются в библиотеке плагина. Открой карточку для большого просмотра, переключения светлой/тёмной версии и листания вариантов.' });
+    intro.createEl('p', { cls: 'esds-section-note', text: 'Импортированные элементы сохраняются в библиотеке плагина. Палитры имеют один фиксированный вид; фоны и дополнительные стили можно просматривать отдельно.' });
     const catalog = parent.createDiv({ cls: 'esds-subsection esds-library-section esds-library-catalog' });
     catalog.createEl('h3', { text: `Каталог · ${palettes.length + backgrounds.length + blockStyles.length} элементов` });
     this.renderLibraryCatalog(catalog);
@@ -2556,6 +2562,8 @@ class DesignStudioModal extends Modal {
           const footer = folder.createDiv({ cls: 'esds-catalog-folder-footer' });
           footer.createSpan({ text: `${items.length} ${items.length === 1 ? 'палитра' : 'палитр'}` });
           footer.createSpan({ text: 'Открыть ›' });
+          const categoryMenu = folder.createEl('button', { cls: 'esds-icon-btn esds-catalog-folder-menu', text: '⋯', attr: { type: 'button', title: 'Управление категорией' } });
+          categoryMenu.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); this.openPaletteCategoryMenu(name, categoryMenu); });
           const open = () => { this.paletteCategory = name; renderDirectory(''); };
           folder.addEventListener('click', open);
           folder.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
@@ -2668,22 +2676,105 @@ class DesignStudioModal extends Modal {
     articleSample.createEl('hr');
     this.renderBlockGallery(sample, ['rule', 'example', 'important', 'tip', 'warning', 'question']);
   }
+  async savePaletteLibraryAction(notice) {
+    const saved = await this.plugin.saveUserLibrary();
+    if (!saved) { new Notice('Не удалось сохранить изменения палитры.'); return false; }
+    this.plugin.refreshGeneratedStyles();
+    this.render();
+    if (notice) new Notice(notice);
+    return true;
+  }
+  async reorderUserPalette(palette, direction) {
+    const list = (this.plugin.userData.palettes || [])
+      .filter(item => (item.category || 'Мои палитры') === (palette.category || 'Мои палитры'))
+      .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0));
+    const index = list.findIndex(item => item.id === palette.id), target = index + direction;
+    if (index < 0 || target < 0 || target >= list.length) { new Notice('В этой категории больше нечего перемещать.'); return; }
+    const currentOrder = Number.isFinite(Number(list[index].order)) ? Number(list[index].order) : index * 10;
+    const targetOrder = Number.isFinite(Number(list[target].order)) ? Number(list[target].order) : target * 10;
+    list[index].order = targetOrder; list[target].order = currentOrder;
+    await this.savePaletteLibraryAction('Порядок палитр обновлён.');
+  }
+  openPaletteCategoryMenu(categoryName, anchorEl) {
+    const categories = this.getCategories('palettes'), category = categories.find(item => item.name === categoryName);
+    if (!category) return;
+    const index = categories.findIndex(item => item.id === category.id), actions = [];
+    if (!category.protected) {
+      actions.push(['✎ Переименовать категорию', '', async () => {
+        const value = prompt('Новое название категории:', category.name);
+        if (value === null || !value.trim()) return;
+        const name = value.trim();
+        if (categories.some(item => item.id !== category.id && item.name.toLocaleLowerCase() === name.toLocaleLowerCase())) { new Notice('Категория с таким названием уже существует.'); return; }
+        const old = category.name; category.name = name;
+        (this.plugin.userData.palettes || []).forEach(item => { if ((item.category || 'Мои палитры') === old) item.category = name; });
+        if (this.paletteCategory === old) this.paletteCategory = name;
+        await this.savePaletteLibraryAction('Категория переименована.');
+      }]);
+      actions.push(['✕ Удалить категорию', 'esds-menu-danger', async () => {
+        const fallback = categories.find(item => item.id !== category.id);
+        if (!confirm(`Удалить категорию «${category.name}»? Палитры будут перенесены в «${fallback ? fallback.name : 'Мои палитры'}».`)) return;
+        (this.plugin.userData.palettes || []).forEach(item => { if ((item.category || 'Мои палитры') === category.name) item.category = fallback ? fallback.name : 'Мои палитры'; });
+        this.plugin.userData.categories.palettes = categories.filter(item => item.id !== category.id);
+        if (this.paletteCategory === category.name) this.paletteCategory = null;
+        await this.savePaletteLibraryAction('Категория удалена.');
+      }]);
+    }
+    if (index > 0) actions.push(['↑ Выше в списке', '', async () => {
+      const other = categories[index - 1], order = Number.isFinite(Number(category.order)) ? Number(category.order) : index * 10;
+      category.order = Number.isFinite(Number(other.order)) ? Number(other.order) : (index - 1) * 10; other.order = order;
+      await this.savePaletteLibraryAction('Порядок категорий обновлён.');
+    }]);
+    if (index < categories.length - 1) actions.push(['↓ Ниже в списке', '', async () => {
+      const other = categories[index + 1], order = Number.isFinite(Number(category.order)) ? Number(category.order) : index * 10;
+      category.order = Number.isFinite(Number(other.order)) ? Number(other.order) : (index + 1) * 10; other.order = order;
+      await this.savePaletteLibraryAction('Порядок категорий обновлён.');
+    }]);
+    this.openItemMenu(anchorEl, actions);
+  }
   openPaletteMenu(palette, anchorEl) {
-    this.openItemMenu(anchorEl, [
-      ['✎ Редактировать', '', () => new PaletteBuilderModal(this.app, this, palette).open()],
-      ['⧉ Дублировать', '', async () => {
-        const copy = clone(palette); copy.id = `user-${slugify(copy.name)}-${Date.now().toString(36).slice(-4)}`; copy.name = `${palette.name} (копия)`; copy.category = palette.category || 'Мои палитры'; copy.createdAt = new Date().toISOString(); copy.updatedAt = copy.createdAt; copy.source = 'user';
-        this.plugin.userData.palettes.push(copy); await this.plugin.saveUserLibrary(); this.plugin.refreshGeneratedStyles(); this.render(); new Notice(`Создана копия «${copy.name}».`);
-      }],
-      ['⇩ Экспорт', '', async () => { const previous = this.selectedPalette; this.selectedPalette = palette; await this.exportItem('palette'); this.selectedPalette = previous; }],
-      ['✕ Удалить', 'esds-menu-danger', async () => {
-        if (!confirm(`Удалить палитру «${palette.name}»?`)) return;
-        this.plugin.userData.palettes = this.plugin.userData.palettes.filter(item => item.id !== palette.id);
-        this.plugin.userData.favoriteItems = (this.plugin.userData.favoriteItems || []).filter(item => !(item.kind === 'palette' && item.id === palette.id));
-        if (this.selectedPalette.id === palette.id) this.selectPalette(PALETTES[0]); else this.render();
-        await this.plugin.saveUserLibrary(); this.plugin.refreshGeneratedStyles(); new Notice('Палитра удалена.');
-      }]
-    ]);
+    const userOwned = (this.plugin.userData.palettes || []).some(item => item.id === palette.id);
+    const items = [];
+    if (userOwned) {
+      items.push(['✎ Переименовать', '', async () => {
+        const value = prompt('Новое название палитры:', palette.name);
+        if (value === null || !value.trim()) return;
+        palette.name = value.trim(); palette.updatedAt = new Date().toISOString();
+        await this.savePaletteLibraryAction('Палитра переименована.');
+      }]);
+      items.push(['↗ Переместить в категорию', '', async () => {
+        const value = prompt('Название категории:', palette.category || 'Мои палитры');
+        if (value === null || !value.trim()) return;
+        const category = value.trim(), categories = this.plugin.userData.categories.palettes;
+        if (!categories.some(item => item.name.toLocaleLowerCase() === category.toLocaleLowerCase())) {
+          const baseId = slugify(category); let id = baseId, suffix = 2;
+          while (categories.some(item => item.id === id)) id = `${baseId}-${suffix++}`;
+          categories.push({ id, name: category, order: categories.length * 10, protected: false });
+        }
+        palette.category = category; palette.updatedAt = new Date().toISOString();
+        await this.savePaletteLibraryAction(`Палитра перемещена в «${category}».`);
+      }]);
+      items.push(['↑ Поднять выше', '', () => this.reorderUserPalette(palette, -1)]);
+      items.push(['↓ Опустить ниже', '', () => this.reorderUserPalette(palette, 1)]);
+      items.push(['✎ Редактировать цвета', '', () => new PaletteBuilderModal(this.app, this, palette).open()]);
+    }
+    items.push(['⧉ Дублировать', '', async () => {
+      const copy = normalizeSingleModePalette(clone(palette));
+      copy.id = `user-${slugify(copy.name)}-${Date.now().toString(36).slice(-4)}`;
+      copy.name = `${palette.name} (копия)`; copy.category = palette.category || 'Мои палитры';
+      copy.createdAt = new Date().toISOString(); copy.updatedAt = copy.createdAt; copy.source = 'user';
+      copy.order = (this.plugin.userData.palettes || []).length * 10;
+      this.plugin.userData.palettes.push(copy);
+      await this.savePaletteLibraryAction(`Создана копия «${copy.name}».`);
+    }]);
+    items.push(['⇩ Экспорт JSON', '', async () => { const previous = this.selectedPalette; this.selectedPalette = palette; await this.exportItem('palette'); this.selectedPalette = previous; }]);
+    if (userOwned) items.push(['✕ Удалить', 'esds-menu-danger', async () => {
+      if (!confirm(`Удалить палитру «${palette.name}»?`)) return;
+      this.plugin.userData.palettes = this.plugin.userData.palettes.filter(item => item.id !== palette.id);
+      this.plugin.userData.favoriteItems = (this.plugin.userData.favoriteItems || []).filter(item => !(item.kind === 'palette' && item.id === palette.id));
+      if (this.selectedPalette.id === palette.id) this.selectedPalette = PALETTES[0];
+      await this.savePaletteLibraryAction('Палитра удалена.');
+    }]);
+    this.openItemMenu(anchorEl, items);
   }
   openItemMenu(anchorEl, items) {
     const existing = document.querySelector('.esds-style-menu-popover'); if (existing) existing.remove();

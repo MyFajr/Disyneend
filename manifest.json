@@ -1,9 +1,9 @@
 {
   "id": "english-study-design-studio",
   "name": "English Study Design Studio",
-  "version": "0.9.24",
+  "version": "0.9.25",
   "minAppVersion": "1.5.0",
-  "description": "Single-mode palettes: one fixed color system across Obsidian light and dark themes; preserves the 0.9.23 library manager.",
+  "description": "Fixed single-view palette previews and working category/item management controls.",
   "author": "Custom personal plugin",
   "isDesktopOnly": false
 }

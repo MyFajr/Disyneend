@@ -92,5 +92,9 @@
   "0.9.24": {
     "minAppVersion": "1.5.0",
     "description": "Single-mode palettes with fixed note colors across Obsidian light/dark themes; legacy palette migration and schema 4 export."
+  },
+  "0.9.25": {
+    "minAppVersion": "1.5.0",
+    "description": "Single-view palette preview, category management actions, palette rename/move/reorder/delete and stable sorting."
   }
 }
