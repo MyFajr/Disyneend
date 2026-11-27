@@ -346,7 +346,7 @@ const BUILTIN_BG_IDS = new Set(BACKGROUNDS.map(item => item.id));
 const LEGACY_LIBRARY_PATH = '.obsidian/english-study-design-studio/user-library.json';
 const LIBRARY_SCHEMA = 3;
 // Keep legacy serialized role keys so existing palette files remain compatible: `en` now labels foreign-language text, `ipa` labels pronunciation/transcription.
-const ROLE_KEYS = ['en', 'ipa', 'translation', 'term', 'definition', 'focus', 'secondary', 'soft', 'heading', 'ink'];
+const ROLE_KEYS = ['en', 'letter', 'ipa', 'translation', 'term', 'definition', 'focus', 'secondary', 'soft', 'heading', 'ink'];
 const CALLOUT_KEYS = CALLOUTS.map(([key]) => key);
 const BLOCK_FRAME_PRESET_KEYS = ['classic', 'dashed', 'dotted', 'double', 'left', 'none', 'top'];
 const THEME_PACK_SCHEMA_VERSION = 1;
@@ -795,12 +795,18 @@ function normalizeSingleModePalette(raw) {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return raw;
   const palette = clone(raw);
   ['dark', 'darkCallouts', 'darkCalloutFills', 'darkCalloutTexts', 'darkCalloutBorders'].forEach(key => delete palette[key]);
+  // New independent role for foreign letters; migrate older schema-4 palettes safely.
+  if (!palette.roles || typeof palette.roles !== 'object' || Array.isArray(palette.roles)) palette.roles = {};
+  if (!isHexColor(palette.roles.letter)) {
+    palette.roles.letter = isHexColor(palette.roles.en) ? palette.roles.en
+      : (isHexColor(palette.roles.ipa) ? palette.roles.ipa : '#8b5cf6');
+  }
   return palette;
 }
 
 function makePaletteCss(palette) {
   const cls = `esds-palette-${palette.id}`;
-  const roles = palette.roles || {};
+  const roles = normalizeSingleModePalette(palette).roles || {};
   const callouts = palette.callouts || {};
   const selectors = [
     `.markdown-preview-view.esds-note.${cls}`,
@@ -1403,7 +1409,7 @@ class PaletteBuilderModal extends Modal {
     singleModeNote.createEl('strong', { text: 'Единая цветовая схема палитры' });
     singleModeNote.createEl('small', { text: 'Цвета палитры не меняются при переключении светлой и тёмной темы Obsidian.' });
     const swatches = body.createDiv({ cls: 'esds-color-grid' });
-    const labels = { en:'Иностранные слова', ipa:'Произношение / транскрипция', translation:'Перевод', term:'Термины', definition:'Определения', focus:'Главный акцент', secondary:'Второй акцент', soft:'Мягкий акцент', heading:'Заголовки', ink:'Основной текст' };
+    const labels = { en:'Иностранные слова', letter:'Иностранные буквы', ipa:'Произношение / транскрипция', translation:'Перевод', term:'Термины', definition:'Определения', focus:'Главный акцент', secondary:'Второй акцент', soft:'Мягкий акцент', heading:'Заголовки', ink:'Основной текст' };
     const currentRoles = this.base.roles || {};
     ROLE_KEYS.forEach(key => {
       const field = swatches.createDiv({ cls: 'esds-color-field' });
@@ -3853,7 +3859,7 @@ class DesignStudioModal extends Modal {
       if (modeOverride === 'light') container.addClass('esds-preview-light-mode');
       else container.removeClass('esds-preview-light-mode');
     }
-    const roles = palette.roles;
+    const roles = normalizeSingleModePalette(palette).roles;
     if (roles) {
       ROLE_KEYS.forEach(key => {
         if (roles[key]) container.style.setProperty(`--esds-${key}`, roles[key]);
@@ -4462,7 +4468,7 @@ class DesignStudioModal extends Modal {
           for (const file of files) {
             try {
               const data = JSON.parse(await file.text());
-              const palette = data && data.palette ? data.palette : data;
+              const palette = normalizeSingleModePalette(data && data.palette ? data.palette : data);
               if (!palette || typeof palette !== 'object' || Array.isArray(palette) || !palette.name) throw new Error('в JSON отсутствует название палитры');
               if (!palette.roles || !ROLE_KEYS.every(key => isHexColor(palette.roles[key]))) throw new Error('неполные или неверные цветовые роли палитры ESDS');
               const schema = Number(data.schemaVersion || 1);
@@ -4724,7 +4730,7 @@ class DesignStudioModal extends Modal {
     if (kind === 'palette') {
       const paletteSchemaVersion = Number(data.schemaVersion || 1);
       if (!Number.isInteger(paletteSchemaVersion) || paletteSchemaVersion < 1 || paletteSchemaVersion > 4) throw new Error('Версия формата палитры не поддерживается.');
-      let p = data.palette || data;
+      let p = normalizeSingleModePalette(data.palette || data);
       const roles = p.roles || {};
       if (!p.name || !ROLE_KEYS.every(key => isHexColor(roles[key]))) throw new Error('Palette roles are missing or invalid');
       const palette = normalizeSingleModePalette(p);
