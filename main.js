@@ -1670,6 +1670,8 @@ class CategoryManagerModal extends Modal {
     const body = root.createDiv({ cls: 'esds-builder-body' });
     const list = this.studio.plugin.userData.categories[this.kind] || [];
     list.sort((a, b) => (a.order || 0) - (b.order || 0));
+    this.selectedCategoryIds = this.selectedCategoryIds || new Set();
+    this.selectedCategoryIds = new Set([...this.selectedCategoryIds].filter(id => list.some(cat => cat.id === id && !cat.protected)));
     const studio = this.studio;
     const itemKind = this.kind === 'palettes' ? 'palette' : this.kind === 'backgrounds' ? 'background' : 'blockStyle';
     const byId = new Map(list.map(cat => [cat.id, cat]));
@@ -1679,6 +1681,36 @@ class CategoryManagerModal extends Modal {
       return depth;
     };
     const totalOf = cat => studio.categoryTotalItems(this.kind, itemKind, cat.id);
+    const bulk = body.createDiv({ cls: 'esds-category-bulk-toolbar' });
+    const bulkInfo = bulk.createSpan({ cls: 'esds-category-bulk-count', text: `Выбрано категорий: ${this.selectedCategoryIds.size}` });
+    const refreshBulk = () => { bulkInfo.textContent = `Выбрано категорий: ${this.selectedCategoryIds.size}`; };
+    const selectAll = bulk.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Выбрать все', attr: { type: 'button' } });
+    selectAll.addEventListener('click', () => { list.filter(cat => !cat.protected).forEach(cat => this.selectedCategoryIds.add(cat.id)); this.render(); });
+    const clearSelection = bulk.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Снять выбор', attr: { type: 'button' } });
+    clearSelection.addEventListener('click', () => { this.selectedCategoryIds.clear(); this.render(); });
+    const bulkDelete = async (withItems) => {
+      const ids = [...this.selectedCategoryIds].filter(id => list.some(cat => cat.id === id && !cat.protected));
+      if (!ids.length) { new Notice('Сначала выберите категории.'); return; }
+      const selected = new Set(ids);
+      const candidates = withItems
+        ? list.filter(cat => selected.has(cat.id) && !list.some(parent => selected.has(parent.id) && studio.categoryDescendantIds(this.kind, parent.id).has(cat.id)))
+        : list.filter(cat => selected.has(cat.id)).sort((x, y) => depthOf(y) - depthOf(x));
+      const itemCount = candidates.reduce((sum, cat) => sum + totalOf(cat), 0);
+      const message = withItems
+        ? `Удалить ${candidates.length} выбранных категорий вместе с подкатегориями и элементами (примерно ${itemCount})? Это действие нельзя отменить.`
+        : `Удалить ${candidates.length} выбранных категорий? Элементы будут сохранены и перенесены в оставшиеся категории.`;
+      if (!confirm(message)) return;
+      for (const cat of candidates) {
+        const ok = await studio.deleteCategoryById(this.kind, cat.id, { withItems });
+        if (!ok) return;
+      }
+      this.selectedCategoryIds.clear();
+      this.render();
+    };
+    const deleteCategories = bulk.createEl('button', { cls: 'esds-button esds-btn-outline-coral', text: 'Удалить категории', attr: { type: 'button' } });
+    deleteCategories.addEventListener('click', () => bulkDelete(false));
+    const deleteWithItems = bulk.createEl('button', { cls: 'esds-button esds-btn-outline-coral', text: 'Удалить с элементами', attr: { type: 'button' } });
+    deleteWithItems.addEventListener('click', () => bulkDelete(true));
 
     list.forEach((cat, index) => {
       const row = body.createDiv({ cls: 'esds-category-manage-row esds-category-manage-tree-row' });
@@ -1688,6 +1720,16 @@ class CategoryManagerModal extends Modal {
       const meta = label.createDiv({ cls: 'esds-category-manage-meta' });
       meta.createEl('small', { text: `${totalOf(cat)} эл.` });
       if (cat.protected) meta.createEl('span', { cls: 'esds-badge-protected', text: 'системная' });
+      if (!cat.protected) {
+        const selectLabel = row.createEl('label', { cls: 'esds-category-bulk-check' });
+        const selectBox = selectLabel.createEl('input', { attr: { type: 'checkbox', 'aria-label': 'Выбрать категорию ' + cat.name } });
+        selectBox.checked = this.selectedCategoryIds.has(cat.id);
+        selectBox.addEventListener('change', () => {
+          if (selectBox.checked) this.selectedCategoryIds.add(cat.id);
+          else this.selectedCategoryIds.delete(cat.id);
+          refreshBulk();
+        });
+      }
       const buttons = row.createDiv({ cls: 'esds-category-manage-actions' });
       const move = buttons.createEl('button', { cls: 'esds-button esds-btn-quiet', text: '↳ В категорию', attr: { type: 'button', title: 'Переместить в другую категорию' } });
       move.addEventListener('click', () => studio.openMoveCategoryMenu(this.kind, cat.id, move));
