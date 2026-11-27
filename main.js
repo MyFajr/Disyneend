@@ -1582,7 +1582,7 @@ class LibraryManagerModal extends Modal {
   }
   async commit(mutator, message) {
     const data = this.studio.plugin.userData, key = this.config.key;
-    const before = clone(data[key] || []), favBefore = clone(data.favoriteItems || []), categoriesBefore = clone(data.categories || {});
+    const before = clone(data[key] || []), favBefore = clone(data.favoriteItems || []), categoriesBefore = clone(data.categories || {});\n    const selectedBefore = { palette: this.studio.selectedPalette, background: this.studio.selectedBackground, blocks: this.studio.selectedBlocks };
     try {
       await mutator(data[key] || []);
       if (await this.studio.plugin.saveUserLibrary() === false) throw new Error('save failed');
@@ -1590,7 +1590,7 @@ class LibraryManagerModal extends Modal {
       if (message) new Notice(message);
       this.studio.render(); this.render();
     } catch (error) {
-      data[key] = before; data.favoriteItems = favBefore; data.categories = categoriesBefore;
+      data[key] = before; data.favoriteItems = favBefore; data.categories = categoriesBefore;\n      this.studio.selectedPalette = selectedBefore.palette; this.studio.selectedBackground = selectedBefore.background; this.studio.selectedBlocks = selectedBefore.blocks;
       console.error('ESDS library manager operation failed:', error);
       new Notice('Не удалось сохранить изменения. Библиотека восстановлена.'); this.render();
     }
