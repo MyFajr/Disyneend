@@ -1,9 +1,9 @@
 {
   "id": "english-study-design-studio",
   "name": "English Study Design Studio",
-  "version": "0.9.30",
+  "version": "0.9.31",
   "minAppVersion": "1.5.0",
-  "description": "Android-friendly palette/background library file management, nested categories, reliable card actions and optimized accordion rendering.",
+  "description": "Full management of all palette and background categories, bulk selection, move and delete, Android-friendly UI.",
   "author": "Custom personal plugin",
   "isDesktopOnly": false
 }
