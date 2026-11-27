@@ -346,8 +346,8 @@
     "name": "Lemon Burst — фон",
     "label": "Lemon Burst — фон",
     "group": "Rainbow Multicolor",
-    "light": "linear-gradient(135deg, #FCF9C5 0%, #FFE6C7 100%)",
-    "dark": "linear-gradient(135deg, #FCF9C5 0%, #FFE6C7 100%)",
+    "light": "linear-gradient(135deg, #F6EC42 0%, #FFCE91 100%)",
+    "dark": "linear-gradient(135deg, #F6EC42 0%, #FFCE91 100%)",
     "textColor": "#201B2A",
     "darkTextColor": "#201B2A"
   },
