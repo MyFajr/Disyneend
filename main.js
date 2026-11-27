@@ -2444,7 +2444,8 @@ class DesignStudioModal extends Modal {
           }
           swatches.forEach(color => { const swatch = visual.createSpan({ cls: 'esds-catalog-folder-swatch' }); if (color) { if (typeof color === 'string' && color.startsWith('var(')) swatch.style.background = color; else swatch.style.backgroundColor = colorToHex(color); } });
           const info = folder.createDiv({ cls: 'esds-catalog-folder-info' });
-          info.createEl('strong', { text: name });
+          const parentCategory = meta.parentId ? storedCategories.find(category => category.id === meta.parentId) : null;
+          info.createEl('strong', { text: parentCategory ? `${parentCategory.name} / ${name}` : name });
           info.createEl('small', { text: meta.description || (kind === 'palette' ? 'Набор согласованных цветовых дизайнов.' : kind === 'background' ? 'Фоны для оформления заметок.' : 'Дополнительные варианты оформления блоков.') });
           const footer = folder.createDiv({ cls: 'esds-catalog-folder-footer' });
           footer.createSpan({ text: `${items.length} элементов` }); footer.createSpan({ text: 'Открыть ›' });
