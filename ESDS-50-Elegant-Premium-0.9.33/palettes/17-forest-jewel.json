@@ -5,8 +5,8 @@
     "id": "user-forest-jewel",
     "name": "Forest Jewel",
     "mood": "Forest Jewel — яркая авторская цветовая система",
-    "description": "Полноценная учебная палитра Forest Jewel: выразительный цветной фон, иерархия текста, отдельные роли иностранных слов и букв, IPA, переводов, терминов и определений; согласованные Callout и таблицы.",
-    "category": "Rainbow Multicolor",
+    "description": "Полноценная учебная палитра Forest Jewel: выразительный цветной фон, иерархия текста, отдельные роли иностранных слов и букв, IPA, переводов, терминов и определений; согласованные Callout и таблицы. Коллекция 50: выразительный градиентный фон, контрастные семантические роли и цельная система карточек.",
+    "category": "Элегантные и премиальные",
     "source": "user",
     "swatches": [
       "#126B42",
@@ -18,264 +18,264 @@
     "defaultBackground": "bg-custom-forest-jewel",
     "defaultBlocks": "user-blocks-forest-jewel",
     "roles": {
-      "en": "#0E2923",
-      "letter": "#4D5430",
-      "ipa": "#312048",
-      "translation": "#0F312B",
-      "term": "#421B37",
-      "definition": "#3A4358",
-      "focus": "#0E2F25",
-      "secondary": "#4D5430",
-      "soft": "#342647",
-      "heading": "#0D211F",
-      "ink": "#201B2A"
+      "en": "#0A2852",
+      "letter": "#520A22",
+      "ipa": "#340A52",
+      "translation": "#0A5234",
+      "term": "#522C0A",
+      "definition": "#0A4652",
+      "focus": "#520A10",
+      "secondary": "#52400A",
+      "soft": "#100A52",
+      "heading": "#07184A",
+      "ink": "#211A27"
     },
     "callouts": {
       "rule": [
-        40,
-        104,
-        216
+        110,
+        13,
+        206
       ],
       "example": [
-        146,
-        81,
-        189
+        13,
+        126,
+        206
       ],
       "important": [
-        224,
-        71,
-        98
+        206,
+        29,
+        13
       ],
       "tip": [
-        22,
-        132,
-        92
+        13,
+        206,
+        174
       ],
       "warning": [
-        194,
-        122,
-        24
+        206,
+        126,
+        13
       ],
       "question": [
-        18,
-        139,
-        166
+        13,
+        45,
+        206
       ],
       "practice": [
-        212,
-        91,
-        36
+        206,
+        190,
+        13
       ],
       "success": [
-        35,
-        148,
-        93
+        13,
+        206,
+        77
       ],
       "info": [
-        66,
-        109,
-        184
+        174,
+        13,
+        206
       ],
       "note": [
-        102,
-        112,
-        133
+        206,
+        61,
+        13
       ],
       "quote": [
-        186,
-        77,
-        145
+        13,
+        158,
+        206
       ],
       "abstract": [
-        128,
-        82,
-        181
+        206,
+        13,
+        126
       ]
     },
     "calloutFills": {
       "rule": [
-        227,
-        235,
-        250
+        56,
+        12,
+        100
       ],
       "example": [
-        241,
-        232,
-        246
+        12,
+        63,
+        100
       ],
       "important": [
-        251,
-        231,
-        235
+        100,
+        20,
+        12
       ],
       "tip": [
-        225,
-        239,
-        234
+        12,
+        100,
+        85
       ],
       "warning": [
-        247,
-        238,
-        225
+        100,
+        63,
+        12
       ],
       "question": [
-        224,
-        240,
-        243
+        12,
+        27,
+        100
       ],
       "practice": [
-        249,
-        234,
-        227
+        100,
+        93,
+        12
       ],
       "success": [
-        226,
-        241,
-        234
+        12,
+        100,
+        42
       ],
       "info": [
-        230,
-        236,
-        246
+        85,
+        12,
+        100
       ],
       "note": [
-        235,
-        236,
-        239
+        100,
+        34,
+        12
       ],
       "quote": [
-        246,
-        232,
-        241
+        12,
+        78,
+        100
       ],
       "abstract": [
-        238,
-        233,
-        245
+        100,
+        12,
+        63
       ]
     },
     "calloutTexts": {
       "rule": [
-        23,
-        46,
-        94
+        255,
+        255,
+        255
       ],
       "example": [
-        63,
-        37,
-        84
+        255,
+        255,
+        255
       ],
       "important": [
-        93,
-        33,
-        50
+        255,
+        255,
+        255
       ],
       "tip": [
-        16,
-        56,
-        47
+        255,
+        255,
+        255
       ],
       "warning": [
-        81,
-        53,
-        22
+        255,
+        255,
+        255
       ],
       "question": [
-        14,
-        59,
-        75
+        255,
+        255,
+        255
       ],
       "practice": [
-        88,
-        41,
-        26
+        255,
+        255,
+        255
       ],
       "success": [
-        21,
-        62,
-        48
+        255,
+        255,
+        255
       ],
       "info": [
-        33,
-        48,
-        82
+        255,
+        255,
+        255
       ],
       "note": [
-        46,
-        49,
-        63
+        255,
+        255,
+        255
       ],
       "quote": [
-        78,
-        35,
-        68
+        255,
+        255,
+        255
       ],
       "abstract": [
-        56,
-        37,
-        81
+        255,
+        255,
+        255
       ]
     },
     "calloutBorders": {
       "rule": [
-        34,
-        85,
-        177
+        110,
+        13,
+        206
       ],
       "example": [
-        119,
-        67,
-        155
+        13,
+        126,
+        206
       ],
       "important": [
-        182,
-        59,
-        82
+        206,
+        29,
+        13
       ],
       "tip": [
-        20,
-        108,
-        78
+        13,
+        206,
+        174
       ],
       "warning": [
-        158,
-        100,
-        23
+        206,
+        126,
+        13
       ],
       "question": [
-        17,
-        113,
-        137
+        13,
+        45,
+        206
       ],
       "practice": [
-        172,
-        75,
-        33
+        206,
+        190,
+        13
       ],
       "success": [
-        30,
-        120,
-        78
+        13,
+        206,
+        77
       ],
       "info": [
-        55,
-        89,
-        151
+        174,
+        13,
+        206
       ],
       "note": [
-        84,
-        92,
-        110
+        206,
+        61,
+        13
       ],
       "quote": [
-        151,
-        64,
-        120
+        13,
+        158,
+        206
       ],
       "abstract": [
-        105,
-        68,
-        149
+        206,
+        13,
+        126
       ]
     },
     "calloutFrames": {
@@ -345,17 +345,17 @@
     "id": "bg-custom-forest-jewel",
     "name": "Forest Jewel — фон",
     "label": "Forest Jewel — фон",
-    "group": "Rainbow Multicolor",
-    "light": "linear-gradient(135deg, #AACABB 0%, #DBF47C 100%)",
-    "dark": "linear-gradient(135deg, #AACABB 0%, #DBF47C 100%)",
-    "textColor": "#201B2A",
-    "darkTextColor": "#201B2A"
+    "group": "Элегантные и премиальные",
+    "light": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #AACABB 0%, #DBF47C 100%)",
+    "dark": "radial-gradient(ellipse at 18% 12%, #FFFFFF55 0%, transparent 56%), linear-gradient(125deg, transparent 18%, #FFFFFF24 50%, transparent 82%), linear-gradient(135deg, #AACABB 0%, #DBF47C 100%)",
+    "textColor": "#211A27",
+    "darkTextColor": "#211A27"
   },
   "blockStyle": {
     "id": "user-blocks-forest-jewel",
     "name": "Forest Jewel — карточки",
-    "description": "Цветные учебные карточки с аккуратными рамками и удобными отступами для Android.",
-    "category": "Rainbow Multicolor",
+    "description": "Контрастные цветные учебные карточки с увеличенным текстом Medium 500, заголовками Semibold 650 и отдельными смысловыми заливками.",
+    "category": "Элегантные и премиальные",
     "base": "soft",
     "framePreset": "classic",
     "frameOverrides": {
@@ -366,59 +366,63 @@
     },
     "style": {
       "light": {
-        "backgroundOpacity": 0.13,
-        "borderWidth": 1.5,
-        "borderOpacity": 0.56,
-        "borderRadius": 13,
-        "paddingY": 10,
-        "paddingX": 12,
+        "backgroundOpacity": 0.94,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
         "gap": 8,
         "titleWeight": 650,
-        "titleSize": 13,
-        "bodySize": 12,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "bodyWeight": 500,
         "shadow": "none"
       },
       "dark": {
-        "backgroundOpacity": 0.13,
-        "borderWidth": 1.5,
-        "borderOpacity": 0.56,
-        "borderRadius": 13,
-        "paddingY": 10,
-        "paddingX": 12,
+        "backgroundOpacity": 0.94,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
+        "borderRadius": 14,
+        "paddingY": 11,
+        "paddingX": 13,
         "gap": 8,
         "titleWeight": 650,
-        "titleSize": 13,
-        "bodySize": 12,
+        "titleSize": 15.5,
+        "bodySize": 16.2,
+        "bodyWeight": 500,
         "shadow": "none"
       }
     },
     "calloutOverrides": {
       "important": {
         "light": {
-          "backgroundOpacity": 0.19,
-          "borderOpacity": 0.86,
-          "borderWidth": 2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.2
         },
         "dark": {
-          "backgroundOpacity": 0.19,
-          "borderOpacity": 0.86,
-          "borderWidth": 2
-        }
-      },
-      "tip": {
-        "light": {
-          "borderRadius": 15
-        },
-        "dark": {
-          "borderRadius": 15
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.2
         }
       },
       "warning": {
         "light": {
-          "borderWidth": 2
+          "backgroundOpacity": 0.95,
+          "borderWidth": 2.1
         },
         "dark": {
-          "borderWidth": 2
+          "backgroundOpacity": 0.95,
+          "borderWidth": 2.1
+        }
+      },
+      "question": {
+        "light": {
+          "backgroundOpacity": 0.94,
+          "borderWidth": 1.9
+        },
+        "dark": {
+          "backgroundOpacity": 0.94,
+          "borderWidth": 1.9
         }
       }
     },
@@ -434,7 +438,11 @@
       "warning",
       "question",
       "practice",
-      "success"
+      "success",
+      "info",
+      "note",
+      "quote",
+      "abstract"
     ]
   }
 }
