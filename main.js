@@ -2284,7 +2284,7 @@ class DesignStudioModal extends Modal {
         if (!live) { new Notice('Элемент уже отсутствует в библиотеке.'); return; }
         live[categoryField] = target.trim();
         if (kind === 'background') live.category = target.trim();
-        if (!await saveAndRefresh('Элемент перемещён в «' + target.trim() + '».')) this.plugin.userData = before;
+        if (!await saveAndRefresh('Элемент перемещён в «' + target.trim() + '».')) { this.plugin.userData = before; this.render(); }
       }],
       ['⧉ Дублировать', '', async () => {
         const copy = clone(item);
@@ -2307,7 +2307,7 @@ class DesignStudioModal extends Modal {
         this.plugin.userData.favoriteItems = (this.plugin.userData.favoriteItems || []).filter(entry => !(entry.kind === kind && entry.id === item.id));
         if (kind === 'palette' && this.selectedPalette?.id === item.id) this.selectPalette(PALETTES[0]);
         if (kind === 'background' && this.selectedBackground?.id === item.id) this.selectBackground(BACKGROUNDS[0], false);
-        if (!await saveAndRefresh('Элемент удалён.')) this.plugin.userData = before;
+        if (!await saveAndRefresh('Элемент удалён.')) { this.plugin.userData = before; this.render(); }
       }]
     ];
     if (action) { const selectedAction = items.find(entry => entry[0].includes(action)); if (selectedAction) { selectedAction[2](); return; } }
