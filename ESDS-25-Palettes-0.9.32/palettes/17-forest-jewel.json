@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 4,
+  "schemaVersion": 5,
   "type": "esds-palette",
   "palette": {
     "id": "user-forest-jewel",
@@ -340,5 +340,101 @@
         "radius": 14
       }
     }
+  },
+  "background": {
+    "id": "bg-custom-forest-jewel",
+    "name": "Forest Jewel — фон",
+    "label": "Forest Jewel — фон",
+    "group": "Rainbow Multicolor",
+    "light": "linear-gradient(135deg, #AACABB 0%, #DBF47C 100%)",
+    "dark": "linear-gradient(135deg, #AACABB 0%, #DBF47C 100%)",
+    "textColor": "#201B2A",
+    "darkTextColor": "#201B2A"
+  },
+  "blockStyle": {
+    "id": "user-blocks-forest-jewel",
+    "name": "Forest Jewel — карточки",
+    "description": "Цветные учебные карточки с аккуратными рамками и удобными отступами для Android.",
+    "category": "Rainbow Multicolor",
+    "base": "soft",
+    "framePreset": "classic",
+    "frameOverrides": {
+      "important": "double",
+      "warning": "left",
+      "question": "top",
+      "example": "dashed"
+    },
+    "style": {
+      "light": {
+        "backgroundOpacity": 0.13,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.56,
+        "borderRadius": 13,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      },
+      "dark": {
+        "backgroundOpacity": 0.13,
+        "borderWidth": 1.5,
+        "borderOpacity": 0.56,
+        "borderRadius": 13,
+        "paddingY": 10,
+        "paddingX": 12,
+        "gap": 8,
+        "titleWeight": 650,
+        "titleSize": 13,
+        "bodySize": 12,
+        "shadow": "none"
+      }
+    },
+    "calloutOverrides": {
+      "important": {
+        "light": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        },
+        "dark": {
+          "backgroundOpacity": 0.19,
+          "borderOpacity": 0.86,
+          "borderWidth": 2
+        }
+      },
+      "tip": {
+        "light": {
+          "borderRadius": 15
+        },
+        "dark": {
+          "borderRadius": 15
+        }
+      },
+      "warning": {
+        "light": {
+          "borderWidth": 2
+        },
+        "dark": {
+          "borderWidth": 2
+        }
+      }
+    },
+    "colors": {
+      "light": {},
+      "dark": {}
+    },
+    "previewCallouts": [
+      "rule",
+      "example",
+      "important",
+      "tip",
+      "warning",
+      "question",
+      "practice",
+      "success"
+    ]
   }
 }
