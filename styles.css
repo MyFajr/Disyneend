@@ -4535,3 +4535,26 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
     font-size:11px;
   }
 }
+
+
+/* ESDS 0.9.31 — all default and custom categories are manageable. */
+.esds-builder-modal .esds-category-bulk-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  box-shadow: 0 3px 12px rgba(0,0,0,.08);
+}
+.esds-builder-modal .esds-category-manage-tree-row .esds-badge-protected {
+  opacity: .7;
+}
+.esds-builder-modal .esds-category-manage-tree-row {
+  touch-action: pan-y;
+}
+.esds-builder-modal .esds-category-bulk-check {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.esds-builder-modal .esds-category-bulk-check input {
+  min-width: 22px;
+  min-height: 22px;
+}
