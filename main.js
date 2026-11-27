@@ -2516,6 +2516,7 @@ class DesignStudioModal extends Modal {
         const controls = directory.createDiv({ cls: 'esds-category-selection-toolbar' });
         const addAction = (label, fn, danger = false) => { const b = controls.createEl('button', { cls: 'esds-button' + (danger ? ' esds-danger' : ''), text: label, attr: { type: 'button' } }); b.addEventListener('click', fn); return b; };
         addAction(this.categorySelectionMode ? 'Готово' : 'Выбрать', () => { this.categorySelectionMode = !this.categorySelectionMode; if (!this.categorySelectionMode) this.categoryMultiSelection.clear(); renderDirectory(''); });
+        addAction(parent ? '＋ Подкатегория' : '＋ Категория', () => this.createCategoryAtCurrentLevel());
         addAction('Выбрать всё', () => { this.categorySelectionMode = true; visibleCategories.forEach(c => this.categoryMultiSelection.add(c.id)); renderDirectory(''); });
         addAction('Снять выделение', () => { this.categoryMultiSelection.clear(); renderDirectory(''); });
         controls.createSpan({ cls: 'esds-palette-selection-count', text: `Выбрано категорий: ${this.categoryMultiSelection.size}` });
@@ -2600,16 +2601,45 @@ class DesignStudioModal extends Modal {
     act('Экспорт ZIP', () => this.exportPaletteIdsZip(selected));
   }
   isCategoryDescendant(categoryId, ancestorIds) { const map = new Map(this.getCategories('palettes').map(c => [c.id,c])); let current = map.get(categoryId), seen = new Set(); while (current && current.parentId && !seen.has(current.parentId)) { if (ancestorIds.has(current.parentId)) return true; seen.add(current.parentId); current = map.get(current.parentId); } return false; }
+  async chooseCategoryParent(excludedIds) {
+    const all=this.getCategories('palettes'), categories=all.filter(c=>!excludedIds.has(c.id)&&!this.isCategoryDescendant(c.id,excludedIds));
+    const byId=new Map(all.map(c=>[c.id,c]));
+    const pathOf=item=>{const parts=[item.name];let current=item,seen=new Set();while(current.parentId&&!seen.has(current.parentId)){seen.add(current.parentId);current=byId.get(current.parentId);if(current)parts.unshift(current.name);else break;}return parts.join(' / ');};
+    return await new Promise(resolve=>{
+      let done=false;
+      const modal=new class extends Modal{
+        constructor(app){super(app);}
+        finish(value){if(done)return;done=true;this.result=value;this.close();}
+        onOpen(){this.modalEl.addClass('esds-category-picker-modal');this.contentEl.addClass('esds-category-picker');this.renderChoices();}
+        onClose(){this.contentEl.empty();resolve(this.result===undefined?undefined:this.result);}
+        renderChoices(){
+          const root=this.contentEl;root.empty();
+          const head=root.createDiv({cls:'esds-category-picker-header'});head.createEl('h2',{text:'Переместить категории'});head.createEl('p',{text:'Выбери родительскую категорию или корень.'});
+          const list=root.createDiv({cls:'esds-category-picker-list'});
+          const rootRow=list.createEl('button',{cls:'esds-category-picker-row',attr:{type:'button'}});rootRow.createSpan({cls:'esds-category-picker-icon',text:'▰'});const rootLabels=rootRow.createDiv({cls:'esds-category-picker-labels'});rootLabels.createEl('strong',{text:'Корень'});rootLabels.createEl('small',{text:'Без родительской категории'});rootRow.addEventListener('click',()=>this.finish(null));
+          categories.forEach(category=>{const row=list.createEl('button',{cls:'esds-category-picker-row',attr:{type:'button'}});row.createSpan({cls:'esds-category-picker-icon',text:'▰'});const labels=row.createDiv({cls:'esds-category-picker-labels'});labels.createEl('strong',{text:category.name});labels.createEl('small',{text:pathOf(category)});row.addEventListener('click',()=>this.finish(category.id));});
+          const actions=root.createDiv({cls:'esds-category-picker-actions'});const cancel=actions.createEl('button',{cls:'esds-button esds-btn-quiet',text:'Отмена',attr:{type:'button'}});cancel.addEventListener('click',()=>this.finish(undefined));
+        }
+      }(this.app);modal.open();
+    });
+  }
   async moveSelectedCategories() {
-    const ids = new Set(this.categoryMultiSelection), categories = this.getCategories('palettes'), moving = categories.filter(c => ids.has(c.id)); if (!moving.length) return;
-    const candidates = categories.filter(c => !ids.has(c.id) && !this.isCategoryDescendant(c.id, ids));
-    const labels = ['Корень (без родительской категории)', ...candidates.map(c => c.name)];
-    const answer = prompt('Куда переместить выбранные категории?\n' + labels.map((v,i)=>`${i+1}. ${v}`).join('\n') + '\nВведи номер.'); if (answer === null) return;
-    const index = Number(answer)-1; if (!Number.isInteger(index) || index<0 || index>=labels.length) { new Notice('Неверное назначение.'); return; }
-    const parentId = index===0 ? null : candidates[index-1].id, before = clone(this.plugin.userData);
-    this.plugin.userData.categories.palettes = categories.map(c => ids.has(c.id) ? { ...c, parentId } : c);
-    if (await this.plugin.saveUserLibrary()===false) { this.plugin.userData=before; return; }
-    this.categoryMultiSelection.clear(); this.categorySelectionMode=false; new Notice('Перемещено категорий: '+moving.length); this.render();
+    const ids=new Set(this.categoryMultiSelection),categories=this.getCategories('palettes'),moving=categories.filter(c=>ids.has(c.id));if(!moving.length)return;
+    const parentId=await this.chooseCategoryParent(ids);if(parentId===undefined)return;
+    const before=clone(this.plugin.userData);
+    this.plugin.userData.categories.palettes=categories.map(c=>ids.has(c.id)?{...c,parentId}:c);
+    if(await this.plugin.saveUserLibrary()===false){this.plugin.userData=before;return;}
+    this.categoryMultiSelection.clear();this.categorySelectionMode=false;new Notice('Перемещено категорий: '+moving.length);this.render();
+  }
+  async createCategoryAtCurrentLevel() {
+    const name=prompt(this.paletteParentCategoryId?'Название вложенной категории:':'Название категории:');if(!name||!name.trim())return;
+    const clean=name.trim(),categories=this.getCategories('palettes');
+    if(categories.some(c=>c.name.toLocaleLowerCase()===clean.toLocaleLowerCase())){new Notice('Категория с таким названием уже существует.');return;}
+    const base=slugify(clean)||'category';let id=base,n=2;while(categories.some(c=>c.id===id))id=base+'-'+n++;
+    const before=clone(this.plugin.userData);
+    this.plugin.userData.categories.palettes=[...categories,{id,name:clean,order:categories.length+10,protected:false,parentId:this.paletteParentCategoryId||null}];
+    if(await this.plugin.saveUserLibrary()===false){this.plugin.userData=before;return;}
+    new Notice('Категория создана: '+clean);this.render();
   }
   async deleteSelectedCategories() {
     const categories=this.getCategories('palettes'), ids=new Set(this.categoryMultiSelection), roots=categories.filter(c=>ids.has(c.id)); if(!roots.length)return;
