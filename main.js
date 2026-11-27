@@ -3021,8 +3021,9 @@ class DesignStudioModal extends Modal {
     }
     items.push(['⧉ Дублировать', '', async () => {
       const copy = normalizeSingleModePalette(clone(palette));
-      copy.id = `user-${slugify(copy.name)}-${Date.now().toString(36).slice(-4)}`;
-      copy.name = `${palette.name} (копия)`; copy.category = palette.category || 'Мои палитры';
+      copy.name = esdsUniqueName(`${palette.name} (копия)`, this.allPalettes().map(item => item.name), 100);
+      copy.id = esdsUniqueId(`user-${slugify(copy.name)}`, this.allPalettes().map(item => item.id));
+      copy.category = palette.category || 'Мои палитры';
       copy.createdAt = new Date().toISOString(); copy.updatedAt = copy.createdAt; copy.source = 'user';
       copy.order = (this.plugin.userData.palettes || []).length * 10;
       this.plugin.userData.palettes.push(copy);
@@ -3310,10 +3311,12 @@ class DesignStudioModal extends Modal {
     };
 
     addItem('⧉ Дублировать', '', async () => {
+      const existingStyles = this.plugin.userData.blockStyles || [];
+      const copyName = esdsUniqueName(`${block.name} (копия)`, this.allBlockStyles().map(item => item.name), 120);
       const copy = normalizeBlockStyle({
         ...clone(block),
-        id: undefined,
-        name: `${block.name} (копия)`,
+        id: esdsUniqueId(`user-blocks-${slugify(copyName)}`, this.allBlockStyles().map(item => item.id)),
+        name: copyName,
         createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(),
         source: 'user',
         order: (block.order || 50) + 1
