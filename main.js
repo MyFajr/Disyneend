@@ -1603,7 +1603,8 @@ class CategoryManagerModal extends Modal {
 
     list.forEach((cat, index) => {
       const row = body.createDiv({ cls: 'esds-category-manage-row' });
-      row.createEl('strong', { text: cat.name });
+      const depthOf = category => { let depth = 0, current = category, seen = new Set(); while (current && current.parentId && !seen.has(current.parentId)) { seen.add(current.parentId); current = list.find(entry => entry.id === current.parentId); if (current) depth++; } return depth; };
+      row.createEl('strong', { text: `${'　'.repeat(depthOf(cat))}${cat.name}` });
       if (cat.protected) {
         row.createEl('span', { cls: 'esds-badge-protected', text: 'системная' });
       } else {
@@ -1624,6 +1625,19 @@ class CategoryManagerModal extends Modal {
           });
           await this.studio.plugin.saveUserLibrary();
           this.render();
+        });
+        const nest = row.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'В категорию', attr: { type: 'button', title: 'Переместить категорию внутрь другой категории' } });
+        nest.addEventListener('click', async () => {
+          const candidates = list.filter(entry => entry.id !== cat.id && !entry.protected && depthOf(entry) < 8);
+          const choices = ['(корень)', ...candidates.map(entry => entry.name)];
+          const answer = prompt(`Переместить «${cat.name}» в категорию. Варианты: ${choices.join(', ')}`, cat.parentId ? (list.find(entry => entry.id === cat.parentId)?.name || '(корень)') : '(корень)');
+          if (answer === null) return;
+          const target = answer.trim() === '(корень)' ? null : candidates.find(entry => entry.name.toLowerCase() === answer.trim().toLowerCase());
+          if (answer.trim() !== '(корень)' && !target) { new Notice('Категория не найдена.'); return; }
+          let ancestor = target, cycle = false; while (ancestor) { if (ancestor.id === cat.id) { cycle = true; break; } ancestor = list.find(entry => entry.id === ancestor.parentId); }
+          if (cycle) { new Notice('Нельзя переместить категорию внутрь самой себя или своего потомка.'); return; }
+          cat.parentId = target ? target.id : null;
+          await this.studio.plugin.saveUserLibrary(); this.render();
         });
         const del = row.createEl('button', { cls: 'esds-button esds-btn-outline-coral', text: 'Удалить', attr: { type: 'button' } });
         del.addEventListener('click', async () => {
@@ -2300,8 +2314,8 @@ class DesignStudioModal extends Modal {
         const before = clone(this.plugin.userData);
         const live = (this.plugin.userData[arrayKey] || []).find(entry => entry.id === item.id);
         if (!live) return;
-        if ('name' in live || kind !== 'background') live.name = next.trim();
-        else live.label = next.trim();
+        live.name = next.trim();
+        if (kind === 'background') live.label = next.trim();
         if (!await saveAndRefresh('Элемент переименован.')) { this.plugin.userData = before; this.render(); }
       }],
       ['↗ Переместить в категорию', '', async () => {
@@ -2352,7 +2366,7 @@ class DesignStudioModal extends Modal {
     const select = card.createEl('input', { cls: 'esds-library-item-select', attr: { type: 'checkbox', 'aria-label': `Выбрать ${item.name || item.label || item.id}` } });
     select.checked = this.catalogSelectedIds.has(item.id);
     select.addEventListener('click', event => event.stopPropagation());
-    select.addEventListener('change', () => { if (select.checked) this.catalogSelectedIds.add(item.id); else this.catalogSelectedIds.delete(item.id); });
+    select.addEventListener('change', () => { if (select.checked) this.catalogSelectedIds.add(item.id); else this.catalogSelectedIds.delete(item.id); this.render(); });
     const heading = card.createDiv({ cls: 'esds-library-catalog-heading' });
     heading.createEl('strong', { text: item.name || item.label || 'Без названия' });
     const category = this.libraryCategoryName(kind, item);
@@ -2381,7 +2395,7 @@ class DesignStudioModal extends Modal {
     kinds.forEach(([kind, label]) => {
       const count = this.libraryItems(kind).length;
       const button = tabs.createEl('button', { cls: `esds-library-catalog-tab${this.libraryKind === kind ? ' is-active' : ''}`, text: `${label} · ${count}`, attr: { type: 'button', 'aria-pressed': this.libraryKind === kind ? 'true' : 'false' } });
-      button.addEventListener('click', () => { this.libraryKind = kind; this.libraryCategory = null; this.librarySearchText = ''; this._focusLibraryTab = true; this.render(); });
+      button.addEventListener('click', () => { this.libraryKind = kind; this.libraryCategory = null; this.librarySearchText = ''; this.catalogSelectedIds.clear(); this._focusLibraryTab = true; this.render(); });
     });
     const kind = this.libraryKind;
     const allItems = this.libraryItems(kind);
