@@ -3,7 +3,7 @@
   "type": "esds-theme-pack",
   "plugin": "english-study-design-studio",
   "name": "Lime Shock — полный дизайнерский набор",
-  "description": "Полный дизайн Lime Shock: палитра, индивидуальный цветной фон и единое оформление блоков.",
+  "description": "Полный дизайн Lime Shock: индивидуальный насыщенный фон, палитра и стиль блоков.",
   "frameSource": "blockStyle",
   "items": {
     "palette": {
@@ -351,8 +351,8 @@
       "name": "Lime Shock — фон",
       "label": "Lime Shock — фон",
       "group": "Rainbow Multicolor",
-      "light": "linear-gradient(135deg, #ECFBC5 0%, #CCE6D6 100%)",
-      "dark": "linear-gradient(135deg, #ECFBC5 0%, #CCE6D6 100%)",
+      "light": "linear-gradient(135deg, #C1F441 0%, #B6DBC4 100%)",
+      "dark": "linear-gradient(135deg, #C1F441 0%, #B6DBC4 100%)",
       "textColor": "#201B2A",
       "darkTextColor": "#201B2A"
     },
