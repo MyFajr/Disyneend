@@ -2279,6 +2279,18 @@ class DesignStudioModal extends Modal {
       return true;
     };
     const items = [
+      ...(kind === 'palette' ? [
+        ['✎ Переименовать', '', async () => {
+          const value = prompt('Новое название палитры:', getName(item));
+          if (value === null || !value.trim()) return;
+          const live = (this.plugin.userData.palettes || []).find(entry => entry.id === item.id);
+          if (!live) { new Notice('Палитра уже отсутствует в библиотеке.'); return; }
+          live.name = value.trim(); live.updatedAt = new Date().toISOString();
+          await saveAndRefresh('Палитра переименована.');
+        }],
+        ['↑ Поднять выше', '', () => this.reorderUserPalette(item, -1)],
+        ['↓ Опустить ниже', '', () => this.reorderUserPalette(item, 1)]
+      ] : []),
       ['↗ Переместить в категорию', '', async () => {
         const categories = [...new Set(this.libraryItems(kind).map(entry => this.libraryCategoryName(kind, entry)).filter(Boolean))];
         const current = this.libraryCategoryName(kind, item);
@@ -2336,6 +2348,10 @@ class DesignStudioModal extends Modal {
     const actions = card.createDiv({ cls: 'esds-library-catalog-actions' });
     const view = actions.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Просмотр и применение', attr: { type: 'button' } });
     view.addEventListener('click', () => this.openLibraryItemPreview(kind, item, visibleItems));
+    if (kind === 'palette') {
+      const rename = actions.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Переименовать', attr: { type: 'button', title: 'Переименовать палитру' } });
+      rename.addEventListener('click', event => { event.stopPropagation(); this.manageLibraryCatalogItem(kind, item, rename, 'Переименовать'); });
+    }
     const move = actions.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Переместить', attr: { type: 'button', title: 'Переместить в другую категорию' } });
     move.addEventListener('click', event => { event.stopPropagation(); this.manageLibraryCatalogItem(kind, item, move, 'Переместить'); });
     const remove = actions.createEl('button', { cls: 'esds-button esds-btn-outline-coral', text: 'Удалить', attr: { type: 'button', title: 'Удалить из пользовательской библиотеки' } });
@@ -2355,7 +2371,7 @@ class DesignStudioModal extends Modal {
       button.addEventListener('click', () => { this.libraryKind = kind; this.libraryCategory = null; this.librarySearchText = ''; this._focusLibraryTab = true; this.render(); });
     });
     const kind = this.libraryKind;
-    const allItems = this.libraryItems(kind);
+    const allItems = this.sortItems(this.libraryItems(kind), kind === 'palette' ? this.sortModes.palettes : 'custom');
     const categoryKind = kind === 'palette' ? 'palettes' : kind === 'background' ? 'backgrounds' : 'blockStyles';
     const storedCategories = this.getCategories(categoryKind);
     const activeCategoryNames = new Set(allItems.map(item => this.libraryCategoryName(kind, item)));
@@ -2363,6 +2379,7 @@ class DesignStudioModal extends Modal {
     const extraCategories = [...activeCategoryNames].filter(name => !orderedSystemCategories.includes(name)).sort((a,b)=>a.localeCompare(b,'ru'));
     const categories = [...new Set([...orderedSystemCategories, ...extraCategories])];
     const controls = parent.createDiv({ cls: 'esds-library-catalog-controls' });
+    if (kind === 'palette') this.addSortSelect(controls, 'palettes');
     const search = controls.createEl('input', { cls: 'esds-text-input', attr: { type: 'search', placeholder: 'Поиск по всей коллекции…' } });
     search.value = this.librarySearchText || '';
     const count = controls.createEl('small', { cls: 'esds-library-catalog-count', text: '' });
@@ -2399,6 +2416,10 @@ class DesignStudioModal extends Modal {
           info.createEl('small', { text: meta.description || (kind === 'palette' ? 'Набор согласованных цветовых дизайнов.' : kind === 'background' ? 'Фоны для оформления заметок.' : 'Дополнительные варианты оформления блоков.') });
           const footer = folder.createDiv({ cls: 'esds-catalog-folder-footer' });
           footer.createSpan({ text: `${items.length} элементов` }); footer.createSpan({ text: 'Открыть ›' });
+          if (kind === 'palette') {
+            const categoryMenu = folder.createEl('button', { cls: 'esds-icon-btn esds-catalog-folder-menu', text: '⋯', attr: { type: 'button', title: 'Управление категорией' } });
+            categoryMenu.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); this.openPaletteCategoryMenu(name, categoryMenu); });
+          }
           const open = () => { this.libraryCategory = name; render(); };
           folder.addEventListener('click', open);
           folder.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
@@ -2629,10 +2650,8 @@ class DesignStudioModal extends Modal {
     const tools = heading.createDiv({ cls: 'esds-card-manage-tools' });
     const favorite = tools.createEl('button', { cls: 'esds-icon-btn esds-item-favorite-button', text: this.isItemFavorite('palette', p.id) ? '★' : '☆', attr: { type: 'button', title: this.isItemFavorite('palette', p.id) ? 'Убрать из избранных элементов' : 'В избранные элементы' } });
     favorite.addEventListener('click', event => { event.stopPropagation(); this.toggleItemFavorite('palette', p); });
-    if ((this.plugin.userData.palettes || []).some(item => item.id === p.id)) {
-      const menu = tools.createEl('button', { cls: 'esds-icon-btn esds-more-btn', text: '⋯', attr: { type: 'button', title: 'Действия с палитрой' } });
-      menu.addEventListener('click', (event) => { event.stopPropagation(); this.openPaletteMenu(p, menu); });
-    }
+    const menu = tools.createEl('button', { cls: 'esds-icon-btn esds-more-btn', text: '⋯', attr: { type: 'button', title: 'Действия с палитрой' } });
+    menu.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); this.openPaletteMenu(p, menu); });
 
     const live = card.createDiv({
       cls: `esds-palette-rich-sample esds-preview esds-inline-theme ${p.id} esds-palette-${p.id} ${bg.id} esds-frames-from-palette`
