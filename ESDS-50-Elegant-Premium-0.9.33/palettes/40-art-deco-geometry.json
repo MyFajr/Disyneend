@@ -5,277 +5,276 @@
     "id": "elegant-premium-40-art-deco-geometry",
     "name": "Art Deco Geometry — Геометрия ар-деко",
     "mood": "Ночной петроль и бронзово-золотые переходы с архитектурной геометрической выразительностью.",
-    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный линейный градиент с эффектом металлического блика; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный линейный градиент с эффектом металлического блика; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian. Полноценная премиальная дизайн-система: выразительный градиент, световой эффект, 30 семантических классов и контрастные карточки.",
     "category": "Элегантные и премиальные",
     "source": "user",
     "swatches": [
       "#0A2633",
       "#104251",
       "#1C5058",
-      "#62502B",
-      "#D8DDF9"
+      "#62502B"
     ],
     "defaultBackground": "bg-custom-elegant-premium-40-art-deco-geometry",
     "defaultBlocks": "user-blocks-elegant-premium-40-art-deco-geometry",
     "roles": {
-      "en": "#D8E6F9",
-      "letter": "#D8F1F9",
-      "ipa": "#D8E1F9",
-      "translation": "#D8E9F9",
-      "term": "#D8DDF9",
-      "definition": "#D8E4F9",
-      "focus": "#D8F0F9",
-      "secondary": "#D8E7F9",
-      "soft": "#D8DFF9",
-      "heading": "#D8F1F9",
-      "ink": "#FFFFFF"
+      "en": "#A9C8F4",
+      "letter": "#F6B6CC",
+      "ipa": "#DEBBF7",
+      "translation": "#A4F4D3",
+      "term": "#F4C9A4",
+      "definition": "#A4E7F4",
+      "focus": "#F6B6BC",
+      "secondary": "#F4E0A4",
+      "soft": "#C8C4F8",
+      "heading": "#E3E9FC",
+      "ink": "#FFF7F0"
     },
     "callouts": {
       "rule": [
-        110,
-        125,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        222,
-        110,
-        237
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        126,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        237,
-        232
+        102,
+        245,
+        221
       ],
       "warning": [
-        235,
-        237,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        167,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        196,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        190
+        102,
+        245,
+        149
       ],
       "info": [
-        126,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        146
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        199,
-        237
+        102,
+        209,
+        245
       ],
       "abstract": [
-        237,
-        110,
-        210
+        245,
+        102,
+        185
       ]
     },
     "calloutFills": {
       "rule": [
-        17,
-        24,
-        74
+        219,
+        191,
+        247
       ],
       "example": [
-        68,
-        17,
-        74
+        191,
+        224,
+        247
       ],
       "important": [
-        74,
-        25,
-        17
+        247,
+        196,
+        191
       ],
       "tip": [
-        17,
-        74,
-        72
+        191,
+        247,
+        238
       ],
       "warning": [
-        74,
-        74,
-        17
+        247,
+        224,
+        191
       ],
       "question": [
-        17,
-        43,
-        74
+        191,
+        201,
+        247
       ],
       "practice": [
-        74,
-        56,
-        17
+        247,
+        243,
+        191
       ],
       "success": [
-        17,
-        74,
-        53
+        191,
+        247,
+        210
       ],
       "info": [
-        25,
-        17,
-        74
+        238,
+        191,
+        247
       ],
       "note": [
-        74,
-        17,
-        34
+        247,
+        205,
+        191
       ],
       "quote": [
-        17,
-        57,
-        74
+        191,
+        233,
+        247
       ],
       "abstract": [
-        74,
-        17,
-        62
+        247,
+        191,
+        224
       ]
     },
     "calloutTexts": {
       "rule": [
-        221,
-        224,
-        243
+        30,
+        22,
+        32
       ],
       "example": [
-        240,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "important": [
-        243,
-        224,
-        221
+        30,
+        22,
+        32
       ],
       "tip": [
-        221,
-        243,
-        242
+        30,
+        22,
+        32
       ],
       "warning": [
-        243,
-        243,
-        221
+        30,
+        22,
+        32
       ],
       "question": [
-        221,
-        231,
-        243
+        30,
+        22,
+        32
       ],
       "practice": [
-        243,
-        236,
-        221
+        30,
+        22,
+        32
       ],
       "success": [
-        221,
-        243,
-        235
+        30,
+        22,
+        32
       ],
       "info": [
-        224,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "note": [
-        243,
-        221,
-        227
+        30,
+        22,
+        32
       ],
       "quote": [
-        221,
-        237,
-        243
+        30,
+        22,
+        32
       ],
       "abstract": [
-        243,
-        221,
-        238
+        30,
+        22,
+        32
       ]
     },
     "calloutBorders": {
       "rule": [
-        110,
-        125,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        222,
-        110,
-        237
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        126,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        237,
-        232
+        102,
+        245,
+        221
       ],
       "warning": [
-        235,
-        237,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        167,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        196,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        190
+        102,
+        245,
+        149
       ],
       "info": [
-        126,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        146
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
-        199,
-        237
+        102,
+        209,
+        245
       ],
       "abstract": [
-        237,
-        110,
-        210
+        245,
+        102,
+        185
       ]
     },
     "calloutFrames": {
@@ -346,16 +345,16 @@
     "name": "Art Deco Geometry — Геометрия ар-деко — фон",
     "label": "Art Deco Geometry — Геометрия ар-деко — фон",
     "group": "Элегантные и премиальные",
-    "light": "linear-gradient(116deg, transparent 28%, #0A263355 46%, #0A2633CC 50%, #0A263355 54%, transparent 72%), linear-gradient(132deg, #0A2633 0%, #104251 34%, #1C5058 66%, #62502B 100%)",
-    "dark": "linear-gradient(116deg, transparent 28%, #0A263355 46%, #0A2633CC 50%, #0A263355 54%, transparent 72%), linear-gradient(132deg, #0A2633 0%, #104251 34%, #1C5058 66%, #62502B 100%)",
-    "textColor": "#FFFFFF",
-    "darkTextColor": "#FFFFFF",
+    "light": "radial-gradient(ellipse at 18% 12%, #0A263330 0%, transparent 58%), linear-gradient(116deg, transparent 28%, #0A263355 46%, #0A2633CC 50%, #0A263355 54%, transparent 72%), linear-gradient(132deg, #0A2633 0%, #104251 34%, #1C5058 66%, #62502B 100%)",
+    "dark": "radial-gradient(ellipse at 18% 12%, #0A263330 0%, transparent 58%), linear-gradient(116deg, transparent 28%, #0A263355 46%, #0A2633CC 50%, #0A263355 54%, transparent 72%), linear-gradient(132deg, #0A2633 0%, #104251 34%, #1C5058 66%, #62502B 100%)",
+    "textColor": "#FFF7F0",
+    "darkTextColor": "#FFF7F0",
     "source": "user"
   },
   "blockStyle": {
     "id": "user-blocks-elegant-premium-40-art-deco-geometry",
     "name": "Art Deco Geometry — Геометрия ар-деко — учебные блоки",
-    "description": "12 цветовых карточек, согласованных с фоном Art Deco Geometry — Геометрия ар-деко; увеличенный текст Medium и заголовки Semibold.",
+    "description": "Контрастные цветные учебные карточки: основной текст Medium 500, заголовки Semibold 650, отдельные заливки и рамки.",
     "category": "Элегантные и премиальные",
     "base": "rich",
     "framePreset": "classic",
@@ -367,9 +366,9 @@
     },
     "style": {
       "light": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -381,9 +380,9 @@
         "shadow": "none"
       },
       "dark": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -398,22 +397,32 @@
     "calloutOverrides": {
       "important": {
         "light": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         },
         "dark": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         }
       },
       "warning": {
         "light": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
         },
         "dark": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
+        }
+      },
+      "question": {
+        "light": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
+        },
+        "dark": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
         }
       }
     },

@@ -5,277 +5,276 @@
     "id": "elegant-premium-33-amazon-emerald",
     "name": "Amazon Emerald — Амазонский изумруд",
     "mood": "Глубокая изумрудная чаща с просветами драгоценной зелени и лесным свечением.",
-    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный радиальный градиент с эффектом светового ореола; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный радиальный градиент с эффектом светового ореола; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian. Полноценная премиальная дизайн-система: выразительный градиент, световой эффект, 30 семантических классов и контрастные карточки.",
     "category": "Элегантные и премиальные",
     "source": "user",
     "swatches": [
       "#1E6A4D",
       "#0F4E39",
       "#08382B",
-      "#05261F",
-      "#D9F3F9"
+      "#05261F"
     ],
     "defaultBackground": "bg-custom-elegant-premium-33-amazon-emerald",
     "defaultBlocks": "user-blocks-elegant-premium-33-amazon-emerald",
     "roles": {
-      "en": "#D8F9F6",
-      "letter": "#D8F9EA",
-      "ipa": "#D8F7F9",
-      "translation": "#D8F9F2",
-      "term": "#D9F3F9",
-      "definition": "#D8F9F7",
-      "focus": "#D8F9EB",
-      "secondary": "#D8F9F4",
-      "soft": "#D8F5F9",
-      "heading": "#D8F9EA",
-      "ink": "#FFFFFF"
+      "en": "#C4DAF8",
+      "letter": "#F9CDDC",
+      "ipa": "#E9D2F9",
+      "translation": "#A4F4D3",
+      "term": "#F5D1B2",
+      "definition": "#A4E7F4",
+      "focus": "#F9CDD1",
+      "secondary": "#F4E0A4",
+      "soft": "#D9D6FA",
+      "heading": "#E3E9FC",
+      "ink": "#FFF7F0"
     },
     "callouts": {
       "rule": [
-        110,
-        135,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        212,
-        110,
-        237
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        116,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        237,
-        222
+        102,
+        245,
+        221
       ],
       "warning": [
-        237,
-        229,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        178,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        186,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        180
+        102,
+        245,
+        149
       ],
       "info": [
-        116,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        156
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
+        102,
         209,
-        237
+        245
       ],
       "abstract": [
-        237,
-        110,
-        220
+        245,
+        102,
+        185
       ]
     },
     "calloutFills": {
       "rule": [
-        17,
-        29,
-        74
+        219,
+        191,
+        247
       ],
       "example": [
-        63,
-        17,
-        74
+        191,
+        224,
+        247
       ],
       "important": [
-        74,
-        20,
-        17
+        247,
+        196,
+        191
       ],
       "tip": [
-        17,
-        74,
-        68
+        191,
+        247,
+        238
       ],
       "warning": [
-        74,
-        71,
-        17
+        247,
+        224,
+        191
       ],
       "question": [
-        17,
-        48,
-        74
+        191,
+        201,
+        247
       ],
       "practice": [
-        74,
-        52,
-        17
+        247,
+        243,
+        191
       ],
       "success": [
-        17,
-        74,
-        49
+        191,
+        247,
+        210
       ],
       "info": [
-        20,
-        17,
-        74
+        238,
+        191,
+        247
       ],
       "note": [
-        74,
-        17,
-        38
+        247,
+        205,
+        191
       ],
       "quote": [
-        17,
-        62,
-        74
+        191,
+        233,
+        247
       ],
       "abstract": [
-        74,
-        17,
-        67
+        247,
+        191,
+        224
       ]
     },
     "calloutTexts": {
       "rule": [
-        221,
-        225,
-        243
+        30,
+        22,
+        32
       ],
       "example": [
-        239,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "important": [
-        243,
-        222,
-        221
+        30,
+        22,
+        32
       ],
       "tip": [
-        221,
-        243,
-        240
+        30,
+        22,
+        32
       ],
       "warning": [
-        243,
-        242,
-        221
+        30,
+        22,
+        32
       ],
       "question": [
-        221,
-        233,
-        243
+        30,
+        22,
+        32
       ],
       "practice": [
-        243,
-        234,
-        221
+        30,
+        22,
+        32
       ],
       "success": [
-        221,
-        243,
-        233
+        30,
+        22,
+        32
       ],
       "info": [
-        222,
-        221,
-        243
+        30,
+        22,
+        32
       ],
       "note": [
-        243,
-        221,
-        229
+        30,
+        22,
+        32
       ],
       "quote": [
-        221,
-        238,
-        243
+        30,
+        22,
+        32
       ],
       "abstract": [
-        243,
-        221,
-        240
+        30,
+        22,
+        32
       ]
     },
     "calloutBorders": {
       "rule": [
-        110,
-        135,
-        237
+        173,
+        102,
+        245
       ],
       "example": [
-        212,
-        110,
-        237
+        102,
+        185,
+        245
       ],
       "important": [
-        237,
-        116,
-        110
+        245,
+        114,
+        102
       ],
       "tip": [
-        110,
-        237,
-        222
+        102,
+        245,
+        221
       ],
       "warning": [
-        237,
-        229,
-        110
+        245,
+        185,
+        102
       ],
       "question": [
-        110,
-        178,
-        237
+        102,
+        126,
+        245
       ],
       "practice": [
-        237,
-        186,
-        110
+        245,
+        233,
+        102
       ],
       "success": [
-        110,
-        237,
-        180
+        102,
+        245,
+        149
       ],
       "info": [
-        116,
-        110,
-        237
+        221,
+        102,
+        245
       ],
       "note": [
-        237,
-        110,
-        156
+        245,
+        137,
+        102
       ],
       "quote": [
-        110,
+        102,
         209,
-        237
+        245
       ],
       "abstract": [
-        237,
-        110,
-        220
+        245,
+        102,
+        185
       ]
     },
     "calloutFrames": {
@@ -346,16 +345,16 @@
     "name": "Amazon Emerald — Амазонский изумруд — фон",
     "label": "Amazon Emerald — Амазонский изумруд — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 28% 22%, #1E6A4D 0%, #1E6A4D 16%, transparent 60%), radial-gradient(ellipse at 28% 22%, #1E6A4D 0%, #0F4E39 42%, #08382B 76%, #05261F 100%)",
-    "dark": "radial-gradient(ellipse at 28% 22%, #1E6A4D 0%, #1E6A4D 16%, transparent 60%), radial-gradient(ellipse at 28% 22%, #1E6A4D 0%, #0F4E39 42%, #08382B 76%, #05261F 100%)",
-    "textColor": "#FFFFFF",
-    "darkTextColor": "#FFFFFF",
+    "light": "radial-gradient(ellipse at 18% 12%, #1E6A4D30 0%, transparent 58%), radial-gradient(ellipse at 28% 22%, #1E6A4D 0%, #1E6A4D 16%, transparent 60%), radial-gradient(ellipse at 28% 22%, #1E6A4D 0%, #0F4E39 42%, #08382B 76%, #05261F 100%)",
+    "dark": "radial-gradient(ellipse at 18% 12%, #1E6A4D30 0%, transparent 58%), radial-gradient(ellipse at 28% 22%, #1E6A4D 0%, #1E6A4D 16%, transparent 60%), radial-gradient(ellipse at 28% 22%, #1E6A4D 0%, #0F4E39 42%, #08382B 76%, #05261F 100%)",
+    "textColor": "#FFF7F0",
+    "darkTextColor": "#FFF7F0",
     "source": "user"
   },
   "blockStyle": {
     "id": "user-blocks-elegant-premium-33-amazon-emerald",
     "name": "Amazon Emerald — Амазонский изумруд — учебные блоки",
-    "description": "12 цветовых карточек, согласованных с фоном Amazon Emerald — Амазонский изумруд; увеличенный текст Medium и заголовки Semibold.",
+    "description": "Контрастные цветные учебные карточки: основной текст Medium 500, заголовки Semibold 650, отдельные заливки и рамки.",
     "category": "Элегантные и премиальные",
     "base": "rich",
     "framePreset": "classic",
@@ -367,9 +366,9 @@
     },
     "style": {
       "light": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -381,9 +380,9 @@
         "shadow": "none"
       },
       "dark": {
-        "backgroundOpacity": 0.74,
-        "borderWidth": 1.6,
-        "borderOpacity": 0.9,
+        "backgroundOpacity": 0.96,
+        "borderWidth": 1.9,
+        "borderOpacity": 0.96,
         "borderRadius": 14,
         "paddingY": 11,
         "paddingX": 13,
@@ -398,22 +397,32 @@
     "calloutOverrides": {
       "important": {
         "light": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         },
         "dark": {
-          "backgroundOpacity": 0.79,
+          "backgroundOpacity": 0.97,
           "borderWidth": 2.2
         }
       },
       "warning": {
         "light": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
         },
         "dark": {
-          "backgroundOpacity": 0.77,
-          "borderWidth": 2.2
+          "backgroundOpacity": 0.96,
+          "borderWidth": 2.1
+        }
+      },
+      "question": {
+        "light": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
+        },
+        "dark": {
+          "backgroundOpacity": 0.95,
+          "borderWidth": 1.9
         }
       }
     },
