@@ -1743,6 +1743,21 @@ class DesignStudioModal extends Modal {
       item && typeof item === 'object' && !Array.isArray(item) &&
       typeof item.name === 'string' && item.name.trim().length > 0
     );
+    // Legacy/imported palette categories are surfaced as real folders instead of disappearing.
+    if (kind === 'palettes') {
+      const hidden = new Set((this.plugin.userData.deletedBuiltinPaletteIds || []).map(String));
+      const names = new Set(list.map(item => item.name.toLocaleLowerCase()));
+      const items = [...PALETTES.filter(item => !hidden.has(item.id)), ...(this.plugin.userData.palettes || [])];
+      items.forEach(item => {
+        const name = String(item.category || 'Мои палитры').trim();
+        if (!name || names.has(name.toLocaleLowerCase())) return;
+        const base = 'imported-' + (slugify(name) || 'category');
+        let id = base, suffix = 2;
+        while (list.some(category => category.id === id)) id = base + '-' + suffix++;
+        list.push({ id, name, order: list.length + 10, protected: false, parentId: null, description: 'Категория, найденная в импортированной палитре.' });
+        names.add(name.toLocaleLowerCase());
+      });
+    }
     return list.sort((a, b) => {
       const ao = Number(a.order);
       const bo = Number(b.order);
@@ -2606,6 +2621,7 @@ class DesignStudioModal extends Modal {
     this.plugin.userData.deletedBuiltinPaletteIds=[...new Set([...(this.plugin.userData.deletedBuiltinPaletteIds||[]),...removedBuilt.map(p=>p.id)])];
     if(await this.plugin.saveUserLibrary()===false){this.plugin.userData=before;return;}
     if(this.paletteCategory&&names.has(this.paletteCategory))this.paletteCategory=null; if(this.paletteParentCategoryId&&removeIds.has(this.paletteParentCategoryId))this.paletteParentCategoryId=null;
+    if (removedBuilt.some(p => p.id === (this.selectedPalette && this.selectedPalette.id))) this.selectedPalette = this.allPalettes()[0] || PALETTES[0];
     this.categoryMultiSelection.clear();this.categorySelectionMode=false;this.plugin.refreshGeneratedStyles();new Notice(`Удалено категорий: ${removeIds.size}; палитр: ${total}`);this.render();
   }
   async bulkDeletePalettes(ids) {
