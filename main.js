@@ -1671,6 +1671,9 @@ class DesignStudioModal extends Modal {
     this.libraryCategory = null;
     this.librarySearchText = '';
     this.paletteCategory = null;
+    this.paletteParentCategoryId = null;
+    this.categoryMultiSelection = new Set();
+    this.categorySelectionMode = false;
     this.paletteMultiSelection = new Set();
     this.paletteSelectionAnchor = null;
     this.paletteViewMode = 'grid';
@@ -1719,7 +1722,7 @@ class DesignStudioModal extends Modal {
       this.render();
     }
   }
-  allPalettes() { return [...PALETTES, ...(this.plugin.userData.palettes || [])]; }
+  allPalettes() { const hidden = new Set((this.plugin.userData.deletedBuiltinPaletteIds || []).map(String)); return [...PALETTES.filter(item => !hidden.has(item.id)), ...(this.plugin.userData.palettes || [])]; }
   allBackgrounds() { return [...BACKGROUNDS, ...(this.plugin.userData.backgrounds || [])]; }
   allBlockStyles() {
     const user = (this.plugin.userData.blockStyles || []).map(normalizeBlockStyle);
@@ -1735,7 +1738,7 @@ class DesignStudioModal extends Modal {
     const stored = this.plugin.userData && this.plugin.userData.categories
       ? this.plugin.userData.categories[kind]
       : null;
-    const source = Array.isArray(stored) && stored.length ? stored : fallback;
+    const source = Array.isArray(stored) ? stored : fallback;
     const list = source.filter(item =>
       item && typeof item === 'object' && !Array.isArray(item) &&
       typeof item.name === 'string' && item.name.trim().length > 0
@@ -2488,31 +2491,40 @@ class DesignStudioModal extends Modal {
       const hasQuery = !!query;
       const selectedCategory = this.paletteCategory;
       if (!hasQuery && !selectedCategory) {
+        const parentId = this.paletteParentCategoryId || null;
+        const parent = categoryMeta.find(c => c.id === parentId) || null;
+        const visibleCategories = categoryMeta.filter(c => (c.parentId || null) === parentId);
         const heading = directory.createDiv({ cls: 'esds-catalog-directory-heading' });
-        heading.createEl('strong', { text: 'Категории палитр' });
-        heading.createEl('small', { text: `${all.length} палитр · ${ordered.length} категорий` });
+        if (parent) { const up = heading.createEl('button', { cls: 'esds-button esds-btn-quiet', text: '‹ Назад' }); up.addEventListener('click', () => { this.paletteParentCategoryId = parent.parentId || null; this.categoryMultiSelection.clear(); renderDirectory(''); }); }
+        heading.createEl('strong', { text: parent ? parent.name : 'Категории палитр' });
+        heading.createEl('small', { text: `${all.length} палитр · ${categoryMeta.length} категорий` });
+        const controls = directory.createDiv({ cls: 'esds-category-selection-toolbar' });
+        const addAction = (label, fn, danger = false) => { const b = controls.createEl('button', { cls: 'esds-button' + (danger ? ' esds-danger' : ''), text: label, attr: { type: 'button' } }); b.addEventListener('click', fn); return b; };
+        addAction(this.categorySelectionMode ? 'Готово' : 'Выбрать', () => { this.categorySelectionMode = !this.categorySelectionMode; if (!this.categorySelectionMode) this.categoryMultiSelection.clear(); renderDirectory(''); });
+        addAction('Выбрать всё', () => { this.categorySelectionMode = true; visibleCategories.forEach(c => this.categoryMultiSelection.add(c.id)); renderDirectory(''); });
+        addAction('Снять выделение', () => { this.categoryMultiSelection.clear(); renderDirectory(''); });
+        controls.createSpan({ cls: 'esds-palette-selection-count', text: `Выбрано категорий: ${this.categoryMultiSelection.size}` });
+        if (this.categorySelectionMode) { addAction('Переместить в…', () => this.moveSelectedCategories()).disabled = !this.categoryMultiSelection.size; addAction('Удалить выбранные', () => this.deleteSelectedCategories(), true).disabled = !this.categoryMultiSelection.size; }
         const grid = directory.createDiv({ cls: 'esds-catalog-folder-grid' });
-        ordered.forEach(name => {
-          const meta = categoryMeta.find(c => c.name === name) || {};
-          const items = groups.get(name) || [];
-          const folder = grid.createDiv({ cls: 'esds-catalog-folder', attr: { role: 'button', tabindex: '0', 'aria-label': `Открыть категорию ${name}, ${items.length} элементов` } });
-          const visual = folder.createDiv({ cls: 'esds-catalog-folder-visual' });
-          const sample = items[0];
+        visibleCategories.forEach(cat => {
+          const name = cat.name, items = groups.get(name) || [], childCount = categoryMeta.filter(c => c.parentId === cat.id).length;
+          const folder = grid.createDiv({ cls: 'esds-catalog-folder' + (this.categoryMultiSelection.has(cat.id) ? ' is-category-selected' : ''), attr: { role: 'button', tabindex: '0', 'aria-label': `${this.categorySelectionMode ? 'Выбрать' : 'Открыть'} категорию ${name}` } });
+          const check = folder.createEl('input', { cls: 'esds-category-select-checkbox', attr: { type: 'checkbox', 'aria-label': 'Выбрать категорию ' + name } }); check.checked = this.categoryMultiSelection.has(cat.id);
+          check.addEventListener('click', e => e.stopPropagation());
+          check.addEventListener('change', e => { e.stopPropagation(); this.categorySelectionMode = true; check.checked ? this.categoryMultiSelection.add(cat.id) : this.categoryMultiSelection.delete(cat.id); renderDirectory(''); });
+          const visual = folder.createDiv({ cls: 'esds-catalog-folder-visual' }), sample = items[0];
           const swatches = sample && sample.roles ? [sample.roles.heading, sample.roles.term, sample.roles.focus, sample.roles.translation] : ['var(--interactive-accent)', 'var(--color-purple)', 'var(--color-green)', 'var(--color-orange)'];
           swatches.forEach(color => { const swatch = visual.createSpan({ cls: 'esds-catalog-folder-swatch' }); if (color) { if (typeof color === 'string' && color.startsWith('var(')) swatch.style.background = color; else swatch.style.backgroundColor = colorToHex(color); } });
-          const info = folder.createDiv({ cls: 'esds-catalog-folder-info' });
-          info.createEl('strong', { text: name });
-          info.createEl('small', { text: meta.description || 'Палитры с единым визуальным характером.' });
-          const footer = folder.createDiv({ cls: 'esds-catalog-folder-footer' });
-          footer.createSpan({ text: `${items.length} ${items.length === 1 ? 'палитра' : 'палитр'}` });
-          footer.createSpan({ text: 'Открыть ›' });
-          const open = () => { this.paletteCategory = name; renderDirectory(''); };
-          folder.addEventListener('click', open);
+          const info = folder.createDiv({ cls: 'esds-catalog-folder-info' }); info.createEl('strong', { text: name }); info.createEl('small', { text: cat.description || 'Палитры с единым визуальным характером.' });
+          const footer = folder.createDiv({ cls: 'esds-catalog-folder-footer' }); footer.createSpan({ text: `${items.length} палитр · ${childCount} вложенных` }); footer.createSpan({ text: this.categorySelectionMode ? (this.categoryMultiSelection.has(cat.id) ? 'Выбрана ✓' : 'Выбрать') : 'Открыть ›' });
+          const open = () => { if (this.categorySelectionMode) { this.categoryMultiSelection.has(cat.id) ? this.categoryMultiSelection.delete(cat.id) : this.categoryMultiSelection.add(cat.id); } else { this.paletteCategory = null; this.paletteParentCategoryId = cat.id; } renderDirectory(''); };
+          folder.addEventListener('click', e => { if (e.target.closest('input')) return; open(); });
           folder.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
         });
+        if (!visibleCategories.length) directory.createEl('p', { cls: 'esds-empty', text: parent ? 'В этой категории пока нет вложенных категорий.' : 'Категорий пока нет. Создай новую или импортируй палитры.' });
+        if (parent) { const show = directory.createEl('button', { cls: 'esds-button esds-btn-quiet', text: `Показать палитры этой категории · ${(groups.get(parent.name) || []).length}` }); show.addEventListener('click', () => { this.paletteCategory = parent.name; renderDirectory(''); }); }
         return;
-      }
-      const matching = all.filter(item => {
+      }      const matching = all.filter(item => {
         const name = String(item.name || '').toLocaleLowerCase();
         const desc = String(item.description || item.mood || '').toLocaleLowerCase();
         const cat = String(item.category || '').toLocaleLowerCase();
@@ -2571,6 +2583,30 @@ class DesignStudioModal extends Modal {
     act('Переименовать', () => this.bulkRenamePalettes(selected));
     act('Удалить', () => this.bulkDeletePalettes(selected), true);
     act('Экспорт ZIP', () => this.exportPaletteIdsZip(selected));
+  }
+  isCategoryDescendant(categoryId, ancestorIds) { const map = new Map(this.getCategories('palettes').map(c => [c.id,c])); let current = map.get(categoryId), seen = new Set(); while (current && current.parentId && !seen.has(current.parentId)) { if (ancestorIds.has(current.parentId)) return true; seen.add(current.parentId); current = map.get(current.parentId); } return false; }
+  async moveSelectedCategories() {
+    const ids = new Set(this.categoryMultiSelection), categories = this.getCategories('palettes'), moving = categories.filter(c => ids.has(c.id)); if (!moving.length) return;
+    const candidates = categories.filter(c => !ids.has(c.id) && !this.isCategoryDescendant(c.id, ids));
+    const labels = ['Корень (без родительской категории)', ...candidates.map(c => c.name)];
+    const answer = prompt('Куда переместить выбранные категории?\n' + labels.map((v,i)=>`${i+1}. ${v}`).join('\n') + '\nВведи номер.'); if (answer === null) return;
+    const index = Number(answer)-1; if (!Number.isInteger(index) || index<0 || index>=labels.length) { new Notice('Неверное назначение.'); return; }
+    const parentId = index===0 ? null : candidates[index-1].id, before = clone(this.plugin.userData);
+    this.plugin.userData.categories.palettes = categories.map(c => ids.has(c.id) ? { ...c, parentId } : c);
+    if (await this.plugin.saveUserLibrary()===false) { this.plugin.userData=before; return; }
+    this.categoryMultiSelection.clear(); this.categorySelectionMode=false; new Notice('Перемещено категорий: '+moving.length); this.render();
+  }
+  async deleteSelectedCategories() {
+    const categories=this.getCategories('palettes'), ids=new Set(this.categoryMultiSelection), roots=categories.filter(c=>ids.has(c.id)); if(!roots.length)return;
+    const removeIds=new Set(ids); let changed=true; while(changed){changed=false;categories.forEach(c=>{if(c.parentId&&removeIds.has(c.parentId)&&!removeIds.has(c.id)){removeIds.add(c.id);changed=true;}});}
+    const names=new Set(categories.filter(c=>removeIds.has(c.id)).map(c=>c.name)), user=this.plugin.userData.palettes||[], removedUser=user.filter(p=>names.has(p.category||'Мои палитры')), removedBuilt=PALETTES.filter(p=>names.has(p.category||'Мои палитры')), total=removedUser.length+removedBuilt.length;
+    const preview=[...names].slice(0,5).join(', ')+(names.size>5?'…':''); if(!confirm(`Удалить ${removeIds.size} категорий (${preview}) и все ${total} палитр внутри них? Это действие нельзя отменить.`))return;
+    const before=clone(this.plugin.userData); this.plugin.userData.categories.palettes=categories.filter(c=>!removeIds.has(c.id));
+    this.plugin.userData.palettes=user.filter(p=>!names.has(p.category||'Мои палитры'));
+    this.plugin.userData.deletedBuiltinPaletteIds=[...new Set([...(this.plugin.userData.deletedBuiltinPaletteIds||[]),...removedBuilt.map(p=>p.id)])];
+    if(await this.plugin.saveUserLibrary()===false){this.plugin.userData=before;return;}
+    if(this.paletteCategory&&names.has(this.paletteCategory))this.paletteCategory=null; if(this.paletteParentCategoryId&&removeIds.has(this.paletteParentCategoryId))this.paletteParentCategoryId=null;
+    this.categoryMultiSelection.clear();this.categorySelectionMode=false;this.plugin.refreshGeneratedStyles();new Notice(`Удалено категорий: ${removeIds.size}; палитр: ${total}`);this.render();
   }
   async bulkDeletePalettes(ids) {
     const chosen = new Set(ids), source = this.plugin.userData.palettes || [], removable = source.filter(item => chosen.has(item.id));
@@ -3390,7 +3426,7 @@ class DesignStudioModal extends Modal {
     const baseId = slugify(clean) || 'palette-category';
     let id = baseId, suffix = 2;
     while (categories.some(item => item.id === id)) id = baseId + '-' + suffix++;
-    this.plugin.userData.categories.palettes = [...categories, { id, name: clean, order: categories.length + 10, protected: false }];
+    this.plugin.userData.categories.palettes = [...categories, { id, name: clean, order: categories.length + 10, protected: false, parentId: null }];
     const saved = await this.plugin.saveUserLibrary();
     if (saved === false) throw new Error('Не удалось сохранить категорию палитр.');
     return clean;
