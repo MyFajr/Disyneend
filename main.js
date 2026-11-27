@@ -1621,6 +1621,46 @@ class LibraryManagerModal extends Modal {
       items.push(...copies);
     }, 'Созданы копии: ' + ids.size + '.');
   }
+  async importSelection(file) {
+    if (!file) return;
+    try {
+      const payload = JSON.parse(await file.text());
+      if (!payload || payload.type !== 'esds-library-selection' || payload.kind !== this.kind || !Array.isArray(payload.items)) {
+        throw new Error('Файл не является экспортом выбранной библиотеки этого типа.');
+      }
+      const incoming = payload.items;
+      if (!incoming.length) throw new Error('В файле нет элементов.');
+      await this.commit(items => {
+        const now = new Date().toISOString();
+        incoming.forEach((raw, index) => {
+          const item = clone(raw);
+          const label = this.config.name(item);
+          if (this.kind === 'palette') {
+            if (!item.roles || !ROLE_KEYS.every(key => isHexColor(item.roles[key]))) throw new Error('В файле есть палитра с некорректными цветами.');
+            item.id = 'user-' + slugify(label) + '-' + Date.now().toString(36) + '-' + index;
+            item.defaultBackground = this.studio.findBackground(item.defaultBackground)?.id || BACKGROUNDS[0].id;
+            item.defaultBlocks = this.studio.findBlockStyle(item.defaultBlocks)?.id || BUILTIN_BLOCK_STYLES[0].id;
+            item.source = 'user';
+            item.category = this.ensureCategory(item.category || 'Мои палитры');
+          } else if (this.kind === 'background') {
+            if (!safeCssBackground(item.light) || !safeCssBackground(item.dark || item.light)) throw new Error('В файле есть некорректный фон.');
+            item.id = 'bg-custom-' + slugify(label) + '-' + Date.now().toString(36) + '-' + index;
+            item.name = label; item.label = label; item.source = 'user';
+            item.group = this.ensureCategory(item.group || item.category || 'Мои фоны'); item.category = item.group;
+          } else {
+            item.id = 'user-blocks-' + slugify(label) + '-' + Date.now().toString(36) + '-' + index;
+            item.category = this.ensureCategory(item.category || 'Мои стили');
+            item.source = 'user';
+          }
+          item.createdAt = now; item.updatedAt = now;
+          items.push(this.kind === 'blockStyle' ? normalizeBlockStyle(item) : item);
+        });
+      }, 'Импортировано элементов: ' + incoming.length + '.');
+    } catch (error) {
+      console.error('ESDS library selection import failed:', error);
+      new Notice(error && error.message ? error.message : 'Не удалось импортировать JSON.');
+    }
+  }
   async exportSelected() {
     const chosen = this.items.filter(x => this.selected.has(x.id)); if (!chosen.length) return;
     try {
@@ -1708,6 +1748,11 @@ class LibraryManagerModal extends Modal {
     button('Снять выбор', () => { this.selected.clear(); draw(); });
     button('Переместить', () => this.moveSelected(), 'esds-btn-cyan');
     button('Дублировать', () => this.duplicateSelected());
+    button('Импорт JSON', () => {
+      const input = document.createElement('input'); input.type = 'file'; input.accept = 'application/json,.json';
+      input.addEventListener('change', () => { const file = input.files && input.files[0]; if (file) this.importSelection(file); input.remove(); });
+      input.click();
+    });
     button('Экспорт JSON', () => this.exportSelected());
     button('Удалить', () => this.deleteSelected(), 'esds-menu-danger');
     button('Категории', () => this.studio.openCategoryManager(this.config.key));
