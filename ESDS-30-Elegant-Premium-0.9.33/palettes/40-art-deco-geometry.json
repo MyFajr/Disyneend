@@ -5,7 +5,7 @@
     "id": "elegant-premium-40-art-deco-geometry",
     "name": "Art Deco Geometry — Геометрия ар-деко",
     "mood": "Ночной петроль и бронзово-золотые переходы с архитектурной геометрической выразительностью.",
-    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий линейный градиент; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный линейный градиент с эффектом металлического блика; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
     "category": "Элегантные и премиальные",
     "source": "user",
     "swatches": [
@@ -346,8 +346,8 @@
     "name": "Art Deco Geometry — Геометрия ар-деко — фон",
     "label": "Art Deco Geometry — Геометрия ар-деко — фон",
     "group": "Элегантные и премиальные",
-    "light": "linear-gradient(132deg, #0A2633 0%, #104251 34%, #1C5058 66%, #62502B 100%)",
-    "dark": "linear-gradient(132deg, #0A2633 0%, #104251 34%, #1C5058 66%, #62502B 100%)",
+    "light": "linear-gradient(116deg, transparent 28%, #0A263355 46%, #0A2633CC 50%, #0A263355 54%, transparent 72%), linear-gradient(132deg, #0A2633 0%, #104251 34%, #1C5058 66%, #62502B 100%)",
+    "dark": "linear-gradient(116deg, transparent 28%, #0A263355 46%, #0A2633CC 50%, #0A263355 54%, transparent 72%), linear-gradient(132deg, #0A2633 0%, #104251 34%, #1C5058 66%, #62502B 100%)",
     "textColor": "#FFFFFF",
     "darkTextColor": "#FFFFFF",
     "source": "user"
@@ -355,7 +355,7 @@
   "blockStyle": {
     "id": "user-blocks-elegant-premium-40-art-deco-geometry",
     "name": "Art Deco Geometry — Геометрия ар-деко — учебные блоки",
-    "description": "12 цветовых карточек, согласованных с фоном Art Deco Geometry — Геометрия ар-деко; увеличенный текст и выразительные рамки.",
+    "description": "12 цветовых карточек, согласованных с фоном Art Deco Geometry — Геометрия ар-деко; увеличенный текст Medium и заголовки Semibold.",
     "category": "Элегантные и премиальные",
     "base": "rich",
     "framePreset": "classic",
@@ -377,6 +377,7 @@
         "titleWeight": 650,
         "titleSize": 15.5,
         "bodySize": 16.2,
+        "bodyWeight": 500,
         "shadow": "none"
       },
       "dark": {
@@ -390,6 +391,7 @@
         "titleWeight": 650,
         "titleSize": 15.5,
         "bodySize": 16.2,
+        "bodyWeight": 500,
         "shadow": "none"
       }
     },

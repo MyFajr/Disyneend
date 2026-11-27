@@ -5,7 +5,7 @@
     "id": "elegant-premium-46-cyber-sapphire",
     "name": "Cyber Sapphire — Кибер-сапфир",
     "mood": "Электрический сапфир, ночной индиго и холодная бирюзовая световая дуга.",
-    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий линейный градиент; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный линейный градиент с эффектом металлического блика; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
     "category": "Элегантные и премиальные",
     "source": "user",
     "swatches": [
@@ -346,8 +346,8 @@
     "name": "Cyber Sapphire — Кибер-сапфир — фон",
     "label": "Cyber Sapphire — Кибер-сапфир — фон",
     "group": "Элегантные и премиальные",
-    "light": "linear-gradient(132deg, #0D1D50 0%, #144C91 38%, #116C89 72%, #0C354D 100%)",
-    "dark": "linear-gradient(132deg, #0D1D50 0%, #144C91 38%, #116C89 72%, #0C354D 100%)",
+    "light": "linear-gradient(116deg, transparent 28%, #0D1D5055 46%, #0D1D50CC 50%, #0D1D5055 54%, transparent 72%), linear-gradient(132deg, #0D1D50 0%, #144C91 38%, #116C89 72%, #0C354D 100%)",
+    "dark": "linear-gradient(116deg, transparent 28%, #0D1D5055 46%, #0D1D50CC 50%, #0D1D5055 54%, transparent 72%), linear-gradient(132deg, #0D1D50 0%, #144C91 38%, #116C89 72%, #0C354D 100%)",
     "textColor": "#FFFFFF",
     "darkTextColor": "#FFFFFF",
     "source": "user"
@@ -355,7 +355,7 @@
   "blockStyle": {
     "id": "user-blocks-elegant-premium-46-cyber-sapphire",
     "name": "Cyber Sapphire — Кибер-сапфир — учебные блоки",
-    "description": "12 цветовых карточек, согласованных с фоном Cyber Sapphire — Кибер-сапфир; увеличенный текст и выразительные рамки.",
+    "description": "12 цветовых карточек, согласованных с фоном Cyber Sapphire — Кибер-сапфир; увеличенный текст Medium и заголовки Semibold.",
     "category": "Элегантные и премиальные",
     "base": "rich",
     "framePreset": "classic",
@@ -377,6 +377,7 @@
         "titleWeight": 650,
         "titleSize": 15.5,
         "bodySize": 16.2,
+        "bodyWeight": 500,
         "shadow": "none"
       },
       "dark": {
@@ -390,6 +391,7 @@
         "titleWeight": 650,
         "titleSize": 15.5,
         "bodySize": 16.2,
+        "bodyWeight": 500,
         "shadow": "none"
       }
     },

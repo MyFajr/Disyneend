@@ -5,7 +5,7 @@
     "id": "elegant-premium-45-neon-bordeaux",
     "name": "Neon Bordeaux — Неоновое бордо",
     "mood": "Сливово-бордовая глубина с яркой фуксией и мягким неоновым ореолом.",
-    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий радиальный градиент; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный глубокий многослойный радиальный градиент с эффектом светового ореола; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
     "category": "Элегантные и премиальные",
     "source": "user",
     "swatches": [
@@ -346,8 +346,8 @@
     "name": "Neon Bordeaux — Неоновое бордо — фон",
     "label": "Neon Bordeaux — Неоновое бордо — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(circle at 66% 20%, #A93A85 0%, #6B1F65 36%, #3B1746 70%, #210F2E 100%)",
-    "dark": "radial-gradient(circle at 66% 20%, #A93A85 0%, #6B1F65 36%, #3B1746 70%, #210F2E 100%)",
+    "light": "radial-gradient(ellipse at 66% 20%, #A93A85 0%, #A93A85 16%, transparent 60%), radial-gradient(circle at 66% 20%, #A93A85 0%, #6B1F65 36%, #3B1746 70%, #210F2E 100%)",
+    "dark": "radial-gradient(ellipse at 66% 20%, #A93A85 0%, #A93A85 16%, transparent 60%), radial-gradient(circle at 66% 20%, #A93A85 0%, #6B1F65 36%, #3B1746 70%, #210F2E 100%)",
     "textColor": "#FFFFFF",
     "darkTextColor": "#FFFFFF",
     "source": "user"
@@ -355,7 +355,7 @@
   "blockStyle": {
     "id": "user-blocks-elegant-premium-45-neon-bordeaux",
     "name": "Neon Bordeaux — Неоновое бордо — учебные блоки",
-    "description": "12 цветовых карточек, согласованных с фоном Neon Bordeaux — Неоновое бордо; увеличенный текст и выразительные рамки.",
+    "description": "12 цветовых карточек, согласованных с фоном Neon Bordeaux — Неоновое бордо; увеличенный текст Medium и заголовки Semibold.",
     "category": "Элегантные и премиальные",
     "base": "rich",
     "framePreset": "classic",
@@ -377,6 +377,7 @@
         "titleWeight": 650,
         "titleSize": 15.5,
         "bodySize": 16.2,
+        "bodyWeight": 500,
         "shadow": "none"
       },
       "dark": {
@@ -390,6 +391,7 @@
         "titleWeight": 650,
         "titleSize": 15.5,
         "bodySize": 16.2,
+        "bodyWeight": 500,
         "shadow": "none"
       }
     },

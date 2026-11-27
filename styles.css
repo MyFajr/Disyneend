@@ -2759,6 +2759,7 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
 .markdown-preview-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content,
 .markdown-source-view.esds-note:not([data-esds-callouts-disabled="true"]) .callout-content {
   font-size: var(--esds-block-body-size, 11.7px) !important;
+  font-weight: var(--esds-block-body-weight, 500) !important;
 }
 .esds-inline-theme .esds-demo-callout {
   padding: var(--esds-block-padding-y, 9px) var(--esds-block-padding-x, 10px) !important;
@@ -2772,6 +2773,7 @@ body.theme-dark .esds-preview:not([class*="esds-palette-"]).bg-28-saffron-cream,
 .esds-inline-theme .esds-demo-callout p,
 .esds-inline-theme .esds-demo-callout span {
   font-size: var(--esds-block-body-size, 11.7px) !important;
+  font-weight: var(--esds-block-body-weight, 500) !important;
 }
 .esds-card-manage-tools { display:flex; flex:0 0 auto; align-items:center; gap:4px; }
 .esds-background-manage-menu { flex:0 0 auto; margin-left:auto; }

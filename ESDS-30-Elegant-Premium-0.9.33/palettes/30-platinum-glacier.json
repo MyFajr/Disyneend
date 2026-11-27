@@ -5,7 +5,7 @@
     "id": "elegant-premium-30-platinum-glacier",
     "name": "Platinum Glacier — Платиновый ледник",
     "mood": "Платиново-серебряная поверхность с ледяными отражениями и радиальной дымкой.",
-    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный светлый радиальный градиент; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
+    "description": "Авторская палитра ESDS категории «Элегантные и премиальные». Индивидуальный светлый многослойный радиальный градиент с эффектом светового ореола; 11 семантических ролей и 12 самостоятельных цветовых Callout. Цветовая схема фиксирована и не зависит от темы Obsidian.",
     "category": "Элегантные и премиальные",
     "source": "user",
     "swatches": [
@@ -346,8 +346,8 @@
     "name": "Platinum Glacier — Платиновый ледник — фон",
     "label": "Platinum Glacier — Платиновый ледник — фон",
     "group": "Элегантные и премиальные",
-    "light": "radial-gradient(ellipse at 30% 18%, #F0F5F5 0%, #D6E0E4 40%, #B8C8D0 72%, #9BAFB9 100%)",
-    "dark": "radial-gradient(ellipse at 30% 18%, #F0F5F5 0%, #D6E0E4 40%, #B8C8D0 72%, #9BAFB9 100%)",
+    "light": "radial-gradient(ellipse at 30% 18%, #F0F5F5 0%, #F0F5F5 16%, transparent 60%), radial-gradient(ellipse at 30% 18%, #F0F5F5 0%, #D6E0E4 40%, #B8C8D0 72%, #9BAFB9 100%)",
+    "dark": "radial-gradient(ellipse at 30% 18%, #F0F5F5 0%, #F0F5F5 16%, transparent 60%), radial-gradient(ellipse at 30% 18%, #F0F5F5 0%, #D6E0E4 40%, #B8C8D0 72%, #9BAFB9 100%)",
     "textColor": "#201A22",
     "darkTextColor": "#201A22",
     "source": "user"
@@ -355,7 +355,7 @@
   "blockStyle": {
     "id": "user-blocks-elegant-premium-30-platinum-glacier",
     "name": "Platinum Glacier — Платиновый ледник — учебные блоки",
-    "description": "12 цветовых карточек, согласованных с фоном Platinum Glacier — Платиновый ледник; увеличенный текст и выразительные рамки.",
+    "description": "12 цветовых карточек, согласованных с фоном Platinum Glacier — Платиновый ледник; увеличенный текст Medium и заголовки Semibold.",
     "category": "Элегантные и премиальные",
     "base": "rich",
     "framePreset": "classic",
@@ -377,6 +377,7 @@
         "titleWeight": 650,
         "titleSize": 15.5,
         "bodySize": 16.2,
+        "bodyWeight": 500,
         "shadow": "none"
       },
       "dark": {
@@ -390,6 +391,7 @@
         "titleWeight": 650,
         "titleSize": 15.5,
         "bodySize": 16.2,
+        "bodyWeight": 500,
         "shadow": "none"
       }
     },

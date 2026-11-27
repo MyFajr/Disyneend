@@ -111,6 +111,7 @@ const BASE_BLOCK_STYLE = {
     titleWeight: 600,
     titleSize: 12.2,
     bodySize: 11.7,
+    bodyWeight: 500,
     shadow: 'none'
   },
   dark: {
@@ -124,6 +125,7 @@ const BASE_BLOCK_STYLE = {
     titleWeight: 600,
     titleSize: 12.2,
     bodySize: 11.7,
+    bodyWeight: 500,
     shadow: 'none'
   }
 };
@@ -778,9 +780,27 @@ function colorToHex(value) {
 }
 
 function safeCssBackground(value) {
-  if (typeof value !== 'string' || value.length > 300) return false;
+  if (typeof value !== 'string' || value.length > 600) return false;
   if (/[;{}<>]|url\s*\(|expression\s*\(/i.test(value)) return false;
-  return /^#[0-9a-f]{3,8}$/i.test(value) || /^(linear|radial)-gradient\([a-z0-9\s#%,.%()-]+\)$/i.test(value);
+  if (/^#[0-9a-f]{3,8}$/i.test(value)) return true;
+  const layers = [];
+  let depth = 0;
+  let start = 0;
+  for (let index = 0; index < value.length; index += 1) {
+    const char = value[index];
+    if (char === '(') depth += 1;
+    else if (char === ')') {
+      depth -= 1;
+      if (depth < 0) return false;
+    } else if (char === ',' && depth === 0) {
+      layers.push(value.slice(start, index).trim());
+      start = index + 1;
+    }
+  }
+  if (depth !== 0) return false;
+  layers.push(value.slice(start).trim());
+  return layers.length >= 1 && layers.length <= 3
+    && layers.every(layer => /^(linear|radial)-gradient\([a-z0-9\s#%,.%()-]+\)$/i.test(layer));
 }
 
 function clone(value) {
@@ -847,7 +867,7 @@ function stylePropsToVars(props) {
     backgroundOpacity: [0, 1, ''], borderOpacity: [0, 1, ''],
     borderRadius: [0, 32, 'px'], borderWidth: [0, 8, 'px'],
     paddingY: [0, 40, 'px'], paddingX: [0, 48, 'px'], gap: [0, 32, 'px'],
-    titleWeight: [100, 900, ''], titleSize: [8, 32, 'px'], bodySize: [8, 28, 'px']
+    titleWeight: [100, 900, ''], titleSize: [8, 32, 'px'], bodySize: [8, 28, 'px'], bodyWeight: [100, 900, '']
   };
   const parts = [];
   Object.entries(ranges).forEach(([key, [min, max, unit]]) => {
@@ -855,7 +875,7 @@ function stylePropsToVars(props) {
     const number = Number(props[key]);
     if (!Number.isFinite(number)) return;
     const safe = Math.min(max, Math.max(min, number));
-    parts.push(`--esds-block-${({ backgroundOpacity: 'opacity', borderOpacity: 'border-opacity', borderRadius: 'radius', borderWidth: 'border-width', paddingY: 'padding-y', paddingX: 'padding-x', gap: 'gap', titleWeight: 'title-weight', titleSize: 'title-size', bodySize: 'body-size' })[key]}:${safe}${unit}`);
+    parts.push(`--esds-block-${({ backgroundOpacity: 'opacity', borderOpacity: 'border-opacity', borderRadius: 'radius', borderWidth: 'border-width', paddingY: 'padding-y', paddingX: 'padding-x', gap: 'gap', titleWeight: 'title-weight', titleSize: 'title-size', bodySize: 'body-size', bodyWeight: 'body-weight' })[key]}:${safe}${unit}`);
   });
   return parts.join(';');
 }
@@ -934,7 +954,7 @@ function normalizeBlockStyle(raw = {}) {
   const safeOverrides = {};
   Object.keys(raw.calloutOverrides && typeof raw.calloutOverrides === 'object' ? raw.calloutOverrides : {}).filter(type => CALLOUT_KEYS.includes(type)).forEach(type => {
     const item = raw.calloutOverrides[type] || {};
-    const cleanMode = mode => Object.fromEntries(Object.entries(item[mode] || {}).filter(([key, value]) => ['backgroundOpacity','borderOpacity','borderRadius','borderWidth','paddingY','paddingX','gap','titleWeight','titleSize','bodySize'].includes(key) && Number.isFinite(Number(value))).map(([key, value]) => [key, Number(value)]));
+    const cleanMode = mode => Object.fromEntries(Object.entries(item[mode] || {}).filter(([key, value]) => ['backgroundOpacity','borderOpacity','borderRadius','borderWidth','paddingY','paddingX','gap','titleWeight','titleSize','bodySize','bodyWeight'].includes(key) && Number.isFinite(Number(value))).map(([key, value]) => [key, Number(value)]));
     safeOverrides[type] = { light: cleanMode('light'), dark: cleanMode('dark') };
   });
   const safeColors = mode => Object.fromEntries(Object.entries((raw.colors && raw.colors[mode]) || {}).filter(([key, value]) => CALLOUT_KEYS.includes(key) && (isHexColor(value) || (Array.isArray(value) && value.length === 3 && value.every(n => Number.isFinite(n) && n >= 0 && n <= 255)))));
