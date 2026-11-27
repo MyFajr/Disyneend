@@ -3,7 +3,7 @@
   "type": "esds-theme-pack",
   "plugin": "english-study-design-studio",
   "name": "Turquoise Wave — полный дизайнерский набор",
-  "description": "Полный дизайн Turquoise Wave: палитра, индивидуальный цветной фон и единое оформление блоков.",
+  "description": "Полный дизайн Turquoise Wave: индивидуальный насыщенный фон, палитра и стиль блоков.",
   "frameSource": "blockStyle",
   "items": {
     "palette": {
@@ -351,8 +351,8 @@
       "name": "Turquoise Wave — фон",
       "label": "Turquoise Wave — фон",
       "group": "Rainbow Multicolor",
-      "light": "linear-gradient(135deg, #BAECE8 0%, #FFFADB 100%)",
-      "dark": "linear-gradient(135deg, #BAECE8 0%, #FFFADB 100%)",
+      "light": "linear-gradient(135deg, #62D4C9 0%, #FFE970 100%)",
+      "dark": "linear-gradient(135deg, #62D4C9 0%, #FFE970 100%)",
       "textColor": "#201B2A",
       "darkTextColor": "#201B2A"
     },
