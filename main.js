@@ -237,7 +237,6 @@ function esdsHexToRgb(hex) {
 }
 function esdsBuildThemedPalette(config) {
   const roles = config.roles;
-  const dark = config.dark;
   const roleForCallout = {
     rule: 'heading', example: 'ipa', important: 'focus', tip: 'translation', warning: 'secondary',
     question: 'en', practice: 'term', success: 'translation', info: 'en', note: 'definition',
@@ -249,12 +248,11 @@ function esdsBuildThemedPalette(config) {
     calloutFrames[key] = { preset: frames[index % frames.length], width: config.frameWidth || 1.5, radius: config.frameRadius || 10 };
   });
   const callouts = Object.fromEntries(CALLOUTS.map(([key]) => [key, esdsHexToRgb(roles[roleForCallout[key]])]));
-  const darkCallouts = Object.fromEntries(CALLOUTS.map(([key]) => [key, esdsHexToRgb(dark[roleForCallout[key]])]));
   return {
     id: config.id, name: config.name, category: config.category, mood: config.mood,
     description: config.description, defaultBackground: config.defaultBackground,
     defaultBlocks: config.defaultBlocks, swatches: config.swatches || [roles.en, roles.ipa, roles.translation, roles.focus, roles.secondary],
-    roles, dark, callouts, darkCallouts, calloutFrames, source: 'builtin'
+    roles, callouts, calloutFrames, source: 'builtin'
   };
 }
 PALETTES.push(
@@ -2564,7 +2562,6 @@ class DesignStudioModal extends Modal {
     }
   }
   paletteSwatches(palette) {
-    const darkMode = false;
     const roleKeys = [
       ['en', 'Иностранные слова'], ['ipa', 'Произношение / транскрипция'], ['translation', 'Перевод'],
       ['term', 'Термин'], ['focus', 'Акцент'], ['secondary', 'Второй акцент']
