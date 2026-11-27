@@ -16,24 +16,24 @@
       "swatches": [
         "#D92E86",
         "#B8F34A",
-        "#664193",
-        "#156A4E",
-        "#8D346A"
+        "#312048",
+        "#0F312B",
+        "#421B37"
       ],
       "defaultBackground": "bg-custom-dragon-fruit",
       "defaultBlocks": "user-blocks-dragon-fruit",
       "roles": {
-        "en": "#952463",
-        "letter": "#729438",
-        "ipa": "#664193",
-        "translation": "#156A4E",
-        "term": "#8D346A",
-        "definition": "#4D5A74",
-        "focus": "#9D2567",
-        "secondary": "#7CA13A",
-        "soft": "#705091",
-        "heading": "#721E50",
-        "ink": "#292536"
+        "en": "#4E1638",
+        "letter": "#435525",
+        "ipa": "#312048",
+        "translation": "#0F312B",
+        "term": "#421B37",
+        "definition": "#3A4358",
+        "focus": "#5A183F",
+        "secondary": "#435525",
+        "soft": "#342647",
+        "heading": "#3D132F",
+        "ink": "#201B2A"
       },
       "callouts": {
         "rule": [
@@ -161,126 +161,126 @@
       },
       "calloutTexts": {
         "rule": [
-          31,
-          66,
-          136
+          23,
+          46,
+          94
         ],
         "example": [
-          91,
-          53,
-          121
+          63,
+          37,
+          84
         ],
         "important": [
-          135,
-          47,
-          69
+          93,
+          33,
+          50
         ],
         "tip": [
-          20,
-          82,
-          65
+          16,
+          56,
+          47
         ],
         "warning": [
-          118,
-          76,
-          27
+          81,
+          53,
+          22
         ],
         "question": [
-          18,
-          86,
-          108
+          14,
+          59,
+          75
         ],
         "practice": [
-          129,
-          59,
-          33
+          88,
+          41,
+          26
         ],
         "success": [
-          28,
-          91,
-          66
+          21,
+          62,
+          48
         ],
         "info": [
-          45,
-          69,
-          118
+          33,
+          48,
+          82
         ],
         "note": [
-          66,
-          71,
-          89
+          46,
+          49,
+          63
         ],
         "quote": [
-          114,
-          51,
-          96
+          78,
+          35,
+          68
         ],
         "abstract": [
-          81,
-          54,
-          116
+          56,
+          37,
+          81
         ]
       },
       "calloutBorders": {
         "rule": [
-          36,
-          86,
-          179
+          34,
+          85,
+          177
         ],
         "example": [
-          120,
-          68,
-          157
+          119,
+          67,
+          155
         ],
         "important": [
-          183,
-          60,
-          84
+          182,
+          59,
+          82
         ],
         "tip": [
-          21,
-          109,
-          80
+          20,
+          108,
+          78
         ],
         "warning": [
-          159,
-          101,
-          25
+          158,
+          100,
+          23
         ],
         "question": [
-          18,
-          114,
-          139
+          17,
+          113,
+          137
         ],
         "practice": [
-          173,
-          76,
-          35
+          172,
+          75,
+          33
         ],
         "success": [
-          32,
-          122,
-          80
+          30,
+          120,
+          78
         ],
         "info": [
-          56,
-          90,
-          153
+          55,
+          89,
+          151
         ],
         "note": [
-          85,
-          93,
-          112
+          84,
+          92,
+          110
         ],
         "quote": [
-          152,
-          65,
-          122
+          151,
+          64,
+          120
         ],
         "abstract": [
-          106,
-          69,
-          151
+          105,
+          68,
+          149
         ]
       },
       "calloutFrames": {
@@ -353,8 +353,8 @@
       "group": "Rainbow Multicolor",
       "light": "linear-gradient(135deg, #F5C7DE 0%, #EFFCD7 100%)",
       "dark": "linear-gradient(135deg, #F5C7DE 0%, #EFFCD7 100%)",
-      "textColor": "#292536",
-      "darkTextColor": "#292536"
+      "textColor": "#201B2A",
+      "darkTextColor": "#201B2A"
     },
     "blockStyle": {
       "id": "user-blocks-dragon-fruit",
