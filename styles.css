@@ -4399,3 +4399,10 @@ body.theme-dark .esds-preview.bg-28-saffron-cream, .esds-preview.esds-preview-da
 .esds-catalog-palette-grid.esds-view-list .esds-palette-rich-sample{grid-column:2;grid-row:1 / span 3;max-height:105px;overflow:hidden}
 .esds-catalog-palette-grid.esds-view-list .esds-template-card-heading{grid-column:1;grid-row:1}
 @media(max-width:420px){.esds-palette-manager-toolbar{gap:5px;padding:8px}.esds-palette-manager-toolbar>.esds-button{flex:1 1 42%}.esds-palette-manager-actions .esds-button{flex:1 1 42%}}
+
+.esds-import-conflicts{max-height:85vh;overflow:auto;padding:16px}
+.esds-import-conflict-row{display:flex;flex-direction:column;gap:6px;padding:10px;margin:8px 0;border:1px solid var(--background-modifier-border);border-radius:10px}
+.esds-import-conflict-row small{color:var(--text-muted)}
+.esds-import-conflict-row select,.esds-import-conflict-global select{min-height:40px;width:100%}
+.esds-import-conflict-global{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+.esds-import-conflict-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
