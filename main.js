@@ -1460,13 +1460,10 @@ class PaletteBuilderModal extends Modal {
       // The palette stores its recommended base block preset; it is selected automatically.
       palette.defaultBlocks = palette.defaultBlocks || this.studio.selectedBlocks.id;
       palette.roles = { ...(palette.roles || {}) };
-      palette.dark = { ...(palette.roles || {}) };
-      ROLE_KEYS.forEach(key => {
-        if (this.inputs.light[key]) palette.roles[key] = this.inputs.light[key].value;
-      });
-      if (this.inputs.light.letter) palette.roles.letter = this.inputs.light.letter.value;
+      delete palette.dark; delete palette.darkCallouts; delete palette.darkCalloutFills; delete palette.darkCalloutTexts; delete palette.darkCalloutBorders;
+      ROLE_KEYS.forEach(key => { if (this.inputs[key]) palette.roles[key] = this.inputs[key].value; });
+      if (this.inputs.letter) palette.roles.letter = this.inputs.letter.value;
       else palette.roles.letter = palette.roles.letter || palette.roles.ipa;
-      palette.dark.letter = palette.roles.letter || palette.roles.ipa;
       palette.swatches = [palette.roles.en, palette.roles.ipa, palette.roles.translation, palette.roles.term, palette.roles.focus];
       const now = new Date().toISOString();
       palette.createdAt = palette.createdAt || now;
@@ -4789,13 +4786,11 @@ module.exports = class EnglishStudyDesignStudio extends Plugin {
       .filter(p => p && /^user-[a-z0-9-]+$/.test(p.id || '') && p.roles && ROLE_KEYS.every(k => isHexColor(p.roles[k])))
       .map(makePaletteCss)].join('\n');
     const backgrounds = (this.userData.backgrounds || [])
-      .filter(bg => bg && /^bg-custom-[a-z0-9-]+$/.test(bg.id || '') && safeCssBackground(bg.light) && safeCssBackground(bg.dark || bg.light))
+       .filter(bg => bg && /^bg-custom-[a-z0-9-]+$/.test(bg.id || '') && safeCssBackground(bg.value || bg.light || bg.dark))
       .map(bg => {
-        const light = bg.light;
-        const dark = bg.dark || bg.light;
+        const value = bg.value || bg.light || bg.dark;
         const fg = isHexColor(bg.textColor) ? bg.textColor : '#302d31';
-        const darkFg = isHexColor(bg.darkTextColor) ? bg.darkTextColor : '#e9eaf0';
-        return `.markdown-preview-view.esds-note.${bg.id},.markdown-source-view.esds-note.${bg.id}{--note-background:${light};--esds-bg-fg:${fg};}\nbody.theme-dark .markdown-preview-view.esds-note.${bg.id},body.theme-dark .markdown-source-view.esds-note.${bg.id}{--note-background:${dark};--esds-bg-fg:${darkFg};}\n.esds-preview.${bg.id}{--note-background:${light};}\nbody.theme-dark .esds-preview.${bg.id}{--note-background:${dark};}\n.markdown-preview-view.esds-note.${bg.id},.markdown-source-view.esds-note.${bg.id}{color:var(--esds-bg-fg);--text-normal:var(--esds-bg-fg);}\n.markdown-preview-view.esds-note.${bg.id} h1,.markdown-preview-view.esds-note.${bg.id} h2,.markdown-preview-view.esds-note.${bg.id} h3,.markdown-preview-view.esds-note.${bg.id} h4,.markdown-preview-view.esds-note.${bg.id} h5,.markdown-preview-view.esds-note.${bg.id} h6{color:var(--esds-heading,var(--esds-bg-fg));}`;
+        return `.markdown-preview-view.esds-note.${bg.id},.markdown-source-view.esds-note.${bg.id}{--note-background:${value};--esds-bg-fg:${fg};}\n.esds-preview.${bg.id}{--note-background:${value};}\n.markdown-preview-view.esds-note.${bg.id},.markdown-source-view.esds-note.${bg.id}{color:var(--esds-bg-fg);--text-normal:var(--esds-bg-fg);}\n.markdown-preview-view.esds-note.${bg.id} h1,.markdown-preview-view.esds-note.${bg.id} h2,.markdown-preview-view.esds-note.${bg.id} h3,.markdown-preview-view.esds-note.${bg.id} h4,.markdown-preview-view.esds-note.${bg.id} h5,.markdown-preview-view.esds-note.${bg.id} h6{color:var(--esds-heading,var(--esds-bg-fg));}`;
       }).join('\n');
     const blockStyles = (this.userData.blockStyles || [])
       .map(normalizeBlockStyle)
