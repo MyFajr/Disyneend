@@ -237,7 +237,6 @@ function esdsHexToRgb(hex) {
 }
 function esdsBuildThemedPalette(config) {
   const roles = config.roles;
-  const dark = config.dark;
   const roleForCallout = {
     rule: 'heading', example: 'ipa', important: 'focus', tip: 'translation', warning: 'secondary',
     question: 'en', practice: 'term', success: 'translation', info: 'en', note: 'definition',
@@ -249,12 +248,11 @@ function esdsBuildThemedPalette(config) {
     calloutFrames[key] = { preset: frames[index % frames.length], width: config.frameWidth || 1.5, radius: config.frameRadius || 10 };
   });
   const callouts = Object.fromEntries(CALLOUTS.map(([key]) => [key, esdsHexToRgb(roles[roleForCallout[key]])]));
-  const darkCallouts = Object.fromEntries(CALLOUTS.map(([key]) => [key, esdsHexToRgb(dark[roleForCallout[key]])]));
   return {
     id: config.id, name: config.name, category: config.category, mood: config.mood,
     description: config.description, defaultBackground: config.defaultBackground,
     defaultBlocks: config.defaultBlocks, swatches: config.swatches || [roles.en, roles.ipa, roles.translation, roles.focus, roles.secondary],
-    roles, dark, callouts, darkCallouts, calloutFrames, source: 'builtin'
+    roles, callouts, calloutFrames, source: 'builtin'
   };
 }
 PALETTES.push(
@@ -299,6 +297,9 @@ PALETTES.push(
     frames:['dotted','double','classic','left','top','dashed']
   })
 );
+
+// Built-in palettes also use one shared color system; discard legacy dark-mode variants.
+PALETTES.forEach(palette => { delete palette.dark; delete palette.darkCallouts; delete palette.darkCalloutFills; delete palette.darkCalloutTexts; delete palette.darkCalloutBorders; });
 
 const BACKGROUNDS = [
   { id: 'bg-01-reading-ivory', label: '01 · Слоновая кость', group: 'Для чтения' },
@@ -477,6 +478,9 @@ function ensureLibraryShape(data) {
     }
   });
   lib.contentProfiles = [...profileMap.values()];
+  // Migrate legacy dual-mode palette/background entries to one design set.
+  lib.palettes = lib.palettes.map(item => { const p = { ...item, roles: { ...(item.roles || {}) } }; p.roles.letter = p.roles.letter || p.roles.ipa; delete p.dark; delete p.darkCallouts; delete p.darkCalloutFills; delete p.darkCalloutTexts; delete p.darkCalloutBorders; return p; });
+  lib.backgrounds = lib.backgrounds.map(item => { const bg = { ...item, value: item.value || item.light || item.dark, textColor: item.textColor || (item.light ? '#302d31' : item.darkTextColor) || '#302d31' }; delete bg.light; delete bg.dark; delete bg.darkTextColor; return bg; });
   if (!lib.categories || typeof lib.categories !== 'object') {
     lib.categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
   }
@@ -757,8 +761,6 @@ function makePaletteCss(palette) {
   const cls = `esds-palette-${palette.id}`;
   const roles = palette.roles || {};
   const callouts = palette.callouts || {};
-  const darkRoles = palette.dark || roles;
-  const darkCallouts = palette.darkCallouts || callouts;
   const selectors = [
     `.markdown-preview-view.esds-note.${cls}`,
     `.markdown-source-view.esds-note.${cls}`,
@@ -766,8 +768,6 @@ function makePaletteCss(palette) {
   ].join(',');
   const roleVars = ROLE_KEYS.map(key => `--esds-${key}: ${isHexColor(roles[key]) ? roles[key] : '#777777'};`).join(' ') + ` --esds-letter: ${isHexColor(roles.letter) ? roles.letter : (isHexColor(roles.ipa) ? roles.ipa : '#777777')};`;
   const calloutVars = CALLOUT_KEYS.map(key => `--esds-callout-${key}: ${rgbValue(callouts[key])};`).join(' ');
-  const darkRoleVars = ROLE_KEYS.map(key => `--esds-${key}: ${isHexColor(darkRoles[key]) ? darkRoles[key] : (isHexColor(roles[key]) ? roles[key] : '#dddddd')};`).join(' ') + ` --esds-letter: ${isHexColor(darkRoles.letter) ? darkRoles.letter : (isHexColor(darkRoles.ipa) ? darkRoles.ipa : '#dddddd')};`;
-  const darkCalloutVars = CALLOUT_KEYS.map(key => `--esds-callout-${key}: ${rgbValue(darkCallouts[key])};`).join(' ');
   const mapVars = (fill, text, border) => CALLOUT_KEYS.map(key => {
     const vars = [];
     if (fill && fill[key] && isValidPaletteColor(fill[key])) vars.push(`--esds-callout-fill-${key}:${rgbValue(fill[key])};`);
@@ -775,22 +775,19 @@ function makePaletteCss(palette) {
     if (border && border[key] && isValidPaletteColor(border[key])) vars.push(`--esds-callout-border-${key}:${rgbValue(border[key])};`);
     return vars.join(' ');
   }).join(' ');
-  const lightExtra = mapVars(palette.calloutFills, palette.calloutTexts, palette.calloutBorders);
-  const darkExtra = mapVars(palette.darkCalloutFills, palette.darkCalloutTexts, palette.darkCalloutBorders);
-  const darkSelectors = selectors.split(',').map(selector => `body.theme-dark ${selector}`).join(',');
-  const frameCss = (mode) => CALLOUT_KEYS.map(type => {
+  const extra = mapVars(palette.calloutFills, palette.calloutTexts, palette.calloutBorders);
+  const frameCss = CALLOUT_KEYS.map(type => {
     const frame = (palette.calloutFrames && palette.calloutFrames[type]) || { preset: 'classic', width: 1.5, radius: 10 };
     if (!BLOCK_FRAME_PRESET_KEYS.includes(frame.preset)) return '';
     const preset = NOTE_STYLE_FRAME_PRESETS[frame.preset] || NOTE_STYLE_FRAME_PRESETS.classic;
     const width = Math.max(0, Math.min(8, Number.isFinite(Number(frame.width)) ? Number(frame.width) : 1.5));
     const radius = Math.max(0, Math.min(32, Number.isFinite(Number(frame.radius)) ? Number(frame.radius) : 10));
     const widths = ['top','right','bottom','left'].map(side => preset.style !== 'none' && preset.sides[side] ? `${width}px` : '0px').join(' ');
-    const modePrefix = mode === 'dark' ? 'body.theme-dark ' : '';
-    const noteSelector = `${modePrefix}.markdown-preview-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).esds-frames-from-palette.${cls} .callout[data-callout="${type}"],${modePrefix}.markdown-source-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).esds-frames-from-palette.${cls} .callout[data-callout="${type}"]`;
-    const previewSelector = `${modePrefix}.esds-preview.esds-frames-from-palette.${cls} .esds-demo-callout.esds-callout-${type}`;
+    const noteSelector = `.markdown-preview-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).esds-frames-from-palette.${cls} .callout[data-callout="${type}"],.markdown-source-view.esds-note:not([${CALLOUTS_DISABLED_ATTRIBUTE}="true"]).esds-frames-from-palette.${cls} .callout[data-callout="${type}"]`;
+    const previewSelector = `.esds-preview.esds-frames-from-palette.${cls} .esds-demo-callout.esds-callout-${type}`;
     return `${noteSelector},${previewSelector}{border-style:${preset.style} !important;border-width:${widths} !important;border-radius:${radius}px !important;}`;
   }).join('\n');
-  return `${selectors}{${roleVars} ${calloutVars} ${lightExtra}} ${darkSelectors}{${darkRoleVars} ${darkCalloutVars} ${darkExtra}}\n${frameCss('light')}\n${frameCss('dark')}`;
+  return `${selectors}{${roleVars} ${calloutVars} ${extra}}\n${frameCss}`;
 }
 
 function mergeStyleProps(base, override) {
@@ -1269,7 +1266,7 @@ class LibraryItemPreviewModal extends Modal {
 }
 
 class PaletteBuilderModal extends Modal {
-  constructor(app, studio, existing = null) { super(app); this.studio = studio; this.existing = existing; this.base = clone(existing || studio.selectedPalette); this.inputs = { light: {}, dark: {} }; this.category = (existing && existing.category) || 'Мои палитры'; this.themeMode = 'light'; this.calloutType = 'important'; }
+  constructor(app, studio, existing = null) { super(app); this.studio = studio; this.existing = existing; this.base = clone(existing || studio.selectedPalette); this.inputs = {}; this.category = (existing && existing.category) || 'Мои палитры'; this.calloutType = 'important'; }
   onOpen() { this.modalEl.addClass('esds-builder-modal'); this.contentEl.addClass('esds-builder-content'); this.render(); }
   onClose() { this.contentEl.empty(); }
   render() {
@@ -1304,24 +1301,18 @@ class PaletteBuilderModal extends Modal {
     let refreshLinkedPreview = () => {};
     this.defaultBackgroundSelect.addEventListener('change', () => { this.base.defaultBackground = this.defaultBackgroundSelect.value; refreshLinkedPreview(); });
 
-    const themeToggle = body.createDiv({ cls: 'esds-theme-toggle' });
-    const lightBtn = themeToggle.createEl('button', { cls: `esds-button ${this.themeMode === 'light' ? 'esds-primary' : 'esds-btn-quiet'}`, text: 'Light', attr: { type: 'button' } });
-    const darkBtn = themeToggle.createEl('button', { cls: `esds-button ${this.themeMode === 'dark' ? 'esds-primary' : 'esds-btn-quiet'}`, text: 'Dark', attr: { type: 'button' } });
-    lightBtn.addEventListener('click', () => { this.themeMode = 'light'; this.render(); });
-    darkBtn.addEventListener('click', () => { this.themeMode = 'dark'; this.render(); });
+    // Single palette color set for both Obsidian theme modes.
     const swatches = body.createDiv({ cls: 'esds-color-grid' });
     const labels = { en:'Иностранные слова', ipa:'Произношение / транскрипция', translation:'Перевод', term:'Термины', definition:'Определения', focus:'Главный акцент', secondary:'Второй акцент', soft:'Мягкий акцент', heading:'Заголовки', ink:'Основной текст', letter:'Иностранные буквы' };
-    const currentRoles = this.themeMode === 'dark' ? (this.base.dark || this.base.roles) : this.base.roles;
+    const currentRoles = this.base.roles;
     ROLE_KEYS.forEach(key => {
       const field = swatches.createDiv({ cls: 'esds-color-field' });
       field.createEl('label', { text: labels[key] });
       const value = isHexColor(currentRoles[key]) ? currentRoles[key] : (this.base.roles[key] || '#777777');
       const input = field.createEl('input', { attr: { type: 'color', value } });
-      input.value = value; this.inputs[this.themeMode][key] = input;
-      const editingMode = this.themeMode;
+      input.value = value; this.inputs[key] = input;
       input.addEventListener('input', () => {
-        if (editingMode === 'dark') this.base.dark = { ...(this.base.dark || this.base.roles), [key]: input.value };
-        else this.base.roles = { ...(this.base.roles || {}), [key]: input.value };
+        this.base.roles = { ...(this.base.roles || {}), [key]: input.value };
         if (this.palettePreview) this.palettePreview.style.setProperty(`--esds-${key}`, input.value);
       });
     });
@@ -1332,11 +1323,9 @@ class PaletteBuilderModal extends Modal {
       const fallback = currentRoles.ipa || this.base.roles.ipa || '#743A9D';
       const value = isHexColor(currentRoles[key]) ? currentRoles[key] : fallback;
       const input = field.createEl('input', { attr: { type: 'color', value } });
-      input.value = value; this.inputs[this.themeMode][key] = input;
-      const editingMode = this.themeMode;
+      input.value = value; this.inputs[key] = input;
       input.addEventListener('input', () => {
-        if (editingMode === 'dark') this.base.dark = { ...(this.base.dark || this.base.roles), letter: input.value };
-        else this.base.roles = { ...(this.base.roles || {}), letter: input.value };
+        this.base.roles = { ...(this.base.roles || {}), letter: input.value };
         if (this.palettePreview) this.palettePreview.style.setProperty('--esds-letter', input.value);
       });
     }
@@ -1350,9 +1339,7 @@ class PaletteBuilderModal extends Modal {
     });
     calloutTypeSelect.addEventListener('change', () => { this.calloutType = calloutTypeSelect.value; this.render(); });
     const calloutColorGrid = calloutColorsSection.createDiv({ cls: 'esds-palette-callout-color-grid' });
-    const calloutColorMaps = this.themeMode === 'dark'
-      ? { fill: 'darkCalloutFills', text: 'darkCalloutTexts', border: 'darkCalloutBorders', base: this.base.darkCallouts || this.base.callouts }
-      : { fill: 'calloutFills', text: 'calloutTexts', border: 'calloutBorders', base: this.base.callouts };
+    const calloutColorMaps = { fill: 'calloutFills', text: 'calloutTexts', border: 'calloutBorders', base: this.base.callouts };
     [['fill', 'Заливка'], ['text', 'Цвет текста блока'], ['border', 'Обводка']].forEach(([kind, label]) => {
       const mapName = calloutColorMaps[kind];
       const map = this.base[mapName] && typeof this.base[mapName] === 'object' ? this.base[mapName] : {};
@@ -1414,7 +1401,7 @@ class PaletteBuilderModal extends Modal {
       const bg = this.studio.findBackground(this.defaultBackgroundSelect.value) || this.studio.selectedBackground;
       const blocks = this.studio.findBlockStyle(this.base.defaultBlocks) || this.studio.getPreferredBlockStyle(this.base);
       this.palettePreview.className = `esds-preview esds-inline-theme ${this.base.id} esds-palette-${this.base.id} ${bg.id} esds-frames-from-palette`;
-      this.studio.setPreviewTheme(this.palettePreview, this.base, bg, blocks, this.themeMode);
+      this.studio.setPreviewTheme(this.palettePreview, this.base, bg, blocks);
     };
     this.palettePreview.style.setProperty('--esds-en', currentRoles.en || '#187b75');
     this.palettePreview.style.setProperty('--esds-ipa', currentRoles.ipa || '#7450a8');
@@ -1467,15 +1454,10 @@ class PaletteBuilderModal extends Modal {
       // The palette stores its recommended base block preset; it is selected automatically.
       palette.defaultBlocks = palette.defaultBlocks || this.studio.selectedBlocks.id;
       palette.roles = { ...(palette.roles || {}) };
-      palette.dark = { ...(palette.dark || palette.roles) };
-      ROLE_KEYS.forEach(key => {
-        if (this.inputs.light[key]) palette.roles[key] = this.inputs.light[key].value;
-        if (this.inputs.dark[key]) palette.dark[key] = this.inputs.dark[key].value;
-      });
-      if (this.inputs.light.letter) palette.roles.letter = this.inputs.light.letter.value;
+      delete palette.dark; delete palette.darkCallouts; delete palette.darkCalloutFills; delete palette.darkCalloutTexts; delete palette.darkCalloutBorders;
+      ROLE_KEYS.forEach(key => { if (this.inputs[key]) palette.roles[key] = this.inputs[key].value; });
+      if (this.inputs.letter) palette.roles.letter = this.inputs.letter.value;
       else palette.roles.letter = palette.roles.letter || palette.roles.ipa;
-      if (this.inputs.dark.letter) palette.dark.letter = this.inputs.dark.letter.value;
-      else palette.dark.letter = palette.dark.letter || palette.dark.ipa || palette.roles.letter;
       palette.swatches = [palette.roles.en, palette.roles.ipa, palette.roles.translation, palette.roles.term, palette.roles.focus];
       const now = new Date().toISOString();
       palette.createdAt = palette.createdAt || now;
@@ -1504,7 +1486,7 @@ class PaletteBuilderModal extends Modal {
 }
 
 class BackgroundBuilderModal extends Modal {
-  constructor(app, studio, existing = null) { super(app); this.studio = studio; this.existing = existing; this.category = (existing && (existing.group || existing.category)) || 'Мои фоны'; this.themeMode = 'light'; const stops = (value, a, b) => { const found = String(value || '').match(/#[0-9a-f]{6}/ig) || []; return [found[0] || a, found[1] || b]; }; this.colors = { light: stops(existing && existing.light, '#e8f1ed', '#d6e6df'), dark: stops(existing && existing.dark, '#292d35', '#20242d') }; }
+  constructor(app, studio, existing = null) { super(app); this.studio = studio; this.existing = existing; this.category = (existing && (existing.group || existing.category)) || 'Мои фоны'; const stops = (value, a, b) => { const found = String(value || '').match(/#[0-9a-f]{6}/ig) || []; return [found[0] || a, found[1] || b]; }; this.colors = stops(existing && (existing.value || existing.light || existing.dark), '#e8f1ed', '#d6e6df'); }
   onOpen() { this.modalEl.addClass('esds-builder-modal'); this.contentEl.addClass('esds-builder-content'); this.render(); }
   onClose() { this.contentEl.empty(); }
   render() {
@@ -1525,22 +1507,18 @@ class BackgroundBuilderModal extends Modal {
       if (cat.name === this.category) option.selected = true;
     });
     categorySelect.addEventListener('change', () => { this.category = categorySelect.value; });
-    const themeToggle = body.createDiv({ cls: 'esds-theme-toggle' });
-    const lightBtn = themeToggle.createEl('button', { cls: `esds-button ${this.themeMode === 'light' ? 'esds-primary' : 'esds-btn-quiet'}`, text: 'Light', attr: { type: 'button' } });
-    const darkBtn = themeToggle.createEl('button', { cls: `esds-button ${this.themeMode === 'dark' ? 'esds-primary' : 'esds-btn-quiet'}`, text: 'Dark', attr: { type: 'button' } });
-    lightBtn.addEventListener('click', () => { this.themeMode = 'light'; this.render(); });
-    darkBtn.addEventListener('click', () => { this.themeMode = 'dark'; this.render(); });
+    // One background color pair; no separate light/dark version.
     const colors = body.createDiv({ cls: 'esds-color-grid esds-background-colors' });
-    const c1f = colors.createDiv({ cls: 'esds-color-field' }); c1f.createEl('label', { text: 'Первый цвет' }); const c1 = c1f.createEl('input', { attr: { type: 'color', value: this.colors[this.themeMode][0] } });
-    const c2f = colors.createDiv({ cls: 'esds-color-field' }); c2f.createEl('label', { text: 'Второй цвет' }); const c2 = c2f.createEl('input', { attr: { type: 'color', value: this.colors[this.themeMode][1] } });
+    const c1f = colors.createDiv({ cls: 'esds-color-field' }); c1f.createEl('label', { text: 'Первый цвет' }); const c1 = c1f.createEl('input', { attr: { type: 'color', value: this.colors[0] } });
+    const c2f = colors.createDiv({ cls: 'esds-color-field' }); c2f.createEl('label', { text: 'Второй цвет' }); const c2 = c2f.createEl('input', { attr: { type: 'color', value: this.colors[1] } });
     const preview = body.createDiv({ cls: 'esds-custom-bg-preview' });
     const previewTitle = preview.createEl('strong', { text: 'Универсальный конспект' });
     const previewText = preview.createEl('span', { text: 'Ключевой термин или иностранное выражение' });
     const previewTranslation = preview.createEl('small', { text: 'Перевод, объяснение или значение' });
     const update = () => {
-      this.colors[this.themeMode] = [c1.value, c2.value];
+      this.colors = [c1.value, c2.value];
       preview.style.background = `linear-gradient(135deg, ${c1.value} 0%, ${c2.value} 100%)`;
-      const textColor = this.themeMode === 'dark' ? '#f1edf5' : '#292b31';
+      const textColor = '#292b31';
       previewTitle.style.color = textColor; previewText.style.color = textColor; previewTranslation.style.color = textColor;
     };
     c1.addEventListener('input', update); c2.addEventListener('input', update); update();
@@ -1554,11 +1532,10 @@ class BackgroundBuilderModal extends Modal {
         id: this.existing ? this.existing.id : `bg-custom-${slugify(label)}-${Date.now().toString(36).slice(-4)}`,
         createdAt: (this.existing && this.existing.createdAt) || now, updatedAt: now,
         name: label, label, group: this.category || 'Мои фоны', category: this.category || 'Мои фоны',
-        light: `linear-gradient(135deg, ${this.colors.light[0]} 0%, ${this.colors.light[1]} 100%)`,
-        dark: `linear-gradient(135deg, ${this.colors.dark[0]} 0%, ${this.colors.dark[1]} 100%)`,
-        textColor: (this.existing && this.existing.textColor) || '#302d31',
-        darkTextColor: (this.existing && this.existing.darkTextColor) || '#e9eaf0', source: 'user'
+        value: `linear-gradient(135deg, ${this.colors[0]} 0%, ${this.colors[1]} 100%)`,
+        textColor: (this.existing && this.existing.textColor) || '#302d31', source: 'user'
       };
+      delete background.light; delete background.dark; delete background.darkTextColor;
       const list = this.studio.plugin.userData.backgrounds;
       if (this.existing) {
         const index = list.findIndex(item => item.id === this.existing.id);
@@ -2585,14 +2562,13 @@ class DesignStudioModal extends Modal {
     }
   }
   paletteSwatches(palette) {
-    const darkMode = document.body.classList.contains('theme-dark');
     const roleKeys = [
       ['en', 'Иностранные слова'], ['ipa', 'Произношение / транскрипция'], ['translation', 'Перевод'],
       ['term', 'Термин'], ['focus', 'Акцент'], ['secondary', 'Второй акцент']
     ];
     return roleKeys.map(([key, label]) => ({
       label,
-      color: colorToHex((darkMode && palette.dark && palette.dark[key]) || (palette.roles && palette.roles[key]))
+      color: colorToHex((palette.roles && palette.roles[key]))
     }));
   }
   renderPaletteSection(parent) {
@@ -3142,22 +3118,20 @@ class DesignStudioModal extends Modal {
       if (modeOverride === 'light') container.addClass('esds-preview-light-mode');
       else container.removeClass('esds-preview-light-mode');
     }
-    const roles = darkMode && palette.dark ? palette.dark : palette.roles;
+    const roles = palette.roles;
     if (roles) {
       ROLE_KEYS.forEach(key => {
         if (roles[key]) container.style.setProperty(`--esds-${key}`, roles[key]);
       });
       container.style.setProperty('--esds-letter', isHexColor(roles.letter) ? roles.letter : (roles.ipa || palette.roles?.ipa || '#777777'));
     }
-    const callouts = darkMode && palette.darkCallouts ? palette.darkCallouts : palette.callouts;
+    const callouts = palette.callouts;
     if (callouts) {
       CALLOUT_KEYS.forEach(key => {
         if (callouts[key]) container.style.setProperty(`--esds-callout-${key}`, rgbValue(callouts[key]));
       });
     }
-    const mapPairs = darkMode
-      ? [['darkCalloutFills', null, 'fill'], ['darkCalloutTexts', null, 'text'], ['darkCalloutBorders', null, 'border']]
-      : [['calloutFills', null, 'fill'], ['calloutTexts', null, 'text'], ['calloutBorders', null, 'border']];
+    const mapPairs = [['calloutFills', null, 'fill'], ['calloutTexts', null, 'text'], ['calloutBorders', null, 'border']];
     mapPairs.forEach(([primary, fallback, kind]) => {
       const values = palette[primary] || (fallback ? palette[fallback] : null) || {};
       CALLOUT_KEYS.forEach(key => {
@@ -3165,9 +3139,9 @@ class DesignStudioModal extends Modal {
       });
     });
     if (background && background.source === 'user') {
-      const bgValue = darkMode ? (background.dark || background.light) : background.light;
+      const bgValue = background.value || background.light || background.dark;
       if (bgValue) container.style.setProperty('--note-background', bgValue);
-      const fg = darkMode ? background.darkTextColor : background.textColor;
+      const fg = background.textColor;
       if (fg) container.style.setProperty('--esds-bg-fg', fg);
     } else if (background) {
       // built-in backgrounds rely on CSS classes; ensure readable text
@@ -3811,10 +3785,8 @@ class DesignStudioModal extends Modal {
       name: backgroundName,
       label: backgroundName,
       group: String(rawBackground.group || rawBackground.category || 'Мои фоны').slice(0, 80),
-      light: bgLight,
-      dark: bgDark,
-      textColor: isHexColor(rawBackground.textColor) ? colorToHex(rawBackground.textColor) : '#302d31',
-      darkTextColor: isHexColor(rawBackground.darkTextColor) ? colorToHex(rawBackground.darkTextColor) : '#e9eaf0',
+      value: bgLight || bgDark,
+      textColor: isHexColor(rawBackground.textColor) ? colorToHex(rawBackground.textColor) : (bgLight ? '#302d31' : (isHexColor(rawBackground.darkTextColor) ? colorToHex(rawBackground.darkTextColor) : '#e9eaf0')),
       source: 'user', createdAt: now, updatedAt: now
     };
     const blockStyle = normalizeBlockStyle({ ...rawBlockStyle, id: blockStyleId, name: blockName, category: String(rawBlockStyle.category || 'Мои стили').slice(0, 80), source: 'user', createdAt: now, updatedAt: now });
@@ -3834,11 +3806,9 @@ class DesignStudioModal extends Modal {
       defaultBackground: backgroundId,
       defaultBlocks: blockStyleId,
       roles: { ...Object.fromEntries(ROLE_KEYS.map(key => [key, colorToHex(roles[key])])), letter: colorToHex(isHexColor(roles.letter) ? roles.letter : roles.ipa) },
-      dark: { ...Object.fromEntries(ROLE_KEYS.map(key => [key, colorToHex(isHexColor(rawPalette.dark && rawPalette.dark[key]) ? rawPalette.dark[key] : roles[key])])), letter: colorToHex(isHexColor(rawPalette.dark && rawPalette.dark.letter) ? rawPalette.dark.letter : (isHexColor(rawPalette.dark && rawPalette.dark.ipa) ? rawPalette.dark.ipa : roles.ipa)) },
       callouts: cleanColorMap(rawPalette.callouts, PALETTES[0].callouts),
-      darkCallouts: cleanColorMap(rawPalette.darkCallouts, rawPalette.callouts || PALETTES[0].callouts),
       calloutFrames: rawPalette.calloutFrames && typeof rawPalette.calloutFrames === 'object' ? Object.fromEntries(CALLOUT_KEYS.map(key => { const frame = rawPalette.calloutFrames[key]; return frame && BLOCK_FRAME_PRESET_KEYS.includes(frame.preset) ? [key, { preset: frame.preset, width: Math.max(0, Math.min(8, Number.isFinite(Number(frame.width)) ? Number(frame.width) : 1.5)), radius: Math.max(0, Math.min(32, Number.isFinite(Number(frame.radius)) ? Number(frame.radius) : 10)) }] : null; }).filter(Boolean)) : undefined,
-      ...Object.fromEntries(['calloutFills','calloutTexts','calloutBorders','darkCalloutFills','darkCalloutTexts','darkCalloutBorders'].map(mapName => {
+      ...Object.fromEntries(['calloutFills','calloutTexts','calloutBorders'].map(mapName => {
         const source = rawPalette[mapName];
         if (!source || typeof source !== 'object' || Array.isArray(source)) return [mapName, undefined];
         return [mapName, cleanColorMap(source, null)];
@@ -3894,10 +3864,14 @@ class DesignStudioModal extends Modal {
       };
       restored.palettes = unique(restored.palettes, 'user-palette').filter(p => p.name && p.roles && ROLE_KEYS.every(key => isHexColor(p.roles[key]))).map(p => {
         if (!/^user-[a-z0-9-]+$/.test(p.id)) p.id = `user-${slugify(p.name)}-${Date.now().toString(36).slice(-4)}`;
+        p.roles = { ...(p.roles || {}) }; p.roles.letter = p.roles.letter || p.roles.ipa;
+        delete p.dark; delete p.darkCallouts; delete p.darkCalloutFills; delete p.darkCalloutTexts; delete p.darkCalloutBorders;
         p.source = 'user'; return p;
       });
-      restored.backgrounds = unique(restored.backgrounds, 'bg-custom').filter(bg => (bg.name || bg.label) && safeCssBackground(bg.light) && safeCssBackground(bg.dark || bg.light)).map(bg => {
+      restored.backgrounds = unique(restored.backgrounds, 'bg-custom').filter(bg => (bg.name || bg.label) && safeCssBackground(bg.value || bg.light || bg.dark)).map(bg => {
         if (!/^bg-custom-[a-z0-9-]+$/.test(bg.id)) bg.id = `bg-custom-${slugify(bg.name || bg.label)}-${Date.now().toString(36).slice(-4)}`;
+        bg.value = bg.value || bg.light || bg.dark; bg.textColor = bg.textColor || (bg.light ? '#302d31' : bg.darkTextColor) || '#302d31';
+        delete bg.light; delete bg.dark; delete bg.darkTextColor;
         bg.source = 'user'; return bg;
       });
       restored.blockStyles = unique(restored.blockStyles, 'user-blocks').filter(style => style && (style.name || style.id)).map(style => normalizeBlockStyle({ ...style, source: 'user' }));
@@ -3929,14 +3903,12 @@ class DesignStudioModal extends Modal {
       const roles = p.roles || {};
       if (!p.name || !ROLE_KEYS.every(key => isHexColor(roles[key]))) throw new Error('Palette roles are missing or invalid');
       const palette = clone(p);
-      palette.roles.letter = isHexColor(palette.roles.letter) ? palette.roles.letter : palette.roles.ipa; palette.id = `user-${slugify(p.name)}-${Date.now().toString(36).slice(-4)}`; palette.createdAt = new Date().toISOString(); palette.updatedAt = palette.createdAt; palette.source = 'user';
+      palette.roles = { ...(palette.roles || {}) }; palette.roles.letter = isHexColor(palette.roles.letter) ? palette.roles.letter : palette.roles.ipa;
+      delete palette.dark; delete palette.darkCallouts; delete palette.darkCalloutFills; delete palette.darkCalloutTexts; delete palette.darkCalloutBorders; palette.id = `user-${slugify(p.name)}-${Date.now().toString(36).slice(-4)}`; palette.createdAt = new Date().toISOString(); palette.updatedAt = palette.createdAt; palette.source = 'user';
       palette.defaultBackground = this.findBackground(p.defaultBackground)?.id || this.selectedBackground.id;
       palette.defaultBlocks = this.findBlockStyle(p.defaultBlocks) ? p.defaultBlocks : this.selectedBlocks.id;
-      palette.dark = Object.fromEntries(ROLE_KEYS.map(key => [key, isHexColor(palette.dark && palette.dark[key]) ? palette.dark[key] : palette.roles[key]]));
-      palette.dark.letter = isHexColor(palette.dark?.letter) ? palette.dark.letter : (isHexColor(palette.roles.letter) ? palette.roles.letter : palette.dark.ipa);
       palette.callouts = palette.callouts || clone(PALETTES[0].callouts);
-      palette.darkCallouts = palette.darkCallouts || clone(palette.callouts);
-      ['calloutFills','calloutTexts','calloutBorders','darkCalloutFills','darkCalloutTexts','darkCalloutBorders'].forEach(mapName => {
+      ['calloutFills','calloutTexts','calloutBorders'].forEach(mapName => {
         const source = palette[mapName];
         if (!source || typeof source !== 'object' || Array.isArray(source)) { delete palette[mapName]; return; }
         const clean = Object.fromEntries(CALLOUT_KEYS.map(key => [key, source[key]]).filter(([, value]) => isValidPaletteColor(value)));
@@ -3962,7 +3934,7 @@ class DesignStudioModal extends Modal {
       const label = b.name || b.label;
       const group = b.group || b.category || 'Мои фоны';
       const importedAt = new Date().toISOString();
-      const bg = { ...b, id: `bg-custom-${slugify(label)}-${Date.now().toString(36).slice(-4)}`, name: label, label, group, createdAt: importedAt, updatedAt: importedAt, source: 'user', dark: b.dark || b.light, textColor: isHexColor(b.textColor) ? b.textColor : '#302d31', darkTextColor: isHexColor(b.darkTextColor) ? b.darkTextColor : '#e9eaf0' };
+      const bg = { ...b, id: `bg-custom-${slugify(label)}-${Date.now().toString(36).slice(-4)}`, name: label, label, group, createdAt: importedAt, updatedAt: importedAt, source: 'user', value: b.value || b.light || b.dark, textColor: isHexColor(b.textColor) ? b.textColor : (b.light ? '#302d31' : (isHexColor(b.darkTextColor) ? b.darkTextColor : '#e9eaf0')) }; delete bg.light; delete bg.dark; delete bg.darkTextColor;
       this.plugin.userData.backgrounds.push(bg); this.plugin.refreshGeneratedStyles(); this.selectedBackground = bg; this.backgroundOverridden = true;
     } else if (kind === 'blockStyle' || kind === 'blocks') {
       if (!data || typeof data !== 'object' || Array.isArray(data)) {
@@ -4026,10 +3998,12 @@ class DesignStudioModal extends Modal {
     let item, payload;
     if (kind === 'palette') {
       item = this.selectedPalette;
-      payload = { schemaVersion: 3, type: 'esds-palette', palette: item };
+      const cleanPalette = clone(item); delete cleanPalette.dark; delete cleanPalette.darkCallouts; delete cleanPalette.darkCalloutFills; delete cleanPalette.darkCalloutTexts; delete cleanPalette.darkCalloutBorders;
+      payload = { schemaVersion: 4, type: 'esds-palette', palette: cleanPalette };
     } else if (kind === 'background') {
       item = this.selectedBackground;
-      payload = { schemaVersion: 2, type: 'esds-background', background: item };
+      const cleanBackground = clone(item); cleanBackground.value = cleanBackground.value || cleanBackground.light || cleanBackground.dark; delete cleanBackground.light; delete cleanBackground.dark; delete cleanBackground.darkTextColor;
+      payload = { schemaVersion: 3, type: 'esds-background', background: cleanBackground };
     } else {
       item = this.selectedBlocks;
       payload = { schemaVersion: 2, type: 'esds-block-style', blockStyle: item };
@@ -4235,11 +4209,8 @@ class NoteBlockStyleModal extends Modal {
 
   paletteColor(type, kind = 'text') {
     const palette = this.studio.selectedPalette || PALETTES[0];
-    const dark = this.themeMode === 'dark';
-    const base = dark ? (palette.darkCallouts || palette.callouts) : palette.callouts;
-    const mapName = dark
-      ? ({ fill: 'darkCalloutFills', text: 'darkCalloutTexts', border: 'darkCalloutBorders' }[kind])
-      : ({ fill: 'calloutFills', text: 'calloutTexts', border: 'calloutBorders' }[kind]);
+    const base = palette.callouts;
+    const mapName = ({ fill: 'calloutFills', text: 'calloutTexts', border: 'calloutBorders' }[kind]);
     const map = mapName && palette[mapName];
     return colorToHex((map && isValidPaletteColor(map[type]) ? map[type] : null) || (base && base[type]) || '#5a7dc8');
   }
@@ -4802,13 +4773,11 @@ module.exports = class EnglishStudyDesignStudio extends Plugin {
       .filter(p => p && /^user-[a-z0-9-]+$/.test(p.id || '') && p.roles && ROLE_KEYS.every(k => isHexColor(p.roles[k])))
       .map(makePaletteCss)].join('\n');
     const backgrounds = (this.userData.backgrounds || [])
-      .filter(bg => bg && /^bg-custom-[a-z0-9-]+$/.test(bg.id || '') && safeCssBackground(bg.light) && safeCssBackground(bg.dark || bg.light))
+       .filter(bg => bg && /^bg-custom-[a-z0-9-]+$/.test(bg.id || '') && safeCssBackground(bg.value || bg.light || bg.dark))
       .map(bg => {
-        const light = bg.light;
-        const dark = bg.dark || bg.light;
+        const value = bg.value || bg.light || bg.dark;
         const fg = isHexColor(bg.textColor) ? bg.textColor : '#302d31';
-        const darkFg = isHexColor(bg.darkTextColor) ? bg.darkTextColor : '#e9eaf0';
-        return `.markdown-preview-view.esds-note.${bg.id},.markdown-source-view.esds-note.${bg.id}{--note-background:${light};--esds-bg-fg:${fg};}\nbody.theme-dark .markdown-preview-view.esds-note.${bg.id},body.theme-dark .markdown-source-view.esds-note.${bg.id}{--note-background:${dark};--esds-bg-fg:${darkFg};}\n.esds-preview.${bg.id}{--note-background:${light};}\nbody.theme-dark .esds-preview.${bg.id}{--note-background:${dark};}\n.markdown-preview-view.esds-note.${bg.id},.markdown-source-view.esds-note.${bg.id}{color:var(--esds-bg-fg);--text-normal:var(--esds-bg-fg);}\n.markdown-preview-view.esds-note.${bg.id} h1,.markdown-preview-view.esds-note.${bg.id} h2,.markdown-preview-view.esds-note.${bg.id} h3,.markdown-preview-view.esds-note.${bg.id} h4,.markdown-preview-view.esds-note.${bg.id} h5,.markdown-preview-view.esds-note.${bg.id} h6{color:var(--esds-heading,var(--esds-bg-fg));}`;
+        return `.markdown-preview-view.esds-note.${bg.id},.markdown-source-view.esds-note.${bg.id}{--note-background:${value};--esds-bg-fg:${fg};}\n.esds-preview.${bg.id}{--note-background:${value};}\n.markdown-preview-view.esds-note.${bg.id},.markdown-source-view.esds-note.${bg.id}{color:var(--esds-bg-fg);--text-normal:var(--esds-bg-fg);}\n.markdown-preview-view.esds-note.${bg.id} h1,.markdown-preview-view.esds-note.${bg.id} h2,.markdown-preview-view.esds-note.${bg.id} h3,.markdown-preview-view.esds-note.${bg.id} h4,.markdown-preview-view.esds-note.${bg.id} h5,.markdown-preview-view.esds-note.${bg.id} h6{color:var(--esds-heading,var(--esds-bg-fg));}`;
       }).join('\n');
     const blockStyles = (this.userData.blockStyles || [])
       .map(normalizeBlockStyle)
