@@ -717,6 +717,23 @@ function slugify(value) {
     .slice(0, 48) || 'custom';
 }
 
+function esdsUniqueName(requested, existingNames, maxLength = 100) {
+  const base = String(requested || 'Новый элемент').trim().slice(0, maxLength) || 'Новый элемент';
+  const used = new Set((existingNames || []).map(value => String(value || '').trim().toLocaleLowerCase()).filter(Boolean));
+  if (!used.has(base.toLocaleLowerCase())) return base;
+  let index = 2, candidate = '';
+  do { const suffix = ` (${index++})`; candidate = base.slice(0, Math.max(1, maxLength - suffix.length)).trimEnd() + suffix; }
+  while (used.has(candidate.toLocaleLowerCase()));
+  return candidate;
+}
+function esdsUniqueId(base, existingIds) {
+  const root = String(base || 'custom'), used = new Set((existingIds || []).map(value => String(value || '').toLowerCase()));
+  if (!used.has(root.toLowerCase())) return root;
+  let index = 2, candidate = '';
+  do { candidate = `${root}-${index++}`; } while (used.has(candidate.toLowerCase()));
+  return candidate;
+}
+
 function isHexColor(value) {
   return typeof value === 'string' && /^#(?:[0-9a-f]{3}|[0-9a-f]{4}|[0-9a-f]{6}|[0-9a-f]{8})$/i.test(value);
 }
@@ -1648,9 +1665,10 @@ class CategoryManagerModal extends Modal {
         rename.addEventListener('click', async () => {
           const name = await promptText(this.app, { title: 'Переименование категории', description: 'Категория: ' + cat.name, value: cat.name, placeholder: 'Новое название категории', submitLabel: 'Переименовать' });
           if (!name || !name.trim()) return;
-          if (list.some(item => item.id !== cat.id && item.name.toLowerCase() === name.trim().toLowerCase())) { new Notice('Категория с таким названием уже существует.'); return; }
           const oldName = cat.name;
-          cat.name = name.trim();
+          const finalName = esdsUniqueName(name.trim(), list.filter(item => item.id !== cat.id).map(item => item.name), 100);
+          cat.name = finalName;
+          if (finalName !== name.trim()) new Notice(`Название занято. Категория переименована в «${finalName}».`);
           ['paletteCategory', 'backgroundCategory', 'libraryCategory'].forEach(key => { if (this.studio[key] === oldName) this.studio[key] = cat.name; });
           const targetItems = this.kind === 'palettes' ? this.studio.plugin.userData.palettes : this.kind === 'backgrounds' ? this.studio.plugin.userData.backgrounds : this.studio.plugin.userData.blockStyles;
           (targetItems || []).forEach(item => {
@@ -1707,11 +1725,10 @@ class CategoryManagerModal extends Modal {
     add.addEventListener('click', async () => {
       const name = await promptText(this.app, { title: 'Новая категория', description: 'Название для нового раздела библиотеки.', placeholder: 'Название категории', submitLabel: 'Создать' });
       if (!name || !name.trim()) return;
-      if (list.some(c => c.name === name.trim())) { new Notice('Уже существует.'); return; }
-      const baseId = slugify(name.trim());
-      let id = baseId; let suffix = 2;
-      while (list.some(category => category.id === id)) id = `${baseId}-${suffix++}`;
-      list.push({ id, name: name.trim(), order: list.length + 10, protected: false });
+      const finalName = esdsUniqueName(name.trim(), list.map(category => category.name), 100);
+      const id = esdsUniqueId(slugify(finalName), list.map(category => category.id));
+      list.push({ id, name: finalName, order: list.length + 10, protected: false });
+      if (finalName !== name.trim()) new Notice(`Категория уже существует. Создана «${finalName}».`);
       await this.studio.plugin.saveUserLibrary();
       this.render();
     });
@@ -2358,8 +2375,9 @@ class DesignStudioModal extends Modal {
           if (value === null || !value.trim()) return;
           const live = (this.plugin.userData.palettes || []).find(entry => entry.id === item.id);
           if (!live) { new Notice('Палитра уже отсутствует в библиотеке.'); return; }
-          live.name = value.trim(); live.updatedAt = new Date().toISOString();
-          await saveAndRefresh('Палитра переименована.');
+          const finalName = esdsUniqueName(value.trim(), (this.plugin.userData.palettes || []).filter(entry => entry.id !== item.id).map(entry => entry.name), 100);
+          live.name = finalName; live.updatedAt = new Date().toISOString();
+          await saveAndRefresh(finalName === value.trim() ? 'Палитра переименована.' : `Название занято. Палитра переименована в «${finalName}».`);
         }],
         ['↑ Поднять выше', '', () => this.reorderUserPalette(item, -1)],
         ['↓ Опустить ниже', '', () => this.reorderUserPalette(item, 1)]
@@ -2373,10 +2391,11 @@ class DesignStudioModal extends Modal {
           if (value === null || !value.trim()) return;
           const live = (this.plugin.userData[arrayKey] || []).find(entry => entry.id === item.id);
           if (!live) { new Notice('Элемент уже отсутствует в библиотеке.'); return; }
-          if (live.name || kind === 'blockStyle') live.name = value.trim();
-          if (live.label || kind === 'background') live.label = value.trim();
+          const finalName = esdsUniqueName(value.trim(), (this.plugin.userData[arrayKey] || []).filter(entry => entry.id !== item.id).map(entry => entry.name || entry.label), 120);
+          if (live.name || kind === 'blockStyle') live.name = finalName;
+          if (live.label || kind === 'background') live.label = finalName;
           live.updatedAt = new Date().toISOString();
-          await saveAndRefresh('Переименовано.');
+          await saveAndRefresh(finalName === value.trim() ? 'Переименовано.' : `Название занято. Переименовано в «${finalName}».`);
         }]
       ] : []),
       ['↗ Переместить в категорию', '', async () => {
@@ -2399,8 +2418,10 @@ class DesignStudioModal extends Modal {
       }],
       ['⧉ Дублировать', '', async () => {
         const copy = clone(item);
-        copy.id = 'user-' + slugify(getName(item)) + '-' + Date.now().toString(36).slice(-5);
-        if (copy.name) copy.name = copy.name + ' (копия)'; else copy.label = (copy.label || 'Фон') + ' (копия)';
+        const currentItems = this.plugin.userData[arrayKey] || [];
+        const copyName = esdsUniqueName(getName(item) + ' (копия)', currentItems.map(entry => entry.name || entry.label), 120);
+        copy.id = esdsUniqueId('user-' + slugify(copyName), currentItems.map(entry => entry.id));
+        if (copy.name) copy.name = copyName; else copy.label = copyName;
         copy.source = 'user'; copy.createdAt = new Date().toISOString(); copy.updatedAt = copy.createdAt;
         this.plugin.userData[arrayKey].push(copy);
         if (await saveAndRefresh('Создана копия «' + getName(copy) + '».')) return;
@@ -2611,10 +2632,8 @@ class DesignStudioModal extends Modal {
           info.createEl('small', { text: meta.description || (kind === 'palette' ? 'Набор согласованных цветовых дизайнов.' : kind === 'background' ? 'Фоны для оформления заметок.' : 'Дополнительные варианты оформления блоков.') });
           const footer = folder.createDiv({ cls: 'esds-catalog-folder-footer' });
           footer.createSpan({ text: `${items.length} элементов` }); footer.createSpan({ text: 'Открыть ›' });
-          if (kind === 'palette') {
-            const categoryMenu = folder.createEl('button', { cls: 'esds-icon-btn esds-catalog-folder-menu', text: '⋯', attr: { type: 'button', title: 'Управление категорией' } });
-            categoryMenu.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); this.openPaletteCategoryMenu(name, categoryMenu); });
-          }
+          const categoryMenu = folder.createEl('button', { cls: 'esds-icon-btn esds-catalog-folder-menu', text: '⋯', attr: { type: 'button', title: 'Управление категорией' } });
+          categoryMenu.addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); this.openCategoryMenu(categoryKind, name, categoryMenu); });
           const open = () => { this.libraryCategory = name; render(); };
           folder.addEventListener('click', open);
           folder.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
@@ -2633,7 +2652,7 @@ class DesignStudioModal extends Modal {
       const header = grid.createDiv({ cls: 'esds-catalog-results-heading' });
       if (selected && !query) {
         const back = header.createEl('button', { cls: 'esds-button esds-btn-quiet', text: '‹ Все категории', attr: { type: 'button' } });
-        back.addEventListener('click', () => { this.libraryCategory = null; render(); });
+        back.addEventListener('click', () => { this.bulkSelection.clear(); this.libraryCategory = null; render(); });
         header.createEl('strong', { text: selected });
       } else header.createEl('strong', { text: 'Результаты поиска по всей коллекции' });
       header.createEl('small', { text: `${visible.length} элементов` });
@@ -2656,6 +2675,8 @@ class DesignStudioModal extends Modal {
       appendBatch();
     };
     search.addEventListener('input', () => {
+      this.bulkSelection.clear();
+      if (this._bulkCounterEl) this._bulkCounterEl.textContent = 'Выбрано: 0';
       if (this._catalogSearchTimer) window.clearTimeout(this._catalogSearchTimer);
       this._catalogSearchTimer = window.setTimeout(() => { this._catalogSearchTimer = null; render(); }, 250);
     });
@@ -3591,6 +3612,21 @@ class DesignStudioModal extends Modal {
   }
 
 
+  async ensureCategory(categoryKind = 'palettes', requestedName = '') {
+    if (!this.plugin.userData.categories || typeof this.plugin.userData.categories !== 'object') this.plugin.userData.categories = {};
+    const categories = this.getCategories(categoryKind);
+    const fallback = categoryKind === 'palettes' ? 'Мои палитры' : categoryKind === 'backgrounds' ? 'Мои фоны' : 'Мои стили';
+    const requested = String(requestedName || '').trim() || fallback;
+    const existing = categories.find(item => item.name.toLocaleLowerCase() === requested.toLocaleLowerCase());
+    if (existing) return existing.name;
+    const name = esdsUniqueName(requested, categories.map(item => item.name), 100);
+    const id = esdsUniqueId(slugify(name), categories.map(item => item.id));
+    this.plugin.userData.categories[categoryKind] = [...categories, { id, name, order: categories.length * 10 + 10, protected: false }];
+    const saved = await this.plugin.saveUserLibrary();
+    if (saved === false) throw new Error('Не удалось сохранить новую категорию.');
+    return name;
+  }
+  async ensurePaletteCategory(name) { return this.ensureCategory('palettes', name); }
   async choosePaletteCategory(options = {}) { return this.chooseCategory('palettes', options); }
   async chooseCategory(categoryKind = 'palettes', options = {}) {
     const itemKind = categoryKind === 'palettes' ? 'palette' : categoryKind === 'backgrounds' ? 'background' : 'blockStyle';
@@ -3662,13 +3698,9 @@ class DesignStudioModal extends Modal {
             if (this.mode === 'existing') { this.finish({ mode: 'existing', name: this.selected }); return; }
             const name = String(this.newName || '').trim().slice(0, 100);
             if (!name) return;
-            const duplicate = categories.find(item => item.name.toLocaleLowerCase() === name.toLocaleLowerCase());
-            if (duplicate) {
-              this.mode = 'existing'; this.selected = duplicate.name;
-              new Notice('Такая категория уже существует. Выберите её или измените название новой категории.');
-              this.renderPicker(); return;
-            }
-            this.finish({ mode: 'new', name });
+            const finalName = esdsUniqueName(name, categories.map(item => item.name), 100);
+            if (finalName !== name) new Notice(`Категория «${name}» уже есть. Создана новая «${finalName}».`);
+            this.finish({ mode: 'new', name: finalName, autoRenamed: finalName !== name });
           });
         }
       }(this.app);
@@ -3923,32 +3955,33 @@ class DesignStudioModal extends Modal {
   async importBulkExport(data) {
     const items = (data.items || []).filter(item => item && typeof item === 'object');
     if (!items.length) { new Notice('В файле экспорта нет элементов.'); return; }
-    if (!confirm(`Импортировать ${items.length} элементов из файла экспорта? Дубликаты будут пропущены.`)) return;
-    const knownIds = new Set(), knownNames = new Set();
-    ['palettes', 'backgrounds', 'blockStyles'].forEach(key => {
-      (this.plugin.userData[key] || []).forEach(item => {
-        if (item && item.id) knownIds.add(String(item.id).toLowerCase());
-        const name = String((item && (item.name || item.label)) || '').trim().toLowerCase();
-        if (name) knownNames.add(name);
-      });
-    });
-    let added = 0, skipped = 0;
-    for (const payload of items) {
+    if (!confirm(`Импортировать ${items.length} элементов? Совпадающие названия будут автоматически переименованы. Все корректные элементы будут сохранены.`)) return;
+    const names = { palette: this.allPalettes().map(x => x.name), background: this.allBackgrounds().map(x => x.name || x.label), blockStyle: this.allBlockStyles().map(x => x.name) };
+    let added = 0, renamed = 0, failed = 0;
+    const before = clone(this.plugin.userData);
+    for (const source of items) {
       try {
+        const payload = clone(source);
         const kind = payload.type === 'esds-background' ? 'background' : payload.type === 'esds-block-style' ? 'blockStyle' : 'palette';
-        const item = payload.palette || payload.background || payload.blockStyle || null;
-        if (!item || typeof item !== 'object') { skipped++; continue; }
-        const id = String(item.id || '').toLowerCase(), name = String(item.name || item.label || '').trim().toLowerCase();
-        if ((id && knownIds.has(id)) || (name && knownNames.has(name))) { skipped++; continue; }
+        const key = kind === 'palette' ? 'palette' : kind === 'background' ? 'background' : 'blockStyle';
+        const item = payload[key] || (kind === 'blockStyle' ? payload.style : payload);
+        if (!item || typeof item !== 'object') throw new Error('В элементе отсутствуют данные.');
+        const oldName = String(item.name || item.label || item.id || 'Импортированный элемент').trim();
+        const finalName = esdsUniqueName(oldName, names[kind], kind === 'palette' ? 100 : 120);
+        if (finalName !== oldName) renamed++;
+        if (item.name || kind !== 'background') item.name = finalName;
+        if (item.label || kind === 'background') item.label = finalName;
+        names[kind].push(finalName);
+        if (payload[key]) payload[key] = item;
+        else if (kind === 'blockStyle' && payload.style) payload.style = item;
+        else Object.assign(payload, item);
         await this.importJson(kind, payload);
-        if (id) knownIds.add(id);
-        if (name) knownNames.add(name);
         added++;
-      } catch (error) { skipped++; console.warn('ESDS bulk import skipped an item:', error); }
+      } catch (error) { failed++; console.warn('ESDS bulk import item failed:', error); }
     }
-    this.plugin.refreshGeneratedStyles();
-    this.render();
-    new Notice(`Импорт завершён: добавлено ${added}, пропущено ${skipped}.`);
+    if (failed && !added) { this.plugin.userData = before; await this.plugin.saveUserLibrary(); this.plugin.refreshGeneratedStyles(); throw new Error(`Не удалось импортировать элементы: ${failed}. Проверьте формат файла.`); }
+    this.plugin.refreshGeneratedStyles(); this.render();
+    new Notice(`Импорт завершён: добавлено ${added}, автоматически переименовано ${renamed}, ошибок ${failed}. Дубликаты не пропускались.`);
   }
   pickJson(kind) {
     const input = this.contentEl.createEl('input', { attr: { type: 'file', accept: '.json,.esds-theme.json,application/json', ...(kind === 'palette' ? { multiple: 'multiple' } : {}) } });
@@ -4228,7 +4261,12 @@ class DesignStudioModal extends Modal {
       let p = data.palette || data;
       const roles = p.roles || {};
       if (!p.name || !ROLE_KEYS.every(key => isHexColor(roles[key]))) throw new Error('Palette roles are missing or invalid');
-      const palette = normalizeSingleModePalette(p); palette.id = `user-${slugify(p.name)}-${Date.now().toString(36).slice(-4)}`; palette.createdAt = new Date().toISOString(); palette.updatedAt = palette.createdAt; palette.source = 'user';
+      const palette = normalizeSingleModePalette(p);
+      const requestedName = palette.name;
+      palette.name = esdsUniqueName(requestedName, this.allPalettes().map(item => item.name), 100);
+      palette.id = esdsUniqueId(`user-${slugify(palette.name)}`, this.allPalettes().map(item => item.id));
+      palette.createdAt = new Date().toISOString(); palette.updatedAt = palette.createdAt; palette.source = 'user';
+      if (palette.name !== requestedName) new Notice(`Палитра уже существует. Импортирована как «${palette.name}».`);
       palette.defaultBackground = this.findBackground(p.defaultBackground)?.id || this.selectedBackground.id;
       palette.defaultBlocks = this.findBlockStyle(p.defaultBlocks) ? p.defaultBlocks : this.selectedBlocks.id;
       palette.callouts = palette.callouts || clone(PALETTES[0].callouts);
@@ -4258,7 +4296,9 @@ class DesignStudioModal extends Modal {
       const label = b.name || b.label;
       const group = b.group || b.category || 'Мои фоны';
       const importedAt = new Date().toISOString();
-      const bg = { ...b, id: `bg-custom-${slugify(label)}-${Date.now().toString(36).slice(-4)}`, name: label, label, group, createdAt: importedAt, updatedAt: importedAt, source: 'user', dark: b.dark || b.light, textColor: isHexColor(b.textColor) ? b.textColor : '#302d31', darkTextColor: isHexColor(b.darkTextColor) ? b.darkTextColor : '#e9eaf0' };
+      const finalLabel = esdsUniqueName(label, this.allBackgrounds().map(item => item.name || item.label), 120);
+      const bg = { ...b, id: esdsUniqueId(`bg-custom-${slugify(finalLabel)}`, this.allBackgrounds().map(item => item.id)), name: finalLabel, label: finalLabel, group, createdAt: importedAt, updatedAt: importedAt, source: 'user', dark: b.dark || b.light, textColor: isHexColor(b.textColor) ? b.textColor : '#302d31', darkTextColor: isHexColor(b.darkTextColor) ? b.darkTextColor : '#e9eaf0' };
+      if (finalLabel !== label) new Notice(`Фон уже существует. Импортирован как «${finalLabel}».`);
       this.plugin.userData.backgrounds.push(bg); this.plugin.refreshGeneratedStyles(); this.selectedBackground = bg; this.backgroundOverridden = true;
     } else if (kind === 'blockStyle' || kind === 'blocks') {
       if (!data || typeof data !== 'object' || Array.isArray(data)) {
@@ -4277,7 +4317,9 @@ class DesignStudioModal extends Modal {
       if (!raw || typeof raw !== 'object' || Array.isArray(raw) || !(raw.name || raw.id)) {
         throw new Error('В файле отсутствует корректный стиль блоков.');
       }
-      const styleName = String(raw.name || raw.id).trim().slice(0, 120) || 'Импортированный стиль';
+      const requestedStyleName = String(raw.name || raw.id).trim().slice(0, 120) || 'Импортированный стиль';
+      const styleName = esdsUniqueName(requestedStyleName, this.allBlockStyles().map(item => item.name), 120);
+      if (styleName !== requestedStyleName) new Notice(`Стиль уже существует. Импортирован как «${styleName}».`);
       const occupiedIds = new Set([
         ...BUILTIN_BLOCK_STYLES.map(item => item.id),
         ...(this.plugin.userData.blockStyles || []).map(item => item.id)
