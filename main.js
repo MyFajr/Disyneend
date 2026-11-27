@@ -1678,6 +1678,11 @@ class DesignStudioModal extends Modal {
     this.paletteSelectionAnchor = null;
     this.paletteViewMode = 'grid';
     this.backgroundCategory = null;
+    this.backgroundParentCategoryId = null;
+    this.backgroundCategorySelectionMode = false;
+    this.backgroundCategoryMultiSelection = new Set();
+    this.backgroundMultiSelectionMode = false;
+    this.backgroundMultiSelection = new Set();
     this.catalogPageSize = 24;
     this.plugin.userData.frameSource = 'palette';
     this.frameSource = 'palette';
@@ -1723,7 +1728,7 @@ class DesignStudioModal extends Modal {
     }
   }
   allPalettes() { const hidden = new Set((this.plugin.userData.deletedBuiltinPaletteIds || []).map(String)); return [...PALETTES.filter(item => !hidden.has(item.id)), ...(this.plugin.userData.palettes || [])]; }
-  allBackgrounds() { return [...BACKGROUNDS, ...(this.plugin.userData.backgrounds || [])]; }
+  allBackgrounds() { const hidden = new Set((this.plugin.userData.deletedBuiltinBackgroundIds || []).map(String)); return [...BACKGROUNDS.filter(item => !hidden.has(item.id)), ...(this.plugin.userData.backgrounds || [])]; }
   allBlockStyles() {
     const user = (this.plugin.userData.blockStyles || []).map(normalizeBlockStyle);
     return [...BUILTIN_BLOCK_STYLES, ...user];
@@ -2823,116 +2828,108 @@ class DesignStudioModal extends Modal {
     setTimeout(() => document.addEventListener('pointerdown', close, true), 0);
   }
   renderBackgroundSection(parent) {
-    parent.createEl('p', { cls: 'esds-section-note', text: 'Фон выбирается отдельно, но автоматически сочетается с цветами активной палитры. Сначала выбери папку-категорию, затем открой карточку для просмотра и применения.' });
-    const toolbar = parent.createDiv({ cls: 'esds-block-toolbar' });
-    const createBtn = toolbar.createEl('button', { cls: 'esds-button esds-btn-lime', text: '＋ Создать фон', attr: { type: 'button' } });
-    createBtn.addEventListener('click', () => new BackgroundBuilderModal(this.app, this).open());
-    const catBtn = toolbar.createEl('button', { cls: 'esds-button esds-btn-quiet', text: 'Категории…', attr: { type: 'button' } });
-    catBtn.addEventListener('click', () => this.openCategoryManager('backgrounds'));
-    if (this.backgroundOverridden && this.selectedPalette && this.selectedPalette.defaultBackground) {
-      const resetBg = toolbar.createEl('button', {
-        cls: 'esds-button esds-btn-amber',
-        text: '↺ Фон палитры',
-        attr: { type: 'button', title: 'Вернуть фон, рекомендуемый выбранной палитрой' }
-      });
-      resetBg.addEventListener('click', () => {
-        const bg = this.findBackground(this.selectedPalette.defaultBackground);
-        if (bg) {
-          this.selectBackground(bg, false);
-          this.backgroundOverridden = false;
-          this.render();
-          new Notice(`Фон возвращён к рекомендуемому: ${bg.label || bg.name || bg.id}`);
-        }
-      });
+    parent.createEl('p', { cls: 'esds-section-note', text: 'Фон выбирается отдельно, но автоматически сочетается с цветами активной палитры. Категории и фоны можно выделять, перемещать и удалять как в файловом менеджере.' });
+    const toolbar=parent.createDiv({cls:'esds-block-toolbar'});
+    const createBtn=toolbar.createEl('button',{cls:'esds-button esds-btn-lime',text:'＋ Создать фон',attr:{type:'button'}});
+    createBtn.addEventListener('click',()=>new BackgroundBuilderModal(this.app,this).open());
+    const catBtn=toolbar.createEl('button',{cls:'esds-button esds-btn-quiet',text:'Категории…',attr:{type:'button'}});
+    catBtn.addEventListener('click',()=>this.openCategoryManager('backgrounds'));
+    if(this.backgroundOverridden&&this.selectedPalette&&this.selectedPalette.defaultBackground){
+      const resetBg=toolbar.createEl('button',{cls:'esds-button esds-btn-amber',text:'↺ Фон палитры',attr:{type:'button',title:'Вернуть фон, рекомендуемый выбранной палитрой'}});
+      resetBg.addEventListener('click',()=>{const bg=this.findBackground(this.selectedPalette.defaultBackground);if(bg){this.selectBackground(bg,false);this.backgroundOverridden=false;this.render();new Notice(`Фон возвращён к рекомендуемому: ${bg.label||bg.name||bg.id}`);}});
     }
-    const search = parent.createEl('input', { cls: 'esds-text-input esds-bg-search', attr: { type: 'search', placeholder: 'Поиск по всем фонам…' } });
-    search.value = this.searchText || '';
-    this.addSortSelect(parent, 'backgrounds');
-    const directory = parent.createDiv({ cls: 'esds-catalog-directory' });
-    const results = parent.createDiv({ cls: 'esds-background-grid esds-background-template-grid esds-catalog-results' });
-    const all = this.sortItems(this.allBackgrounds(), this.sortModes.backgrounds);
-    const categories = this.getCategories('backgrounds');
-    const groupNames = [...new Set([...categories.map(c => c.name), ...all.map(bg => bg.group || bg.category || 'Мои фоны')])];
-    const render = () => {
-      directory.empty(); results.empty();
-      const query = (search.value || '').trim().toLocaleLowerCase();
-      this.searchText = search.value;
-      const selected = this.backgroundCategory;
-      if (!query && !selected) {
-        const heading = directory.createDiv({ cls: 'esds-catalog-directory-heading' });
-        heading.createEl('strong', { text: 'Категории фонов' });
-        heading.createEl('small', { text: `${all.length} фонов · ${groupNames.length} категорий` });
-        const grid = directory.createDiv({ cls: 'esds-catalog-folder-grid' });
-        groupNames.forEach(name => {
-          const meta = categories.find(c => c.name === name) || {};
-          const items = all.filter(bg => (bg.group || bg.category || 'Мои фоны') === name);
-          const folder = grid.createDiv({ cls: 'esds-catalog-folder', attr: { role: 'button', tabindex: '0', 'aria-label': `Открыть ${name}, ${items.length} фонов` } });
-          const visual = folder.createDiv({ cls: 'esds-catalog-folder-visual esds-catalog-folder-visual-background' });
-          ['var(--background-secondary)', 'var(--background-primary-alt)', 'var(--interactive-accent)', 'var(--background-modifier-border)'].forEach(color => {
-            const swatch = visual.createSpan({ cls: 'esds-catalog-folder-swatch' }); swatch.style.backgroundColor = color;
-          });
-          const info = folder.createDiv({ cls: 'esds-catalog-folder-info' });
-          info.createEl('strong', { text: name });
-          info.createEl('small', { text: meta.description || 'Варианты фона для заметок со светлой и тёмной адаптацией.' });
-          const footer = folder.createDiv({ cls: 'esds-catalog-folder-footer' });
-          footer.createSpan({ text: `${items.length} фонов` }); footer.createSpan({ text: 'Открыть ›' });
-          const open = () => { this.backgroundCategory = name; render(); };
-          folder.addEventListener('click', open);
-          folder.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    const search=parent.createEl('input',{cls:'esds-text-input esds-bg-search',attr:{type:'search',placeholder:'Поиск по всем фонам…'}});
+    search.value=this.searchText||'';this.addSortSelect(parent,'backgrounds');
+    const directory=parent.createDiv({cls:'esds-catalog-directory'});
+    const results=parent.createDiv({cls:'esds-background-grid esds-background-template-grid esds-catalog-results'});
+    const all=this.sortItems(this.allBackgrounds(),this.sortModes.backgrounds),categories=this.getCategories('backgrounds');
+    const render=()=>{
+      directory.empty();results.empty();
+      const query=(search.value||'').trim().toLocaleLowerCase();this.searchText=search.value;
+      const selected=this.backgroundCategory;
+      if(!query&&!selected){
+        const parentId=this.backgroundParentCategoryId||null,parentCategory=categories.find(c=>c.id===parentId)||null;
+        const visible=categories.filter(c=>(c.parentId||null)===parentId);
+        const heading=directory.createDiv({cls:'esds-catalog-directory-heading'});
+        if(parentCategory){const back=heading.createEl('button',{cls:'esds-button esds-btn-quiet',text:'‹ Назад',attr:{type:'button'}});back.addEventListener('click',()=>{this.backgroundParentCategoryId=parentCategory.parentId||null;this.backgroundCategoryMultiSelection.clear();render();});}
+        heading.createEl('strong',{text:parentCategory?parentCategory.name:'Категории фонов'});
+        heading.createEl('small',{text:`${all.length} фонов · ${categories.length} категорий`});
+        const controls=directory.createDiv({cls:'esds-category-selection-toolbar'});
+        const action=(label,fn,danger=false)=>{const b=controls.createEl('button',{cls:'esds-button'+(danger?' esds-danger':''),text:label,attr:{type:'button'}});b.addEventListener('click',fn);return b;};
+        action(this.backgroundCategorySelectionMode?'Готово':'Выбрать',()=>{this.backgroundCategorySelectionMode=!this.backgroundCategorySelectionMode;if(!this.backgroundCategorySelectionMode)this.backgroundCategoryMultiSelection.clear();render();});
+        action(parentCategory?'＋ Подкатегория':'＋ Категория',()=>this.createBackgroundCategory(parentId));
+        action('Выбрать всё',()=>{this.backgroundCategorySelectionMode=true;visible.forEach(c=>this.backgroundCategoryMultiSelection.add(c.id));render();});
+        action('Снять выделение',()=>{this.backgroundCategoryMultiSelection.clear();render();});
+        controls.createSpan({cls:'esds-palette-selection-count',text:`Выбрано категорий: ${this.backgroundCategoryMultiSelection.size}`});
+        if(this.backgroundCategorySelectionMode){action('Переместить в…',()=>this.moveSelectedBackgroundCategories()).disabled=!this.backgroundCategoryMultiSelection.size;action('Удалить выбранные',()=>this.deleteSelectedBackgroundCategories(),true).disabled=!this.backgroundCategoryMultiSelection.size;}
+        const grid=directory.createDiv({cls:'esds-catalog-folder-grid'});
+        visible.forEach(cat=>{
+          const items=all.filter(bg=>(bg.group||bg.category||'Мои фоны')===cat.name),childCount=categories.filter(c=>c.parentId===cat.id).length;
+          const folder=grid.createDiv({cls:'esds-catalog-folder'+(this.backgroundCategoryMultiSelection.has(cat.id)?' is-category-selected':''),attr:{role:'button',tabindex:'0','aria-label':`${this.backgroundCategorySelectionMode?'Выбрать':'Открыть'} категорию ${cat.name}`}});
+          const check=folder.createEl('input',{cls:'esds-category-select-checkbox',attr:{type:'checkbox','aria-label':'Выбрать категорию '+cat.name}});check.checked=this.backgroundCategoryMultiSelection.has(cat.id);
+          check.addEventListener('click',e=>e.stopPropagation());check.addEventListener('change',e=>{e.stopPropagation();this.backgroundCategorySelectionMode=true;check.checked?this.backgroundCategoryMultiSelection.add(cat.id):this.backgroundCategoryMultiSelection.delete(cat.id);render();});
+          const visual=folder.createDiv({cls:'esds-catalog-folder-visual esds-catalog-folder-visual-background'});
+          ['var(--background-secondary)','var(--background-primary-alt)','var(--interactive-accent)','var(--background-modifier-border)'].forEach(color=>{const swatch=visual.createSpan({cls:'esds-catalog-folder-swatch'});swatch.style.backgroundColor=color;});
+          const info=folder.createDiv({cls:'esds-catalog-folder-info'});info.createEl('strong',{text:cat.name});info.createEl('small',{text:cat.description||'Варианты фона для заметок со светлой и тёмной адаптацией.'});
+          const footer=folder.createDiv({cls:'esds-catalog-folder-footer'});footer.createSpan({text:`${items.length} фонов · ${childCount} вложенных`});footer.createSpan({text:this.backgroundCategorySelectionMode?(this.backgroundCategoryMultiSelection.has(cat.id)?'Выбрана ✓':'Выбрать'):'Открыть ›'});
+          const open=()=>{if(this.backgroundCategorySelectionMode){this.backgroundCategoryMultiSelection.has(cat.id)?this.backgroundCategoryMultiSelection.delete(cat.id):this.backgroundCategoryMultiSelection.add(cat.id);}else{this.backgroundParentCategoryId=cat.id;this.backgroundCategory=cat.name;}render();};
+          folder.addEventListener('click',e=>{if(e.target.closest('input'))return;open();});folder.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
         });
+        if(parentCategory){const show=directory.createEl('button',{cls:'esds-button esds-btn-quiet',text:`Показать фоны этой категории · ${all.filter(bg=>(bg.group||bg.category||'Мои фоны')===parentCategory.name).length}`});show.addEventListener('click',()=>{this.backgroundCategory=parentCategory.name;render();});}
         return;
       }
-      const filtered = all.filter(bg => {
-        const name = String(bg.label || bg.name || '').toLocaleLowerCase();
-        const group = bg.group || bg.category || 'Мои фоны';
-        return (!selected || !!query || group === selected) && (!query || `${name} ${group}`.toLocaleLowerCase().includes(query));
-      });
-      const header = results.createDiv({ cls: 'esds-catalog-results-heading' });
-      if (selected && !query) {
-        const back = header.createEl('button', { cls: 'esds-button esds-btn-quiet', text: '‹ Все категории', attr: { type: 'button' } });
-        back.addEventListener('click', () => { this.backgroundCategory = null; render(); });
-        header.createEl('strong', { text: selected });
-      } else header.createEl('strong', { text: 'Результаты поиска по всем фонам' });
-      header.createEl('small', { text: `${filtered.length} элементов` });
-      if (!filtered.length) { results.createEl('p', { cls: 'esds-empty', text: 'Фоны не найдены.' }); return; }
-      let rendered = 0;
-      const appendBatch = () => {
-        const batch = filtered.slice(rendered, rendered + this.catalogPageSize);
-        batch.forEach(bg => {
-          const isSelected = this.selectedBackground.id === bg.id;
-          const card = results.createDiv({ cls: `esds-bg-card esds-background-template-card${isSelected ? ' is-selected' : ''}`, attr: { role: 'button', tabindex: '0', 'aria-pressed': isSelected ? 'true' : 'false', 'aria-label': `${bg.label || bg.name}${isSelected ? ', выбран' : ''}` } });
-          const thumb = card.createDiv({ cls: `esds-bg-thumb esds-preview esds-background-live-preview ${this.selectedPalette.id} esds-palette-${this.selectedPalette.id} ${bg.id} esds-frames-from-palette` });
-          this.setPreviewTheme(thumb, this.selectedPalette, bg, this.selectedBlocks);
-          this.renderBackgroundSampleNote(thumb);
-          const info = card.createDiv({ cls: 'esds-bg-template-info' });
-          info.createEl('span', { text: bg.label || bg.name });
-          if (bg.group) info.createEl('small', { text: bg.group });
-          if (isSelected) info.createSpan({ cls: 'esds-card-check esds-bg-check', text: '✓', attr: { 'aria-label': 'Выбранный фон' } });
-          const favorite = info.createEl('button', { cls: 'esds-icon-btn esds-item-favorite-button', text: this.isItemFavorite('background', bg.id) ? '★' : '☆', attr: { type: 'button', title: this.isItemFavorite('background', bg.id) ? 'Убрать из избранных элементов' : 'В избранные элементы' } });
-          favorite.addEventListener('click', event => { event.stopPropagation(); this.toggleItemFavorite('background', bg); });
-          if ((this.plugin.userData.backgrounds || []).some(item => item.id === bg.id)) {
-            const menu = info.createEl('button', { cls: 'esds-icon-btn esds-more-btn esds-background-manage-menu', text: '⋯', attr: { type: 'button', title: 'Действия с фоном' } });
-            menu.addEventListener('click', event => { event.stopPropagation(); this.openBackgroundMenu(bg, menu); });
-          }
-          const openPreview = () => this.openLibraryItemPreview('background', bg, filtered);
-          card.addEventListener('click', event => { if (!event.target.closest('button')) openPreview(); });
-          card.addEventListener('keydown', event => { if (event.target !== card) return; if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openPreview(); } });
+      const filtered=all.filter(bg=>{const name=String(bg.label||bg.name||'').toLocaleLowerCase(),group=bg.group||bg.category||'Мои фоны';return(!selected||!!query||group===selected)&&(!query||`${name} ${group}`.toLocaleLowerCase().includes(query));});
+      const header=results.createDiv({cls:'esds-catalog-results-heading'});
+      if(selected&&!query){const back=header.createEl('button',{cls:'esds-button esds-btn-quiet',text:'‹ Все категории',attr:{type:'button'}});back.addEventListener('click',()=>{this.backgroundCategory=null;this.backgroundMultiSelection.clear();this.backgroundMultiSelectionMode=false;render();});header.createEl('strong',{text:selected});}
+      else header.createEl('strong',{text:'Результаты поиска по всем фонам'});
+      header.createEl('small',{text:`${filtered.length} элементов`});
+      const itemControls=results.createDiv({cls:'esds-category-selection-toolbar'});
+      const itemAction=(label,fn,danger=false)=>{const b=itemControls.createEl('button',{cls:'esds-button'+(danger?' esds-danger':''),text:label,attr:{type:'button'}});b.addEventListener('click',fn);return b;};
+      itemAction(this.backgroundMultiSelectionMode?'Готово':'Выбрать фоны',()=>{this.backgroundMultiSelectionMode=!this.backgroundMultiSelectionMode;if(!this.backgroundMultiSelectionMode)this.backgroundMultiSelection.clear();render();});
+      itemAction('Выбрать всё',()=>{this.backgroundMultiSelectionMode=true;filtered.forEach(bg=>this.backgroundMultiSelection.add(bg.id));render();});
+      itemAction('Снять выделение',()=>{this.backgroundMultiSelection.clear();render();});
+      itemControls.createSpan({cls:'esds-palette-selection-count',text:`Выбрано фонов: ${this.backgroundMultiSelection.size}`});
+      if(this.backgroundMultiSelectionMode){itemAction('Переместить в…',()=>this.moveSelectedBackgrounds()).disabled=!this.backgroundMultiSelection.size;itemAction('Удалить выбранные',()=>this.deleteSelectedBackgrounds(),true).disabled=!this.backgroundMultiSelection.size;}
+      if(!filtered.length){results.createEl('p',{cls:'esds-empty',text:'Фоны не найдены.'});return;}
+      let rendered=0;
+      const appendBatch=()=>{
+        const batch=filtered.slice(rendered,rendered+this.catalogPageSize);
+        batch.forEach(bg=>{
+          const isSelected=this.selectedBackground.id===bg.id,bulkSelected=this.backgroundMultiSelection.has(bg.id);
+          const card=results.createDiv({cls:`esds-bg-card esds-background-template-card${isSelected?' is-selected':''}${bulkSelected?' is-category-selected':''}`,attr:{role:'button',tabindex:'0','aria-pressed':isSelected?'true':'false','aria-label':`${bg.label||bg.name}${isSelected?', выбран':''}`}});
+          if(this.backgroundMultiSelectionMode){const check=card.createEl('input',{cls:'esds-category-select-checkbox',attr:{type:'checkbox','aria-label':'Выбрать фон '+(bg.label||bg.name)}});check.checked=bulkSelected;check.addEventListener('click',e=>e.stopPropagation());check.addEventListener('change',e=>{e.stopPropagation();check.checked?this.backgroundMultiSelection.add(bg.id):this.backgroundMultiSelection.delete(bg.id);render();});}
+          const thumb=card.createDiv({cls:`esds-bg-thumb esds-preview esds-background-live-preview ${this.selectedPalette.id} esds-palette-${this.selectedPalette.id} ${bg.id} esds-frames-from-palette`});
+          this.setPreviewTheme(thumb,this.selectedPalette,bg,this.selectedBlocks);this.renderBackgroundSampleNote(thumb);
+          const info=card.createDiv({cls:'esds-bg-template-info'});info.createEl('span',{text:bg.label||bg.name});if(bg.group)info.createEl('small',{text:bg.group});
+          if(isSelected)info.createSpan({cls:'esds-card-check esds-bg-check',text:'✓',attr:{'aria-label':'Выбранный фон'}});
+          const favorite=info.createEl('button',{cls:'esds-icon-btn esds-item-favorite-button',text:this.isItemFavorite('background',bg.id)?'★':'☆',attr:{type:'button',title:this.isItemFavorite('background',bg.id)?'Убрать из избранных элементов':'В избранные элементы'}});
+          favorite.addEventListener('click',event=>{event.stopPropagation();this.toggleItemFavorite('background',bg);});
+          if((this.plugin.userData.backgrounds||[]).some(item=>item.id===bg.id)){const menu=info.createEl('button',{cls:'esds-icon-btn esds-more-btn esds-background-manage-menu',text:'⋯',attr:{type:'button',title:'Действия с фоном'}});menu.addEventListener('click',event=>{event.stopPropagation();this.openBackgroundMenu(bg,menu);});}
+          const openPreview=()=>this.openLibraryItemPreview('background',bg,filtered);
+          card.addEventListener('click',event=>{if(event.target.closest('button')||event.target.closest('input'))return;if(this.backgroundMultiSelectionMode){this.backgroundMultiSelection.has(bg.id)?this.backgroundMultiSelection.delete(bg.id):this.backgroundMultiSelection.add(bg.id);render();}else openPreview();});
+          card.addEventListener('keydown',event=>{if(event.target!==card)return;if(event.key==='Enter'||event.key===' '){event.preventDefault();if(this.backgroundMultiSelectionMode){this.backgroundMultiSelection.has(bg.id)?this.backgroundMultiSelection.delete(bg.id):this.backgroundMultiSelection.add(bg.id);render();}else openPreview();}});
         });
-        rendered += batch.length;
-        const old = results.querySelector('.esds-catalog-more'); if (old) old.remove();
-        if (rendered < filtered.length) {
-          const more = results.createEl('button', { cls: 'esds-button esds-btn-quiet esds-catalog-more', text: `Показать ещё · ${filtered.length - rendered}`, attr: { type: 'button' } });
-          more.addEventListener('click', appendBatch);
-        }
+        rendered+=batch.length;const old=results.querySelector('.esds-catalog-more');if(old)old.remove();
+        if(rendered<filtered.length){const more=results.createEl('button',{cls:'esds-button esds-btn-quiet esds-catalog-more',text:`Показать ещё · ${filtered.length-rendered}`,attr:{type:'button'}});more.addEventListener('click',appendBatch);}
       };
       appendBatch();
     };
-    search.addEventListener('input', () => {
-      if (this._catalogSearchTimer) window.clearTimeout(this._catalogSearchTimer);
-      this._catalogSearchTimer = window.setTimeout(() => { this._catalogSearchTimer = null; render(); }, 250);
-    });
+    search.addEventListener('input',()=>{if(this._catalogSearchTimer)window.clearTimeout(this._catalogSearchTimer);this._catalogSearchTimer=window.setTimeout(()=>{this._catalogSearchTimer=null;render();},250);});
     render();
   }
+
+  async chooseBackgroundCategoryDestination(excludedIds) {
+    const all=this.getCategories('backgrounds'),candidates=all.filter(c=>!excludedIds.has(c.id)&&!this.isBackgroundCategoryDescendant(c.id,excludedIds)),byId=new Map(all.map(c=>[c.id,c]));
+    const pathOf=item=>{const parts=[item.name];let cur=item,seen=new Set();while(cur.parentId&&!seen.has(cur.parentId)){seen.add(cur.parentId);cur=byId.get(cur.parentId);if(cur)parts.unshift(cur.name);else break;}return parts.join(' / ');};
+    return await new Promise(resolve=>{let done=false;const modal=new class extends Modal{constructor(app){super(app);}finish(v){if(done)return;done=true;this.result=v;this.close();}onOpen(){this.modalEl.addClass('esds-category-picker-modal');this.contentEl.addClass('esds-category-picker');this.renderChoices();}onClose(){this.contentEl.empty();resolve(this.result===undefined?undefined:this.result);}renderChoices(){const root=this.contentEl;root.empty();root.createEl('h2',{text:'Переместить категории фонов'});const list=root.createDiv({cls:'esds-category-picker-list'});const add=(label,sub,value)=>{const row=list.createEl('button',{cls:'esds-category-picker-row',attr:{type:'button'}});row.createSpan({cls:'esds-category-picker-icon',text:'▰'});const labels=row.createDiv({cls:'esds-category-picker-labels'});labels.createEl('strong',{text:label});labels.createEl('small',{text:sub});row.addEventListener('click',()=>this.finish(value));};add('Корень','Без родительской категории',null);candidates.forEach(c=>add(c.name,pathOf(c),c.id));const cancel=root.createEl('button',{cls:'esds-button esds-btn-quiet',text:'Отмена',attr:{type:'button'}});cancel.addEventListener('click',()=>this.finish(undefined));}}(this.app);modal.open();});
+  }
+  isBackgroundCategoryDescendant(id,ancestors){const map=new Map(this.getCategories('backgrounds').map(c=>[c.id,c]));let cur=map.get(id),seen=new Set();while(cur&&cur.parentId&&!seen.has(cur.parentId)){if(ancestors.has(cur.parentId))return true;seen.add(cur.parentId);cur=map.get(cur.parentId);}return false;}
+  async createBackgroundCategory(parentId=null){const name=prompt(parentId?'Название вложенной категории фонов:':'Название категории фонов:');if(!name||!name.trim())return;const clean=name.trim(),cats=this.getCategories('backgrounds');if(cats.some(c=>c.name.toLocaleLowerCase()===clean.toLocaleLowerCase())){new Notice('Категория с таким названием уже существует.');return;}const base=slugify(clean)||'backgrounds',idBase='bgcat-'+base;let id=idBase,n=2;while(cats.some(c=>c.id===id))id=idBase+'-'+n++;const before=clone(this.plugin.userData);this.plugin.userData.categories.backgrounds=[...cats,{id,name:clean,order:cats.length+10,protected:false,parentId}];if(await this.plugin.saveUserLibrary()===false){this.plugin.userData=before;return;}new Notice('Категория создана: '+clean);this.render();}
+  async moveSelectedBackgroundCategories(){const ids=new Set(this.backgroundCategoryMultiSelection),cats=this.getCategories('backgrounds'),moving=cats.filter(c=>ids.has(c.id));if(!moving.length)return;const parentId=await this.chooseBackgroundCategoryDestination(ids);if(parentId===undefined)return;const before=clone(this.plugin.userData);this.plugin.userData.categories.backgrounds=cats.map(c=>ids.has(c.id)?{...c,parentId}:c);if(await this.plugin.saveUserLibrary()===false){this.plugin.userData=before;return;}this.backgroundCategoryMultiSelection.clear();this.backgroundCategorySelectionMode=false;new Notice('Перемещено категорий фонов: '+moving.length);this.render();}
+  async deleteSelectedBackgroundCategories(){const cats=this.getCategories('backgrounds'),ids=new Set(this.backgroundCategoryMultiSelection);if(!ids.size)return;const remove=new Set(ids);let changed=true;while(changed){changed=false;cats.forEach(c=>{if(c.parentId&&remove.has(c.parentId)&&!remove.has(c.id)){remove.add(c.id);changed=true;}});}const names=new Set(cats.filter(c=>remove.has(c.id)).map(c=>c.name)),user=this.plugin.userData.backgrounds||[],removedUser=user.filter(bg=>names.has(bg.group||bg.category||'Мои фоны')),removedBuilt=BACKGROUNDS.filter(bg=>names.has(bg.group||bg.category||'Мои фоны')),total=removedUser.length+removedBuilt.length;if(!confirm(`Удалить ${remove.size} категорий фонов и все ${total} фонов внутри них?`))return;const before=clone(this.plugin.userData);this.plugin.userData.categories.backgrounds=cats.filter(c=>!remove.has(c.id));this.plugin.userData.backgrounds=user.filter(bg=>!names.has(bg.group||bg.category||'Мои фоны'));this.plugin.userData.deletedBuiltinBackgroundIds=[...new Set([...(this.plugin.userData.deletedBuiltinBackgroundIds||[]),...removedBuilt.map(bg=>bg.id)])];if(await this.plugin.saveUserLibrary()===false){this.plugin.userData=before;return;}this.backgroundCategory=null;this.backgroundParentCategoryId=null;this.backgroundCategoryMultiSelection.clear();this.backgroundCategorySelectionMode=false;this.plugin.refreshGeneratedStyles();new Notice(`Удалено категорий: ${remove.size}; фонов: ${total}`);this.render();}
+  async chooseBackgroundDestination(){const cats=this.getCategories('backgrounds');return await new Promise(resolve=>{let done=false;const modal=new class extends Modal{constructor(app){super(app);}finish(v){if(done)return;done=true;this.result=v;this.close();}onOpen(){this.modalEl.addClass('esds-category-picker-modal');this.contentEl.addClass('esds-category-picker');this.contentEl.createEl('h2',{text:'Переместить фоны'});const list=this.contentEl.createDiv({cls:'esds-category-picker-list'});cats.forEach(c=>{const row=list.createEl('button',{cls:'esds-category-picker-row',attr:{type:'button'}});row.createSpan({cls:'esds-category-picker-icon',text:'▰'});row.createEl('strong',{text:c.name});row.addEventListener('click',()=>this.finish(c.name));});const cancel=this.contentEl.createEl('button',{cls:'esds-button esds-btn-quiet',text:'Отмена'});cancel.addEventListener('click',()=>this.finish(undefined));}onClose(){this.contentEl.empty();resolve(this.result);}}(this.app);modal.open();});}
+  async moveSelectedBackgrounds(){const ids=new Set(this.backgroundMultiSelection),user=this.plugin.userData.backgrounds||[],moving=user.filter(bg=>ids.has(bg.id));if(!moving.length){new Notice('Перемещать можно пользовательские фоны.');return;}const destination=await this.chooseBackgroundDestination();if(destination===undefined)return;const before=clone(this.plugin.userData);this.plugin.userData.backgrounds=user.map(bg=>ids.has(bg.id)?{...bg,group:destination,category:destination}:bg);if(await this.plugin.saveUserLibrary()===false){this.plugin.userData=before;return;}this.backgroundMultiSelection.clear();this.backgroundMultiSelectionMode=false;new Notice('Перемещено фонов: '+moving.length);this.render();}
+  async deleteSelectedBackgrounds(){const ids=new Set(this.backgroundMultiSelection),user=this.plugin.userData.backgrounds||[],removed=user.filter(bg=>ids.has(bg.id));if(!removed.length){new Notice('Выбери пользовательские фоны для удаления.');return;}if(!confirm(`Удалить выбранные фоны: ${removed.length} шт.?`))return;const before=clone(this.plugin.userData);this.plugin.userData.backgrounds=user.filter(bg=>!ids.has(bg.id));this.plugin.userData.favoriteItems=(this.plugin.userData.favoriteItems||[]).filter(item=>!(item.kind==='background'&&ids.has(item.id)));if(await this.plugin.saveUserLibrary()===false){this.plugin.userData=before;return;}if(ids.has(this.selectedBackground.id))this.selectBackground(BACKGROUNDS.find(bg=>!(this.plugin.userData.deletedBuiltinBackgroundIds||[]).includes(bg.id))||BACKGROUNDS[0]);this.backgroundMultiSelection.clear();this.backgroundMultiSelectionMode=false;this.plugin.refreshGeneratedStyles();new Notice('Удалено фонов: '+removed.length);this.render();}
   openBackgroundMenu(background, anchorEl) {
     this.openItemMenu(anchorEl, [
       ['✎ Редактировать', '', () => new BackgroundBuilderModal(this.app, this, background).open()],
