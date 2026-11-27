@@ -3,7 +3,7 @@
   "type": "esds-theme-pack",
   "plugin": "english-study-design-studio",
   "name": "Burgundy Flame — полный дизайнерский набор",
-  "description": "Полный дизайн Burgundy Flame: палитра, индивидуальный цветной фон и единое оформление блоков.",
+  "description": "Полный дизайн Burgundy Flame: индивидуальный насыщенный фон, палитра и стиль блоков.",
   "frameSource": "blockStyle",
   "items": {
     "palette": {
@@ -351,8 +351,8 @@
       "name": "Burgundy Flame — фон",
       "label": "Burgundy Flame — фон",
       "group": "Rainbow Multicolor",
-      "light": "linear-gradient(135deg, #DAC3CA 0%, #FFE2DC 100%)",
-      "dark": "linear-gradient(135deg, #DAC3CA 0%, #FFE2DC 100%)",
+      "light": "linear-gradient(135deg, #C9A7B2 0%, #FF917C 100%)",
+      "dark": "linear-gradient(135deg, #C9A7B2 0%, #FF917C 100%)",
       "textColor": "#201B2A",
       "darkTextColor": "#201B2A"
     },
