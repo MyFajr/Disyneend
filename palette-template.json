@@ -24,7 +24,8 @@
       "secondary": "#b27a2d",
       "soft": "#8c6db0",
       "heading": "#51428d",
-      "ink": "#302d38"
+      "ink": "#302d38",
+      "letter": "#A32670"
     },
     "dark": {
       "en": "#9bc8ff",
@@ -36,7 +37,8 @@
       "secondary": "#efc77e",
       "soft": "#c6a8ed",
       "heading": "#d1c2ff",
-      "ink": "#f0edf5"
+      "ink": "#f0edf5",
+      "letter": "#FF9BCB"
     },
     "callouts": {
       "rule": [

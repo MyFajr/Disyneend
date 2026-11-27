@@ -764,9 +764,9 @@ function makePaletteCss(palette) {
     `.markdown-source-view.esds-note.${cls}`,
     `.esds-preview.${cls}`
   ].join(',');
-  const roleVars = ROLE_KEYS.map(key => `--esds-${key}: ${isHexColor(roles[key]) ? roles[key] : '#777777'};`).join(' ');
+  const roleVars = ROLE_KEYS.map(key => `--esds-${key}: ${isHexColor(roles[key]) ? roles[key] : '#777777'};`).join(' ') + ` --esds-letter: ${isHexColor(roles.letter) ? roles.letter : (isHexColor(roles.ipa) ? roles.ipa : '#777777')};`;
   const calloutVars = CALLOUT_KEYS.map(key => `--esds-callout-${key}: ${rgbValue(callouts[key])};`).join(' ');
-  const darkRoleVars = ROLE_KEYS.map(key => `--esds-${key}: ${isHexColor(darkRoles[key]) ? darkRoles[key] : (isHexColor(roles[key]) ? roles[key] : '#dddddd')};`).join(' ');
+  const darkRoleVars = ROLE_KEYS.map(key => `--esds-${key}: ${isHexColor(darkRoles[key]) ? darkRoles[key] : (isHexColor(roles[key]) ? roles[key] : '#dddddd')};`).join(' ') + ` --esds-letter: ${isHexColor(darkRoles.letter) ? darkRoles.letter : (isHexColor(darkRoles.ipa) ? darkRoles.ipa : '#dddddd')};`;
   const darkCalloutVars = CALLOUT_KEYS.map(key => `--esds-callout-${key}: ${rgbValue(darkCallouts[key])};`).join(' ');
   const mapVars = (fill, text, border) => CALLOUT_KEYS.map(key => {
     const vars = [];
@@ -1310,7 +1310,7 @@ class PaletteBuilderModal extends Modal {
     lightBtn.addEventListener('click', () => { this.themeMode = 'light'; this.render(); });
     darkBtn.addEventListener('click', () => { this.themeMode = 'dark'; this.render(); });
     const swatches = body.createDiv({ cls: 'esds-color-grid' });
-    const labels = { en:'Иностранные слова', ipa:'Произношение / транскрипция', translation:'Перевод', term:'Термины', definition:'Определения', focus:'Главный акцент', secondary:'Второй акцент', soft:'Мягкий акцент', heading:'Заголовки', ink:'Основной текст' };
+    const labels = { en:'Иностранные слова', ipa:'Произношение / транскрипция', translation:'Перевод', term:'Термины', definition:'Определения', focus:'Главный акцент', secondary:'Второй акцент', soft:'Мягкий акцент', heading:'Заголовки', ink:'Основной текст', letter:'Иностранные буквы' };
     const currentRoles = this.themeMode === 'dark' ? (this.base.dark || this.base.roles) : this.base.roles;
     ROLE_KEYS.forEach(key => {
       const field = swatches.createDiv({ cls: 'esds-color-field' });
@@ -1325,6 +1325,21 @@ class PaletteBuilderModal extends Modal {
         if (this.palettePreview) this.palettePreview.style.setProperty(`--esds-${key}`, input.value);
       });
     });
+    {
+      const key = 'letter';
+      const field = swatches.createDiv({ cls: 'esds-color-field' });
+      field.createEl('label', { text: labels[key] });
+      const fallback = currentRoles.ipa || this.base.roles.ipa || '#743A9D';
+      const value = isHexColor(currentRoles[key]) ? currentRoles[key] : fallback;
+      const input = field.createEl('input', { attr: { type: 'color', value } });
+      input.value = value; this.inputs[this.themeMode][key] = input;
+      const editingMode = this.themeMode;
+      input.addEventListener('input', () => {
+        if (editingMode === 'dark') this.base.dark = { ...(this.base.dark || this.base.roles), letter: input.value };
+        else this.base.roles = { ...(this.base.roles || {}), letter: input.value };
+        if (this.palettePreview) this.palettePreview.style.setProperty('--esds-letter', input.value);
+      });
+    }
     const calloutColorsSection = body.createDiv({ cls: 'esds-palette-callout-colors' });
     calloutColorsSection.createEl('h3', { text: 'Цвета информационных блоков' });
     calloutColorsSection.createEl('p', { cls: 'esds-section-note', text: 'Здесь задаются отдельные цвета и геометрия рамки каждого типа блока. Эти рамки применяются вместе с выбранной палитрой; настройки конкретной заметки могут их переопределить.' });
@@ -1403,6 +1418,7 @@ class PaletteBuilderModal extends Modal {
     };
     this.palettePreview.style.setProperty('--esds-en', currentRoles.en || '#187b75');
     this.palettePreview.style.setProperty('--esds-ipa', currentRoles.ipa || '#7450a8');
+    this.palettePreview.style.setProperty('--esds-letter', currentRoles.letter || currentRoles.ipa || '#7450a8');
     this.palettePreview.style.setProperty('--esds-translation', currentRoles.translation || '#a64b32');
     this.palettePreview.style.setProperty('--esds-term', currentRoles.term || '#235da5');
     this.palettePreview.style.setProperty('--esds-definition', currentRoles.definition || '#36734b');
@@ -1456,6 +1472,10 @@ class PaletteBuilderModal extends Modal {
         if (this.inputs.light[key]) palette.roles[key] = this.inputs.light[key].value;
         if (this.inputs.dark[key]) palette.dark[key] = this.inputs.dark[key].value;
       });
+      if (this.inputs.light.letter) palette.roles.letter = this.inputs.light.letter.value;
+      else palette.roles.letter = palette.roles.letter || palette.roles.ipa;
+      if (this.inputs.dark.letter) palette.dark.letter = this.inputs.dark.letter.value;
+      else palette.dark.letter = palette.dark.letter || palette.dark.ipa || palette.roles.letter;
       palette.swatches = [palette.roles.en, palette.roles.ipa, palette.roles.translation, palette.roles.term, palette.roles.focus];
       const now = new Date().toISOString();
       palette.createdAt = palette.createdAt || now;
@@ -3064,6 +3084,7 @@ class DesignStudioModal extends Modal {
       ROLE_KEYS.forEach(key => {
         if (roles[key]) container.style.setProperty(`--esds-${key}`, roles[key]);
       });
+      container.style.setProperty('--esds-letter', isHexColor(roles.letter) ? roles.letter : (roles.ipa || palette.roles?.ipa || '#777777'));
     }
     const callouts = darkMode && palette.darkCallouts ? palette.darkCallouts : palette.callouts;
     if (callouts) {
@@ -3749,8 +3770,8 @@ class DesignStudioModal extends Modal {
       source: 'user',
       defaultBackground: backgroundId,
       defaultBlocks: blockStyleId,
-      roles: Object.fromEntries(ROLE_KEYS.map(key => [key, colorToHex(roles[key])])),
-      dark: Object.fromEntries(ROLE_KEYS.map(key => [key, colorToHex(isHexColor(rawPalette.dark && rawPalette.dark[key]) ? rawPalette.dark[key] : roles[key])])),
+      roles: { ...Object.fromEntries(ROLE_KEYS.map(key => [key, colorToHex(roles[key])])), letter: colorToHex(isHexColor(roles.letter) ? roles.letter : roles.ipa) },
+      dark: { ...Object.fromEntries(ROLE_KEYS.map(key => [key, colorToHex(isHexColor(rawPalette.dark && rawPalette.dark[key]) ? rawPalette.dark[key] : roles[key])])), letter: colorToHex(isHexColor(rawPalette.dark && rawPalette.dark.letter) ? rawPalette.dark.letter : (isHexColor(rawPalette.dark && rawPalette.dark.ipa) ? rawPalette.dark.ipa : roles.ipa)) },
       callouts: cleanColorMap(rawPalette.callouts, PALETTES[0].callouts),
       darkCallouts: cleanColorMap(rawPalette.darkCallouts, rawPalette.callouts || PALETTES[0].callouts),
       calloutFrames: rawPalette.calloutFrames && typeof rawPalette.calloutFrames === 'object' ? Object.fromEntries(CALLOUT_KEYS.map(key => { const frame = rawPalette.calloutFrames[key]; return frame && BLOCK_FRAME_PRESET_KEYS.includes(frame.preset) ? [key, { preset: frame.preset, width: Math.max(0, Math.min(8, Number.isFinite(Number(frame.width)) ? Number(frame.width) : 1.5)), radius: Math.max(0, Math.min(32, Number.isFinite(Number(frame.radius)) ? Number(frame.radius) : 10)) }] : null; }).filter(Boolean)) : undefined,
@@ -3844,10 +3865,12 @@ class DesignStudioModal extends Modal {
       let p = data.palette || data;
       const roles = p.roles || {};
       if (!p.name || !ROLE_KEYS.every(key => isHexColor(roles[key]))) throw new Error('Palette roles are missing or invalid');
-      const palette = clone(p); palette.id = `user-${slugify(p.name)}-${Date.now().toString(36).slice(-4)}`; palette.createdAt = new Date().toISOString(); palette.updatedAt = palette.createdAt; palette.source = 'user';
+      const palette = clone(p);
+      palette.roles.letter = isHexColor(palette.roles.letter) ? palette.roles.letter : palette.roles.ipa; palette.id = `user-${slugify(p.name)}-${Date.now().toString(36).slice(-4)}`; palette.createdAt = new Date().toISOString(); palette.updatedAt = palette.createdAt; palette.source = 'user';
       palette.defaultBackground = this.findBackground(p.defaultBackground)?.id || this.selectedBackground.id;
       palette.defaultBlocks = this.findBlockStyle(p.defaultBlocks) ? p.defaultBlocks : this.selectedBlocks.id;
       palette.dark = Object.fromEntries(ROLE_KEYS.map(key => [key, isHexColor(palette.dark && palette.dark[key]) ? palette.dark[key] : palette.roles[key]]));
+      palette.dark.letter = isHexColor(palette.dark?.letter) ? palette.dark.letter : (isHexColor(palette.roles.letter) ? palette.roles.letter : palette.dark.ipa);
       palette.callouts = palette.callouts || clone(PALETTES[0].callouts);
       palette.darkCallouts = palette.darkCallouts || clone(palette.callouts);
       ['calloutFills','calloutTexts','calloutBorders','darkCalloutFills','darkCalloutTexts','darkCalloutBorders'].forEach(mapName => {
