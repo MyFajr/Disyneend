@@ -3881,10 +3881,14 @@ class DesignStudioModal extends Modal {
       };
       restored.palettes = unique(restored.palettes, 'user-palette').filter(p => p.name && p.roles && ROLE_KEYS.every(key => isHexColor(p.roles[key]))).map(p => {
         if (!/^user-[a-z0-9-]+$/.test(p.id)) p.id = `user-${slugify(p.name)}-${Date.now().toString(36).slice(-4)}`;
+        p.roles = { ...(p.roles || {}) }; p.roles.letter = p.roles.letter || p.roles.ipa;
+        delete p.dark; delete p.darkCallouts; delete p.darkCalloutFills; delete p.darkCalloutTexts; delete p.darkCalloutBorders;
         p.source = 'user'; return p;
       });
-      restored.backgrounds = unique(restored.backgrounds, 'bg-custom').filter(bg => (bg.name || bg.label) && safeCssBackground(bg.light) && safeCssBackground(bg.dark || bg.light)).map(bg => {
+      restored.backgrounds = unique(restored.backgrounds, 'bg-custom').filter(bg => (bg.name || bg.label) && safeCssBackground(bg.value || bg.light || bg.dark)).map(bg => {
         if (!/^bg-custom-[a-z0-9-]+$/.test(bg.id)) bg.id = `bg-custom-${slugify(bg.name || bg.label)}-${Date.now().toString(36).slice(-4)}`;
+        bg.value = bg.value || bg.light || bg.dark; bg.textColor = bg.textColor || '#302d31';
+        delete bg.light; delete bg.dark; delete bg.darkTextColor;
         bg.source = 'user'; return bg;
       });
       restored.blockStyles = unique(restored.blockStyles, 'user-blocks').filter(style => style && (style.name || style.id)).map(style => normalizeBlockStyle({ ...style, source: 'user' }));
