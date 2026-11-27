@@ -94,188 +94,188 @@
     },
     "calloutFills": {
       "rule": [
-        240,
-        250,
-        240
+        204,
+        245,
+        208
       ],
       "example": [
-        240,
-        250,
-        244
+        204,
+        245,
+        228
       ],
       "important": [
-        240,
-        250,
-        250
+        220,
+        245,
+        204
       ],
       "tip": [
-        240,
         245,
-        250
+        204,
+        242
       ],
       "warning": [
-        240,
-        240,
-        250
+        204,
+        245,
+        235
       ],
       "question": [
         245,
-        240,
-        250
+        204,
+        223
       ],
       "practice": [
-        250,
+        245,
         240,
-        249
+        204
       ],
       "success": [
-        250,
-        240,
-        244
+        226,
+        204,
+        245
       ],
       "info": [
-        250,
-        241,
-        240
+        245,
+        204,
+        213
       ],
       "note": [
-        250,
-        246,
-        240
+        245,
+        226,
+        204
       ],
       "quote": [
-        249,
-        250,
-        240
+        230,
+        245,
+        204
       ],
       "abstract": [
-        243,
-        250,
-        240
+        204,
+        244,
+        245
       ]
     },
     "calloutTexts": {
       "rule": [
-        37,
-        30,
-        51
+        32,
+        36,
+        58
       ],
       "example": [
-        37,
-        30,
-        51
+        32,
+        36,
+        58
       ],
       "important": [
-        37,
-        30,
-        51
+        32,
+        36,
+        58
       ],
       "tip": [
-        37,
-        30,
-        51
+        32,
+        36,
+        58
       ],
       "warning": [
-        37,
-        30,
-        51
+        32,
+        36,
+        58
       ],
       "question": [
-        37,
-        30,
-        51
+        32,
+        36,
+        58
       ],
       "practice": [
-        37,
-        30,
-        51
+        32,
+        36,
+        58
       ],
       "success": [
-        37,
-        30,
-        51
+        32,
+        36,
+        58
       ],
       "info": [
-        37,
-        30,
-        51
+        32,
+        36,
+        58
       ],
       "note": [
-        37,
-        30,
-        51
+        32,
+        36,
+        58
       ],
       "quote": [
-        37,
-        30,
-        51
+        32,
+        36,
+        58
       ],
       "abstract": [
-        37,
-        30,
-        51
+        32,
+        36,
+        58
       ]
     },
     "calloutBorders": {
       "rule": [
-        116,
-        62,
-        11
+        34,
+        211,
+        55
       ],
       "example": [
-        11,
-        41,
-        116
+        34,
+        211,
+        137
       ],
       "important": [
-        114,
-        11,
-        116
+        102,
+        211,
+        34
       ],
       "tip": [
-        11,
-        83,
-        116
+        211,
+        34,
+        196
       ],
       "warning": [
-        116,
-        64,
-        11
+        34,
+        211,
+        166
       ],
       "question": [
-        116,
-        11,
-        11
+        211,
+        34,
+        117
       ],
       "practice": [
-        116,
-        11,
-        59
+        211,
+        187,
+        34
       ],
       "success": [
-        11,
+        128,
         34,
-        116
+        211
       ],
       "info": [
-        116,
-        25,
-        11
+        211,
+        34,
+        72
       ],
       "note": [
-        22,
-        116,
-        11
+        211,
+        128,
+        34
       ],
       "quote": [
-        114,
-        11,
-        116
+        146,
+        211,
+        34
       ],
       "abstract": [
-        11,
-        41,
-        116
+        34,
+        205,
+        211
       ]
     },
     "calloutFrames": {
@@ -366,9 +366,9 @@
     },
     "style": {
       "light": {
-        "backgroundOpacity": 0.17,
-        "borderWidth": 1.5,
-        "borderOpacity": 0.62,
+        "backgroundOpacity": 0.38,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.92,
         "borderRadius": 14,
         "paddingY": 10,
         "paddingX": 12,
@@ -379,9 +379,9 @@
         "shadow": "none"
       },
       "dark": {
-        "backgroundOpacity": 0.17,
-        "borderWidth": 1.5,
-        "borderOpacity": 0.62,
+        "backgroundOpacity": 0.7,
+        "borderWidth": 1.6,
+        "borderOpacity": 0.92,
         "borderRadius": 14,
         "paddingY": 10,
         "paddingX": 12,
@@ -393,32 +393,148 @@
       }
     },
     "calloutOverrides": {
+      "rule": {
+        "light": {
+          "backgroundOpacity": 0.36,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        },
+        "dark": {
+          "backgroundOpacity": 0.68,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        }
+      },
+      "example": {
+        "light": {
+          "backgroundOpacity": 0.385,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        },
+        "dark": {
+          "backgroundOpacity": 0.7000000000000001,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        }
+      },
       "important": {
         "light": {
-          "backgroundOpacity": 0.19,
-          "borderOpacity": 0.86,
+          "backgroundOpacity": 0.41,
+          "borderOpacity": 0.92,
           "borderWidth": 2
         },
         "dark": {
-          "backgroundOpacity": 0.19,
-          "borderOpacity": 0.86,
+          "backgroundOpacity": 0.7200000000000001,
+          "borderOpacity": 0.92,
           "borderWidth": 2
         }
       },
       "tip": {
         "light": {
-          "borderRadius": 15
+          "backgroundOpacity": 0.36,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
         },
         "dark": {
-          "borderRadius": 15
+          "backgroundOpacity": 0.68,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
         }
       },
       "warning": {
         "light": {
+          "backgroundOpacity": 0.385,
+          "borderOpacity": 0.92,
           "borderWidth": 2
         },
         "dark": {
+          "backgroundOpacity": 0.7000000000000001,
+          "borderOpacity": 0.92,
           "borderWidth": 2
+        }
+      },
+      "question": {
+        "light": {
+          "backgroundOpacity": 0.41,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        },
+        "dark": {
+          "backgroundOpacity": 0.7200000000000001,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        }
+      },
+      "practice": {
+        "light": {
+          "backgroundOpacity": 0.36,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        },
+        "dark": {
+          "backgroundOpacity": 0.68,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        }
+      },
+      "success": {
+        "light": {
+          "backgroundOpacity": 0.385,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        },
+        "dark": {
+          "backgroundOpacity": 0.7000000000000001,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        }
+      },
+      "info": {
+        "light": {
+          "backgroundOpacity": 0.41,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        },
+        "dark": {
+          "backgroundOpacity": 0.7200000000000001,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        }
+      },
+      "note": {
+        "light": {
+          "backgroundOpacity": 0.36,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        },
+        "dark": {
+          "backgroundOpacity": 0.68,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        }
+      },
+      "quote": {
+        "light": {
+          "backgroundOpacity": 0.385,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        },
+        "dark": {
+          "backgroundOpacity": 0.7000000000000001,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        }
+      },
+      "abstract": {
+        "light": {
+          "backgroundOpacity": 0.41,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
+        },
+        "dark": {
+          "backgroundOpacity": 0.7200000000000001,
+          "borderOpacity": 0.92,
+          "borderWidth": 1.6
         }
       }
     },
