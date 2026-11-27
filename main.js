@@ -789,7 +789,7 @@ function makePaletteCss(palette) {
     const previewSelector = `.esds-preview.esds-frames-from-palette.${cls} .esds-demo-callout.esds-callout-${type}`;
     return `${noteSelector},${previewSelector}{border-style:${preset.style} !important;border-width:${widths} !important;border-radius:${radius}px !important;}`;
   }).join('\n');
-  return `${selectors}{${roleVars} ${calloutVars} ${extra}}\\n${frameCss}`;
+  return `${selectors}{${roleVars} ${calloutVars} ${extra}}\n${frameCss}`;
 }
 
 function mergeStyleProps(base, override) {
